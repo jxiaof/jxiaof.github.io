@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>谈谈实际使用sql开发 | felix&#39;s blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.74.3" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.4fc0b62e4b82c997bb0041217cd6b979.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="谈谈实际使用sql开发" />
+<meta property="og:description" content="浅谈SQL实际使用 首先写好注释 -- 注释 /* 注释 */ SQL实际的一些用法 Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/" />
+<meta property="article:published_time" content="2020-08-26T02:26:39+08:00" />
+<meta property="article:modified_time" content="2020-08-26T02:26:39+08:00" />
+<meta itemprop="name" content="谈谈实际使用sql开发">
+<meta itemprop="description" content="浅谈SQL实际使用 首先写好注释 -- 注释 /* 注释 */ SQL实际的一些用法 Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过">
+<meta itemprop="datePublished" content="2020-08-26T02:26:39+08:00" />
+<meta itemprop="dateModified" content="2020-08-26T02:26:39+08:00" />
+<meta itemprop="wordCount" content="1674">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="谈谈实际使用sql开发"/>
+<meta name="twitter:description" content="浅谈SQL实际使用 首先写好注释 -- 注释 /* 注释 */ SQL实际的一些用法 Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过"/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        felix&#39;s blog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/&amp;text=%e8%b0%88%e8%b0%88%e5%ae%9e%e9%99%85%e4%bd%bf%e7%94%a8sql%e5%bc%80%e5%8f%91" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/&amp;title=%e8%b0%88%e8%b0%88%e5%ae%9e%e9%99%85%e4%bd%bf%e7%94%a8sql%e5%bc%80%e5%8f%91" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">谈谈实际使用sql开发</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-08-26T02:26:39+08:00">August 26, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="浅谈sql实际使用">浅谈SQL实际使用</h1>
+<p>首先写好注释</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 注释
+</span><span class="c1"></span>
+<span class="cm">/* 注释 */</span>
+</code></pre></div><h1 id="sql实际的一些用法">SQL实际的一些用法</h1>
+<p>Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。</p>
+<h1 id="cast">cast</h1>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> 
+ <span class="k">CASE</span> 
+ <span class="k">WHEN</span> <span class="n">http_user_agent</span> <span class="k">like</span> <span class="s1">&#39;%android%&#39;</span> <span class="k">then</span> <span class="s1">&#39;android&#39;</span> 
+ <span class="k">WHEN</span> <span class="n">http_user_agent</span> <span class="k">like</span> <span class="s1">&#39;%ios%&#39;</span> <span class="k">then</span> <span class="s1">&#39;ios&#39;</span> 
+ <span class="k">ELSE</span> <span class="s1">&#39;unknown&#39;</span> <span class="k">END</span>  
+ <span class="k">as</span> <span class="n">http_user_agent</span><span class="p">,</span>
+    <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">pv</span> 
+    <span class="k">group</span> <span class="k">by</span>  <span class="n">http_user_agent</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">*</span> <span class="o">|</span> <span class="k">SELECT</span> <span class="o">`</span>
+ <span class="k">CASE</span>
+ <span class="k">WHEN</span> <span class="n">latency</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">then</span> <span class="s1">&#39;s10&#39;</span>
+ <span class="k">WHEN</span> <span class="n">latency</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">then</span> <span class="s1">&#39;s100&#39;</span>
+ <span class="k">WHEN</span> <span class="n">latency</span> <span class="o">&lt;</span> <span class="mi">1000</span> <span class="k">then</span> <span class="s1">&#39;s1000&#39;</span>
+ <span class="k">WHEN</span> <span class="n">latency</span> <span class="o">&lt;</span> <span class="mi">10000</span> <span class="k">then</span> <span class="s1">&#39;s10000&#39;</span>
+ <span class="k">else</span> <span class="s1">&#39;s_large&#39;</span> <span class="k">end</span>
+ <span class="k">as</span> <span class="n">latency_slot</span><span class="p">,</span>
+ <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">pv</span>
+ <span class="k">group</span> <span class="k">by</span> <span class="n">latency_slot</span>
+</code></pre></div><blockquote>
+<p>if语法逻辑上等同于CASE WHEN语法。</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CASE</span>
+     <span class="k">WHEN</span> <span class="n">condition</span> <span class="k">THEN</span> <span class="n">true_value</span>
+     <span class="p">[</span> <span class="k">ELSE</span> <span class="n">false_value</span> <span class="p">]</span>
+ <span class="k">END</span>
+</code></pre></div><h1 id="日期函数">日期函数</h1>
+<h2 id="日期时间类型">日期时间类型</h2>
+<ul>
+<li>unixtime：以int类型表示从1970年1月1日开始的秒数，例如<code>1512374067</code>表示的时间是<code>Mon Dec 4 15:54:27 CST 2017</code>。日志服务每条日志中内置的时间<code>__time__</code>即为这种类型。</li>
+<li>timestamp类型：以字符串形式表示时间，例如<code>2017-11-01 13:30:00</code>。</li>
+</ul>
+<p>日志服务支持的常见日期函数如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">含义</th>
+<th align="left">样例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>current_date</code></td>
+<td align="left">当天日期。</td>
+<td align="left"><code>latency&gt;100| select current_date</code></td>
+</tr>
+<tr>
+<td align="left"><code>current_time</code></td>
+<td align="left">当前时间。</td>
+<td align="left"><code>latency&gt;100| select current_time</code></td>
+</tr>
+<tr>
+<td align="left"><code>current_timestamp</code></td>
+<td align="left">结合current_date 和current_time的结果。</td>
+<td align="left"><code>latency&gt;100| select current_timestamp</code></td>
+</tr>
+<tr>
+<td align="left"><code>current_timezone()</code></td>
+<td align="left">返回时区。</td>
+<td align="left"><code>latency&gt;100| select current_timezone()</code></td>
+</tr>
+<tr>
+<td align="left"><code>from_iso8601_timestamp(string)</code></td>
+<td align="left">把iso8601时间转化成带时区的时间。</td>
+<td align="left"><code>latency&gt;100| select from_iso8601_timestamp(iso8601)</code></td>
+</tr>
+<tr>
+<td align="left"><code>from_iso8601_date(string)</code></td>
+<td align="left">把iso8601转化成天。</td>
+<td align="left"><code>latency&gt;100| select from_iso8601_date(iso8601)</code></td>
+</tr>
+<tr>
+<td align="left"><code>from_unixtime(unixtime)</code></td>
+<td align="left">把unix时间转化为时间戳。</td>
+<td align="left"><code>latency&gt;100| select from_unixtime(1494985275) </code></td>
+</tr>
+<tr>
+<td align="left"><code>from_unixtime(unixtime,string)</code></td>
+<td align="left">以string为时区，把unixtime转化成时间戳。</td>
+<td align="left"><code>latency&gt;100| select from_unixtime (1494985275,'Asia/Shanghai')</code></td>
+</tr>
+<tr>
+<td align="left"><code>localtime</code></td>
+<td align="left">本地时间。</td>
+<td align="left"><code>latency&gt;100| select localtime </code></td>
+</tr>
+<tr>
+<td align="left"><code>localtimestamp</code></td>
+<td align="left">本地时间戳。</td>
+<td align="left"><code>latency&gt;100| select localtimestamp </code></td>
+</tr>
+<tr>
+<td align="left"><code>now()</code></td>
+<td align="left">等同于<code>current_timestamp</code>。</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>to_unixtime(timestamp)</code></td>
+<td align="left">timestamp转化成unixtime。</td>
+<td align="left"><code>*| select to_unixtime('2017-05-17 09:45:00.848 Asia/Shanghai')</code></td>
+</tr>
+</tbody>
+</table>
+<p>having</p>
+<blockquote>
+<p>用于where之后进行二次结果集条件限制</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="k">avg</span><span class="p">(</span><span class="n">latency</span><span class="p">)</span> <span class="k">as</span> <span class="n">avg_latency</span><span class="p">,</span><span class="n">projectName</span> <span class="k">group</span> <span class="k">by</span> <span class="n">projectName</span> 
+<span class="k">HAVING</span> <span class="k">avg</span><span class="p">(</span><span class="n">latency</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5700000</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">avg_latency</span> <span class="k">desc</span>
+</code></pre></div><p>group_by</p>
+<blockquote>
+<p>分类</p>
+</blockquote>
+<p>Inner join left join right join</p>
+<blockquote>
+<p>多表查询</p>
+</blockquote>
+<h1 id="json函数">json函数</h1>
+<p>JSON函数，可以解析一段字符串为JSON类型，并且提取JSON中的字段。JSON主要有两种结构：map和array。如果一个字符串解析成JSON失败，那么返回的是null。</p>
+<p>日志服务支持以下常见的JSON函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">含义</th>
+<th align="left">样例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>json_parse(string)</code></td>
+<td align="left">把字符串转化成JSON类型。</td>
+<td align="left"><code>SELECT json_parse('[1, 2, 3]')</code> 结果为JSON类型数组</td>
+</tr>
+<tr>
+<td align="left"><code>json_format(json)</code></td>
+<td align="left">把JSON类型转化成字符串。</td>
+<td align="left"><code>SELECT json_format(json_parse('[1, 2, 3]')) </code>结果为字符串</td>
+</tr>
+<tr>
+<td align="left"><code>json_array_contains(json, value)</code></td>
+<td align="left">判断一个JSON类型数值，或者一个字符串（内容是一个JSON数组）是否包含某个值。</td>
+<td align="left"><code>SELECT json_array_contains(json_parse('[1, 2, 3]'), 2)或 SELECT json_array_contains('[1, 2, 3]', 2)</code></td>
+</tr>
+<tr>
+<td align="left"><code>json_array_get(json_array, index)</code></td>
+<td align="left">同<code>json_array_contains</code>，是获取一个JSON数组的某个下标对应的元素。</td>
+<td align="left"><code>SELECT json_array_get('[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]', 0)结果为'a'</code></td>
+</tr>
+<tr>
+<td align="left"><code>json_array_length(json)</code></td>
+<td align="left">返回JSON数组的大小。</td>
+<td align="left"><code>SELECT json_array_length('[1, 2, 3]') 返回结果3</code></td>
+</tr>
+<tr>
+<td align="left"><code>json_extract(json, json_path)</code></td>
+<td align="left">从一个JSON对象中提取值，JSON路径的语法类似<code>$.store.book[0].title</code>，返回结果是一个JSON对象。</td>
+<td align="left"><code>SELECT json_extract(json, '$.store.book');</code></td>
+</tr>
+<tr>
+<td align="left"><code>json_extract_scalar(json, json_path)</code></td>
+<td align="left">类似<code>json_extract</code>，但是返回结果是字符串类型。</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>json_size(json,json_path)</code></td>
+<td align="left">获取JSON对象或数组的大小。</td>
+<td align="left"><code>SELECT json_size('[1, 2, 3]') 返回结果3</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="通用聚合函数">通用聚合函数</h1>
+<table>
+<thead>
+<tr>
+<th align="left">语句</th>
+<th align="left">含义</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>arbitrary(x)</code></td>
+<td align="left">随机返回x列中的一个值。</td>
+<td align="left"><code>latency &gt; 100 | select arbitrary(method)</code></td>
+</tr>
+<tr>
+<td align="left"><code>avg(x)</code></td>
+<td align="left">计算x列的算数平均值。</td>
+<td align="left"><code>latency &gt; 100 | select avg(latency)</code></td>
+</tr>
+<tr>
+<td align="left"><code>checksum(x)</code></td>
+<td align="left">计算某一列的checksum，返回base64编码。</td>
+<td align="left"><code>latency &gt; 100 | select checksum(method)</code></td>
+</tr>
+<tr>
+<td align="left"><code>count(*)</code></td>
+<td align="left">表示所有的行数。</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>count(x)</code></td>
+<td align="left">计算某一列非null的个数。</td>
+<td align="left"><code>latency &gt; 100 | select count(method) </code></td>
+</tr>
+<tr>
+<td align="left"><code>count(数字)</code></td>
+<td align="left"><code>count(数字)</code>，如<code>count(1)</code>，等同于<code>count(*)</code>，表示所有的行数。</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>count_if(x)</code></td>
+<td align="left">计算x=true的个数。</td>
+<td align="left"><code>latency &gt; 100 | select count_if(url like ‘%abc’) </code></td>
+</tr>
+<tr>
+<td align="left"><code>geometric_mean(x)</code></td>
+<td align="left">计算某一列的几何平均数。</td>
+<td align="left"><code>latency &gt; 100 | select geometric_mean(latency)</code></td>
+</tr>
+<tr>
+<td align="left"><code>max_by(x,y)</code></td>
+<td align="left">返回当y取最大值时，x当前的值。</td>
+<td align="left">查询延时最高的时候，对应的method：<code>latency&gt;100 | select max_by(method,latency)</code></td>
+</tr>
+<tr>
+<td align="left"><code>max_by(x,y,n)</code></td>
+<td align="left">返回y最高的n行，对应的x的值。</td>
+<td align="left">查询延时最高的3行，对应的method：<code>latency &gt; 100 | select max_by(method,latency,3)</code></td>
+</tr>
+<tr>
+<td align="left"><code>min_by(x,y)</code></td>
+<td align="left">返回当y取最小值时，x当前的值。</td>
+<td align="left">查询延时最低的请求，对应的method：<code>* | select min_by(x,y)</code></td>
+</tr>
+<tr>
+<td align="left"><code>min_by(x,y,n)</code></td>
+<td align="left">返回y最小的n行，对应的x的值。</td>
+<td align="left">查询延时最小的3行，对应的method： <code>* | select min_by(method,latency,3)</code></td>
+</tr>
+<tr>
+<td align="left"><code>max(x)</code></td>
+<td align="left">返回最大值。</td>
+<td align="left"><code>latency &gt; 100| select max(inflow)</code></td>
+</tr>
+<tr>
+<td align="left"><code>min(x)</code></td>
+<td align="left">返回最小值。</td>
+<td align="left"><code>latency &gt; 100| select min(inflow)</code></td>
+</tr>
+<tr>
+<td align="left"><code>sum(x)</code></td>
+<td align="left">返回x列的和。</td>
+<td align="left"><code>latency &gt; 10 | select sum(inflow)</code></td>
+</tr>
+<tr>
+<td align="left"><code>bitwise_and_agg(x)</code></td>
+<td align="left">对某一列的所有数值做and计算。</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>bitwise_or_agg(x)</code></td>
+<td align="left">对某一列的数值做or计算。</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h1 id="安全检测函数">安全检测函数</h1>
+<h2 id="函数列表">函数列表</h2>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">含义</th>
+<th align="left">样例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">security_check_ip</td>
+<td align="left">检查IP是否安全，其中： 返回1：命中，表示不安全返回0：未命中</td>
+<td align="left"><code>select security_check_ip(real_client_ip)</code></td>
+</tr>
+<tr>
+<td align="left">security_check_domain</td>
+<td align="left">检查Domain是否安全，其中： 返回1：命中，表示不安全返回0：未命中</td>
+<td align="left"><code>select security_check_domain(site)</code></td>
+</tr>
+<tr>
+<td align="left">security_check_url</td>
+<td align="left">检查URL是否安全，其中： 返回1：命中，表示不安全返回0：未命中</td>
+<td align="left"><code>select security_check_domain(concat(host, url))</code></td>
+</tr>
+</tbody>
+</table>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://jxiaof.github.io/" >
+    &copy;  felix's blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

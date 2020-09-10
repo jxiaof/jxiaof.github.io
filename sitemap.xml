@@ -3,31 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://jxiaof.github.io/</loc>
+    <lastmod>2020-09-10T14:57:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/</loc>
+    <lastmod>2020-09-10T14:57:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2020-09-10T14:57:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2020-08-26T02:26:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/first/</loc>
     <lastmod>2020-08-11T08:43:41+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/post/first/</loc>
-    <lastmod>2020-08-11T08:43:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/post/</loc>
-    <lastmod>2020-08-11T08:43:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/about/</loc>
+    <loc>https://jxiaof.github.io/about/</loc>
     <lastmod>2020-08-11T08:41:54+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://jxiaof.github.io/categories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://jxiaof.github.io/tags/</loc>
   </url>
   
 </urlset>

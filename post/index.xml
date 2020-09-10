@@ -2,22 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on felix&#39;s blog</title>
-    <link>http://example.org/post/</link>
+    <link>https://jxiaof.github.io/post/</link>
     <description>Recent content in Posts on felix&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 11 Aug 2020 08:43:41 +0800</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 10 Sep 2020 14:57:37 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jxiaof.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>关于python多任务的几种实现方式</title>
+      <link>https://jxiaof.github.io/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 10 Sep 2020 14:57:37 +0800</pubDate>
+      
+      <guid>https://jxiaof.github.io/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
+      <description>python多任务 多任务有：多进程 多线程以及异步协程。 平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_pat</description>
+    </item>
+    
+    <item>
+      <title>谈谈实际使用sql开发</title>
+      <link>https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.github.io/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
+      <description>浅谈SQL实际使用 首先写好注释 -- 注释 /* 注释 */ SQL实际的一些用法 Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过</description>
+    </item>
+    
+    <item>
       <title>First</title>
-      <link>http://example.org/post/first/</link>
+      <link>https://jxiaof.github.io/post/first/</link>
       <pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
       
-      <guid>http://example.org/post/first/</guid>
-      <description>hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world</description>
+      <guid>https://jxiaof.github.io/post/first/</guid>
+      <description>​ 我是一名轻度游戏爱好者，肠胃功能较差，间歇早睡，持续熬夜。</description>
     </item>
     
   </channel>
