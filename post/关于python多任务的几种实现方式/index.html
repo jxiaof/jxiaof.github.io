@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>关于python多任务的几种实现方式 | felix&#39;s blog</title>
+    <title>关于python多任务的几种实现方式 | 江小凡的博客</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.74.3" />
     
@@ -27,23 +27,29 @@
     
     
     <meta property="og:title" content="关于python多任务的几种实现方式" />
-<meta property="og:description" content="python多任务 多任务有：多进程 多线程以及异步协程。 平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_pat" />
+<meta property="og:description" content="python多任务
+多任务有：多进程 多线程以及异步协程。
+平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jxiaof.github.io/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" />
 <meta property="article:published_time" content="2020-09-10T14:57:37+08:00" />
 <meta property="article:modified_time" content="2020-09-10T14:57:37+08:00" />
 <meta itemprop="name" content="关于python多任务的几种实现方式">
-<meta itemprop="description" content="python多任务 多任务有：多进程 多线程以及异步协程。 平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_pat">
+<meta itemprop="description" content="python多任务
+多任务有：多进程 多线程以及异步协程。
+平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。">
 <meta itemprop="datePublished" content="2020-09-10T14:57:37+08:00" />
 <meta itemprop="dateModified" content="2020-09-10T14:57:37+08:00" />
-<meta itemprop="wordCount" content="1849">
+<meta itemprop="wordCount" content="470">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="关于python多任务的几种实现方式"/>
-<meta name="twitter:description" content="python多任务 多任务有：多进程 多线程以及异步协程。 平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_pat"/>
+<meta name="twitter:description" content="python多任务
+多任务有：多进程 多线程以及异步协程。
+平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。"/>
 
 	
   </head>
@@ -60,12 +66,22 @@
   <div class="flex-l justify-between items-center center">
     <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
       
-        felix&#39;s blog
+        江小凡的博客
       
     </a>
     <div class="flex-l items-center">
       
 
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
       
       
 
@@ -143,64 +159,64 @@
 <p>多任务有：多进程 多线程以及异步协程。</p>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。</p>
 <p>一个示例：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> Process
+<span style="color:#f92672">import</span> os
 
-<span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;module name:&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent process:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;process id:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">info</span>(title):
+    <span style="color:#66d9ef">print</span>(title)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;module name:&#39;</span>, __name__)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;parent process:&#39;</span>, os<span style="color:#f92672">.</span>getppid())
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;process id:&#39;</span>, os<span style="color:#f92672">.</span>getpid())
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="n">info</span><span class="p">(</span><span class="s1">&#39;function f&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(name):
+    info(<span style="color:#e6db74">&#39;function f&#39;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;hello&#39;</span>, name)
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">info</span><span class="p">(</span><span class="s1">&#39;main line&#39;</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">,))</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    info(<span style="color:#e6db74">&#39;main line&#39;</span>)
+    p <span style="color:#f92672">=</span> Process(target<span style="color:#f92672">=</span>f, args<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;bob&#39;</span>,))
+    p<span style="color:#f92672">.</span>start()
+    p<span style="color:#f92672">.</span>join()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> Pool
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(x):
+    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span>x
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
-</code></pre></div><p><strong>这里面要了解东西还很多很多，绝不是一两行封装好的代码能够完全解释。</strong></p>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#66d9ef">with</span> Pool(<span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> p:
+        <span style="color:#66d9ef">print</span>(p<span style="color:#f92672">.</span>map(f, [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]))
+</code></pre></div><p><strong>这里面要了解东西还很多很多，一两行封装好的代码不能够完全解释。</strong></p>
 <p>在python3.5中带来了async await 方式执行异步。</p>
 <p>在随后至现在的python3.8 版本，async 异步io 越用越火，各大三方库纷纷跟进。执行方式从原本的的装饰器语法糖，变成了python3 内置关键字，极大的吸引了开发者的对于python这门语言的热情，实际用起来也很友好。</p>
 <p>语法如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> asyncio
+<span style="color:#f92672">import</span> time
 
-<span class="n">async</span> <span class="k">def</span> <span class="nf">say_after</span><span class="p">(</span><span class="n">delay</span><span class="p">,</span> <span class="n">what</span><span class="p">):</span>
-    <span class="n">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">what</span><span class="p">)</span>
+async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_after</span>(delay, what):
+    await asyncio<span style="color:#f92672">.</span>sleep(delay)
+    <span style="color:#66d9ef">print</span>(what)
 
-<span class="n">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;started at {time.strftime(&#39;</span><span class="si">%X</span><span class="s2">&#39;)}&#34;</span><span class="p">)</span>
+async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;started at {time.strftime(&#39;</span><span style="color:#e6db74">%X</span><span style="color:#e6db74">&#39;)}&#34;</span>)
 
-    <span class="n">await</span> <span class="n">say_after</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
-    <span class="n">await</span> <span class="n">say_after</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">)</span>
+    await say_after(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;hello&#39;</span>)
+    await say_after(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;world&#39;</span>)
 
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;finished at {time.strftime(&#39;</span><span class="si">%X</span><span class="s2">&#39;)}&#34;</span><span class="p">)</span>
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;finished at {time.strftime(&#39;</span><span style="color:#e6db74">%X</span><span style="color:#e6db74">&#39;)}&#34;</span>)
 
-<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+asyncio<span style="color:#f92672">.</span>run(main())
 </code></pre></div><p>这里我也带来另外一个利用多线程实现多线程的优雅版本。</p>
 <p>语法如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">vthread</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> vthread
+<span style="color:#f92672">import</span> time
 
-<span class="nd">@vthread.pool</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;function is running!&#39;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span style="color:#a6e22e">@vthread.pool</span>(<span style="color:#ae81ff">6</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;function is running!&#39;</span>)
+    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
     
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-    <span class="n">test</span><span class="p">()</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">6</span>):
+    test()
 </code></pre></div><h1 id="多任务并行">多任务并行</h1>
 <p>Python3.2带来了 concurrent.futures 模块，这个模块具有线程池和进程池、管理并行编程任务、处理非确定性的执行流程、进程/线程同步等功能。</p>
 <p>此模块由以下部分组成：</p>
@@ -227,118 +243,117 @@ max_workers 参数表示最多有多少个worker并行执行任务。</p>
 <p>通过有5个worker的线程池执行
 通过有5个worker的进程池执行</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">concurrent.futures</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="n">number_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> concurrent.futures
+<span style="color:#f92672">import</span> time
+number_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>]
 
-<span class="k">def</span> <span class="nf">evaluate_item</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="c1"># 计算总和，这里只是为了消耗时间</span>
-        <span class="n">result_item</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="c1"># 打印输入和输出结果</span>
-        <span class="k">return</span> <span class="n">result_item</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate_item</span>(x):
+        <span style="color:#75715e"># 计算总和，这里只是为了消耗时间</span>
+        result_item <span style="color:#f92672">=</span> count(x)
+        <span style="color:#75715e"># 打印输入和输出结果</span>
+        <span style="color:#66d9ef">return</span> result_item
 
-<span class="k">def</span>  <span class="nf">count</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">):</span>
-                <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">number</span>
+<span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">count</span>(number) :
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10000000</span>):
+                i<span style="color:#f92672">=</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">return</span> i <span style="color:#f92672">*</span> number
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-        <span class="c1"># 顺序执行</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">evaluate_item</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Sequential execution in &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">),</span> <span class="s2">&#34;seconds&#34;</span><span class="p">)</span>
-        <span class="c1"># 线程池执行</span>
-        <span class="n">start_time_1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-                <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">evaluate_item</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">):</span>
-                        <span class="k">print</span><span class="p">(</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&#34;Thread pool execution in &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time_1</span><span class="p">),</span> <span class="s2">&#34;seconds&#34;</span><span class="p">)</span>
-        <span class="c1"># 进程池</span>
-        <span class="n">start_time_2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-                <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">evaluate_item</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">):</span>
-                        <span class="k">print</span><span class="p">(</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&#34;Process pool execution in &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time_2</span><span class="p">),</span> <span class="s2">&#34;seconds&#34;</span><span class="p">)</span>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+        <span style="color:#75715e"># 顺序执行</span>
+        start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+        <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
+                <span style="color:#66d9ef">print</span>(evaluate_item(item))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sequential execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+        <span style="color:#75715e"># 线程池执行</span>
+        start_time_1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+        <span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ThreadPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
+                futures <span style="color:#f92672">=</span> [executor<span style="color:#f92672">.</span>submit(evaluate_item, item) <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list]
+                <span style="color:#66d9ef">for</span> future <span style="color:#f92672">in</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>as_completed(futures):
+                        <span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
+        <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Thread pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+        <span style="color:#75715e"># 进程池</span>
+        start_time_2 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+        <span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ProcessPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
+                futures <span style="color:#f92672">=</span> [executor<span style="color:#f92672">.</span>submit(evaluate_item, item) <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list]
+                <span style="color:#66d9ef">for</span> future <span style="color:#f92672">in</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>as_completed(futures):
+                        <span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
+        <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Process pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time_2), <span style="color:#e6db74">&#34;seconds&#34;</span>)
 </code></pre></div><p>运行这个代码，我们可以看到运行时间的输出:</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">python3</span> <span class="n">pool</span><span class="o">.</span><span class="n">py</span>
-<span class="mi">10000000</span>
-<span class="mi">20000000</span>
-<span class="mi">30000000</span>
-<span class="mi">40000000</span>
-<span class="mi">50000000</span>
-<span class="mi">60000000</span>
-<span class="mi">70000000</span>
-<span class="mi">80000000</span>
-<span class="mi">90000000</span>
-<span class="mi">100000000</span>
-<span class="n">Sequential</span> <span class="n">execution</span> <span class="ow">in</span> <span class="mf">7.936585903167725</span> <span class="n">seconds</span>
-<span class="mi">10000000</span>
-<span class="mi">30000000</span>
-<span class="mi">40000000</span>
-<span class="mi">20000000</span>
-<span class="mi">50000000</span>
-<span class="mi">70000000</span>
-<span class="mi">90000000</span>
-<span class="mi">100000000</span>
-<span class="mi">80000000</span>
-<span class="mi">60000000</span>
-<span class="n">Thread</span> <span class="n">pool</span> <span class="n">execution</span> <span class="ow">in</span> <span class="mf">7.633088827133179</span> <span class="n">seconds</span>
-<span class="mi">40000000</span>
-<span class="mi">50000000</span>
-<span class="mi">10000000</span>
-<span class="mi">30000000</span>
-<span class="mi">20000000</span>
-<span class="mi">70000000</span>
-<span class="mi">90000000</span>
-<span class="mi">60000000</span>
-<span class="mi">80000000</span>
-<span class="mi">100000000</span>
-<span class="n">Process</span> <span class="n">pool</span> <span class="n">execution</span> <span class="ow">in</span> <span class="mf">4.787093639373779</span> <span class="n">seconds</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> python3 pool<span style="color:#f92672">.</span>py
+<span style="color:#ae81ff">10000000</span>
+<span style="color:#ae81ff">20000000</span>
+<span style="color:#ae81ff">30000000</span>
+<span style="color:#ae81ff">40000000</span>
+<span style="color:#ae81ff">50000000</span>
+<span style="color:#ae81ff">60000000</span>
+<span style="color:#ae81ff">70000000</span>
+<span style="color:#ae81ff">80000000</span>
+<span style="color:#ae81ff">90000000</span>
+<span style="color:#ae81ff">100000000</span>
+Sequential execution <span style="color:#f92672">in</span> <span style="color:#ae81ff">7.936585903167725</span> seconds
+<span style="color:#ae81ff">10000000</span>
+<span style="color:#ae81ff">30000000</span>
+<span style="color:#ae81ff">40000000</span>
+<span style="color:#ae81ff">20000000</span>
+<span style="color:#ae81ff">50000000</span>
+<span style="color:#ae81ff">70000000</span>
+<span style="color:#ae81ff">90000000</span>
+<span style="color:#ae81ff">100000000</span>
+<span style="color:#ae81ff">80000000</span>
+<span style="color:#ae81ff">60000000</span>
+Thread pool execution <span style="color:#f92672">in</span> <span style="color:#ae81ff">7.633088827133179</span> seconds
+<span style="color:#ae81ff">40000000</span>
+<span style="color:#ae81ff">50000000</span>
+<span style="color:#ae81ff">10000000</span>
+<span style="color:#ae81ff">30000000</span>
+<span style="color:#ae81ff">20000000</span>
+<span style="color:#ae81ff">70000000</span>
+<span style="color:#ae81ff">90000000</span>
+<span style="color:#ae81ff">60000000</span>
+<span style="color:#ae81ff">80000000</span>
+<span style="color:#ae81ff">100000000</span>
+Process pool execution <span style="color:#f92672">in</span> <span style="color:#ae81ff">4.787093639373779</span> seconds
 </code></pre></div><p>我们创建了一个list存放10个数字，然后使用一个循环计算从1加到10000000，打印出和与 number_list 的乘积。:</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">evaluate_item</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># 计算总和，这里只是为了消耗时间</span>
-    <span class="n">result_item</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="c1"># 打印输入和输出结果</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&#34;item &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34; result &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_item</span><span class="p">))</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate_item</span>(x):
+    <span style="color:#75715e"># 计算总和，这里只是为了消耗时间</span>
+    result_item <span style="color:#f92672">=</span> count(x)
+    <span style="color:#75715e"># 打印输入和输出结果</span>
+    <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;item &#34;</span> <span style="color:#f92672">+</span> str(x) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; result &#34;</span> <span style="color:#f92672">+</span> str(result_item))
 
-<span class="k">def</span>  <span class="nf">count</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">):</span>
-        <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-    <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">number</span>
-<span class="c1"># 在主要程序中，我们先使用顺序执行跑了一次程序：:</span>
+<span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">count</span>(number) :
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10000000</span>):
+        i<span style="color:#f92672">=</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> i <span style="color:#f92672">*</span> number
+<span style="color:#75715e"># 在主要程序中，我们先使用顺序执行跑了一次程序：:</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="c1"># 顺序执行</span>
-    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-        <span class="n">evaluate_item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Sequential execution in &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">),</span> <span class="s2">&#34;seconds&#34;</span><span class="p">)</span>
-<span class="c1"># 然后，我们使用了 futures.ThreadPoolExecutor 模块的线程池跑了一次：:</span>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#75715e"># 顺序执行</span>
+    start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>clock()
+    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
+        evaluate_item(item)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sequential execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+<span style="color:#75715e"># 然后，我们使用了 futures.ThreadPoolExecutor 模块的线程池跑了一次：:</span>
 
-<span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-        <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">evaluate_item</span><span class="p">,</span>  <span class="n">item</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s2">&#34;Thread pool execution in &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time_1</span><span class="p">),</span> <span class="s2">&#34;seconds&#34;</span><span class="p">)</span>
-<span class="c1"># ThreadPoolExecutor 使用线程池中的一个线程执行给定的任务。池中一共有5个线程，每一个线程从池中取得一个任务然后执行它。当任务执行完成，再从池中拿到另一个任务。</span>
+<span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ThreadPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
+    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
+        executor<span style="color:#f92672">.</span>submit(evaluate_item,  item)
+<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Thread pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+<span style="color:#75715e"># ThreadPoolExecutor 使用线程池中的一个线程执行给定的任务。池中一共有5个线程，每一个线程从池中取得一个任务然后执行它。当任务执行完成，再从池中拿到另一个任务。</span>
 
-<span class="c1"># 当所有的任务执行完成后，打印出执行用的时间：:</span>
+<span style="color:#75715e"># 当所有的任务执行完成后，打印出执行用的时间：:</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="s2">&#34;Thread pool execution in &#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time_1</span><span class="p">),</span> <span class="s2">&#34;seconds&#34;</span><span class="p">)</span>
-<span class="c1"># 最后，我们又用 ProcessPoolExecutor 跑了一次程序：:</span>
+<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Thread pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+<span style="color:#75715e"># 最后，我们又用 ProcessPoolExecutor 跑了一次程序：:</span>
 
-<span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-        <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">evaluate_item</span><span class="p">,</span>  <span class="n">item</span><span class="p">)</span>
+<span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ProcessPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
+    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
+        executor<span style="color:#f92672">.</span>submit(evaluate_item,  item)
 </code></pre></div><blockquote>
 <p>如同 ThreadPoolExecutor 一样， ProcessPoolExecutor 是一个executor，使用一个线程池来并行执行任务。然而，和 ThreadPoolExecutor 不同的是， ProcessPoolExecutor 使用了多核处理的模块，让我们可以不受GIL的限制，大大缩短执行时间。</p>
 </blockquote>
 <p>几乎所有需要处理多个客户端请求的服务应用都会使用池。然而，也有一些应用要求任务需要立即执行，或者要求对任务的线程有更多的控制权，这种情况下，池不是一个最佳选择。</p>
 <hr>
-<!-- raw HTML omitted -->
-<ul class="pa0">
+<!-- raw HTML omitted --><ul class="pa0">
   
 </ul>
 <div class="mt6 instapaper_ignoref">
@@ -360,7 +375,7 @@ max_workers 参数表示最多有多少个worker并行执行任务。</p>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://jxiaof.github.io/" >
-    &copy;  felix's blog 2020 
+    &copy;  江小凡的博客 2020 
   </a>
     <div>
 
