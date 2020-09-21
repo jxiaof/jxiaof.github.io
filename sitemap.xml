@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://jxiaof.github.io/post/flask01/</loc>
+    <lastmod>2020-09-21T23:05:02+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://jxiaof.github.io/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2020-09-10T14:57:37+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -17,21 +24,35 @@
   </url>
   
   <url>
-    <loc>https://jxiaof.github.io/post/macos%E5%AE%89%E8%A3%85m2crypto/</loc>
-    <lastmod>2020-09-18T21:56:44+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://jxiaof.github.io/post/</loc>
-    <lastmod>2020-09-18T21:56:44+08:00</lastmod>
+    <lastmod>2020-09-21T23:05:02+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jxiaof.github.io/</loc>
+    <lastmod>2020-09-21T23:05:02+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/function_tools/</loc>
+    <lastmod>2020-09-21T22:36:03+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/vim/</loc>
+    <lastmod>2020-09-21T19:57:29+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.github.io/post/macos%E5%AE%89%E8%A3%85m2crypto/</loc>
     <lastmod>2020-09-18T21:56:44+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Sep 2020 21:56:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2020 23:05:02 +0800</lastBuildDate>
     
 	<atom:link href="https://jxiaof.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,7 +22,17 @@
     </item>
     
     <item>
-      <title>关于python多任务的几种实现方式</title>
+      <title>Flask主线程以及短链接</title>
+      <link>https://jxiaof.github.io/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.github.io/post/flask01/</guid>
+      <description>&lt;h1 id=&#34;flask主线程&#34;&gt;Flask主线程&lt;/h1&gt;
+&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python多任务处理</title>
       <link>https://jxiaof.github.io/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Thu, 10 Sep 2020 14:57:37 +0800</pubDate>
       
@@ -30,6 +40,26 @@
       <description>&lt;h1 id=&#34;python多任务&#34;&gt;python多任务&lt;/h1&gt;
 &lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FUNCTOOLS</title>
+      <link>https://jxiaof.github.io/post/function_tools/</link>
+      <pubDate>Mon, 21 Sep 2020 22:36:03 +0800</pubDate>
+      
+      <guid>https://jxiaof.github.io/post/function_tools/</guid>
+      <description>&lt;h1 id=&#34;functools---可调用对象的高阶函数和操作&#34;&gt;functools - 可调用对象的高阶函数和操作&lt;/h1&gt;
+&lt;p&gt;functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VIM</title>
+      <link>https://jxiaof.github.io/post/vim/</link>
+      <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.github.io/post/vim/</guid>
+      <description>&lt;h1 id=&#34;vim解决痛点使用记录&#34;&gt;vim解决痛点使用记录&lt;/h1&gt;
+&lt;p&gt;vim 对于一般的需求,确实用不到.很多时候前端用不太到,后端不做数据处理用不太到,不做linux下的高频率开发用不到,并且使用起来没有那么直观,学习曲线前期相当陡峭,但是vim一直很优秀,一直就是编辑器的指向标,现在许多的编辑器特性,也是参考vim快捷键实现的.比如向上移动一行代码功能,vim使用 &lt;strong&gt;ddkp&lt;/strong&gt;同样可以实现,比如过滤删除等.许多时候简直有一种如鱼得水的开发快感.下面我会持续记录一些vim我自己实实在在解决痛点的用法.&lt;/p&gt;</description>
     </item>
     
     <item>
