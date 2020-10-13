@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang='en'><head>
-  <title>Flask主线程以及短链接 | 江小凡的博客</title>
+  <title>Flask主线程以及短链接实现 | 江小凡的博客</title>
   <meta charset='utf-8'>
   <meta name="generator" content="Hugo 0.76.2" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
-<meta property = 'og:title' content = 'Flask主线程以及短链接' />
-<meta name="description" content="Flask主线程
-问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。">
-<meta property = 'og:description' content = 'Flask主线程
-问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。'>
+<meta property = 'og:title' content = 'Flask主线程以及短链接实现' />
+<meta name="description" content="问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。">
+<meta property = 'og:description' content = '问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/flask01/' />
 <meta property = 'og:image' content = 'images/%!s()'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = 'Flask主线程以及短链接' />
-<meta property = 'twitter:description'  content = 'Flask主线程
-问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。'/>
+<meta name = 'twitter:title' content = 'Flask主线程以及短链接实现' />
+<meta property = 'twitter:description'  content = '问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。'/>
 <meta name = 'twitter:image' content = 'images/%!s()' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -46,11 +43,10 @@
     <main>
   
 <section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/thumbnail.svg);'>
-  <h1 class='post_title'>Flask主线程以及短链接</h1>
+  <h1 class='post_title'>Flask主线程以及短链接实现</h1>
 </section>
 <div class = 'post'>
-  <article class='post_content'><h2 id="flask主线程">Flask主线程</h2>
-<p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。</p>
+  <article class='post_content'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。</p>
 <p>我认为这个服务可以解耦合，情况比较紧急，所以我起草了一个方案提交通过之后就开始动手了。首先我把这个功能的承载业务的入口和返回结果的出口函数给分离开，使用kafka作为队列保存业务信息，用户提交信息既可。kafka队列实时监听，获取到消息之后就开始处理业务函数保证一个事务一个锁执行。后台处理也可以允许更长时间的轮询。但是这里我把消费者与生产者放到一个服务中，原本不会有问题，在测试环境一切正常。为保证稳定性，我自己还做了一下压力测试，显示正常稳定。</p>
 <p>于是，上线开始服务，问题出现了。消费者开始工作了一会儿，没有消费了，kafka待消费数量开始上涨，这个情况开始出现一刹那，就感觉不对。于是，查看代码，添加检索日志，更新在测试环境，测试环境依旧没有问题。上传代码，上线，最后加一句关键的sleep(0.03)（kafka python 启动蜜汁操作）。查看后台kafka数据，果然开始又开始消费了，比之前好一些，从之前断开的偏移量开始，数据没有丢失，也没有重复消费。但是，一个时间点消费到零之后，消费者不消费了，处于一个假死状态。</p>
 <p>我怀疑是监听线程被杀死，导致这个监听topic的功能没能进行下去，业务代码比较简单。看了很多次没发现异常，使用线程保护设置守护线程依旧不行，网上看了一下相关问题，没有找到什么答案。继续解耦合，另起一个服务，专门处理kafka消费，彼此独立。编写jobs，docker file ，提交代码。后台实际还是以flask作为web服务，但不需要在启动app实例。上线测试，还是有问题，不消费。说明根源就是线程被kill，设置主线程在main下执行。编写docker file ，更改为python启动， 设置gunicorn worker数量和kafka一致。打包上线，消费者正常了！</p>
@@ -87,7 +83,7 @@
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'SELF INTRODUCTION' style = 'background-image: url(https://jxiaof.com/images/thumbnail.svg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'about me' style = 'background-image: url(https://jxiaof.com/images/thumbnail.svg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
@@ -98,15 +94,14 @@
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>SELF INTRODUCTION</a>
+      <a href='https://jxiaof.com/post/first/'>about me</a>
     </h3>
-    <p class = 'pale'><h2 id="self-introduction">SELF INTRODUCTION</h2>
-<p>​    I am a light game enthusiast with poor gastrointestinal function. I …</p></p>
+    <p class = 'pale'><p>​    I am a light game enthusiast with poor gastrointestinal function. I go to bed early …</p></p>
   </div>
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/thumbnail.svg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/' title = '谈谈实际使用sql开发' style = 'background-image: url(https://jxiaof.com/images/thumbnail.svg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
@@ -117,11 +112,9 @@
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
+      <a href='https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/'>谈谈实际使用sql开发</a>
     </h3>
-    <p class = 'pale'><h2 id="python多任务">python多任务</h2>
-<p>多任务有：多进程 多线程以及异步协程。</p>
-<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加 …</p></p>
+    <p class = 'pale'><p>Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。</p></p>
   </div>
 </li>
 
