@@ -2,13 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 江小凡的博客</title>
-    <link>https://jxiaof.github.io/categories/</link>
+    <link>https://jxiaof.com/categories/</link>
     <description>Recent content in Categories on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
-	<atom:link href="https://jxiaof.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>Designed By Felix</copyright><atom:link href="https://jxiaof.com/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
