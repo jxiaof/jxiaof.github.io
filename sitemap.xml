@@ -23,17 +23,32 @@
   </url>
   
   <url>
-    <loc>https://jxiaof.com/post/</loc>
-    <lastmod>2020-10-14T11:11:39+08:00</lastmod>
+    <loc>https://jxiaof.com/post/es/</loc>
+    <lastmod>2020-10-15T09:29:37+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jxiaof.com/post/redis/</loc>
-    <lastmod>2020-10-14T11:11:39+08:00</lastmod>
+    <loc>https://jxiaof.com/post/</loc>
+    <lastmod>2020-10-15T09:29:37+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://jxiaof.com/</loc>
+    <lastmod>2020-10-15T09:29:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.com/post/mongo/</loc>
+    <lastmod>2020-10-15T09:29:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.com/post/leetcode/</loc>
+    <lastmod>2020-10-14T14:08:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jxiaof.com/post/redis/</loc>
     <lastmod>2020-10-14T11:11:39+08:00</lastmod>
   </url>
   
