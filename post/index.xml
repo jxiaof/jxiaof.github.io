@@ -7,14 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Thu, 15 Oct 2020 09:29:37 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2020 09:29:25 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>about me</title>
+      <title>自我介绍</title>
       <link>https://jxiaof.com/post/first/</link>
       <pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/first/</guid>
-      <description>&lt;p&gt;​    I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.&lt;/p&gt;</description>
+      <description>&lt;p&gt;​        I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -43,15 +43,6 @@
       <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
       <description>&lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Es</title>
-      <link>https://jxiaof.com/post/es/</link>
-      <pubDate>Thu, 15 Oct 2020 09:29:37 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/es/</guid>
-      <description>待补充</description>
     </item>
     
     <item>
