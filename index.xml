@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Thu, 15 Oct 2020 09:29:25 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Oct 2020 16:30:19 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自我介绍</title>
       <link>https://jxiaof.com/post/first/</link>
@@ -46,6 +46,19 @@
     </item>
     
     <item>
+      <title>Python类型注解</title>
+      <link>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 23 Oct 2020 16:30:19 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</guid>
+      <description>typing &amp;mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样:
+def greeting(name: str) -&amp;gt; str: return &amp;#39;Hello &amp;#39; + name 在函数 greeting 中，参数 name 预期是 str 类型，并且返回 str 类型。子类型允许作为参数。
+类型别名 类型别名通过将类型分配给别名来定义。在这个例子中， Vector 和 List[float] 将被视为可互换的同义词:
+from typing import List Vector = List[float] def scale(scalar: float, vector: Vector) -&amp;gt; Vector: return [scalar * num for num in vector] # typechecks; a list of floats qualifies as a Vector. new_vector = scale(2.0, [1.0, -4.2, 5.4]) 类型别名可用于简化复杂类型签名。例如:
+from typing import Dict, Tuple, Sequence ConnectionOptions = Dict[str, str] Address = Tuple[str, int] Server = Tuple[Address, ConnectionOptions] def broadcast_message(message: str, servers: Sequence[Server]) -&amp;gt; None: .</description>
+    </item>
+    
+    <item>
       <title>Mongo</title>
       <link>https://jxiaof.com/post/mongo/</link>
       <pubDate>Thu, 15 Oct 2020 09:29:25 +0800</pubDate>
@@ -70,7 +83,8 @@ https://www.cnblogs.com/leskang/p/6000852.html
       
       <guid>https://jxiaof.com/post/leetcode/</guid>
       <description>买卖股票简答:
-class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p </description>
+class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru:
+# 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size = size self.linked_map = OrderedDict() def set(self, key, value): if key in self.linked_map: self.linked_map.pop(key) if self.size == len(self.linked_map): self.linked_map.popitem(last=False) self.linked_map.update({key: value}) def get(self, key): value = self.</description>
     </item>
     
     <item>

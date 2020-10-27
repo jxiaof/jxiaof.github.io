@@ -155,14 +155,98 @@
 </tr>
 </tbody>
 </table>
-<p>having</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> name, birth, <span style="color:#66d9ef">MONTH</span>(birth) <span style="color:#66d9ef">FROM</span> pet;
+<span style="color:#f92672">+</span><span style="color:#75715e">----------+------------+--------------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name     <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> <span style="color:#66d9ef">MONTH</span>(birth) <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----------+------------+--------------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Fluffy   <span style="color:#f92672">|</span> <span style="color:#ae81ff">1993</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Claws    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1994</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Buffy    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Fang     <span style="color:#f92672">|</span> <span style="color:#ae81ff">1990</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">27</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">8</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Bowser   <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">31</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">8</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Chirpy   <span style="color:#f92672">|</span> <span style="color:#ae81ff">1998</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">9</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Whistler <span style="color:#f92672">|</span> <span style="color:#ae81ff">1997</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span> <span style="color:#f92672">|</span>           <span style="color:#ae81ff">12</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Slim     <span style="color:#f92672">|</span> <span style="color:#ae81ff">1996</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span><span style="color:#f92672">-</span><span style="color:#ae81ff">29</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Puffball <span style="color:#f92672">|</span> <span style="color:#ae81ff">1999</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">30</span> <span style="color:#f92672">|</span>            <span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----------+------------+--------------+
+</span><span style="color:#75715e"></span>
+
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> name, birth, CURDATE(),
+       TIMESTAMPDIFF(<span style="color:#66d9ef">YEAR</span>,birth,CURDATE()) <span style="color:#66d9ef">AS</span> age
+       <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> age;
+<span style="color:#f92672">+</span><span style="color:#75715e">----------+------------+------------+------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name     <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> CURDATE()  <span style="color:#f92672">|</span> age  <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----------+------------+------------+------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Chirpy   <span style="color:#f92672">|</span> <span style="color:#ae81ff">1998</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">11</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Puffball <span style="color:#f92672">|</span> <span style="color:#ae81ff">1999</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">30</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Whistler <span style="color:#f92672">|</span> <span style="color:#ae81ff">1997</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Slim     <span style="color:#f92672">|</span> <span style="color:#ae81ff">1996</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span><span style="color:#f92672">-</span><span style="color:#ae81ff">29</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">7</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Claws    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1994</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">9</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Fluffy   <span style="color:#f92672">|</span> <span style="color:#ae81ff">1993</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span><span style="color:#f92672">-</span><span style="color:#ae81ff">04</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>   <span style="color:#ae81ff">10</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Fang     <span style="color:#f92672">|</span> <span style="color:#ae81ff">1990</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">27</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>   <span style="color:#ae81ff">12</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Bowser   <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">31</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>   <span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Buffy    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#f92672">|</span>   <span style="color:#ae81ff">14</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----------+------------+------------+------+
+</span></code></pre></div><p>查询下个月的数据:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> name, birth <span style="color:#66d9ef">FROM</span> pet
+       <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">MONTH</span>(birth) <span style="color:#f92672">=</span> <span style="color:#66d9ef">MONTH</span>(DATE_ADD(CURDATE(),INTERVAL <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">MONTH</span>));
+
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> name, birth <span style="color:#66d9ef">FROM</span> pet
+       <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">MONTH</span>(birth) <span style="color:#f92672">=</span> <span style="color:#66d9ef">MOD</span>(<span style="color:#66d9ef">MONTH</span>(CURDATE()), <span style="color:#ae81ff">12</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</code></pre></div><h2 id="null-值判断">null 值判断</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> 
+  name, 
+  birth, 
+  death, 
+  TIMESTAMPDIFF(<span style="color:#66d9ef">YEAR</span>,birth,death) <span style="color:#66d9ef">AS</span> age 
+<span style="color:#66d9ef">FROM</span> pet 
+<span style="color:#66d9ef">WHERE</span> death <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> 
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> age;
+
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> name, birth, death,
+       TIMESTAMPDIFF(<span style="color:#66d9ef">YEAR</span>,birth,death) <span style="color:#66d9ef">AS</span> age
+       <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> death <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> age;
+<span style="color:#f92672">+</span><span style="color:#75715e">--------+------------+------------+------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name   <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death      <span style="color:#f92672">|</span> age  <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">--------+------------+------------+------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Bowser <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">31</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">1995</span><span style="color:#f92672">-</span><span style="color:#ae81ff">07</span><span style="color:#f92672">-</span><span style="color:#ae81ff">29</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">--------+------------+------------+------+
+</span></code></pre></div><h2 id="模糊查询n个字符的名称">模糊查询N个字符的名称</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
+<span style="color:#75715e">/* 匹配五个字符 */</span>
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;_____&#39;</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span>  <span style="color:#f92672">|</span> species <span style="color:#f92672">|</span> sex  <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Claws <span style="color:#f92672">|</span> Gwen   <span style="color:#f92672">|</span> cat     <span style="color:#f92672">|</span> m    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1994</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Buffy <span style="color:#f92672">|</span> Harold <span style="color:#f92672">|</span> dog     <span style="color:#f92672">|</span> f    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span>
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name REGEXP <span style="color:#e6db74">&#39;^.....$&#39;</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span>  <span style="color:#f92672">|</span> species <span style="color:#f92672">|</span> sex  <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Claws <span style="color:#f92672">|</span> Gwen   <span style="color:#f92672">|</span> cat     <span style="color:#f92672">|</span> m    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1994</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Buffy <span style="color:#f92672">|</span> Harold <span style="color:#f92672">|</span> dog     <span style="color:#f92672">|</span> f    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span>
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name REGEXP <span style="color:#e6db74">&#39;^.{5}$&#39;</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span>  <span style="color:#f92672">|</span> species <span style="color:#f92672">|</span> sex  <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Claws <span style="color:#f92672">|</span> Gwen   <span style="color:#f92672">|</span> cat     <span style="color:#f92672">|</span> m    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1994</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> Buffy <span style="color:#f92672">|</span> Harold <span style="color:#f92672">|</span> dog     <span style="color:#f92672">|</span> f    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
+</span><span style="color:#75715e"></span>
+
+</code></pre></div><h2 id="having">having</h2>
 <blockquote>
 <p>用于where之后进行二次结果集条件限制</p>
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">avg</span>(latency) <span style="color:#66d9ef">as</span> avg_latency,projectName <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> projectName 
 <span style="color:#66d9ef">HAVING</span> <span style="color:#66d9ef">avg</span>(latency) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5700000</span>
 <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> avg_latency <span style="color:#66d9ef">desc</span>
-</code></pre></div><p>group_by</p>
+</code></pre></div><h2 id="group_by">group_by</h2>
 <blockquote>
 <p>分类</p>
 </blockquote>
@@ -349,6 +433,159 @@
 </tr>
 </tbody>
 </table>
+<h2 id="批量文件处理">批量文件处理</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mysql<span style="color:#f92672">&gt;</span> source filename;
+mysql<span style="color:#f92672">&gt;</span> \<span style="color:#f92672">.</span> filename
+</code></pre></div><h2 id="保留某一列最大值">保留某一列最大值</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> article, dealer, price
+<span style="color:#66d9ef">FROM</span>   shop
+<span style="color:#66d9ef">WHERE</span>  price<span style="color:#f92672">=</span>(<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">MAX</span>(price) <span style="color:#66d9ef">FROM</span> shop);
+
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> article <span style="color:#f92672">|</span> dealer <span style="color:#f92672">|</span> price <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span>    <span style="color:#ae81ff">0004</span> <span style="color:#f92672">|</span> D      <span style="color:#f92672">|</span> <span style="color:#ae81ff">19</span>.<span style="color:#ae81ff">95</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span>
+
+<span style="color:#66d9ef">SELECT</span> s1.article, s1.dealer, s1.price
+<span style="color:#66d9ef">FROM</span> shop s1
+<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> shop s2 <span style="color:#66d9ef">ON</span> s1.price <span style="color:#f92672">&lt;</span> s2.price
+<span style="color:#66d9ef">WHERE</span> s2.article <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+
+<span style="color:#66d9ef">SELECT</span> article, dealer, price
+<span style="color:#66d9ef">FROM</span> shop
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> price <span style="color:#66d9ef">DESC</span>
+<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>;
+</code></pre></div><h2 id="包含某列的分组最大值的行">包含某列的分组最大值的行</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
+<span style="color:#66d9ef">SELECT</span> article, dealer, price
+<span style="color:#66d9ef">FROM</span>   shop s1
+<span style="color:#66d9ef">WHERE</span>  price<span style="color:#f92672">=</span>(<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">MAX</span>(s2.price)
+              <span style="color:#66d9ef">FROM</span> shop s2
+              <span style="color:#66d9ef">WHERE</span> s1.article <span style="color:#f92672">=</span> s2.article)
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> article;
+
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> article <span style="color:#f92672">|</span> dealer <span style="color:#f92672">|</span> price <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span>    <span style="color:#ae81ff">0001</span> <span style="color:#f92672">|</span> B      <span style="color:#f92672">|</span>  <span style="color:#ae81ff">3</span>.<span style="color:#ae81ff">99</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>    <span style="color:#ae81ff">0002</span> <span style="color:#f92672">|</span> A      <span style="color:#f92672">|</span> <span style="color:#ae81ff">10</span>.<span style="color:#ae81ff">99</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>    <span style="color:#ae81ff">0003</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">C</span>      <span style="color:#f92672">|</span>  <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">69</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>    <span style="color:#ae81ff">0004</span> <span style="color:#f92672">|</span> D      <span style="color:#f92672">|</span> <span style="color:#ae81ff">19</span>.<span style="color:#ae81ff">95</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span>
+
+<span style="color:#66d9ef">SELECT</span> s1.article, dealer, s1.price
+<span style="color:#66d9ef">FROM</span> shop s1
+<span style="color:#66d9ef">JOIN</span> (
+  <span style="color:#66d9ef">SELECT</span> article, <span style="color:#66d9ef">MAX</span>(price) <span style="color:#66d9ef">AS</span> price
+  <span style="color:#66d9ef">FROM</span> shop
+  <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> article) <span style="color:#66d9ef">AS</span> s2
+  <span style="color:#66d9ef">ON</span> s1.article <span style="color:#f92672">=</span> s2.article <span style="color:#66d9ef">AND</span> s1.price <span style="color:#f92672">=</span> s2.price
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> article;
+
+<span style="color:#66d9ef">SELECT</span> s1.article, s1.dealer, s1.price
+<span style="color:#66d9ef">FROM</span> shop s1
+<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> shop s2 <span style="color:#66d9ef">ON</span> s1.article <span style="color:#f92672">=</span> s2.article <span style="color:#66d9ef">AND</span> s1.price <span style="color:#f92672">&lt;</span> s2.price
+<span style="color:#66d9ef">WHERE</span> s2.article <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> s1.article;
+</code></pre></div><h2 id="自定义变量">自定义变量</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>min_price:<span style="color:#f92672">=</span><span style="color:#66d9ef">MIN</span>(price),<span style="color:#f92672">@</span>max_price:<span style="color:#f92672">=</span><span style="color:#66d9ef">MAX</span>(price) <span style="color:#66d9ef">FROM</span> shop;
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> shop <span style="color:#66d9ef">WHERE</span> price<span style="color:#f92672">=@</span>min_price <span style="color:#66d9ef">OR</span> price<span style="color:#f92672">=@</span>max_price;
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> article <span style="color:#f92672">|</span> dealer <span style="color:#f92672">|</span> price <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span>    <span style="color:#ae81ff">0003</span> <span style="color:#f92672">|</span> D      <span style="color:#f92672">|</span>  <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">25</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>    <span style="color:#ae81ff">0004</span> <span style="color:#f92672">|</span> D      <span style="color:#f92672">|</span> <span style="color:#ae81ff">19</span>.<span style="color:#ae81ff">95</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------+--------+-------+
+</span></code></pre></div><h2 id="使用外键">使用外键</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> person (
+    id SMALLINT UNSIGNED <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> AUTO_INCREMENT,
+    name CHAR(<span style="color:#ae81ff">60</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id)
+);
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> shirt (
+    id SMALLINT UNSIGNED <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> AUTO_INCREMENT,
+    style ENUM(<span style="color:#e6db74">&#39;t-shirt&#39;</span>, <span style="color:#e6db74">&#39;polo&#39;</span>, <span style="color:#e6db74">&#39;dress&#39;</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    color ENUM(<span style="color:#e6db74">&#39;red&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#66d9ef">owner</span> SMALLINT UNSIGNED <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">REFERENCES</span> person(id),
+    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id)
+);
+
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> person <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;Antonio Paz&#39;</span>);
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span> :<span style="color:#f92672">=</span> LAST_INSERT_ID();
+
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> shirt <span style="color:#66d9ef">VALUES</span>
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;polo&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;dress&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;t-shirt&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>);
+
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> person <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;Lilliana Angelovska&#39;</span>);
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span> :<span style="color:#f92672">=</span> LAST_INSERT_ID();
+
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> shirt <span style="color:#66d9ef">VALUES</span>
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;dress&#39;</span>, <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;polo&#39;</span>, <span style="color:#e6db74">&#39;red&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;dress&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;t-shirt&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>);
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> person;
+<span style="color:#f92672">+</span><span style="color:#75715e">----+---------------------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> id <span style="color:#f92672">|</span> name                <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----+---------------------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span>  <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> Antonio Paz         <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span> Lilliana Angelovska <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----+---------------------+
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> shirt;
+<span style="color:#f92672">+</span><span style="color:#75715e">----+---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> id <span style="color:#f92672">|</span> style   <span style="color:#f92672">|</span> color  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----+---------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span>  <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> polo    <span style="color:#f92672">|</span> blue   <span style="color:#f92672">|</span>     <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span> dress   <span style="color:#f92672">|</span> white  <span style="color:#f92672">|</span>     <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span> t<span style="color:#f92672">-</span>shirt <span style="color:#f92672">|</span> blue   <span style="color:#f92672">|</span>     <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span> dress   <span style="color:#f92672">|</span> orange <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span> polo    <span style="color:#f92672">|</span> red    <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">6</span> <span style="color:#f92672">|</span> dress   <span style="color:#f92672">|</span> blue   <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">7</span> <span style="color:#f92672">|</span> t<span style="color:#f92672">-</span>shirt <span style="color:#f92672">|</span> white  <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----+---------+--------+-------+
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> s.<span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> person p <span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> shirt s
+   <span style="color:#66d9ef">ON</span> s.<span style="color:#66d9ef">owner</span> <span style="color:#f92672">=</span> p.id
+ <span style="color:#66d9ef">WHERE</span> p.name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;Lilliana%&#39;</span>
+   <span style="color:#66d9ef">AND</span> s.color <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#39;white&#39;</span>;
+
+<span style="color:#f92672">+</span><span style="color:#75715e">----+-------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> id <span style="color:#f92672">|</span> style <span style="color:#f92672">|</span> color  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----+-------+--------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span>  <span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span> dress <span style="color:#f92672">|</span> orange <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span> polo  <span style="color:#f92672">|</span> red    <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span>  <span style="color:#ae81ff">6</span> <span style="color:#f92672">|</span> dress <span style="color:#f92672">|</span> blue   <span style="color:#f92672">|</span>     <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">----+-------+--------+-------+
+</span><span style="color:#75715e"></span>
+
+<span style="color:#66d9ef">show</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> shirt<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">G</span>;
+</code></pre></div><h2 id="一种棘手的情况是搜索结合orhttpswwwdocs4devcomdocszhmysql57referencelogical-operatorshtmloperator_or的两个不同键">一种棘手的情况是搜索结合<a href="https://www.docs4dev.com/docs/zh/mysql/5.7/reference/logical-operators.html#operator_or">OR</a>的两个不同键：</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 优化前
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> field1_index, field2_index <span style="color:#66d9ef">FROM</span> test_table
+<span style="color:#66d9ef">WHERE</span> field1_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#66d9ef">OR</span>  field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+
+
+<span style="color:#75715e">-- 优化后
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> field1_index, field2_index
+    <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field1_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+<span style="color:#66d9ef">UNION</span>
+<span style="color:#66d9ef">SELECT</span> field1_index, field2_index
+    <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+</code></pre></div><hr>
+<p>参考内容: <a href="https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html">https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html</a></p>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
