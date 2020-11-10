@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Docker | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.76.5" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Docker' />
+<meta name="description" content="nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp …">
+<meta property = 'og:description' content = 'nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/post/docker/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/docker.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Docker' />
+<meta property = 'twitter:description'  content = 'nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/docker.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/post/docker/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/docker.png);'>
+  <h1 class='post_title'>Docker</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'><hr>
+<p><img src="https://i.loli.net/2020/11/10/6PRYu8XHUsDMVtm.png" alt="img"></p>
+<h1 id="nginx">nginx</h1>
+<h2 id="第一次运行">第一次运行</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run -d --name nginx -p 80:80 nginx
+</code></pre></div><h2 id="新建挂载目录">新建挂载目录</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /root/docker/nginx/<span style="color:#f92672">{</span>conf, logs, html, ssl, conf/conf.d<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="拷贝文件信息">拷贝文件信息</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf <span style="color:#f92672">&amp;&amp;</span> docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf
+</code></pre></div><h2 id="配置indexhtml">配置index.html</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+    &lt;<span style="color:#f92672">title</span>&gt;hello&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">h1</span>&gt;
+        hello, world !
+    &lt;/<span style="color:#f92672">h1</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><h2 id="停止容器并重新启动容器">停止容器并重新启动容器</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker container stop nginx <span style="color:#f92672">&amp;&amp;</span> docker container rm nginx
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -p 80:80  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -p 443:443  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --name nginx <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -v /root/docker/nginx/html:/usr/share/nginx/html <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -v /root/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -v /root/docker/nginx/conf/conf.d/default.conf:/etc/nginx/conf.d/default.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -v /root/docker/nginx/logs:/var/log/nginx <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -v /root/docker/nginx/ssl:/ssl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> nginx 
+
+</code></pre></div><hr>
+<h1 id="redis">redis</h1>
+<h2 id="拉取redis镜像">拉取Redis镜像</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull redis
+</code></pre></div><h2 id="第一次运行-1">第一次运行</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run -d --name redis -p 6379:6379 redis
+</code></pre></div><h2 id="新建挂载目录-1">新建挂载目录</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /root/docker/redis/<span style="color:#f92672">{</span>conf, data<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="获取redis---conf">获取redis - conf</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo wget https://raw.githubusercontent.com/antirez/redis/5.0/redis.conf -O /root/docker/redis/conf/redis.conf
+
+修改conf
+<span style="color:#75715e"># Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</span>
+protected-mode no
+<span style="color:#75715e"># 开启远程</span>
+deamonize  no
+<span style="color:#75715e"># #注释掉这部分，这是限制redis只能本地访问,你可以绑定单一接口，如果没有绑定，所有接口都会监听到来的连接</span>
+<span style="color:#75715e">#  bind 127.0.0.1     </span>
+<span style="color:#75715e"># 因为redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为no</span>
+appendonly yes
+<span style="color:#75715e"># 设置Redis连接密码，如果配置了连接密码，客户端在连接Redis时需要通过</span>
+<span style="color:#75715e"># auth &lt;password&gt;命令提供密码，默认关闭，当前密码为123456</span>
+requirepass password
+</code></pre></div><h2 id="删除原容器">删除原容器</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker container stop redis <span style="color:#f92672">&amp;&amp;</span> docker container rm redis
+</code></pre></div><h2 id="启动redis">启动Redis</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -p 6379:6379 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--name redis <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--restart<span style="color:#f92672">=</span>always <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--privileged<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/redis/data:/data <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/redis/conf/redis.conf:/etc/redis/redis.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-d redis redis-server /etc/redis/redis.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--appendonly yes <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--requirepass <span style="color:#e6db74">&#39;password&#39;</span>
+
+
+docker run -p 6379:6379 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--name redis <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--privileged<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/redis/data:/data <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/redis/conf/redis.conf:/etc/redis/redis.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-d redis redis-server /etc/redis/redis.conf
+
+
+docker run -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--privileged<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 6379:6379 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--restart always <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /usr/local/redis/redis.conf:/etc/redis/redis.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /usr/local/redis/data:/data <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--name myredis redis:6.0 redis-server /etc/redis/redis.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--appendonly yes <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--requirepass <span style="color:#e6db74">&#34;123456&#34;</span>
+</code></pre></div><p>命令解析</p>
+<ul>
+<li>&ndash;restart=always 是随Docker启动</li>
+<li>redis-server &ndash;appendonly yes 是启动时执行命令设置持久化</li>
+<li>&ndash;requirepass admin@798 是设置连接密码为: admin@798</li>
+</ul>
+<h1 id="mysql">mysql</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--name mysql <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 3306:3306 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--restart always <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/mysql:/var/lib/mysql <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span><span style="color:#ae81ff">123456</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--privileged mysql:5.7
+
+
+<span style="color:#75715e"># 开放外部访问权限</span>
+ALTER USER <span style="color:#e6db74">&#39;foo&#39;</span>@<span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED WITH mysql_native_password BY <span style="color:#e6db74">&#39;123456&#39;</span>;
+<span style="color:#75715e"># 开放外部访问权限，根据查询出来&#39;%&#39;对应的用户设置</span>
+GRANT ALL PRIVILEGES ON *.* TO <span style="color:#e6db74">&#39;foo&#39;</span>@<span style="color:#e6db74">&#39;%&#39;</span>  IDENTIFIED BY <span style="color:#e6db74">&#39;123456&#39;</span>  WITH GRANT OPTION;
+<span style="color:#75715e"># 刷新权限</span>
+flush privileges;
+<span style="color:#75715e"># 搞定之后重启退出mysql重启mysql</span>
+docker restart mysql
+</code></pre></div><h1 id="mongo">mongo</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 27017:27017 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--restart always <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/mongo/mongo_configdb:/data/configdb <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/mongo/mongo_db:/data/db <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--name mongo docker.io/mongo <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--auth
+
+db.createUser<span style="color:#f92672">({</span> user: <span style="color:#e6db74">&#39;mongo&#39;</span>, pwd: <span style="color:#e6db74">&#39;mongo&#39;</span>, roles: <span style="color:#f92672">[</span> <span style="color:#f92672">{</span> role: <span style="color:#e6db74">&#39;userAdminAnyDatabase&#39;</span>, db: <span style="color:#e6db74">&#39;admin&#39;</span> <span style="color:#f92672">}</span> <span style="color:#f92672">]})</span>;
+
+
+docker run -it --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--link some-mongo:mongo <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>mongo <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>sh -c <span style="color:#e6db74">&#39;exec mongo &#34;$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test&#34;&#39;</span>
+</code></pre></div><h1 id="postgresql">postgresql</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker container stop postgresql <span style="color:#f92672">&amp;&amp;</span> docker container rm postgresql
+
+docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-p 5432:5432 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--name postgresql <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--restart always <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-e POSTGRES_PASSWORD<span style="color:#f92672">=</span>postgres <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-e POSTGRES_USER<span style="color:#f92672">=</span>postgres <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-v /root/docker/postgresql/data:/var/lib/postgresql/data <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-d postgres
+
+</code></pre></div><hr>
+<p><a href="https://juejin.im/post/6844903910226788360">docker打包多个应用一键部署</a></p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/first/'>MYSELF</a>
+    </h3>
+    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
+    </h3>
+    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
+
+  </body>
+</html>

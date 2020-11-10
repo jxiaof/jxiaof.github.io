@@ -8,14 +8,17 @@
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = '谈谈实际使用sql开发' />
-<meta name="description" content="Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。">
-<meta property = 'og:description' content = 'Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。'>
+<meta name="description" content="[toc]
+​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。">
+<meta property = 'og:description' content = '[toc]
+​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/database.png'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = '谈谈实际使用sql开发' />
-<meta property = 'twitter:description'  content = 'Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。'/>
+<meta property = 'twitter:description'  content = '[toc]
+​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/database.png' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -46,7 +49,8 @@
   <h1 class='post_title'>谈谈实际使用sql开发</h1>
 </section>
 <div class = 'post'>
-  <article class='post_content'><p>Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。</p>
+  <article class='post_content'><p>[toc]</p>
+<p>​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。</p>
 <p>首先写好注释</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 注释
 </span><span style="color:#75715e"></span>
@@ -77,6 +81,10 @@
      <span style="color:#66d9ef">WHEN</span> condition <span style="color:#66d9ef">THEN</span> true_value
      [ <span style="color:#66d9ef">ELSE</span> false_value ]
  <span style="color:#66d9ef">END</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查询所有学生的姓名和性别(条件运算)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> stuname <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">case</span> stusex <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;男&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;女&#39;</span> <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">性别</span> <span style="color:#66d9ef">from</span> tb_student;
+<span style="color:#66d9ef">select</span> stuname <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">if</span>(stusex, <span style="color:#e6db74">&#39;男&#39;</span>, <span style="color:#e6db74">&#39;女&#39;</span>) <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">性别</span> <span style="color:#66d9ef">from</span> tb_student;
+
 </code></pre></div><h2 id="日期函数">日期函数</h2>
 <h3 id="日期时间类型">日期时间类型</h3>
 <ul>
@@ -250,11 +258,14 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <blockquote>
 <p>分类</p>
 </blockquote>
-<p>Inner join left join right join</p>
+<h2 id="inner-join-left-join-right-join">Inner join left join right join</h2>
 <blockquote>
 <p>多表查询</p>
 </blockquote>
-<h2 id="json函数">json函数</h2>
+<h2 id="distinct">distinct</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查询学生的家庭住址(去重)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">distinct</span> stuaddr <span style="color:#66d9ef">from</span> tb_student <span style="color:#66d9ef">where</span> stuaddr <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>;
+</code></pre></div><h2 id="json函数">json函数</h2>
 <p>JSON函数，可以解析一段字符串为JSON类型，并且提取JSON中的字段。JSON主要有两种结构：map和array。如果一个字符串解析成JSON失败，那么返回的是null。</p>
 <p>日志服务支持以下常见的JSON函数：</p>
 <table>
@@ -584,8 +595,24 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <span style="color:#66d9ef">UNION</span>
 <span style="color:#66d9ef">SELECT</span> field1_index, field2_index
     <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+</code></pre></div><h2 id="dcl">dcl</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 创建可以远程登录的root账号并为其指定口令
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">&#39;123456&#39;</span>;
+
+<span style="color:#75715e">-- 为远程登录的root账号授权操作所有数据库所有对象的所有权限并允许其将权限再次赋予其他用户
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#66d9ef">with</span> <span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">option</span>;
+
+<span style="color:#75715e">-- 创建名为hellokitty的用户并为其指定口令
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">&#39;123123&#39;</span>;
+
+<span style="color:#75715e">-- 将对school数据库所有对象的所有操作权限授予hellokitty
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
+
+<span style="color:#75715e">-- 召回hellokitty对school数据库所有对象的insert/delete/update权限
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">revoke</span> <span style="color:#66d9ef">insert</span>, <span style="color:#66d9ef">delete</span>, <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
 </code></pre></div><hr>
 <p>参考内容: <a href="https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html">https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html</a></p>
+<p>参考内容: <a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/36-38">https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/36-38</a>.关系型数据库MySQL.md</p>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
@@ -598,7 +625,7 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = '自我介绍' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
@@ -609,7 +636,7 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>自我介绍</a>
+      <a href='https://jxiaof.com/post/first/'>MYSELF</a>
     </h3>
     <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
   </div>
