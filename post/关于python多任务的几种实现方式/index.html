@@ -1,55 +1,51 @@
 <!DOCTYPE html>
-<html lang='en'><head>
-  <title>Python多任务处理 | 江小凡的博客</title>
-  <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.76.5" />
-  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
-<meta property = 'og:locale' content = 'en_US' />
-<meta property="og:type" content="article">
-<meta property = 'og:title' content = 'python多任务处理' />
-<meta name="description" content="多任务有：多进程 多线程以及异步协程。
-平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。">
-<meta property = 'og:description' content = '多任务有：多进程 多线程以及异步协程。
-平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。'>
-<meta property = 'og:url' content = 'https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' />
-<meta property = 'og:image' content = 'https://jxiaof.com/images/read.jpg'/>
-<meta name = 'twitter:card' content = 'summary_large_image' />
-<meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = 'python多任务处理' />
-<meta property = 'twitter:description'  content = '多任务有：多进程 多线程以及异步协程。
-平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。'/>
-<meta name = 'twitter:image' content = 'https://jxiaof.com/images/read.jpg' />
-<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
-<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
-<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
-<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
-
-  <link rel='canonical' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>
-  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+<html lang="en"><head>
+<title>Python多任务处理 | 江小凡的博客</title>
+<meta charset="utf-8"/>
+<meta content="Hugo 0.76.5" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="article" property="og:type"/>
+<meta content="python多任务处理" property="og:title"/>
+<meta content="多任务有：多进程 多线程以及异步协程。
+平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。" name="description"/>
+<meta content="多任务有：多进程 多线程以及异步协程。
+平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。" property="og:description"/>
+<meta content="https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" property="og:url"/>
+<meta content="https://jxiaof.com/images/read.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="" name="twitter:creator"/>
+<meta content="python多任务处理" name="twitter:title"/>
+<meta content="多任务有：多进程 多线程以及异步协程。
+平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。" property="twitter:description"/>
+<meta content="https://jxiaof.com/images/read.jpg" name="twitter:image"/>
+<link href="https://jxiaof.com/images/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://jxiaof.com/images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://jxiaof.com/images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://jxiaof.com/images/icons/site.webmanifest" rel="manifest"/>
+<link href="https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" rel="canonical"/>
+<link href="https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css" integrity="sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ==" rel="stylesheet"/>
 </head>
-
-  <body><div class = 'nav-drop'>
-  <div class = 'nav-body'>
-      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
-    <div class = 'nav-close'></div>
-  </div>
-</div><header class = 'nav' >
-  <nav class = 'nav-menu'>
-    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
-    <div class = 'nav_bar-wrap'>
-      <div class = 'nav_bar'></div>
-    </div>
-  </nav>
+<body><div class="nav-drop">
+<div class="nav-body">
+<a class="nav_item" href="https://jxiaof.com/about/">About</a>
+<div class="nav-close"></div>
+</div>
+</div><header class="nav">
+<nav class="nav-menu">
+<a class="nav-brand nav_item" href="https://jxiaof.com/">江小凡的博客</a>
+<div class="nav_bar-wrap">
+<div class="nav_bar"></div>
+</div>
+</nav>
 </header>
-
-
-    <main>
-<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/read.jpg);'>
-  <h1 class='post_title'>python多任务处理</h1>
+<main>
+<section class="post_header" style="background-image:url(https://jxiaof.com/images/read.jpg);">
+<h1 class="post_title">python多任务处理</h1>
 </section>
-<div class = 'post'>
-  <article class='post_content'><p>多任务有：多进程 多线程以及异步协程。</p>
+<div class="post">
+<article class="post_content"><p>多任务有：多进程 多线程以及异步协程。</p>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。</p>
 <p>一个示例：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> Process
@@ -57,17 +53,17 @@
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">info</span>(title):
     <span style="color:#66d9ef">print</span>(title)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;module name:&#39;</span>, __name__)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;parent process:&#39;</span>, os<span style="color:#f92672">.</span>getppid())
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;process id:&#39;</span>, os<span style="color:#f92672">.</span>getpid())
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'module name:'</span>, __name__)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'parent process:'</span>, os<span style="color:#f92672">.</span>getppid())
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'process id:'</span>, os<span style="color:#f92672">.</span>getpid())
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(name):
-    info(<span style="color:#e6db74">&#39;function f&#39;</span>)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;hello&#39;</span>, name)
+    info(<span style="color:#e6db74">'function f'</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'hello'</span>, name)
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    info(<span style="color:#e6db74">&#39;main line&#39;</span>)
-    p <span style="color:#f92672">=</span> Process(target<span style="color:#f92672">=</span>f, args<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;bob&#39;</span>,))
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">'__main__'</span>:
+    info(<span style="color:#e6db74">'main line'</span>)
+    p <span style="color:#f92672">=</span> Process(target<span style="color:#f92672">=</span>f, args<span style="color:#f92672">=</span>(<span style="color:#e6db74">'bob'</span>,))
     p<span style="color:#f92672">.</span>start()
     p<span style="color:#f92672">.</span>join()
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> multiprocessing <span style="color:#f92672">import</span> Pool
@@ -75,7 +71,7 @@
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(x):
     <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span>x
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">'__main__'</span>:
     <span style="color:#66d9ef">with</span> Pool(<span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> p:
         <span style="color:#66d9ef">print</span>(p<span style="color:#f92672">.</span>map(f, [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]))
 </code></pre></div><p><strong>这里面要了解东西还很多很多，一两行封装好的代码不能够完全解释。</strong></p>
@@ -90,12 +86,12 @@ async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_aft
     <span style="color:#66d9ef">print</span>(what)
 
 async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;started at {time.strftime(&#39;</span><span style="color:#e6db74">%X</span><span style="color:#e6db74">&#39;)}&#34;</span>)
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">"started at {time.strftime('</span><span style="color:#e6db74">%X</span><span style="color:#e6db74">')}"</span>)
 
-    await say_after(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;hello&#39;</span>)
-    await say_after(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;world&#39;</span>)
+    await say_after(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">'hello'</span>)
+    await say_after(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">'world'</span>)
 
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;finished at {time.strftime(&#39;</span><span style="color:#e6db74">%X</span><span style="color:#e6db74">&#39;)}&#34;</span>)
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">"finished at {time.strftime('</span><span style="color:#e6db74">%X</span><span style="color:#e6db74">')}"</span>)
 
 asyncio<span style="color:#f92672">.</span>run(main())
 </code></pre></div><p>这里我也带来另外一个利用多线程实现多任务的优雅版本。</p>
@@ -105,7 +101,7 @@ asyncio<span style="color:#f92672">.</span>run(main())
 
 <span style="color:#a6e22e">@vthread.pool</span>(<span style="color:#ae81ff">6</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>():
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;function is running!&#39;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'function is running!'</span>)
     time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
     
 <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">6</span>):
@@ -151,26 +147,26 @@ number_list <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1<
                 i<span style="color:#f92672">=</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
         <span style="color:#66d9ef">return</span> i <span style="color:#f92672">*</span> number
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">"__main__"</span>:
         <span style="color:#75715e"># 顺序执行</span>
         start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
         <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
                 <span style="color:#66d9ef">print</span>(evaluate_item(item))
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sequential execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Sequential execution in "</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time), <span style="color:#e6db74">"seconds"</span>)
         <span style="color:#75715e"># 线程池执行</span>
         start_time_1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
         <span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ThreadPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
                 futures <span style="color:#f92672">=</span> [executor<span style="color:#f92672">.</span>submit(evaluate_item, item) <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list]
                 <span style="color:#66d9ef">for</span> future <span style="color:#f92672">in</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>as_completed(futures):
                         <span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
-        <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Thread pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+        <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">"Thread pool execution in "</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">"seconds"</span>)
         <span style="color:#75715e"># 进程池</span>
         start_time_2 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
         <span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ProcessPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
                 futures <span style="color:#f92672">=</span> [executor<span style="color:#f92672">.</span>submit(evaluate_item, item) <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list]
                 <span style="color:#66d9ef">for</span> future <span style="color:#f92672">in</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>as_completed(futures):
                         <span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
-        <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Process pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time_2), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+        <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">"Process pool execution in "</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time_2), <span style="color:#e6db74">"seconds"</span>)
 </code></pre></div><p>运行这个代码，我们可以看到运行时间的输出:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> python3 pool<span style="color:#f92672">.</span>py
 <span style="color:#ae81ff">10000000</span>
@@ -211,7 +207,7 @@ Process pool execution <span style="color:#f92672">in</span> <span style="color:
     <span style="color:#75715e"># 计算总和，这里只是为了消耗时间</span>
     result_item <span style="color:#f92672">=</span> count(x)
     <span style="color:#75715e"># 打印输入和输出结果</span>
-    <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;item &#34;</span> <span style="color:#f92672">+</span> str(x) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; result &#34;</span> <span style="color:#f92672">+</span> str(result_item))
+    <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">"item "</span> <span style="color:#f92672">+</span> str(x) <span style="color:#f92672">+</span> <span style="color:#e6db74">" result "</span> <span style="color:#f92672">+</span> str(result_item))
 
 <span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">count</span>(number) :
     <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10000000</span>):
@@ -219,23 +215,23 @@ Process pool execution <span style="color:#f92672">in</span> <span style="color:
     <span style="color:#66d9ef">return</span> i <span style="color:#f92672">*</span> number
 <span style="color:#75715e"># 在主要程序中，我们先使用顺序执行跑了一次程序：:</span>
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">"__main__"</span>:
     <span style="color:#75715e"># 顺序执行</span>
     start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>clock()
     <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
         evaluate_item(item)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sequential execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Sequential execution in "</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time), <span style="color:#e6db74">"seconds"</span>)
 <span style="color:#75715e"># 然后，我们使用了 futures.ThreadPoolExecutor 模块的线程池跑了一次：:</span>
 
 <span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ThreadPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
     <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> number_list:
         executor<span style="color:#f92672">.</span>submit(evaluate_item,  item)
-<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Thread pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">"Thread pool execution in "</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">"seconds"</span>)
 <span style="color:#75715e"># ThreadPoolExecutor 使用线程池中的一个线程执行给定的任务。池中一共有5个线程，每一个线程从池中取得一个任务然后执行它。当任务执行完成，再从池中拿到另一个任务。</span>
 
 <span style="color:#75715e"># 当所有的任务执行完成后，打印出执行用的时间：:</span>
 
-<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;Thread pool execution in &#34;</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">&#34;seconds&#34;</span>)
+<span style="color:#66d9ef">print</span> (<span style="color:#e6db74">"Thread pool execution in "</span> <span style="color:#f92672">+</span> str(time<span style="color:#f92672">.</span>clock() <span style="color:#f92672">-</span> start_time_1), <span style="color:#e6db74">"seconds"</span>)
 <span style="color:#75715e"># 最后，我们又用 ProcessPoolExecutor 跑了一次程序：:</span>
 
 <span style="color:#66d9ef">with</span> concurrent<span style="color:#f92672">.</span>futures<span style="color:#f92672">.</span>ProcessPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">as</span> executor:
@@ -245,77 +241,70 @@ Process pool execution <span style="color:#f92672">in</span> <span style="color:
 <p>如同 ThreadPoolExecutor 一样， ProcessPoolExecutor 是一个executor，使用一个线程池来并行执行任务。然而，和 ThreadPoolExecutor 不同的是， ProcessPoolExecutor 使用了多核处理的模块，让我们可以不受GIL的限制，大大缩短执行时间。</p>
 </blockquote>
 <p>几乎所有需要处理多个客户端请求的服务应用都会使用池。然而，也有一些应用要求任务需要立即执行，或者要求对任务的线程有更多的控制权，这种情况下，池不是一个最佳选择。</p>
-<hr>
+<hr/>
 <!-- raw HTML omitted -->
-    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-
-  </article>
-  <aside><h3></h3>
-<ul class='posts aside'>
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>MYSELF</a>
-    </h3>
-    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
-    </h3>
-    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
-  </div>
-</li>
-
-</ul>
-
-  </aside>
-</div>
-<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
-<script src = 'https://jxiaof.com/js/timeago.js'></script>
-    </main><svg width="0" height="0" class="hidden">
-  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
-    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
-    ></path>
-  </symbol>
-  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
-    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
-  </symbol>
+<div class="post_extra"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
 </svg>
-<footer class = 'footer'>
-  <div class = 'footer_inner wrap pale'>
-    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
-    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
-  </div>
+</div>
+</div>
+</article>
+<aside><h3></h3>
+<ul class="posts aside">
+<li class="post_item">
+<a class="post_card" href="https://jxiaof.com/post/first/" style="background-image: url(https://jxiaof.com/images/speakers.jpg);" title="MYSELF">
+</a>
+<div class="excerpt">
+<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
+</div>
+</div>
+<h3 class="post_link">
+<a href="https://jxiaof.com/post/first/">MYSELF</a>
+</h3>
+<p class="pale"></p><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p>
+</div>
+</li>
+<li class="post_item">
+<a class="post_card" href="https://jxiaof.com/post/cloud-native/" style="background-image: url(https://jxiaof.com/images/hero-2.jpg);" title="Cloud Native">
+</a>
+<div class="excerpt">
+<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
+</div>
+</div>
+<h3 class="post_link">
+<a href="https://jxiaof.com/post/cloud-native/">Cloud Native</a>
+</h3>
+<p class="pale">直接上对比图:
+云原生发展四个趋势的介绍：
+ 拥抱 Serverless – 极致弹性，无需运维； 服务网格 – 将服务治理能力与应用解耦，并下沉到基础设施层； 云原生应用管理标准 …</p>
+</div>
+</li>
+</ul>
+</aside>
+</div>
+<script src="https://jxiaof.com/js/autosize.min.js"></script>
+<script src="https://jxiaof.com/js/timeago.js"></script>
+</main><svg class="hidden" height="0" width="0">
+<symbol id="copy" viewbox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg">
+<path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"></path>
+</symbol>
+<symbol id="reply" viewbox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+</symbol>
+</svg>
+<footer class="footer">
+<div class="footer_inner wrap pale">
+<p>© <span class="year"></span> 江小凡的博客.
+    Designed by  <a href="https://www.github.com/jxiaof" title="Linkedin Profile">江小凡</a></p>
+</div>
 </footer>
-<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
-
-  </body>
+<script src="https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js"></script>
+</body>
 </html>

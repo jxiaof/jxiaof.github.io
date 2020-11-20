@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Sun, 08 Nov 2020 12:14:08 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 18:06:54 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MYSELF</title>
       <link>https://jxiaof.com/post/first/</link>
@@ -15,25 +15,6 @@
       
       <guid>https://jxiaof.com/post/first/</guid>
       <description>&lt;p&gt;​        I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Flask主线程以及短链接实现</title>
-      <link>https://jxiaof.com/post/flask01/</link>
-      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/flask01/</guid>
-      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>谈谈实际使用sql开发</title>
-      <link>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
-      <description>&lt;p&gt;[toc]&lt;/p&gt;
-&lt;p&gt;​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,12 +28,71 @@
     </item>
     
     <item>
+      <title>Cloud Native</title>
+      <link>https://jxiaof.com/post/cloud-native/</link>
+      <pubDate>Mon, 16 Nov 2020 18:06:54 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/cloud-native/</guid>
+      <description>直接上对比图:
+云原生发展四个趋势的介绍：
+ 拥抱 Serverless – 极致弹性，无需运维； 服务网格 – 将服务治理能力与应用解耦，并下沉到基础设施层； 云原生应用管理标准化 – 构建高效、自动化和可信赖的应用交付体系； 计算无边界 – 实现云-边缘-IoT 设备的高效协同。  容器掀开了云原生技术的序幕：
+  Docker 镜像形成了应用分发和交付的标准，可以将应用与底层运行环境实现解耦；
+  Kubernetes 技术成为了分布式资源调度和编排的标准，Kubernetes 屏蔽了底层基础架构的差异，帮助应用运行在不同的基础设施之中；
+  在此基础之上，社区开始建立上层的应用抽象。比如服务治理层，Istio 成为了服务通信的网络协议栈，将服务治理能力与应用层实现解耦。
+  云平台的一些架构
+ 携程云原生演变
+PAAS</description>
+    </item>
+    
+    <item>
+      <title>ClickHouse</title>
+      <link>https://jxiaof.com/post/clickhouse/</link>
+      <pubDate>Mon, 16 Nov 2020 17:44:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/clickhouse/</guid>
+      <description>ClickHouse是“战斗民族”俄罗斯搜索巨头Yandex公司开源的一个极具&amp;quot;战斗力&amp;quot;的实时数据分析数据库，是面向 OLAP 的分布式列式DBMS，圈内人戏称为“喀秋莎数据库”。ClickHouse有一个简称&amp;quot;CK&amp;quot;，与Hadoop、Spark这些巨无霸组件相比，ClickHouse很轻量级，其特点包括：分布式、列式存储、异步复制、线性扩展、支持数据压缩和最终数据一致性，其数据量级在PB级别。
+LSM-Tree LSM-Tree全称是Log Structured Merge Tree，是一种分层，有序，面向磁盘的数据结构，其核心思想是充分利用磁盘,批量的顺序写要远比随机写性能高出很多
+关于clickhouse Clickhouse 技能脑图 部署
+实践
+ 携程日志系统
+clickhouse性能对比
+相关解读
+深入理解什么是LSM-Tree</description>
+    </item>
+    
+    <item>
+      <title>Funny</title>
+      <link>https://jxiaof.com/post/funny/</link>
+      <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/funny/</guid>
+      <description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps = 30 #帧率 size = (1280,720) fourcc = VideoWriter_fourcc(*&amp;#34;MJPG&amp;#34;) #支持jpg videoWriter = cv2.VideoWriter(out_root, fourcc, fps, size) im_names = os.listdir(img_root) print(len(im_names)) for im_name in range(len(im_names) - 2): string = img_root + &amp;#39;frame&amp;#39; + str(im_name) + &amp;#39;.jpg&amp;#39; print(string) frame = cv2.</description>
+    </item>
+    
+    <item>
+      <title>devops数据平台设计</title>
+      <link>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 12 Nov 2020 09:45:51 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&#34;数据平台开发初衷&#34;&gt;数据平台开发初衷&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).&lt;/li&gt;
+&lt;li&gt;快捷查看公司资源分布图.&lt;/li&gt;
+&lt;li&gt;快捷分析资源流式计算.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>https://jxiaof.com/post/docker/</link>
       <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/docker/</guid>
-      <description>nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;hello&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt; hello, world ! &amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 停止容器并重新启动容器 docker container stop nginx &amp;amp;&amp;amp; docker container rm nginx docker run \  -d \  --rm \  -p 80:80 \  -p 443:443 \  --name nginx \  -v /root/docker/nginx/html:/usr/share/nginx/html \  -v /root/docker/nginx/conf/nginx.</description>
+      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;hello&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt; hello, world ! &amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 停止容器并重新启动容器 docker container stop nginx &amp;amp;&amp;amp; docker container rm nginx docker run \  -d \  --rm \  -p 80:80 \  -p 443:443 \  --name nginx \  -v /root/docker/nginx/html:/usr/share/nginx/html \  -v /root/docker/nginx/conf/nginx.</description>
     </item>
     
     <item>
@@ -165,6 +205,15 @@ Redis高并发快总结  Redis是纯内存数据库，一般都是简单的存�
     </item>
     
     <item>
+      <title>Flask主线程以及短链接实现</title>
+      <link>https://jxiaof.com/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/flask01/</guid>
+      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>FUNCTOOLS的新功能</title>
       <link>https://jxiaof.com/post/function_tools/</link>
       <pubDate>Mon, 21 Sep 2020 22:36:03 +0800</pubDate>
@@ -172,6 +221,16 @@ Redis高并发快总结  Redis是纯内存数据库，一般都是简单的存�
       <guid>https://jxiaof.com/post/function_tools/</guid>
       <description>&lt;p&gt;&lt;strong&gt;functools - 可调用对象的高阶函数和操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>https://jxiaof.com/post/test/</link>
+      <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/test/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- I am some comments not end, not end... here the comment ends --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;They say nothing anymore !&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -211,6 +270,16 @@ env LDFLAGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
 &lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;​    本篇文章主要对图像处理有基本认知,是项目开发中容易遇到的问题,并非处理ai人工智能识别与转换.(此外,目前市面上的图像识别以及语音识别已经发展的相当不错.大部分的ai都是根据github开源调试参数.)&lt;/p&gt;
 &lt;p&gt;​       多数图像处理与操作技术可以被两个库有效完成，它们是 &lt;strong&gt;Python Imaging Library (PIL)&lt;/strong&gt; 与  &lt;strong&gt;OpenSource Computer Vision (OpenCV)&lt;/strong&gt; 。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sql使用手记</title>
+      <link>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
+      <description>&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,55 +1,51 @@
 <!DOCTYPE html>
-<html lang='en'><head>
-  <title>谈谈实际使用sql开发 | 江小凡的博客</title>
-  <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.76.5" />
-  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
-<meta property = 'og:locale' content = 'en_US' />
-<meta property="og:type" content="article">
-<meta property = 'og:title' content = '谈谈实际使用sql开发' />
-<meta name="description" content="[toc]
-​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。">
-<meta property = 'og:description' content = '[toc]
-​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。'>
-<meta property = 'og:url' content = 'https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/' />
-<meta property = 'og:image' content = 'https://jxiaof.com/images/database.png'/>
-<meta name = 'twitter:card' content = 'summary_large_image' />
-<meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = '谈谈实际使用sql开发' />
-<meta property = 'twitter:description'  content = '[toc]
-​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。'/>
-<meta name = 'twitter:image' content = 'https://jxiaof.com/images/database.png' />
-<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
-<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
-<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
-<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
-
-  <link rel='canonical' href='https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/'>
-  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+<html lang="en"><head>
+<title>Sql使用手记 | 江小凡的博客</title>
+<meta charset="utf-8"/>
+<meta content="Hugo 0.76.5" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="article" property="og:type"/>
+<meta content="sql使用手记" property="og:title"/>
+<meta content="[toc]
+​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。" name="description"/>
+<meta content="[toc]
+​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。" property="og:description"/>
+<meta content="https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/" property="og:url"/>
+<meta content="https://jxiaof.com/images/database.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="" name="twitter:creator"/>
+<meta content="sql使用手记" name="twitter:title"/>
+<meta content="[toc]
+​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。" property="twitter:description"/>
+<meta content="https://jxiaof.com/images/database.png" name="twitter:image"/>
+<link href="https://jxiaof.com/images/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://jxiaof.com/images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://jxiaof.com/images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://jxiaof.com/images/icons/site.webmanifest" rel="manifest"/>
+<link href="https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/" rel="canonical"/>
+<link href="https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css" integrity="sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ==" rel="stylesheet"/>
 </head>
-
-  <body><div class = 'nav-drop'>
-  <div class = 'nav-body'>
-      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
-    <div class = 'nav-close'></div>
-  </div>
-</div><header class = 'nav' >
-  <nav class = 'nav-menu'>
-    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
-    <div class = 'nav_bar-wrap'>
-      <div class = 'nav_bar'></div>
-    </div>
-  </nav>
+<body><div class="nav-drop">
+<div class="nav-body">
+<a class="nav_item" href="https://jxiaof.com/about/">About</a>
+<div class="nav-close"></div>
+</div>
+</div><header class="nav">
+<nav class="nav-menu">
+<a class="nav-brand nav_item" href="https://jxiaof.com/">江小凡的博客</a>
+<div class="nav_bar-wrap">
+<div class="nav_bar"></div>
+</div>
+</nav>
 </header>
-
-
-    <main>
-<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/database.png);'>
-  <h1 class='post_title'>谈谈实际使用sql开发</h1>
+<main>
+<section class="post_header" style="background-image:url(https://jxiaof.com/images/database.png);">
+<h1 class="post_title">sql使用手记</h1>
 </section>
-<div class = 'post'>
-  <article class='post_content'><p>[toc]</p>
+<div class="post">
+<article class="post_content"><p>[toc]</p>
 <p>​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。</p>
 <p>首先写好注释</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 注释
@@ -58,19 +54,19 @@
 </code></pre></div><h2 id="cast">cast</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> 
  <span style="color:#66d9ef">CASE</span> 
- <span style="color:#66d9ef">WHEN</span> http_user_agent <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%android%&#39;</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;android&#39;</span> 
- <span style="color:#66d9ef">WHEN</span> http_user_agent <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%ios%&#39;</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;ios&#39;</span> 
- <span style="color:#66d9ef">ELSE</span> <span style="color:#e6db74">&#39;unknown&#39;</span> <span style="color:#66d9ef">END</span>  
+ <span style="color:#66d9ef">WHEN</span> http_user_agent <span style="color:#66d9ef">like</span> <span style="color:#e6db74">'%android%'</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'android'</span> 
+ <span style="color:#66d9ef">WHEN</span> http_user_agent <span style="color:#66d9ef">like</span> <span style="color:#e6db74">'%ios%'</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'ios'</span> 
+ <span style="color:#66d9ef">ELSE</span> <span style="color:#e6db74">'unknown'</span> <span style="color:#66d9ef">END</span>  
  <span style="color:#66d9ef">as</span> http_user_agent,
     <span style="color:#66d9ef">count</span>(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> pv 
     <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span>  http_user_agent
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">*</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">`</span>
  <span style="color:#66d9ef">CASE</span>
- <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;s10&#39;</span>
- <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;s100&#39;</span>
- <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;s1000&#39;</span>
- <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10000</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;s10000&#39;</span>
- <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;s_large&#39;</span> <span style="color:#66d9ef">end</span>
+ <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'s10'</span>
+ <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'s100'</span>
+ <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'s1000'</span>
+ <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10000</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'s10000'</span>
+ <span style="color:#66d9ef">else</span> <span style="color:#e6db74">'s_large'</span> <span style="color:#66d9ef">end</span>
  <span style="color:#66d9ef">as</span> latency_slot,
  <span style="color:#66d9ef">count</span>(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> pv
  <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> latency_slot
@@ -82,8 +78,8 @@
      [ <span style="color:#66d9ef">ELSE</span> false_value ]
  <span style="color:#66d9ef">END</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 查询所有学生的姓名和性别(条件运算)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> stuname <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">case</span> stusex <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;男&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;女&#39;</span> <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">性别</span> <span style="color:#66d9ef">from</span> tb_student;
-<span style="color:#66d9ef">select</span> stuname <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">if</span>(stusex, <span style="color:#e6db74">&#39;男&#39;</span>, <span style="color:#e6db74">&#39;女&#39;</span>) <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">性别</span> <span style="color:#66d9ef">from</span> tb_student;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> stuname <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">case</span> stusex <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">'男'</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">'女'</span> <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">性别</span> <span style="color:#66d9ef">from</span> tb_student;
+<span style="color:#66d9ef">select</span> stuname <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">if</span>(stusex, <span style="color:#e6db74">'男'</span>, <span style="color:#e6db74">'女'</span>) <span style="color:#66d9ef">as</span> <span style="color:#960050;background-color:#1e0010">性别</span> <span style="color:#66d9ef">from</span> tb_student;
 
 </code></pre></div><h2 id="日期函数">日期函数</h2>
 <h3 id="日期时间类型">日期时间类型</h3>
@@ -222,7 +218,7 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 </span></code></pre></div><h2 id="模糊查询n个字符的名称">模糊查询N个字符的名称</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
 <span style="color:#75715e">/* 匹配五个字符 */</span>
-mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;_____&#39;</span>;
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">'_____'</span>;
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
 </span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span>  <span style="color:#f92672">|</span> species <span style="color:#f92672">|</span> sex  <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death <span style="color:#f92672">|</span>
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
@@ -230,7 +226,7 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <span style="color:#f92672">|</span> Buffy <span style="color:#f92672">|</span> Harold <span style="color:#f92672">|</span> dog     <span style="color:#f92672">|</span> f    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
 </span><span style="color:#75715e"></span>
-mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name REGEXP <span style="color:#e6db74">&#39;^.....$&#39;</span>;
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name REGEXP <span style="color:#e6db74">'^.....$'</span>;
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
 </span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span>  <span style="color:#f92672">|</span> species <span style="color:#f92672">|</span> sex  <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death <span style="color:#f92672">|</span>
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
@@ -238,7 +234,7 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <span style="color:#f92672">|</span> Buffy <span style="color:#f92672">|</span> Harold <span style="color:#f92672">|</span> dog     <span style="color:#f92672">|</span> f    <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">13</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>  <span style="color:#f92672">|</span>
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
 </span><span style="color:#75715e"></span>
-mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name REGEXP <span style="color:#e6db74">&#39;^.{5}$&#39;</span>;
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> pet <span style="color:#66d9ef">WHERE</span> name REGEXP <span style="color:#e6db74">'^.{5}$'</span>;
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
 </span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span>  <span style="color:#f92672">|</span> species <span style="color:#f92672">|</span> sex  <span style="color:#f92672">|</span> birth      <span style="color:#f92672">|</span> death <span style="color:#f92672">|</span>
 <span style="color:#f92672">+</span><span style="color:#75715e">-------+--------+---------+------+------------+-------+
@@ -295,7 +291,7 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <tr>
 <td style="text-align:left"><code>json_array_get(json_array, index)</code></td>
 <td style="text-align:left">同<code>json_array_contains</code>，是获取一个JSON数组的某个下标对应的元素。</td>
-<td style="text-align:left"><code>SELECT json_array_get('[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]', 0)结果为'a'</code></td>
+<td style="text-align:left"><code>SELECT json_array_get('["a", "b", "c"]', 0)结果为'a'</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>json_array_length(json)</code></td>
@@ -520,30 +516,30 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 
 <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> shirt (
     id SMALLINT UNSIGNED <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> AUTO_INCREMENT,
-    style ENUM(<span style="color:#e6db74">&#39;t-shirt&#39;</span>, <span style="color:#e6db74">&#39;polo&#39;</span>, <span style="color:#e6db74">&#39;dress&#39;</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-    color ENUM(<span style="color:#e6db74">&#39;red&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#e6db74">&#39;black&#39;</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    style ENUM(<span style="color:#e6db74">'t-shirt'</span>, <span style="color:#e6db74">'polo'</span>, <span style="color:#e6db74">'dress'</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    color ENUM(<span style="color:#e6db74">'red'</span>, <span style="color:#e6db74">'blue'</span>, <span style="color:#e6db74">'orange'</span>, <span style="color:#e6db74">'white'</span>, <span style="color:#e6db74">'black'</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
     <span style="color:#66d9ef">owner</span> SMALLINT UNSIGNED <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">REFERENCES</span> person(id),
     <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id)
 );
 
-<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> person <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;Antonio Paz&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> person <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'Antonio Paz'</span>);
 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span> :<span style="color:#f92672">=</span> LAST_INSERT_ID();
 
 <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> shirt <span style="color:#66d9ef">VALUES</span>
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;polo&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;dress&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;t-shirt&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>);
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'polo'</span>, <span style="color:#e6db74">'blue'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'dress'</span>, <span style="color:#e6db74">'white'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'t-shirt'</span>, <span style="color:#e6db74">'blue'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>);
 
-<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> person <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;Lilliana Angelovska&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> person <span style="color:#66d9ef">VALUES</span> (<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'Lilliana Angelovska'</span>);
 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span> :<span style="color:#f92672">=</span> LAST_INSERT_ID();
 
 <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> shirt <span style="color:#66d9ef">VALUES</span>
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;dress&#39;</span>, <span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;polo&#39;</span>, <span style="color:#e6db74">&#39;red&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;dress&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
-(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">&#39;t-shirt&#39;</span>, <span style="color:#e6db74">&#39;white&#39;</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>);
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'dress'</span>, <span style="color:#e6db74">'orange'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'polo'</span>, <span style="color:#e6db74">'red'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'dress'</span>, <span style="color:#e6db74">'blue'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>),
+(<span style="color:#66d9ef">NULL</span>, <span style="color:#e6db74">'t-shirt'</span>, <span style="color:#e6db74">'white'</span>, <span style="color:#f92672">@</span><span style="color:#66d9ef">last</span>);
 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> person;
 <span style="color:#f92672">+</span><span style="color:#75715e">----+---------------------+
@@ -568,8 +564,8 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">SELECT</span> s.<span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> person p <span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> shirt s
    <span style="color:#66d9ef">ON</span> s.<span style="color:#66d9ef">owner</span> <span style="color:#f92672">=</span> p.id
- <span style="color:#66d9ef">WHERE</span> p.name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;Lilliana%&#39;</span>
-   <span style="color:#66d9ef">AND</span> s.color <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#39;white&#39;</span>;
+ <span style="color:#66d9ef">WHERE</span> p.name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">'Lilliana%'</span>
+   <span style="color:#66d9ef">AND</span> s.color <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">'white'</span>;
 
 <span style="color:#f92672">+</span><span style="color:#75715e">----+-------+--------+-------+
 </span><span style="color:#75715e"></span><span style="color:#f92672">|</span> id <span style="color:#f92672">|</span> style <span style="color:#f92672">|</span> color  <span style="color:#f92672">|</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">|</span>
@@ -585,103 +581,95 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 优化前
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">SELECT</span> field1_index, field2_index <span style="color:#66d9ef">FROM</span> test_table
-<span style="color:#66d9ef">WHERE</span> field1_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#66d9ef">OR</span>  field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+<span style="color:#66d9ef">WHERE</span> field1_index <span style="color:#f92672">=</span> <span style="color:#e6db74">'1'</span> <span style="color:#66d9ef">OR</span>  field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">'1'</span>
 
 
 <span style="color:#75715e">-- 优化后
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">SELECT</span> field1_index, field2_index
-    <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field1_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>
+    <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field1_index <span style="color:#f92672">=</span> <span style="color:#e6db74">'1'</span>
 <span style="color:#66d9ef">UNION</span>
 <span style="color:#66d9ef">SELECT</span> field1_index, field2_index
-    <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span>;
+    <span style="color:#66d9ef">FROM</span> test_table <span style="color:#66d9ef">WHERE</span> field2_index <span style="color:#f92672">=</span> <span style="color:#e6db74">'1'</span>;
 </code></pre></div><h2 id="dcl">dcl</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">-- 创建可以远程登录的root账号并为其指定口令
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">&#39;123456&#39;</span>;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">'root'</span><span style="color:#f92672">@</span><span style="color:#e6db74">'%'</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">'123456'</span>;
 
 <span style="color:#75715e">-- 为远程登录的root账号授权操作所有数据库所有对象的所有权限并允许其将权限再次赋予其他用户
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#66d9ef">with</span> <span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">option</span>;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">'root'</span><span style="color:#f92672">@</span><span style="color:#e6db74">'%'</span> <span style="color:#66d9ef">with</span> <span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">option</span>;
 
 <span style="color:#75715e">-- 创建名为hellokitty的用户并为其指定口令
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">&#39;123123&#39;</span>;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">'hellokitty'</span><span style="color:#f92672">@</span><span style="color:#e6db74">'%'</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">'123123'</span>;
 
 <span style="color:#75715e">-- 将对school数据库所有对象的所有操作权限授予hellokitty
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">'hellokitty'</span><span style="color:#f92672">@</span><span style="color:#e6db74">'%'</span>;
 
 <span style="color:#75715e">-- 召回hellokitty对school数据库所有对象的insert/delete/update权限
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">revoke</span> <span style="color:#66d9ef">insert</span>, <span style="color:#66d9ef">delete</span>, <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
-</code></pre></div><hr>
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">revoke</span> <span style="color:#66d9ef">insert</span>, <span style="color:#66d9ef">delete</span>, <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">'hellokitty'</span><span style="color:#f92672">@</span><span style="color:#e6db74">'%'</span>;
+</code></pre></div><hr/>
 <p>参考内容: <a href="https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html">https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html</a></p>
 <p>参考内容: <a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/36-38">https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/36-38</a>.关系型数据库MySQL.md</p>
-    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-
-  </article>
-  <aside><h3></h3>
-<ul class='posts aside'>
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>MYSELF</a>
-    </h3>
-    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
-    </h3>
-    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
-  </div>
-</li>
-
-</ul>
-
-  </aside>
-</div>
-<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
-<script src = 'https://jxiaof.com/js/timeago.js'></script>
-    </main><svg width="0" height="0" class="hidden">
-  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
-    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
-    ></path>
-  </symbol>
-  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
-    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
-  </symbol>
+<div class="post_extra"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
 </svg>
-<footer class = 'footer'>
-  <div class = 'footer_inner wrap pale'>
-    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
-    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
-  </div>
+</div>
+</div>
+</article>
+<aside><h3></h3>
+<ul class="posts aside">
+<li class="post_item">
+<a class="post_card" href="https://jxiaof.com/post/first/" style="background-image: url(https://jxiaof.com/images/speakers.jpg);" title="MYSELF">
+</a>
+<div class="excerpt">
+<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
+</div>
+</div>
+<h3 class="post_link">
+<a href="https://jxiaof.com/post/first/">MYSELF</a>
+</h3>
+<p class="pale"></p><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p>
+</div>
+</li>
+<li class="post_item">
+<a class="post_card" href="https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" style="background-image: url(https://jxiaof.com/images/read.jpg);" title="python多任务处理">
+</a>
+<div class="excerpt">
+<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
+</div>
+</div>
+<h3 class="post_link">
+<a href="https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">python多任务处理</a>
+</h3>
+<p class="pale"></p><p>多任务有：多进程 多线程以及异步协程。</p>
+<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p>
+</div>
+</li>
+</ul>
+</aside>
+</div>
+<script src="https://jxiaof.com/js/autosize.min.js"></script>
+<script src="https://jxiaof.com/js/timeago.js"></script>
+</main><svg class="hidden" height="0" width="0">
+<symbol id="copy" viewbox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg">
+<path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"></path>
+</symbol>
+<symbol id="reply" viewbox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+</symbol>
+</svg>
+<footer class="footer">
+<div class="footer_inner wrap pale">
+<p>© <span class="year"></span> 江小凡的博客.
+    Designed by  <a href="https://www.github.com/jxiaof" title="Linkedin Profile">江小凡</a></p>
+</div>
 </footer>
-<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
-
-  </body>
+<script src="https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js"></script>
+</body>
 </html>

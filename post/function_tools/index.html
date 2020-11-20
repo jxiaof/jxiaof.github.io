@@ -1,55 +1,51 @@
 <!DOCTYPE html>
-<html lang='en'><head>
-  <title>F u n c t o o l s的新功能 | 江小凡的博客</title>
-  <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.76.5" />
-  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
-<meta property = 'og:locale' content = 'en_US' />
-<meta property="og:type" content="article">
-<meta property = 'og:title' content = 'FUNCTOOLS的新功能' />
-<meta name="description" content="functools - 可调用对象的高阶函数和操作
-functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.">
-<meta property = 'og:description' content = 'functools - 可调用对象的高阶函数和操作
-functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.'>
-<meta property = 'og:url' content = 'https://jxiaof.com/post/function_tools/' />
-<meta property = 'og:image' content = 'https://jxiaof.com/images/frustrated.jpg'/>
-<meta name = 'twitter:card' content = 'summary_large_image' />
-<meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = 'FUNCTOOLS的新功能' />
-<meta property = 'twitter:description'  content = 'functools - 可调用对象的高阶函数和操作
-functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.'/>
-<meta name = 'twitter:image' content = 'https://jxiaof.com/images/frustrated.jpg' />
-<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
-<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
-<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
-<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
-
-  <link rel='canonical' href='https://jxiaof.com/post/function_tools/'>
-  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+<html lang="en"><head>
+<title>F u n c t o o l s的新功能 | 江小凡的博客</title>
+<meta charset="utf-8"/>
+<meta content="Hugo 0.76.5" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="article" property="og:type"/>
+<meta content="FUNCTOOLS的新功能" property="og:title"/>
+<meta content="functools - 可调用对象的高阶函数和操作
+functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial." name="description"/>
+<meta content="functools - 可调用对象的高阶函数和操作
+functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial." property="og:description"/>
+<meta content="https://jxiaof.com/post/function_tools/" property="og:url"/>
+<meta content="https://jxiaof.com/images/frustrated.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="" name="twitter:creator"/>
+<meta content="FUNCTOOLS的新功能" name="twitter:title"/>
+<meta content="functools - 可调用对象的高阶函数和操作
+functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial." property="twitter:description"/>
+<meta content="https://jxiaof.com/images/frustrated.jpg" name="twitter:image"/>
+<link href="https://jxiaof.com/images/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://jxiaof.com/images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://jxiaof.com/images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://jxiaof.com/images/icons/site.webmanifest" rel="manifest"/>
+<link href="https://jxiaof.com/post/function_tools/" rel="canonical"/>
+<link href="https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css" integrity="sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ==" rel="stylesheet"/>
 </head>
-
-  <body><div class = 'nav-drop'>
-  <div class = 'nav-body'>
-      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
-    <div class = 'nav-close'></div>
-  </div>
-</div><header class = 'nav' >
-  <nav class = 'nav-menu'>
-    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
-    <div class = 'nav_bar-wrap'>
-      <div class = 'nav_bar'></div>
-    </div>
-  </nav>
+<body><div class="nav-drop">
+<div class="nav-body">
+<a class="nav_item" href="https://jxiaof.com/about/">About</a>
+<div class="nav-close"></div>
+</div>
+</div><header class="nav">
+<nav class="nav-menu">
+<a class="nav-brand nav_item" href="https://jxiaof.com/">江小凡的博客</a>
+<div class="nav_bar-wrap">
+<div class="nav_bar"></div>
+</div>
+</nav>
 </header>
-
-
-    <main>
-<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/frustrated.jpg);'>
-  <h1 class='post_title'>FUNCTOOLS的新功能</h1>
+<main>
+<section class="post_header" style="background-image:url(https://jxiaof.com/images/frustrated.jpg);">
+<h1 class="post_title">FUNCTOOLS的新功能</h1>
 </section>
-<div class = 'post'>
-  <article class='post_content'><p><strong>functools - 可调用对象的高阶函数和操作</strong></p>
+<div class="post">
+<article class="post_content"><p><strong>functools - 可调用对象的高阶函数和操作</strong></p>
 <p>functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.</p>
 <p>functools 模块定义了以下函数︰</p>
 <p><strong>functools.cmp_to_key(func)</strong>
@@ -70,13 +66,13 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 <p>用于静态Web内容的LRU缓存示例：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_pep</span>(num):
-    <span style="color:#e6db74">&#39;Retrieve text of a Python Enhancement Proposal&#39;</span>
-    resource <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://www.python.org/dev/peps/pep-</span><span style="color:#e6db74">%04d</span><span style="color:#e6db74">/&#39;</span> <span style="color:#f92672">%</span> num
+    <span style="color:#e6db74">'Retrieve text of a Python Enhancement Proposal'</span>
+    resource <span style="color:#f92672">=</span> <span style="color:#e6db74">'http://www.python.org/dev/peps/pep-</span><span style="color:#e6db74">%04d</span><span style="color:#e6db74">/'</span> <span style="color:#f92672">%</span> num
     <span style="color:#66d9ef">try</span>:
         <span style="color:#66d9ef">with</span> urllib<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>urlopen(resource) <span style="color:#66d9ef">as</span> s:
             <span style="color:#66d9ef">return</span> s<span style="color:#f92672">.</span>read()
     <span style="color:#66d9ef">except</span> urllib<span style="color:#f92672">.</span>error<span style="color:#f92672">.</span>HTTPError:
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Not Found&#39;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">'Not Found'</span>
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">290</span>, <span style="color:#ae81ff">308</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">218</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">279</span>, <span style="color:#ae81ff">289</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">9991</span>:
 <span style="color:#f92672">&gt;&gt;&gt;</span>      pep <span style="color:#f92672">=</span> get_pep(n)
@@ -106,8 +102,8 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@total_ordering</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_is_valid_operand</span>(self, other):
-        <span style="color:#66d9ef">return</span> (hasattr(other, <span style="color:#e6db74">&#34;lastname&#34;</span>) <span style="color:#f92672">and</span>
-                hasattr(other, <span style="color:#e6db74">&#34;firstname&#34;</span>))
+        <span style="color:#66d9ef">return</span> (hasattr(other, <span style="color:#e6db74">"lastname"</span>) <span style="color:#f92672">and</span>
+                hasattr(other, <span style="color:#e6db74">"firstname"</span>))
     <span style="color:#66d9ef">def</span> __eq__(self, other):
         <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>_is_valid_operand(other):
             <span style="color:#66d9ef">return</span> NotImplemented
@@ -136,8 +132,8 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 </code></pre></div><p>partial()用于部分函数应用程序，其“冻结”函数的参数和/或关键字的某些部分，从而产生具有简化声明的新对象。例如，partial()可用于创建一个可调用对象，其行为类似于int()函数但base参数默认为2：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
 basetwo <span style="color:#f92672">=</span> partial(int, base<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-basetwo<span style="color:#f92672">.</span>__doc__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Convert base 2 string to an int.&#39;</span>
-basetwo(<span style="color:#e6db74">&#39;10010&#39;</span>)
+basetwo<span style="color:#f92672">.</span>__doc__ <span style="color:#f92672">=</span> <span style="color:#e6db74">'Convert base 2 string to an int.'</span>
+basetwo(<span style="color:#e6db74">'10010'</span>)
 <span style="color:#ae81ff">18</span>
 </code></pre></div><p><strong>class functools.partialmethod(func, *args, **keywords)</strong>
 返回一个新的partialmethod描述器，它的行为类似于partial，除了它被设计为用作方法定义而不是直接可调用。</p>
@@ -182,26 +178,26 @@ True
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@singledispatch</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun</span>(arg, verbose<span style="color:#f92672">=</span>False):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Let me just say,&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Let me just say,"</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">" "</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(arg)
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">要向函数添加重载的实现，请使用通用函数的</span>register()<span style="color:#960050;background-color:#1e0010">属性。它是一个装饰器，接受一个类型参数和装饰实现该类型的操作的函数：</span>
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun.register</span>(int)
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_</span>(arg, verbose<span style="color:#f92672">=</span>False):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Strength in numbers, eh?&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Strength in numbers, eh?"</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">" "</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(arg)
 <span style="color:#f92672">&gt;&gt;&gt;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun.register</span>(list)
 <span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_</span>(arg, verbose<span style="color:#f92672">=</span>False):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Enumerate this:&#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Enumerate this:"</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">for</span> i, elem <span style="color:#f92672">in</span> enumerate(arg):
 <span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(i, elem)
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">要启用注册</span>lambda和预先存在的函数<span style="color:#960050;background-color:#1e0010">，可以以函数形式使用</span>register()<span style="color:#960050;background-color:#1e0010">属性：</span>
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nothing</span>(arg, verbose<span style="color:#f92672">=</span>False):
-<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Nothing.&#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Nothing."</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>register(type(None), nothing)
 <span style="color:#f92672">&gt;&gt;&gt;</span> register()<span style="color:#960050;background-color:#1e0010">属性返回未装饰函数（原函数），该函数使装饰器堆叠，</span>pickle化<span style="color:#960050;background-color:#1e0010">（序列化）以及为每个变体独立创建单元测试：</span>
@@ -210,20 +206,20 @@ True
 <span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#a6e22e">@fun.register</span>(Decimal)
 <span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun_num</span>(arg, verbose<span style="color:#f92672">=</span>False):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Half of your number:&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">"Half of your number:"</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">" "</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(arg <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> 
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun_num <span style="color:#f92672">is</span> fun
 <span style="color:#f92672">&gt;&gt;&gt;</span> False
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">当被调用时，泛型函数调度第一个参数的类型：</span>
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">&#34;Hello, world.&#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">"Hello, world."</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Hello, world<span style="color:#f92672">.</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">&#34;test.&#34;</span>, verbose<span style="color:#f92672">=</span>True)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">"test."</span>, verbose<span style="color:#f92672">=</span>True)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Let me just say, test<span style="color:#f92672">.</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#ae81ff">42</span>, verbose<span style="color:#f92672">=</span>True)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Strength <span style="color:#f92672">in</span> numbers, eh<span style="color:#960050;background-color:#1e0010">?</span> <span style="color:#ae81ff">42</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun([<span style="color:#e6db74">&#39;spam&#39;</span>, <span style="color:#e6db74">&#39;spam&#39;</span>, <span style="color:#e6db74">&#39;eggs&#39;</span>, <span style="color:#e6db74">&#39;spam&#39;</span>], verbose<span style="color:#f92672">=</span>True)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun([<span style="color:#e6db74">'spam'</span>, <span style="color:#e6db74">'spam'</span>, <span style="color:#e6db74">'eggs'</span>, <span style="color:#e6db74">'spam'</span>], verbose<span style="color:#f92672">=</span>True)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Enumerate this:
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">0</span> spam
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">1</span> spam
@@ -242,9 +238,9 @@ True
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">要访问所有注册的实现，请使用只读</span>registry属性<span style="color:#960050;background-color:#1e0010">：</span>
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>registry<span style="color:#f92672">.</span>keys()
-<span style="color:#f92672">&gt;&gt;&gt;</span> dict_keys([<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">NoneType</span><span style="color:#e6db74">&#39;&gt;, &lt;class &#39;</span>int<span style="color:#e6db74">&#39;&gt;, &lt;class &#39;</span>object<span style="color:#e6db74">&#39;&gt;,</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">decimal</span><span style="color:#f92672">.</span>Decimal<span style="color:#e6db74">&#39;&gt;, &lt;class &#39;</span>list<span style="color:#e6db74">&#39;&gt;,</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">float</span><span style="color:#e6db74">&#39;&gt;])</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> dict_keys([<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">'</span><span style="color:#a6e22e">NoneType</span><span style="color:#e6db74">'&gt;, &lt;class '</span>int<span style="color:#e6db74">'&gt;, &lt;class '</span>object<span style="color:#e6db74">'&gt;,</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">'</span><span style="color:#a6e22e">decimal</span><span style="color:#f92672">.</span>Decimal<span style="color:#e6db74">'&gt;, &lt;class '</span>list<span style="color:#e6db74">'&gt;,</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">'</span><span style="color:#a6e22e">float</span><span style="color:#e6db74">'&gt;])</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>registry[float]
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span>function fun_num at <span style="color:#ae81ff">0x1035a2840</span><span style="color:#f92672">&gt;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>registry[object]
@@ -265,23 +261,23 @@ True
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_decorator</span>(f):
      <span style="color:#a6e22e">@wraps</span>(f)
      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">wrapper</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwds):
-         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Calling decorated function&#39;</span>)
+         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'Calling decorated function'</span>)
          <span style="color:#66d9ef">return</span> f(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwds)
      <span style="color:#66d9ef">return</span> wrapper
 
 <span style="color:#a6e22e">@my_decorator</span>
  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">example</span>():
-     <span style="color:#e6db74">&#34;&#34;&#34;Docstring&#34;&#34;&#34;</span>
-     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Called example function&#39;</span>)
+     <span style="color:#e6db74">"""Docstring"""</span>
+     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'Called example function'</span>)
 
 example()
 Calling decorated function
 Called example function
 example<span style="color:#f92672">.</span>__name__
-<span style="color:#e6db74">&#39;example&#39;</span>
+<span style="color:#e6db74">'example'</span>
 example<span style="color:#f92672">.</span>__doc__
-<span style="color:#e6db74">&#39;Docstring&#39;</span>
-<span style="color:#960050;background-color:#1e0010">没有使用这个装饰器工厂，示例函数的名称将是</span><span style="color:#e6db74">&#39;wrapper&#39;</span><span style="color:#960050;background-color:#1e0010">，原始</span>example()<span style="color:#960050;background-color:#1e0010">的</span>docstring将丢失<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#e6db74">'Docstring'</span>
+<span style="color:#960050;background-color:#1e0010">没有使用这个装饰器工厂，示例函数的名称将是</span><span style="color:#e6db74">'wrapper'</span><span style="color:#960050;background-color:#1e0010">，原始</span>example()<span style="color:#960050;background-color:#1e0010">的</span>docstring将丢失<span style="color:#960050;background-color:#1e0010">。</span>
 </code></pre></div><p><strong>partial对象</strong>
 partial对象是由partial()创建的可调用对象。它们有三个只读属性：</p>
 <p><strong>partial.func</strong>
@@ -291,76 +287,68 @@ partial对象是由partial()创建的可调用对象。它们有三个只读属�
 <p><strong>partial.keywords</strong>
 当调用partial对象时将提供的关键字参数。</p>
 <p>partial对象类似于function对象，因为它们是可调用的，弱引用的，并且可以具有属性。它们有一些重要的区别。对于实例，不会自动创建__name__和__doc__属性。此外，在类中定义的partial对象的行为类似于静态方法，并且在实例属性查找期间不会转换为绑定的方法。</p>
-<hr>
-    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-
-  </article>
-  <aside><h3></h3>
-<ul class='posts aside'>
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>MYSELF</a>
-    </h3>
-    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
-    </h3>
-    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
-  </div>
-</li>
-
-</ul>
-
-  </aside>
-</div>
-<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
-<script src = 'https://jxiaof.com/js/timeago.js'></script>
-    </main><svg width="0" height="0" class="hidden">
-  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
-    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
-    ></path>
-  </symbol>
-  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
-    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
-  </symbol>
+<hr/>
+<div class="post_extra"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
 </svg>
-<footer class = 'footer'>
-  <div class = 'footer_inner wrap pale'>
-    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
-    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
-  </div>
+</div>
+</div>
+</article>
+<aside><h3></h3>
+<ul class="posts aside">
+<li class="post_item">
+<a class="post_card" href="https://jxiaof.com/post/first/" style="background-image: url(https://jxiaof.com/images/speakers.jpg);" title="MYSELF">
+</a>
+<div class="excerpt">
+<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
+</div>
+</div>
+<h3 class="post_link">
+<a href="https://jxiaof.com/post/first/">MYSELF</a>
+</h3>
+<p class="pale"></p><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p>
+</div>
+</li>
+<li class="post_item">
+<a class="post_card" href="https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" style="background-image: url(https://jxiaof.com/images/read.jpg);" title="python多任务处理">
+</a>
+<div class="excerpt">
+<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
+</div>
+</div>
+<h3 class="post_link">
+<a href="https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">python多任务处理</a>
+</h3>
+<p class="pale"></p><p>多任务有：多进程 多线程以及异步协程。</p>
+<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p>
+</div>
+</li>
+</ul>
+</aside>
+</div>
+<script src="https://jxiaof.com/js/autosize.min.js"></script>
+<script src="https://jxiaof.com/js/timeago.js"></script>
+</main><svg class="hidden" height="0" width="0">
+<symbol id="copy" viewbox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg">
+<path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"></path>
+</symbol>
+<symbol id="reply" viewbox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+</symbol>
+</svg>
+<footer class="footer">
+<div class="footer_inner wrap pale">
+<p>© <span class="year"></span> 江小凡的博客.
+    Designed by  <a href="https://www.github.com/jxiaof" title="Linkedin Profile">江小凡</a></p>
+</div>
 </footer>
-<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
-
-  </body>
+<script src="https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js"></script>
+</body>
 </html>

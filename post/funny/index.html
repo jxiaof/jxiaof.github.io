@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<title>江小凡的博客 | 江小凡的博客</title>
+<title>Funny | 江小凡的博客</title>
 <meta charset="utf-8"/>
 <meta content="Hugo 0.76.5" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="en_US" property="og:locale"/>
-<meta content="website" property="og:type"/>
-<meta content="江小凡的博客" property="og:title"/>
-<meta content="" name="description"/>
-<meta content="" property="og:description"/>
-<meta content="https://jxiaof.com/" property="og:url"/>
-<meta content="images/%!s()" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="Funny" property="og:title"/>
+<meta content="some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from …" name="description"/>
+<meta content="some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from …" property="og:description"/>
+<meta content="https://jxiaof.com/post/funny/" property="og:url"/>
+<meta content="https://jxiaof.com/images/programmer.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="" name="twitter:creator"/>
-<meta content="江小凡的博客" name="twitter:title"/>
-<meta content="" property="twitter:description"/>
-<meta content="images/%!s()" name="twitter:image"/>
+<meta content="Funny" name="twitter:title"/>
+<meta content="some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from …" property="twitter:description"/>
+<meta content="https://jxiaof.com/images/programmer.png" name="twitter:image"/>
 <link href="https://jxiaof.com/images/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="https://jxiaof.com/images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="https://jxiaof.com/images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="https://jxiaof.com/images/icons/site.webmanifest" rel="manifest"/>
-<link href="https://jxiaof.com/" rel="canonical"/>
+<link href="https://jxiaof.com/post/funny/" rel="canonical"/>
 <link href="https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css" integrity="sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ==" rel="stylesheet"/>
 </head>
 <body><div class="nav-drop">
@@ -38,21 +41,50 @@
 </nav>
 </header>
 <main>
-<div class="intro">
-<div class="intro_inner">
-<div><div class="waves">
-<canvas class="waves_inner" id="waves"></canvas>
-</div>
-<script src="https://jxiaof.com/js/sine-waves.min.js"></script>
-<script src="https://jxiaof.com/js/audio.js"></script>
-</div>
-<section>
-<h1 class="intro_headline">江小凡的博客</h1>
-<p class="intro_desc"></p>
+<section class="post_header" style="background-image:url(https://jxiaof.com/images/programmer.png);">
+<h1 class="post_title">Funny</h1>
 </section>
+<div class="post">
+<article class="post_content"><h1 id="some-funny-code">some funny code</h1>
+<hr/>
+<ul>
+<li>记录有趣的代码</li>
+<li>记录灵性的想法</li>
+<li>记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)</li>
+</ul>
+<p>一、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2
+<span style="color:#f92672">from</span> cv2 <span style="color:#f92672">import</span> VideoWriter, VideoWriter_fourcc, imread, resize
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> subprocess <span style="color:#f92672">import</span> call
+img_root <span style="color:#f92672">=</span> <span style="color:#e6db74">'/Users/jiangxiaofan/Downloads/image/'</span>
+out_root <span style="color:#f92672">=</span> <span style="color:#e6db74">'/Users/jiangxiaofan/Downloads/image/PeppaPig.avi'</span>
+fps <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>   <span style="color:#75715e">#帧率</span>
+size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1280</span>,<span style="color:#ae81ff">720</span>)
+fourcc <span style="color:#f92672">=</span> VideoWriter_fourcc(<span style="color:#f92672">*</span><span style="color:#e6db74">"MJPG"</span>)  <span style="color:#75715e">#支持jpg</span>
+videoWriter <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>VideoWriter(out_root, fourcc, fps, size)
+im_names <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(img_root)
+<span style="color:#66d9ef">print</span>(len(im_names))
+<span style="color:#66d9ef">for</span> im_name <span style="color:#f92672">in</span> range(len(im_names) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>):
+    string <span style="color:#f92672">=</span> img_root <span style="color:#f92672">+</span> <span style="color:#e6db74">'frame'</span> <span style="color:#f92672">+</span> str(im_name) <span style="color:#f92672">+</span> <span style="color:#e6db74">'.jpg'</span>
+    <span style="color:#66d9ef">print</span>(string)
+    frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(string)
+    frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>resize(frame, size)   <span style="color:#75715e">#注意这里resize大小要和视频的一样</span>
+    videoWriter<span style="color:#f92672">.</span>write(frame)
+videoWriter<span style="color:#f92672">.</span>release()
+dir <span style="color:#f92672">=</span> out_root<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">".avi"</span>)
+command <span style="color:#f92672">=</span> <span style="color:#e6db74">"ffmpeg -i </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.avi </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.mp4"</span> <span style="color:#f92672">%</span> (dir, dir)   <span style="color:#75715e">#使用ffmped将avi压缩为mp4,注意两个的路径</span>
+call(command<span style="color:#f92672">.</span>split())
+</code></pre></div>
+<div class="post_extra"><div class="copy" data-copied="Link Copied" data-share="Share Story">
+<svg>
+<use xlink:href="#copy"></use>
+</svg>
 </div>
 </div>
-<ul class="posts wrap" id="posts">
+</article>
+<aside><h3></h3>
+<ul class="posts aside">
 <li class="post_item">
 <a class="post_card" href="https://jxiaof.com/post/first/" style="background-image: url(https://jxiaof.com/images/speakers.jpg);" title="MYSELF">
 </a>
@@ -86,106 +118,11 @@
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p>
 </div>
 </li>
-<li class="post_item">
-<a class="post_card" href="https://jxiaof.com/post/cloud-native/" style="background-image: url(https://jxiaof.com/images/hero-2.jpg);" title="Cloud Native">
-</a>
-<div class="excerpt">
-<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
-<svg>
-<use xlink:href="#copy"></use>
-</svg>
-</div>
-</div>
-<h3 class="post_link">
-<a href="https://jxiaof.com/post/cloud-native/">Cloud Native</a>
-</h3>
-<p class="pale">直接上对比图:
-云原生发展四个趋势的介绍：
- 拥抱 Serverless – 极致弹性，无需运维； 服务网格 – 将服务治理能力与应用解耦，并下沉到基础设施层； 云原生应用管理标准 …</p>
-</div>
-</li>
-<li class="post_item">
-<a class="post_card" href="https://jxiaof.com/post/clickhouse/" style="background-image: url(https://jxiaof.com/images/images.png);" title="ClickHouse">
-</a>
-<div class="excerpt">
-<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
-<svg>
-<use xlink:href="#copy"></use>
-</svg>
-</div>
-</div>
-<h3 class="post_link">
-<a href="https://jxiaof.com/post/clickhouse/">ClickHouse</a>
-</h3>
-<p class="pale">ClickHouse是“战斗民族”俄罗斯搜索巨头Yandex公司开源的一个极具"战斗力"的实时数据分析数据库，是面向 OLAP 的分布式列式DBMS，圈内人戏称 …</p>
-</div>
-</li>
-<li class="post_item">
-<a class="post_card" href="https://jxiaof.com/post/funny/" style="background-image: url(https://jxiaof.com/images/programmer.png);" title="Funny">
-</a>
-<div class="excerpt">
-<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
-<svg>
-<use xlink:href="#copy"></use>
-</svg>
-</div>
-</div>
-<h3 class="post_link">
-<a href="https://jxiaof.com/post/funny/">Funny</a>
-</h3>
-<p class="pale">some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
-import cv2 from cv2 …</p>
-</div>
-</li>
-<li class="post_item">
-<a class="post_card" href="https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/" style="background-image: url(https://jxiaof.com/images/small.jpg);" title="devops数据平台设计">
-</a>
-<div class="excerpt">
-<div class="excerpt_meta"><div class="copy" data-copied="Link Copied" data-share="Share Story">
-<svg>
-<use xlink:href="#copy"></use>
-</svg>
-</div>
-</div>
-<h3 class="post_link">
-<a href="https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/">devops数据平台设计</a>
-</h3>
-<p class="pale"></p><p>[toc]</p>
-<h1 id="数据平台开发初衷">数据平台开发初衷</h1>
-<ol>
-<li>快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).</li>
-<li>快捷查看公司资源分布图.</li>
-<li>快捷分析资源流式计算.</li>
-<li><strong>目标: 数据平台需要承受大量数 …</strong></li></ol>
-</div>
-</li>
 </ul>
-<ul class="pagination">
-<li class="page-item">
-<a aria-label="First" class="page-link" href="https://jxiaof.com/"><span aria-hidden="true">««</span></a>
-</li>
-<li class="page-item disabled">
-<a aria-label="Previous" class="page-link"><span aria-hidden="true">«</span></a>
-</li>
-<li class="page-item active">
-<a class="page-link" href="https://jxiaof.com/">1</a>
-</li>
-<li class="page-item">
-<a class="page-link" href="https://jxiaof.com/page/2/">2</a>
-</li>
-<li class="page-item">
-<a class="page-link" href="https://jxiaof.com/page/3/">3</a>
-</li>
-<li class="page-item">
-<a class="page-link" href="https://jxiaof.com/page/4/">4</a>
-</li>
-<li class="page-item">
-<a aria-label="Next" class="page-link" href="https://jxiaof.com/page/2/"><span aria-hidden="true">»</span></a>
-</li>
-<li class="page-item">
-<a aria-label="Last" class="page-link" href="https://jxiaof.com/page/4/"><span aria-hidden="true">»»</span></a>
-</li>
-</ul>
+</aside>
+</div>
+<script src="https://jxiaof.com/js/autosize.min.js"></script>
+<script src="https://jxiaof.com/js/timeago.js"></script>
 </main><svg class="hidden" height="0" width="0">
 <symbol id="copy" viewbox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg">
 <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"></path>
