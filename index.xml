@@ -1,34 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<title>江小凡的博客</title>
-<link>https://jxiaof.com/</link>
-<description>Recent content on 江小凡的博客</description>
-<generator>Hugo -- gohugo.io</generator>
-<language>en-us</language>
-<copyright>Designed By Felix</copyright>
-<lastBuildDate>Mon, 16 Nov 2020 18:06:54 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml"/>
-<item>
-<title>MYSELF</title>
-<link>https://jxiaof.com/post/first/</link>
-<pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
-<guid>https://jxiaof.com/post/first/</guid>
-<description>&lt;p&gt;​        I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.&lt;/p&gt;</description>
-</item>
-<item>
-<title>python多任务处理</title>
-<link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
-<pubDate>Thu, 10 Sep 2020 14:57:37 +0800</pubDate>
-<guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
-<description>&lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
+  <channel>
+    <title>江小凡的博客</title>
+    <link>https://jxiaof.com/</link>
+    <description>Recent content on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Mon, 23 Nov 2020 10:14:58 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MYSELF</title>
+      <link>https://jxiaof.com/post/first/</link>
+      <pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/first/</guid>
+      <description>&lt;p&gt;​        I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python多任务处理</title>
+      <link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 10 Sep 2020 14:57:37 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
+      <description>&lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
-</item>
-<item>
-<title>Cloud Native</title>
-<link>https://jxiaof.com/post/cloud-native/</link>
-<pubDate>Mon, 16 Nov 2020 18:06:54 +0800</pubDate>
-<guid>https://jxiaof.com/post/cloud-native/</guid>
-<description>直接上对比图:
+    </item>
+    
+    <item>
+      <title>运维平台</title>
+      <link>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/</link>
+      <pubDate>Mon, 23 Nov 2020 10:14:58 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/</guid>
+      <description>&lt;h1 id=&#34;关于运维平台&#34;&gt;关于运维平台&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;​      针对于公司层面来讲,运维平台应当服从企业管理、项目管理以及应用管理功能从大到小的建设.功能自下而上输入到整个企业,为企业发展提供保障.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在企业管理与发展层面,运维平台提供相应的软件功能服务.提供主动探测与发现功能以及全平台业务监控或者智能监控功能等系统运营功能服务.与此同时,为支撑公司业务发展,运维平台提供系统发布,系统变更,故障出题等支撑工具服务.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过运维平台提供的API网关对接项目管理提供一整套包含 容器运维、测试服务、集成服务、项目管控平台服务、前后端服务、调度服务、配置服务、作业服务、数据服务等一系列功能平台支持.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运维平台对于每个应用,同时提供主机、网络、存储等基础资源服务,并集成配置管理系统对资源统一分发,统一管理.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;同时,数据平台针对整体的iaas层、pass层、saas层服务建设,保障企业、项目、应用管理持续平稳运行,提供运维平台数据计算与输出服务.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于存储的笔记</title>
+      <link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8/</link>
+      <pubDate>Fri, 20 Nov 2020 02:26:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8/</guid>
+      <description>存储系统科普——硬件层介绍
+简介 该篇blog只是存储系列文章中的第一篇，所有文章请参考：
+博客所有文章
+在工程架构领域里，存储是一个非常重要的方向，这个方向从底至上，我分成了如下几个层次来介绍：
+ 硬件层：讲解磁盘，SSD，SAS, NAS, RAID等硬件层的基本原理，以及其为操作系统提供的存储界面； 操作系统层：即文件系统，操作系统如何将各个硬件管理并对上提供更高层次接口； 单机引擎层：常见存储系统对应单机引擎原理大概介绍，利用文件系统接口提供更高级别的存储系统接口； 分布式层：如何将多个单机引擎组合成一个分布式存储系统； 查询层：用户典型的查询语义表达以及解析；  主板结构 在进入对硬件层的分析前，让我们来看看电脑主板上各个原件之间的关系。
+图1展示了主板上主要元件的结构图，以及他们之间的总线连接情况。核心连接点是北桥和南桥两块芯片。
+其中北桥比较吊，连接的都是些高速设备。一般来说只连接CPU，内存和显卡几种设备。不过近些年也出现了PCIE2.0的高速接口接入北桥，使得一些符合标准的设备就可以接入北桥。
+而南桥就相对搓了，他负责接入所有低速设备。什么USB，鼠标，磁盘，声卡等等都是接在南桥上的。而不同的设备用途和协议都有很大不同，所以设计了不同的交互协议。由于历史原因，不同设备传输介质可能都不一样，导致总线上布线十分复杂。所以到目前为止，主流设备都已经统一成为了PCI总线，大家一起用这条总线。
+读写过程 我们来模拟一下CPU要从磁盘读入一份数据的过程：
+  CPU发出一条指令说哥要准备读数据了
+这条指令依次通过系统总线，桥间总线，PCI总线传递到了磁盘控制器。控制器收到指令了之后知道这是一次读请求，且读完了是否要发中断的信息。做好一些准备工作，等待读取数据。
+  CPU再发出一条指令说要读取的逻辑地址
+这条指令还是通过系列总线发给磁盘控制器之后。磁盘控制器就忙活了，查找逻辑快对应的物理块地址，查找，寻道等工作，就开始读取数据了。
+  CPU再发出一条指令说读入内存的地址
+当收到这条指令之后，CPU就不管了，他告诉一个叫DMA的总管，说接下来就靠你了。DMA设备会接管总线，负责将磁盘数据通过PCI总线，桥间总线，内存总线同步到内存指定位置。
+  写操作的过程是类似的，就不累述了。
+上面我们只是讲解了在主板上数据流转的过程，但是还有一个黑盒，就是磁盘控制器。这哥们到底是怎么管理的各个磁盘呢？在下一节我们将为你描述。
+存储介质原理 上面讲了计算机读取数据的过程。这一章我们来大概说一下常见的存储介质的存储原理。
+磁带 磁带就跟小时候听歌的时候的磁带类似。一条黑色带子上面有很多小的磁性粒子，根据粒子的南北级来判定0/1。
+软盘 软盘比磁带要先进一点，记录数据的原理是一样的，只是可以随机读取，而磁带只能顺序读取。
+硬盘 硬件原理 如果说前两个都是古老的东西，技术含量一般的话。硬盘就是一个很有技术含量的存储设备了，主要包含三大设备：
+  电机
+电机的目的是控制磁臂精准定位到磁道，一个磁道可能很小，要精准定位到哪个地方是高科技。
+  盘面
+盘面主要有两点。一点是基板要足够光滑平整，不能有任何瑕疵；一点是要将磁粉均匀的镀到基板上。这里有两个高科技，一个是磁粉的制造，一个是如何均匀的镀到基板上。
+  磁头
+磁头的主要难点是要控制好跟盘面的距离，跟软盘类似，硬盘也是通过修改磁粉的南北极来记录数据的。如果隔得太远，就感知不到磁性数据了，隔得太近呢，又可能把盘面刮到。当然0/1的表示并不是只有一个磁粉，而是一片区域的磁粉。
+现在磁盘都是利用空气动力学，将磁头漂浮在盘面上面一点距离来控制磁头和盘面的距离。但是当硬盘停止工作不转的时候，磁头就肯定掉在盘面上了，所以一般盘面靠近圆心的地方一般都有一块没有磁粉的地方，用于安全停靠磁头。当硬盘要开始工作的时候，磁头在同心圆里面起飞，飞起来了之后再移动到其他地区。
+不过我一直在想，是否可以有这样的技术，能在磁臂上装多个磁头，每个磁道对应一个，停止工作的时候就把磁臂固定在某个高度让他不挨着盘面，这样是不是能大大提高硬盘的读写效率，因为这样减少了寻道的时间。
+  基本概念 硬盘组成原理图如下：
+如上图, 硬盘主要有如下几个概念（概念比较简单，就不解释了）：
+ 扇区 磁道 柱面  读写过程 读写过程得分成两头来说，一头说将数据从各个盘面中读取出来；一头说如何将数据送给计算机。</description>
+    </item>
+    
+    <item>
+      <title>Cloud Native</title>
+      <link>https://jxiaof.com/post/cloud-native/</link>
+      <pubDate>Mon, 16 Nov 2020 18:06:54 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/cloud-native/</guid>
+      <description>直接上对比图:
 云原生发展四个趋势的介绍：
  拥抱 Serverless – 极致弹性，无需运维； 服务网格 – 将服务治理能力与应用解耦，并下沉到基础设施层； 云原生应用管理标准化 – 构建高效、自动化和可信赖的应用交付体系； 计算无边界 – 实现云-边缘-IoT 设备的高效协同。  容器掀开了云原生技术的序幕：
   Docker 镜像形成了应用分发和交付的标准，可以将应用与底层运行环境实现解耦；
@@ -37,13 +105,15 @@
   云平台的一些架构
  携程云原生演变
 PAAS</description>
-</item>
-<item>
-<title>ClickHouse</title>
-<link>https://jxiaof.com/post/clickhouse/</link>
-<pubDate>Mon, 16 Nov 2020 17:44:29 +0800</pubDate>
-<guid>https://jxiaof.com/post/clickhouse/</guid>
-<description>ClickHouse是“战斗民族”俄罗斯搜索巨头Yandex公司开源的一个极具&amp;quot;战斗力&amp;quot;的实时数据分析数据库，是面向 OLAP 的分布式列式DBMS，圈内人戏称为“喀秋莎数据库”。ClickHouse有一个简称&amp;quot;CK&amp;quot;，与Hadoop、Spark这些巨无霸组件相比，ClickHouse很轻量级，其特点包括：分布式、列式存储、异步复制、线性扩展、支持数据压缩和最终数据一致性，其数据量级在PB级别。
+    </item>
+    
+    <item>
+      <title>ClickHouse</title>
+      <link>https://jxiaof.com/post/clickhouse/</link>
+      <pubDate>Mon, 16 Nov 2020 17:44:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/clickhouse/</guid>
+      <description>ClickHouse是“战斗民族”俄罗斯搜索巨头Yandex公司开源的一个极具&amp;quot;战斗力&amp;quot;的实时数据分析数据库，是面向 OLAP 的分布式列式DBMS，圈内人戏称为“喀秋莎数据库”。ClickHouse有一个简称&amp;quot;CK&amp;quot;，与Hadoop、Spark这些巨无霸组件相比，ClickHouse很轻量级，其特点包括：分布式、列式存储、异步复制、线性扩展、支持数据压缩和最终数据一致性，其数据量级在PB级别。
 LSM-Tree LSM-Tree全称是Log Structured Merge Tree，是一种分层，有序，面向磁盘的数据结构，其核心思想是充分利用磁盘,批量的顺序写要远比随机写性能高出很多
 关于clickhouse Clickhouse 技能脑图 部署
 实践
@@ -51,73 +121,87 @@ LSM-Tree LSM-Tree全称是Log Structured Merge Tree，是一种分层，有序�
 clickhouse性能对比
 相关解读
 深入理解什么是LSM-Tree</description>
-</item>
-<item>
-<title>Funny</title>
-<link>https://jxiaof.com/post/funny/</link>
-<pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
-<guid>https://jxiaof.com/post/funny/</guid>
-<description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+    </item>
+    
+    <item>
+      <title>Funny</title>
+      <link>https://jxiaof.com/post/funny/</link>
+      <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/funny/</guid>
+      <description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
 import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps = 30 #帧率 size = (1280,720) fourcc = VideoWriter_fourcc(*&amp;#34;MJPG&amp;#34;) #支持jpg videoWriter = cv2.VideoWriter(out_root, fourcc, fps, size) im_names = os.listdir(img_root) print(len(im_names)) for im_name in range(len(im_names) - 2): string = img_root + &amp;#39;frame&amp;#39; + str(im_name) + &amp;#39;.jpg&amp;#39; print(string) frame = cv2.</description>
-</item>
-<item>
-<title>devops数据平台设计</title>
-<link>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</link>
-<pubDate>Thu, 12 Nov 2020 09:45:51 +0800</pubDate>
-<guid>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</guid>
-<description>&lt;p&gt;[toc]&lt;/p&gt;
-&lt;h1 id="数据平台开发初衷"&gt;数据平台开发初衷&lt;/h1&gt;
+    </item>
+    
+    <item>
+      <title>devops数据平台设计</title>
+      <link>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 12 Nov 2020 09:45:51 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&#34;数据平台开发初衷&#34;&gt;数据平台开发初衷&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).&lt;/li&gt;
 &lt;li&gt;快捷查看公司资源分布图.&lt;/li&gt;
 &lt;li&gt;快捷分析资源流式计算.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;</description>
-</item>
-<item>
-<title>Docker</title>
-<link>https://jxiaof.com/post/docker/</link>
-<pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
-<guid>https://jxiaof.com/post/docker/</guid>
-<description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;hello&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt; hello, world ! &amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 停止容器并重新启动容器 docker container stop nginx &amp;amp;&amp;amp; docker container rm nginx docker run \  -d \  --rm \  -p 80:80 \  -p 443:443 \  --name nginx \  -v /root/docker/nginx/html:/usr/share/nginx/html \  -v /root/docker/nginx/conf/nginx.</description>
-</item>
-<item>
-<title>ELK实践与应用</title>
-<link>https://jxiaof.com/post/elk/</link>
-<pubDate>Tue, 03 Nov 2020 17:13:21 +0800</pubDate>
-<guid>https://jxiaof.com/post/elk/</guid>
-<description>elasticsearch 索引与mysql索引的区别
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://jxiaof.com/post/docker/</link>
+      <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/docker/</guid>
+      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;hello&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt; hello, world ! &amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 停止容器并重新启动容器 docker container stop nginx &amp;amp;&amp;amp; docker container rm nginx docker run \  -d \  --rm \  -p 80:80 \  -p 443:443 \  --name nginx \  -v /root/docker/nginx/html:/usr/share/nginx/html \  -v /root/docker/nginx/conf/nginx.</description>
+    </item>
+    
+    <item>
+      <title>ELK实践与应用</title>
+      <link>https://jxiaof.com/post/elk/</link>
+      <pubDate>Tue, 03 Nov 2020 17:13:21 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/elk/</guid>
+      <description>elasticsearch 索引与mysql索引的区别
 elkf日志平台搭建
  grafana
 github链接
 Grafana 的仪表盘市场
  参考资料: https://juejin.im/post/6844903991340597255
 参考资料: https://juejin.im/post/6844904147557285895</description>
-</item>
-<item>
-<title>JavaScript更新日志</title>
-<link>https://jxiaof.com/post/js/</link>
-<pubDate>Thu, 29 Oct 2020 16:31:16 +0800</pubDate>
-<guid>https://jxiaof.com/post/js/</guid>
-<description>使用JavaScript控制行为 JavaScript基本语法  语句和注释 变量和数据类型  声明和赋值 简单数据类型和复杂数据类型 变量的命名规则   表达式和运算符  赋值运算符 算术运算符 比较运算符 逻辑运算符   分支结构  if...else... switch...cas...default...   循环结构  for循环 while循环 do...while循环   数组  创建数组 操作数组中的元素   函数  声明函数 调用函数 参数和返回值 匿名函数 立即调用函数    面向对象  对象的概念 创建对象的字面量语法 访问成员运算符 创建对象的构造函数语法  this关键字   添加和删除属性  delete关键字   标准对象  Number / String / Boolean / Symbol / Array / Function Date / Error / Math / RegExp / Object / Map / Set JSON / Promise / Generator / Reflect / Proxy    BOM   window对象的属性和方法</description>
-</item>
-<item>
-<title>Python类型注解</title>
-<link>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</link>
-<pubDate>Fri, 23 Oct 2020 16:30:19 +0800</pubDate>
-<guid>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</guid>
-<description>typing &amp;mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样:
+    </item>
+    
+    <item>
+      <title>JavaScript更新日志</title>
+      <link>https://jxiaof.com/post/js/</link>
+      <pubDate>Thu, 29 Oct 2020 16:31:16 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/js/</guid>
+      <description>使用JavaScript控制行为 JavaScript基本语法  语句和注释 变量和数据类型  声明和赋值 简单数据类型和复杂数据类型 变量的命名规则   表达式和运算符  赋值运算符 算术运算符 比较运算符 逻辑运算符   分支结构  if...else... switch...cas...default...   循环结构  for循环 while循环 do...while循环   数组  创建数组 操作数组中的元素   函数  声明函数 调用函数 参数和返回值 匿名函数 立即调用函数    面向对象  对象的概念 创建对象的字面量语法 访问成员运算符 创建对象的构造函数语法  this关键字   添加和删除属性  delete关键字   标准对象  Number / String / Boolean / Symbol / Array / Function Date / Error / Math / RegExp / Object / Map / Set JSON / Promise / Generator / Reflect / Proxy    BOM   window对象的属性和方法</description>
+    </item>
+    
+    <item>
+      <title>Python类型注解</title>
+      <link>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 23 Oct 2020 16:30:19 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</guid>
+      <description>typing &amp;mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样:
 def greeting(name: str) -&amp;gt; str: return &amp;#39;Hello &amp;#39; + name 在函数 greeting 中，参数 name 预期是 str 类型，并且返回 str 类型。子类型允许作为参数。
 类型别名 类型别名通过将类型分配给别名来定义。在这个例子中， Vector 和 List[float] 将被视为可互换的同义词:
 from typing import List Vector = List[float] def scale(scalar: float, vector: Vector) -&amp;gt; Vector: return [scalar * num for num in vector] # typechecks; a list of floats qualifies as a Vector. new_vector = scale(2.0, [1.0, -4.2, 5.4]) 类型别名可用于简化复杂类型签名。例如:
 from typing import Dict, Tuple, Sequence ConnectionOptions = Dict[str, str] Address = Tuple[str, int] Server = Tuple[Address, ConnectionOptions] def broadcast_message(message: str, servers: Sequence[Server]) -&amp;gt; None: .</description>
-</item>
-<item>
-<title>Mongo</title>
-<link>https://jxiaof.com/post/mongo/</link>
-<pubDate>Thu, 15 Oct 2020 09:29:25 +0800</pubDate>
-<guid>https://jxiaof.com/post/mongo/</guid>
-<description>Document Database¶   High Performance
+    </item>
+    
+    <item>
+      <title>Mongo</title>
+      <link>https://jxiaof.com/post/mongo/</link>
+      <pubDate>Thu, 15 Oct 2020 09:29:25 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/mongo/</guid>
+      <description>Document Database¶   High Performance
   Rich Query Language
   High Availability
   Support for Multiple Storage Engines
@@ -127,22 +211,26 @@ https://docs.mongodb.com/v3.6/reference/sql-comparison/
 https://blog.csdn.net/luolian123456/article/details/83104242 /
 https://www.cnblogs.com/leskang/p/6000852.html
  INSERT db.collection(&amp;#39;inventory&amp;#39;).insertMany([ // MongoDB adds the _id field with an ObjectId if _id is not present { item: &amp;#34;journal&amp;#34;, qty: 25, status: &amp;#34;A&amp;#34;, size: { h: 14, w: 21, uom: &amp;#34;cm&amp;#34; }, tags: [ &amp;#34;blank&amp;#34;, &amp;#34;red&amp;#34; ] }, { item: &amp;#34;notebook&amp;#34;, qty: 50, status: &amp;#34;A&amp;#34;, size: { h: 8.</description>
-</item>
-<item>
-<title>Leetcode</title>
-<link>https://jxiaof.com/post/leetcode/</link>
-<pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
-<guid>https://jxiaof.com/post/leetcode/</guid>
-<description>买卖股票简答:
+    </item>
+    
+    <item>
+      <title>Leetcode</title>
+      <link>https://jxiaof.com/post/leetcode/</link>
+      <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/leetcode/</guid>
+      <description>买卖股票简答:
 class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru:
 # 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size = size self.linked_map = OrderedDict() def set(self, key, value): if key in self.linked_map: self.linked_map.pop(key) if self.size == len(self.linked_map): self.linked_map.popitem(last=False) self.linked_map.update({key: value}) def get(self, key): value = self.</description>
-</item>
-<item>
-<title>关于Redis的长期更新</title>
-<link>https://jxiaof.com/post/redis/</link>
-<pubDate>Wed, 14 Oct 2020 11:11:39 +0800</pubDate>
-<guid>https://jxiaof.com/post/redis/</guid>
-<description>redis redis数据类型分析 Redis的应用场景  高速缓存 - 将不常变化但又经常被访问的热点数据放到Redis数据库中，可以大大降低关系型数据库的压力，从而提升系统的响应性能。 排行榜 - 很多网站都有排行榜功能，利用Redis中的列表和有序集合可以非常方便的构造各种排行榜系统。 商品秒杀/投票点赞 - Redis提供了对计数操作的支持，网站上常见的秒杀、点赞等功能都可以利用Redis的计数器通过+1或-1的操作来实现，从而避免了使用关系型数据的update操作。 分布式锁 - 利用Redis可以跨多台服务器实现分布式锁（类似于线程锁，但是能够被多台机器上的多个线程或进程共享）的功能，用于实现一个阻塞式操作。 消息队列 - 消息队列和高速缓存一样，是一个大型网站不可缺少的基础服务，可以实现业务解耦和非实时业务削峰等特性  Redis的高并发和快速原因 1.redis是基于内存的，内存的读写速度非常快；
+    </item>
+    
+    <item>
+      <title>关于Redis的长期更新</title>
+      <link>https://jxiaof.com/post/redis/</link>
+      <pubDate>Wed, 14 Oct 2020 11:11:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/redis/</guid>
+      <description>redis redis数据类型分析 Redis的应用场景  高速缓存 - 将不常变化但又经常被访问的热点数据放到Redis数据库中，可以大大降低关系型数据库的压力，从而提升系统的响应性能。 排行榜 - 很多网站都有排行榜功能，利用Redis中的列表和有序集合可以非常方便的构造各种排行榜系统。 商品秒杀/投票点赞 - Redis提供了对计数操作的支持，网站上常见的秒杀、点赞等功能都可以利用Redis的计数器通过+1或-1的操作来实现，从而避免了使用关系型数据的update操作。 分布式锁 - 利用Redis可以跨多台服务器实现分布式锁（类似于线程锁，但是能够被多台机器上的多个线程或进程共享）的功能，用于实现一个阻塞式操作。 消息队列 - 消息队列和高速缓存一样，是一个大型网站不可缺少的基础服务，可以实现业务解耦和非实时业务削峰等特性  Redis的高并发和快速原因 1.redis是基于内存的，内存的读写速度非常快；
 2.redis是单线程的，省去了很多上下文切换线程的时间；
 3.redis使用多路复用技术，可以处理并发的连接。非阻塞IO 内部实现采用epoll，采用了epoll+自己实现的简单的事件框架。epoll中的读、写、关闭、连接都转化成了事件，然后利用epoll的多路复用特性，绝不在io上浪费一点时间。
 为什么Redis是单线程的 1.官方答案
@@ -167,86 +255,95 @@ Redis单线程的优劣势 单进程单线程优势
 多路-指的是多个socket连接，复用-指的是复用一个线程。多路复用主要有三种技术：select，poll，epoll, epoll是最新的也是目前最好的多路复用技术。
 这里“多路”指的是多个网络连接，“复用”指的是复用同一个线程。采用多路 I/O 复用技术可以让单个线程高效的处理多个连接请求（尽量减少网络IO的时间消耗），且Redis在内存中操作数据的速度非常快（内存内的操作不会成为这里的性能瓶颈），主要以上两点造就了Redis具有很高的吞吐量。
 Redis高并发快总结  Redis是纯内存数据库，一般都是简单的存取操作，线程占用的时间很多，时间的花费主要集中在IO上，所以读取速度快。 再说一下IO，Redis使用的是非阻塞IO，IO多路复用，使用了单线程来轮询描述符，将数据库的开、关、读、写都转换成了事件，减少了线程切换时上下文的切换和竞争。 Redis采用了单线程的模型，保证了每个操作的原子性，也减少了线程的上下文切换和竞争。 另外，数据结构也帮了不少忙，Redis全程使用hash结构，读取速度快，还有一些特殊的数据结构，对数据存储进行了优化，如压缩表，对短数据进行压缩存储，再如，跳表，使用有序的数据结构加快读取的速度。 还有一点，Redis采用自己实现的事件分离器，效率比较高，内部采用非阻塞的执行方式，吞吐能力比较大。   《Redis开发与运维》是一本不错的入门读物，而《Redis实战》是不错的进阶读物。</description>
-</item>
-<item>
-<title>进程间的通信</title>
-<link>https://jxiaof.com/post/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</link>
-<pubDate>Fri, 09 Oct 2020 15:55:40 +0800</pubDate>
-<guid>https://jxiaof.com/post/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</guid>
-<description>进程间的通信方式  信号 管道 信号量 共享内存 消息队列 套接字  对比：
+    </item>
+    
+    <item>
+      <title>进程间的通信</title>
+      <link>https://jxiaof.com/post/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</link>
+      <pubDate>Fri, 09 Oct 2020 15:55:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</guid>
+      <description>进程间的通信方式  信号 管道 信号量 共享内存 消息队列 套接字  对比：
    方式 传输的信息量 使用场景 关键词     信号 少量 任何 硬件来源、软件来源 / 信号队列   管道 大量 亲缘进程间 单向流动 / 内核缓冲区 / 循环队列 / 没有格式的字节流 / 操作系统负责同步   命名管道 大量 任何 磁盘文件 / 访问权限 / 无数据块 / 内核缓冲区 / 操作系统负责同步   信号量 N 任何 互斥同步 / 原子性 / P 减 V 增   共享内存 大量 多个进程 内存映射 / 简单快速 / 操作系统不保证同步   消息队列 比信号多，但有限制 任何 有格式 / 按消息类型过滤 / 操作系统负责同步   套接字 大量 不同主机的进程 读缓存区 / 写缓冲区 / 操作系统负责同步    信号 Signal 信号是 Linux 系统响应某些条件而产生的一个事件，由操作系统事先定义，接收到该信号的进程可以采取自定义的行为。这是一种“订阅-发布”的模式。</description>
-</item>
-<item>
-<title>Flask主线程以及短链接实现</title>
-<link>https://jxiaof.com/post/flask01/</link>
-<pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
-<guid>https://jxiaof.com/post/flask01/</guid>
-<description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
-</item>
-<item>
-<title>FUNCTOOLS的新功能</title>
-<link>https://jxiaof.com/post/function_tools/</link>
-<pubDate>Mon, 21 Sep 2020 22:36:03 +0800</pubDate>
-<guid>https://jxiaof.com/post/function_tools/</guid>
-<description>&lt;p&gt;&lt;strong&gt;functools - 可调用对象的高阶函数和操作&lt;/strong&gt;&lt;/p&gt;
+    </item>
+    
+    <item>
+      <title>Flask主线程以及短链接实现</title>
+      <link>https://jxiaof.com/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/flask01/</guid>
+      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FUNCTOOLS的新功能</title>
+      <link>https://jxiaof.com/post/function_tools/</link>
+      <pubDate>Mon, 21 Sep 2020 22:36:03 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/function_tools/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;functools - 可调用对象的高阶函数和操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.&lt;/p&gt;</description>
-</item>
-<item>
-<title>test</title>
-<link>https://jxiaof.com/post/test/</link>
-<pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
-<guid>https://jxiaof.com/post/test/</guid>
-<description>&lt;div class="highlight"&gt;&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span style="color:#75715e"&gt;&amp;lt;!-- I am some comments not end, not end... here the comment ends --&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;They say nothing anymore !&lt;/strong&gt;&lt;/p&gt;</description>
-</item>
-<item>
-<title>VIM记录</title>
-<link>https://jxiaof.com/post/vim/</link>
-<pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
-<guid>https://jxiaof.com/post/vim/</guid>
-<description>&lt;h2 id="vim解决痛点使用记录"&gt;vim解决痛点使用记录&lt;/h2&gt;
+    </item>
+    
+    <item>
+      <title>VIM记录</title>
+      <link>https://jxiaof.com/post/vim/</link>
+      <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/vim/</guid>
+      <description>&lt;h2 id=&#34;vim解决痛点使用记录&#34;&gt;vim解决痛点使用记录&lt;/h2&gt;
 &lt;p&gt;vim 对于一般的需求,确实用不到.很多时候前端用不太到,后端不做数据处理用不太到,不做linux下的高频率开发用不到,并且使用起来没有那么直观,学习曲线前期相当陡峭,但是vim一直很优秀,一直就是编辑器的指向标,现在许多的编辑器特性,也是参考vim快捷键实现的.比如向上移动一行代码功能,vim使用 &lt;strong&gt;ddkp&lt;/strong&gt;同样可以实现,比如过滤删除等.许多时候简直有一种如鱼得水的开发快感.下面我会持续记录一些vim我自己实实在在解决痛点的用法.&lt;/p&gt;</description>
-</item>
-<item>
-<title>Macos安装一些不兼容软件</title>
-<link>https://jxiaof.com/post/macos%E5%AE%89%E8%A3%85m2crypto/</link>
-<pubDate>Fri, 18 Sep 2020 21:56:44 +0800</pubDate>
-<guid>https://jxiaof.com/post/macos%E5%AE%89%E8%A3%85m2crypto/</guid>
-<description>&lt;p&gt;macos 安装 M2Crypto&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"&gt;&lt;code class="language-bash" data-lang="bash"&gt;brew install openssl 
+    </item>
+    
+    <item>
+      <title>Macos安装一些不兼容软件</title>
+      <link>https://jxiaof.com/post/macos%E5%AE%89%E8%A3%85m2crypto/</link>
+      <pubDate>Fri, 18 Sep 2020 21:56:44 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/macos%E5%AE%89%E8%A3%85m2crypto/</guid>
+      <description>&lt;p&gt;macos 安装 M2Crypto&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;brew install openssl 
 brew install swig
 
-env LDFLAGS&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;-L&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;brew --prefix openssl&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/lib&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&lt;/span&gt;CFLAGS&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;-I&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;brew --prefix openssl&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/include&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&lt;/span&gt;SWIG_FEATURES&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;-cpperraswarn -includeall -I&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;brew --prefix openssl&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/include&amp;#34;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;\
-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;&lt;/span&gt;pip install m2crypto
+env LDFLAGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-L&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;brew --prefix openssl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/lib&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;CFLAGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-I&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;brew --prefix openssl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/include&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;SWIG_FEATURES&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-cpperraswarn -includeall -I&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;brew --prefix openssl&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/include&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;pip install m2crypto
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-</item>
-<item>
-<title>图像分析与处理</title>
-<link>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</link>
-<pubDate>Fri, 18 Sep 2020 17:48:09 +0800</pubDate>
-<guid>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</guid>
-<description>&lt;p&gt;&lt;strong&gt;Python 图像处理&lt;/strong&gt;&lt;/p&gt;
+    </item>
+    
+    <item>
+      <title>图像分析与处理</title>
+      <link>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 18 Sep 2020 17:48:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Python 图像处理&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;​    本篇文章主要对图像处理有基本认知,是项目开发中容易遇到的问题,并非处理ai人工智能识别与转换.(此外,目前市面上的图像识别以及语音识别已经发展的相当不错.大部分的ai都是根据github开源调试参数.)&lt;/p&gt;
 &lt;p&gt;​       多数图像处理与操作技术可以被两个库有效完成，它们是 &lt;strong&gt;Python Imaging Library (PIL)&lt;/strong&gt; 与  &lt;strong&gt;OpenSource Computer Vision (OpenCV)&lt;/strong&gt; 。&lt;/p&gt;</description>
-</item>
-<item>
-<title>sql使用手记</title>
-<link>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
-<pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
-<guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
-<description>&lt;p&gt;[toc]&lt;/p&gt;
+    </item>
+    
+    <item>
+      <title>sql使用手记</title>
+      <link>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
+      <description>&lt;p&gt;[toc]&lt;/p&gt;
 &lt;p&gt;​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。&lt;/p&gt;</description>
-</item>
-<item>
-<title>About</title>
-<link>https://jxiaof.com/about/</link>
-<pubDate>Tue, 11 Aug 2020 08:41:54 +0800</pubDate>
-<guid>https://jxiaof.com/about/</guid>
-<description>​ This is the second time to build my blogs since my website was not running one year ago. Last year, work tasks takes over my life completely. There was a month when I worked 160 hours of overtime and the average overtime hours were more than 120 hours in other four month.
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://jxiaof.com/about/</link>
+      <pubDate>Tue, 11 Aug 2020 08:41:54 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/about/</guid>
+      <description>​ This is the second time to build my blogs since my website was not running one year ago. Last year, work tasks takes over my life completely. There was a month when I worked 160 hours of overtime and the average overtime hours were more than 120 hours in other four month.
 ​ That&amp;rsquo;s crazy and terrifying. I think about work only and other things are missing. so, I set up a blog again when after finishing my work now.</description>
-</item>
-</channel>
+    </item>
+    
+  </channel>
 </rss>
