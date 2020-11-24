@@ -424,6 +424,51 @@ var lastname=&ldquo;Doe&rdquo;, age=30, job=&ldquo;carpenter&rdquo;;</p>
     </div>
 
   </article>
+  <div class="post-comment">
+       
+       <h3>Comments</h3>
+<div class = 'comments'>
+<span class = 'form_toggle btn'>Comment</span>
+<form class = 'form' method = 'POST'>
+  
+  <p class='reply_notice'>
+    <span class='reply_to'></span>
+  </p>
+  
+
+  <input type = 'hidden' class = 'form_input form_slug' name = 'options[slug]' value = '35af4e64fde50a361921da44ec91c93e'>
+  <input type='hidden' class='form_input reply_thread' name='fields[replyThread]'>
+  <input type='hidden' class='form_input reply_id' name='fields[replyId]'>
+  <input type='hidden' class='form_input reply_name' name='fields[replyName]'><label class = 'form_label'>Name</label>
+  <input name = 'fields[name]' type = 'text' placeholder = 'Name' class = 'form_input form_name' required>
+  <label class = 'form_label'>Email</label>
+  <input name = 'fields[email]' type = 'email' placeholder = 'Email' class = 'form_input form_email' required>
+  <label class = 'form_label'>Comment</label>
+  <textarea name = 'fields[comment]' placeholder = 'Type in a comment...' class = 'form_input form_comment' required></textarea><div class = 'btn_group'>
+    <input type = 'submit' id = 'submitComment' value = 'Submit' class = 'btn form_submit'>
+    <div class='form_reset btn_close icon'></div>
+  </div>
+</form>
+
+</div> 
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'IMDsUjlvwlsnibE9ILs4WInH-gzGzoHsz',
+       appKey: 'IMDsUjlvwlsnibE9ILs4WInH-gzGzoHsz',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说点什么吧...',
+       visitor: 'true'
+   });
+ </script>
+  </div>
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
