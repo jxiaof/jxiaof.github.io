@@ -18,56 +18,6 @@
     </item>
     
     <item>
-      <title>Leetcode</title>
-      <link>https://jxiaof.com/post/leetcode/</link>
-      <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/leetcode/</guid>
-      <description>买卖股票简答:
-class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru:
-# 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size = size self.linked_map = OrderedDict() def set(self, key, value): if key in self.linked_map: self.linked_map.pop(key) if self.size == len(self.linked_map): self.linked_map.popitem(last=False) self.linked_map.update({key: value}) def get(self, key): value = self.</description>
-    </item>
-    
-    <item>
-      <title>sql使用手记</title>
-      <link>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
-      <description>&lt;p&gt;[toc]&lt;/p&gt;
-&lt;p&gt;​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Funny</title>
-      <link>https://jxiaof.com/post/funny/</link>
-      <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/funny/</guid>
-      <description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
-import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps = 30 #帧率 size = (1280,720) fourcc = VideoWriter_fourcc(*&amp;#34;MJPG&amp;#34;) #支持jpg videoWriter = cv2.VideoWriter(out_root, fourcc, fps, size) im_names = os.listdir(img_root) print(len(im_names)) for im_name in range(len(im_names) - 2): string = img_root + &amp;#39;frame&amp;#39; + str(im_name) + &amp;#39;.jpg&amp;#39; print(string) frame = cv2.</description>
-    </item>
-    
-    <item>
-      <title>Flask主线程以及短链接实现</title>
-      <link>https://jxiaof.com/post/flask01/</link>
-      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/flask01/</guid>
-      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>VIM使用记录</title>
-      <link>https://jxiaof.com/post/vim/</link>
-      <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/vim/</guid>
-      <description>&lt;h2 id=&#34;vim解决痛点使用记录&#34;&gt;vim解决痛点使用记录&lt;/h2&gt;
-&lt;p&gt;vim 对于一般的需求,确实用不到.很多时候前端用不太到,后端不做数据处理用不太到,不做linux下的高频率开发用不到,并且使用起来没有那么直观,学习曲线前期相当陡峭,但是vim一直很优秀,一直就是编辑器的指向标,现在许多的编辑器特性,也是参考vim快捷键实现的.比如向上移动一行代码功能,vim使用 &lt;strong&gt;ddkp&lt;/strong&gt;同样可以实现,比如过滤删除等.许多时候简直有一种如鱼得水的开发快感.下面我会持续记录一些vim我自己实实在在解决痛点的用法.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>python多任务处理</title>
       <link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Thu, 10 Sep 2020 14:57:37 +0800</pubDate>
@@ -209,6 +159,16 @@ clickhouse性能对比
     </item>
     
     <item>
+      <title>Funny</title>
+      <link>https://jxiaof.com/post/funny/</link>
+      <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/funny/</guid>
+      <description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps = 30 #帧率 size = (1280,720) fourcc = VideoWriter_fourcc(*&amp;#34;MJPG&amp;#34;) #支持jpg videoWriter = cv2.VideoWriter(out_root, fourcc, fps, size) im_names = os.listdir(img_root) print(len(im_names)) for im_name in range(len(im_names) - 2): string = img_root + &amp;#39;frame&amp;#39; + str(im_name) + &amp;#39;.jpg&amp;#39; print(string) frame = cv2.</description>
+    </item>
+    
+    <item>
       <title>devops数据平台设计</title>
       <link>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Thu, 12 Nov 2020 09:45:51 +0800</pubDate>
@@ -289,6 +249,17 @@ https://www.cnblogs.com/leskang/p/6000852.html
     </item>
     
     <item>
+      <title>Leetcode</title>
+      <link>https://jxiaof.com/post/leetcode/</link>
+      <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/leetcode/</guid>
+      <description>买卖股票简答:
+class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru:
+# 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size = size self.linked_map = OrderedDict() def set(self, key, value): if key in self.linked_map: self.linked_map.pop(key) if self.size == len(self.linked_map): self.linked_map.popitem(last=False) self.linked_map.update({key: value}) def get(self, key): value = self.</description>
+    </item>
+    
+    <item>
       <title>关于Redis的长期更新</title>
       <link>https://jxiaof.com/post/redis/</link>
       <pubDate>Wed, 14 Oct 2020 11:11:39 +0800</pubDate>
@@ -332,6 +303,15 @@ Redis高并发快总结  Redis是纯内存数据库，一般都是简单的存�
     </item>
     
     <item>
+      <title>Flask主线程以及短链接实现</title>
+      <link>https://jxiaof.com/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/flask01/</guid>
+      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>FUNCTOOLS的新功能</title>
       <link>https://jxiaof.com/post/function_tools/</link>
       <pubDate>Mon, 21 Sep 2020 22:36:03 +0800</pubDate>
@@ -339,6 +319,16 @@ Redis高并发快总结  Redis是纯内存数据库，一般都是简单的存�
       <guid>https://jxiaof.com/post/function_tools/</guid>
       <description>&lt;p&gt;&lt;strong&gt;functools - 可调用对象的高阶函数和操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VIM使用记录</title>
+      <link>https://jxiaof.com/post/vim/</link>
+      <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/vim/</guid>
+      <description>&lt;h2 id=&#34;vim解决痛点使用记录&#34;&gt;vim解决痛点使用记录&lt;/h2&gt;
+&lt;p&gt;vim 对于一般的需求,确实用不到.很多时候前端用不太到,后端不做数据处理用不太到,不做linux下的高频率开发用不到,并且使用起来没有那么直观,学习曲线前期相当陡峭,但是vim一直很优秀,一直就是编辑器的指向标,现在许多的编辑器特性,也是参考vim快捷键实现的.比如向上移动一行代码功能,vim使用 &lt;strong&gt;ddkp&lt;/strong&gt;同样可以实现,比如过滤删除等.许多时候简直有一种如鱼得水的开发快感.下面我会持续记录一些vim我自己实实在在解决痛点的用法.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -368,6 +358,16 @@ env LDFLAGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
 &lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;​    本篇文章主要对图像处理有基本认知,是项目开发中容易遇到的问题,并非处理ai人工智能识别与转换.(此外,目前市面上的图像识别以及语音识别已经发展的相当不错.大部分的ai都是根据github开源调试参数.)&lt;/p&gt;
 &lt;p&gt;​       多数图像处理与操作技术可以被两个库有效完成，它们是 &lt;strong&gt;Python Imaging Library (PIL)&lt;/strong&gt; 与  &lt;strong&gt;OpenSource Computer Vision (OpenCV)&lt;/strong&gt; 。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sql使用手记</title>
+      <link>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
+      <description>&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。&lt;/p&gt;</description>
     </item>
     
     <item>

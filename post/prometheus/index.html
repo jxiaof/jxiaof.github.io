@@ -64,7 +64,7 @@ app <span style="color:#f92672">=</span> Flask(__name__)
 app_dispatch <span style="color:#f92672">=</span> DispatcherMiddleware(app, {
     <span style="color:#e6db74">&#39;/metrics&#39;</span>: make_wsgi_app()
 })
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pip install uwsgi
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install uwsgi
 
 uwsgi --http 0.0.0.0:8000 --wsgi-file myapp.py --callable app_dispatch
 </code></pre></div><p>这样就可以直接通过 wsgi 直接使用了：</p>
@@ -115,7 +115,8 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
     manageStatus<span style="color:#f92672">.</span>set(manageCode)
     <span style="color:#66d9ef">return</span> Response(prometheus_client<span style="color:#f92672">.</span>generate_latest(REGISTRY),mimetype<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/plain&#34;</span>)
 </code></pre></div><p>这里通过一个 Registery 来保存多个 Metric，然后最终再一起返回。</p>
-<h3 id="4-ref">4. Ref</h3>
+<hr>
+<p>相关文档:</p>
 <ul>
 <li><a href="https://github.com/prometheus/client_python">Prometheus Client</a></li>
 </ul>
@@ -172,7 +173,7 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/leetcode/' title = 'Leetcode' style = 'background-image: url(https://jxiaof.com/images/programmer.png);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
@@ -183,10 +184,10 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/leetcode/'>Leetcode</a>
+      <a href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
     </h3>
-    <p class = 'pale'>买卖股票简答:
-class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: …</p>
+    <p class = 'pale'><p>多任务有：多进程 多线程以及异步协程。</p>
+<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
   </div>
 </li>
 
