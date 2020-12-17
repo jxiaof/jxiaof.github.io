@@ -92,7 +92,7 @@ vim 对于一般的需求,确实用不到.很多时候前端用不太到,后端�
 </code></pre></div><p>.ini 的注释是以 ; 开始的，如果注释不在行开头，那么删除 ; 及以后的字符</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">:%s/<span style="color:#ae81ff">\;</span>.<span style="color:#ae81ff">\+</span>//g
 </code></pre></div><p>删除 # 之后所有字符</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">%s/<span style="color:#ae81ff">\#</span>.*//g
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">%s/<span style="color:#ae81ff">\#</span>.*//g<span style="color:#f92672">)</span>
 </code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>

@@ -125,13 +125,13 @@ Note right of 运维各部门: 循环
 <p><strong>整体流程图如下所示:</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% 过程图
   sequenceDiagram
-    MateDate-&gt;&gt;kibana &amp; grafana: 传送数据
+    MateDate-&gt;&gt;grafana: 传送数据
     alt 使用echarts图表
     MateDate-&gt;&gt;echarts: 传送数据
     echarts-&gt;&gt;viewer: 定制图表计算输出图表
     else 使用kibana &amp; grafana
-    MateDate-&gt;&gt;kibana &amp; grafana: 传送数据
-    kibana &amp; grafana-&gt;&gt;viewer: 直接展示输出图表
+    MateDate-&gt;&gt;grafana: 传送数据
+    grafana-&gt;&gt;viewer: 直接展示输出图表
     end
     opt 其他 mysql / redis
     MateDate-&gt;&gt;viewer: 直接返回列表数据
@@ -234,9 +234,9 @@ another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6d
 <p><strong>项目分析</strong></p>
 <ul>
 <li>图表展示为主,数据分析视频.</li>
-<li>元数据来源: cmdb, itsm, 监控, 安全,采购等</li>
-<li>为保证水平拓展与过度, 数据最好能用es或者mysql等容易对接的数据存储端, 方便后期搭建flask + vue + mysql+ echart 细化分析</li>
-<li>其他存储端: 时序数据库存储, es,clickhouse(现有方案,rds存储方案: LSM+列式存储，读写性能高；压缩率高；物化视图；架构、部署简单)</li>
+<li>元数据来源: cmdb, itsm, 监控, 安全,采购等.</li>
+<li>为保证水平拓展与过度, 数据最好能用es或者mysql等容易对接的数据存储端, 方便后期搭建flask + vue + mysql+ echart 细化分析.</li>
+<li>其他存储端: 时序数据库存储, es,clickhouse(现有方案,rds存储方案: LSM+列式存储，读写性能高；压缩率高；物化视图；架构、部署简单).</li>
 </ul>
 <p><strong>项目时间周期</strong></p>
 <ol>

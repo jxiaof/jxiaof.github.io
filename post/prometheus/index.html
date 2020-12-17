@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Prometheus | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.76.5" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Prometheus' />
+<meta name="description" content="0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
+​	promrthus原本 …">
+<meta property = 'og:description' content = '0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
+​	promrthus原本 …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/post/prometheus/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/cover.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Prometheus' />
+<meta property = 'twitter:description'  content = '0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
+​	promrthus原本 …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/cover.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/post/prometheus/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/cover.png);'>
+  <h1 class='post_title'>Prometheus</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'><h3 id="0-概述">0. 概述</h3>
+<p>​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.</p>
+<p>​	promrthus原本就有很多exproter,但是任务往往还需要自定义.这里我就结合近期,说说自定义采集数据到prometheus,之后通过grafana输出.</p>
+<h3 id="1-flask-快速使用">1. Flask 快速使用</h3>
+<p>如果是使用 Flask 的话，Promehteus 的 Python SDK 默认支持，可以这么用：</p>
+<p>创建main.py</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+<span style="color:#f92672">from</span> werkzeug.middleware.dispatcher <span style="color:#f92672">import</span> DispatcherMiddleware
+<span style="color:#f92672">from</span> prometheus_client <span style="color:#f92672">import</span> make_wsgi_app
+<span style="color:#75715e"># Create my app</span>
+app <span style="color:#f92672">=</span> Flask(__name__)
+<span style="color:#75715e"># Add prometheus wsgi middleware to route /metrics requests</span>
+app_dispatch <span style="color:#f92672">=</span> DispatcherMiddleware(app, {
+    <span style="color:#e6db74">&#39;/metrics&#39;</span>: make_wsgi_app()
+})
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pip install uwsgi
+
+uwsgi --http 0.0.0.0:8000 --wsgi-file myapp.py --callable app_dispatch
+</code></pre></div><p>这样就可以直接通过 wsgi 直接使用了：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -I http://localhost:8000/metrics
+</code></pre></div><h3 id="2-单-metric-实现">2. 单 Metric 实现</h3>
+<p>如果想要自己实现，那么也可以简单得实现：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+<span style="color:#f92672">from</span> werkzeug.middleware.dispatcher <span style="color:#f92672">import</span> DispatcherMiddleware
+<span style="color:#f92672">import</span> promehteus_client
+<span style="color:#f92672">from</span> prometheus_client <span style="color:#f92672">import</span> Counter
+<span style="color:#75715e"># Create my app</span>
+app <span style="color:#f92672">=</span> Flask(__name__)
+requests_total <span style="color:#f92672">=</span> Counter(<span style="color:#e6db74">&#34;request_count&#34;</span>, <span style="color:#e6db74">&#34;Total request cout of the host&#34;</span>)
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/metrics&#34;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">requests_count</span>():
+    requests_total<span style="color:#f92672">.</span>inc()
+    <span style="color:#66d9ef">return</span> Response(prometheus_client<span style="color:#f92672">.</span>generate_latest(requests_total),mimetype<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/plain&#34;</span>)
+</code></pre></div><p>如果是其他rest框架可以这样编写</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@_api.route</span>(<span style="color:#e6db74">&#39;/metrics&#39;</span>)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Metrics</span>(Resource):
+    <span style="color:#e6db74">&#34;&#34;&#34;  
+</span><span style="color:#e6db74">    a exproter for promethheus
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#75715e"># @login_check</span>
+    <span style="color:#75715e"># @permissions_check(ROLE_READ)</span>
+    <span style="color:#a6e22e">@_api.response</span>(<span style="color:#ae81ff">200</span>, <span style="color:#e6db74">&#39;Success&#39;</span>, None)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self):
+        <span style="color:#e6db74">&#34;&#34;&#34; prometheus exporter &#34;&#34;&#34;</span>
+        handler()
+        resp <span style="color:#f92672">=</span> Response()
+        resp<span style="color:#f92672">.</span>status_code <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+        resp<span style="color:#f92672">.</span>set_data(generate_latest()<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+        resp<span style="color:#f92672">.</span>headers <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Content-Type&#39;</span>: <span style="color:#e6db74">&#39;text/plain&#39;</span>}
+        <span style="color:#66d9ef">return</span> resp
+</code></pre></div><h3 id="3-多-metric-实现">3. 多 Metric 实现</h3>
+<p>如果是一次返回多个 Metric 的话，那么可以这么写：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> prometheus_client
+<span style="color:#f92672">from</span> prometheus_client <span style="color:#f92672">import</span> Counter
+<span style="color:#f92672">from</span> prometheus_client.core <span style="color:#f92672">import</span> CollectorRegistry
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Response, Flask
+app <span style="color:#f92672">=</span> Flask(__name__)
+REGISTRY <span style="color:#f92672">=</span> CollectorRegistry(auto_describe<span style="color:#f92672">=</span>False)
+muxStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db74">&#34;mux_api_21&#34;</span>,<span style="color:#e6db74">&#34;Api response stats is:&#34;</span>,registry<span style="color:#f92672">=</span>REGISTRY)
+manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db74">&#34;manage_api_21&#34;</span>,<span style="color:#e6db74">&#34;Api response stats is:&#34;</span>,registry<span style="color:#f92672">=</span>REGISTRY)
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/metrics&#34;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ApiResponse</span>():
+    muxStatus<span style="color:#f92672">.</span>set(muxCode)
+    manageStatus<span style="color:#f92672">.</span>set(manageCode)
+    <span style="color:#66d9ef">return</span> Response(prometheus_client<span style="color:#f92672">.</span>generate_latest(REGISTRY),mimetype<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/plain&#34;</span>)
+</code></pre></div><p>这里通过一个 Registery 来保存多个 Metric，然后最终再一起返回。</p>
+<h3 id="4-ref">4. Ref</h3>
+<ul>
+<li><a href="https://github.com/prometheus/client_python">Prometheus Client</a></li>
+</ul>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+  </div>
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'ABOUT MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/first/'>ABOUT MYSELF</a>
+    </h3>
+    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/leetcode/' title = 'Leetcode' style = 'background-image: url(https://jxiaof.com/images/programmer.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/leetcode/'>Leetcode</a>
+    </h3>
+    <p class = 'pale'>买卖股票简答:
+class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
+
+  </body>
+</html>

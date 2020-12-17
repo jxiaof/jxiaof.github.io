@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Mon, 23 Nov 2020 10:14:58 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Dec 2020 15:55:08 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ABOUT MYSELF</title>
       <link>https://jxiaof.com/post/first/</link>
@@ -75,6 +75,41 @@ import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize impor
       <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
       <description>&lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://jxiaof.com/post/go/</link>
+      <pubDate>Thu, 17 Dec 2020 15:55:08 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/go/</guid>
+      <description>go 目前正在学习go语言
+了解到gin go-admin go-zero
+后期根据实际情况接触了解.</description>
+    </item>
+    
+    <item>
+      <title>Prometheus</title>
+      <link>https://jxiaof.com/post/prometheus/</link>
+      <pubDate>Thu, 17 Dec 2020 11:23:00 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/prometheus/</guid>
+      <description>0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
+​	promrthus原本就有很多exproter,但是任务往往还需要自定义.这里我就结合近期,说说自定义采集数据到prometheus,之后通过grafana输出.
+1. Flask 快速使用 如果是使用 Flask 的话，Promehteus 的 Python SDK 默认支持，可以这么用：
+创建main.py
+from flask import Flask from werkzeug.middleware.dispatcher import DispatcherMiddleware from prometheus_client import make_wsgi_app # Create my app app = Flask(__name__) # Add prometheus wsgi middleware to route /metrics requests app_dispatch = DispatcherMiddleware(app, { &amp;#39;/metrics&amp;#39;: make_wsgi_app() }) pip install uwsgi uwsgi --http 0.0.0.0:8000 --wsgi-file myapp.py --callable app_dispatch 这样就可以直接通过 wsgi 直接使用了：
+curl -I http://localhost:8000/metrics 2. 单 Metric 实现 如果想要自己实现，那么也可以简单得实现：</description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://jxiaof.com/post/git/</link>
+      <pubDate>Mon, 14 Dec 2020 11:42:36 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/git/</guid>
+      <description>git 一些实用的做法 长期更新
+git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 $ git branch -d [branch-name] git branch -r -d origin/branch-name git push origin :branch-name # 删除远程分支 $ git push origin --delete [branch-name] $ git branch -dr [remote/branch] # 显示某次提交时，某个文件的内容 $ git show [commit]:[filename] </description>
     </item>
     
     <item>

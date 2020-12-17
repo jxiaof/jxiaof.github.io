@@ -411,7 +411,45 @@ var lastname=&ldquo;Doe&rdquo;, age=30, job=&ldquo;carpenter&rdquo;;</p>
 </tr>
 </tbody>
 </table>
-<hr>
+<h1 id="es6-promise">es6 promise</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ajaxMise</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">data</span>, <span style="color:#66d9ef">async</span>, <span style="color:#a6e22e">timeout</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>()
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) {
+        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">open</span>(<span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">url</span>, <span style="color:#66d9ef">async</span>);
+        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">timeout</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">timeout</span>;
+        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">onloadend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+            <span style="color:#66d9ef">if</span> ((<span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">200</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">300</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">304</span>)
+                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">xhr</span>);
+            <span style="color:#66d9ef">else</span>
+                <span style="color:#a6e22e">reject</span>({
+                    <span style="color:#a6e22e">errorType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;status_error&#39;</span>,
+                    <span style="color:#a6e22e">xhr</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">xhr</span>
+                })
+        }
+        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">data</span>);
+        <span style="color:#75715e">//错误处理
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">onabort</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+            <span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> Error({
+                <span style="color:#a6e22e">errorType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;abort_error&#39;</span>,
+                <span style="color:#a6e22e">xhr</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">xhr</span>
+            }));
+        }
+        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">ontimeout</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+            <span style="color:#a6e22e">reject</span>({
+                <span style="color:#a6e22e">errorType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;timeout_error&#39;</span>,
+                <span style="color:#a6e22e">xhr</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">xhr</span>
+            });
+        }
+        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">onerror</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+            <span style="color:#a6e22e">reject</span>({
+                <span style="color:#a6e22e">errorType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;onerror&#39;</span>,
+                <span style="color:#a6e22e">xhr</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">xhr</span>
+            })
+        }
+    })
+}
+
+</code></pre></div><hr>
 <p>参考文件:  <a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day21-30/21-30.Web">https://github.com/jackfrued/Python-100-Days/blob/master/Day21-30/21-30.Web</a>前端概述.</p>
 <p>参考文件: <a href="https://www.runoob.com/js/js-promise.html">https://www.runoob.com/js/js-promise.html</a></p>
 

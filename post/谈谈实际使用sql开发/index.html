@@ -64,6 +64,23 @@
  <span style="color:#66d9ef">as</span> http_user_agent,
     <span style="color:#66d9ef">count</span>(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> pv 
     <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span>  http_user_agent
+    
+<span style="color:#66d9ef">SELECT</span>
+	now() <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#34;time&#34;</span>,
+<span style="color:#66d9ef">CASE</span>
+		a.<span style="color:#66d9ef">type</span> 
+		<span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">THEN</span>
+		<span style="color:#e6db74">&#39;物理机&#39;</span> 
+		<span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">THEN</span>
+		<span style="color:#e6db74">&#39;交换机&#39;</span> 
+		<span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">3</span> <span style="color:#66d9ef">THEN</span>
+		<span style="color:#e6db74">&#39;虚拟机&#39;</span> 
+		<span style="color:#66d9ef">WHEN</span> <span style="color:#ae81ff">4</span> <span style="color:#66d9ef">THEN</span>
+		<span style="color:#e6db74">&#39;云主机&#39;</span> <span style="color:#66d9ef">ELSE</span> <span style="color:#e6db74">&#39;未标记类型&#39;</span> 
+	<span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> metric,
+	<span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>)
+<span style="color:#66d9ef">FROM</span>
+	machine
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">*</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">`</span>
  <span style="color:#66d9ef">CASE</span>
  <span style="color:#66d9ef">WHEN</span> latency <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;s10&#39;</span>
@@ -219,6 +236,11 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 <span style="color:#f92672">+</span><span style="color:#75715e">--------+------------+------------+------+
 </span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Bowser <span style="color:#f92672">|</span> <span style="color:#ae81ff">1989</span><span style="color:#f92672">-</span><span style="color:#ae81ff">08</span><span style="color:#f92672">-</span><span style="color:#ae81ff">31</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">1995</span><span style="color:#f92672">-</span><span style="color:#ae81ff">07</span><span style="color:#f92672">-</span><span style="color:#ae81ff">29</span> <span style="color:#f92672">|</span>    <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span>
 <span style="color:#f92672">+</span><span style="color:#75715e">--------+------------+------------+------+
+</span><span style="color:#75715e"></span>
+
+
+<span style="color:#75715e">-- 另一些用法
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">isnull</span>(<span style="color:#960050;background-color:#1e0010">字段</span>,<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#75715e">--这样就是把空值赋值为0  
 </span></code></pre></div><h2 id="模糊查询n个字符的名称">模糊查询N个字符的名称</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
 <span style="color:#75715e">/* 匹配五个字符 */</span>
@@ -610,7 +632,17 @@ mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT<
 
 <span style="color:#75715e">-- 召回hellokitty对school数据库所有对象的insert/delete/update权限
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">revoke</span> <span style="color:#66d9ef">insert</span>, <span style="color:#66d9ef">delete</span>, <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">on</span> school.<span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;hellokitty&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
-</code></pre></div><hr>
+</code></pre></div><h1 id="日常使用函数">日常使用函数</h1>
+<blockquote>
+<ol>
+<li>trunc（value,precision）按精度(precision)截取某个数字,不进行舍入操作。</li>
+<li>round（value,precision）根据给定的精度(precision)输入数值。</li>
+<li>ceil (value) 产生大于或等于指定值（value）的最小整数。</li>
+<li>floor（value）与 ceil（）相反，产生小于或等于指定值（value）的最小整数。</li>
+<li>sign(value) 与绝对值函数ABS（）相反。ABS（）给出的是值的量而不是其符号，sign(value)则给出值的符号而不是量。</li>
+</ol>
+</blockquote>
+<hr>
 <p>参考内容: <a href="https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html">https://www.docs4dev.com/docs/zh/mysql/5.7/reference/batch-mode.html</a></p>
 <p>参考内容: <a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/36-38">https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/36-38</a>.关系型数据库MySQL.md</p>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
