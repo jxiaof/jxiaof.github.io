@@ -221,6 +221,32 @@ a <span style="color:#f92672">=</span> Solution()
 <span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>maximumGap([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">1</span>]))
 
 <span style="color:#75715e"># leetcode submit region end(Prohibit modification and deletion)</span>
+</code></pre></div><p>写一个线程安全的单例模式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding:utf-8</span>
+<span style="color:#f92672">import</span> threading
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">synchronized</span>(func):
+
+    func<span style="color:#f92672">.</span>__lock__ <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lock_func</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">with</span> func<span style="color:#f92672">.</span>__lock__:
+            <span style="color:#66d9ef">return</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+    <span style="color:#66d9ef">return</span> lock_func
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>(object):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    单例模式
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    instance <span style="color:#f92672">=</span> None
+
+    <span style="color:#a6e22e">@synchronized</span>
+    <span style="color:#66d9ef">def</span> __new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">is</span> None:
+            cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>instance
 </code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
