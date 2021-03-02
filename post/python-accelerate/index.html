@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Python accelerate | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.76.5" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Python Accelerate' />
+<meta name="description" content="python加速 python 程序性能优化的套路一般有两种：
+  jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
+  将python代码转换成c&#43;&#43;/c代码，然后编译执行，这种方式有：cython和nuitka。总而 …">
+<meta property = 'og:description' content = 'python加速 python 程序性能优化的套路一般有两种：
+  jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
+  将python代码转换成c&#43;&#43;/c代码，然后编译执行，这种方式有：cython和nuitka。总而 …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/post/python-accelerate/' />
+<meta property = 'og:image' content = 'images/%!s()'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Python Accelerate' />
+<meta property = 'twitter:description'  content = 'python加速 python 程序性能优化的套路一般有两种：
+  jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
+  将python代码转换成c&#43;&#43;/c代码，然后编译执行，这种方式有：cython和nuitka。总而 …'/>
+<meta name = 'twitter:image' content = 'images/%!s()' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/post/python-accelerate/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+  
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/thumbnail.svg);'>
+  <h1 class='post_title'>Python Accelerate</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'><h1 id="python加速">python加速</h1>
+<p>python 程序性能优化的套路一般有两种：</p>
+<ul>
+<li>
+<p>jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；</p>
+</li>
+<li>
+<p>将python代码转换成c++/c代码，然后编译执行，这种方式有：cython和nuitka。总而言之，转换成c++/c代码以后编译成二进制文件执行的效率比用numba和pypy即时编译执行的效率要高。</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>Cython： Cython是让Python脚本支持C语言扩展的编译器，Cython能够将Python+C混合编码的.pyx脚本转换为C代码，主要用于优化Python脚本性能或Python调用C函数库。</p>
+</li>
+<li>
+<p>Pypy：Pypy最重要的一点就是Pypy集成了JIT。同时针对CPython的缺点进行了各方面的改良，性能得到很大的提升。了解JIT技术的人都应该对Pypy很有好感。Pypy的优点是对纯Python项目兼容性极好，几乎可以直接运行并直接获得性能提升（官方宣称为6.3倍……但是实际上没感觉有这么多）；缺点是对很多C语言库支持性不好，Pypy社区一直有相关讨论。</p>
+</li>
+<li>
+<p>Numba：Numba是一个库，可以在运行时将Python代码编译为本地机器指令，而不会强制大幅度的改变普通的Python代码。</p>
+</li>
+</ol>
+<p>通用性：在三个方案中，Cython和Numba的兼容性都非常好，而Pypy对于部分库的支持较差（如Numpy，Scipy）。</p>
+<p>速度：这三种方案的速度相差不大，通常来说Cython要快于Pypy，尤其是对于部分C扩展。Pypy要快于Numba，但针对于纯数值计算的工作，Numba甚至还要快于Cython。</p>
+<p>易用性：易用性最好的无疑是Pypy，Pypy是Python的解释器，我们针对纯Python使用Pypy，除了Pypy不支持的部分库外，不需要进行任何改动。然后是Numba，Numba的基本使用方法就是给函数加一个装饰器，易用性也很高，最后是Cython，因为Cython中需要使用Python+C混合编码，如果需要移植，代价会很大。</p>
+<p>**总结：**Pypy是非常理想的Python解释器，最大的瑕疵就是对部分库的兼容问题。Cython是一种Python + C的便利性组合，转为C编译的扩展执行效率非常高，但使用相对麻烦，移植CPython项目代价较高。Numba更适合针对性优化，效率高，并且不会大幅度的改变普通的Python代码。所以三者实在没法说谁最优秀，只是在不同的方向针对性及适用性更高。</p>
+<h1 id="测试pypy">测试pypy</h1>
+<p>anaconda安装pypy</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda create -n &lt;newenviromnentname&gt;
+conda activate &lt;newenviromnentname&gt;
+conda install -c conda-forge pypy3.6   <span style="color:#75715e"># 3.7.可以安装- 截止2021年3月2日</span>
+<span style="color:#75715e"># test</span>
+pypy3 -c <span style="color:#e6db74">&#34;import sys; print(sys.version)&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
+    <span style="color:#f92672">import</span> time
+    t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100000000</span>):
+        <span style="color:#66d9ef">continue</span>
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;共计花费时间为: &#34;</span>,time<span style="color:#f92672">.</span>time()<span style="color:#f92672">-</span>t1)
+
+run()
+
+</code></pre></div><p><img src="https://gitee.com/felix_web/images/raw/master/uPic/image-20210302105058223.png" alt="image-20210302105058223"></p>
+<p>加入一点计算环节</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
+    <span style="color:#f92672">import</span> time
+    t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100000000</span>):
+        j <span style="color:#f92672">+=</span> i
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;共计花费时间为: &#34;</span>,time<span style="color:#f92672">.</span>time()<span style="color:#f92672">-</span>t1)
+
+run()
+</code></pre></div><p><img src="https://gitee.com/felix_web/images/raw/master/uPic/image-20210302105458134.png" alt="image-20210302105458134"></p>
+<h1 id="测试使用numba">测试使用numba</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numba <span style="color:#f92672">as</span> nb
+
+
+<span style="color:#a6e22e">@nb.jit</span>()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nb_sum</span>(a):
+    Sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+        Sum <span style="color:#f92672">+=</span> a[i]
+    <span style="color:#66d9ef">return</span> Sum
+
+<span style="color:#75715e"># 没用numba加速的求和函数</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">py_sum</span>(a):
+    Sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+        Sum <span style="color:#f92672">+=</span> a[i]
+    <span style="color:#66d9ef">return</span> Sum
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+    a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>) <span style="color:#75715e"># 创建一个长度为100的数组</span>
+    <span style="color:#f92672">import</span> time
+    t0 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    np<span style="color:#f92672">.</span>sum(a) <span style="color:#75715e"># numpy自带的求和函数</span>
+    t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    sum(a) <span style="color:#75715e"># python自带的求和函数</span>
+    t2 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    nb_sum(a) <span style="color:#75715e"># numba加速的求和函数</span>
+    t3 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    py_sum(a) <span style="color:#75715e"># 没加速的求和函数</span>
+    t4 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;numpy自带的求和函数: {t1 - t0}&#34;</span>)
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;python自带的求和函数: {t2 - t1}&#34;</span>)
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;numba加速的求和函数: {t3 - t2}&#34;</span>)
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;没加速的求和函数: {t4 - t3}&#34;</span>)
+    
+    <span style="color:#75715e"># -----------------</span>
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">       numpy自带的求和函数: 1.7881393432617188e-05
+</span><span style="color:#e6db74">	python自带的求和函数: 2.193450927734375e-05
+</span><span style="color:#e6db74">	numba加速的求和函数: 0.2829909324645996
+</span><span style="color:#e6db74">	没加速的求和函数: 2.9087066650390625e-05
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+</code></pre></div><h3 id="兼容常用的科学计算包可以创建ufunc">兼容常用的科学计算包，可以创建ufunc</h3>
+<p>ufunc (universal functions)，它可以让一个函数同时处理很多数据。比如要求一个数组每一个元素的三角函数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e"># 创建一个长度为100万的数组</span>
+<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> sin
+<span style="color:#a6e22e">@nb.vectorize</span>()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nb_vec_sin</span>(a):
+    <span style="color:#66d9ef">return</span> sin(a)
+</code></pre></div><h3 id="自动调整精度保证准确性">自动调整精度，保证准确性</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>)
+</code></pre></div><p>用nb.typeof()查看，你会发现numba给出的结果是int64，而其他三个都是int32。<strong>numba不仅快还在精度方面表现很好</strong>！</p>
+<h3 id="更多numba的加速选项">更多numba的加速选项</h3>
+<p>除了上面提到的jit和vectorize，其实numba还支持很多加速类型。常见的比如</p>
+<p>@nb.jit(nopython=True,fastmath=True) 牺牲一丢丢数学精度来提高速度</p>
+<p>@nb.jit(nopython=True,parallel=True) 自动进行并行计算</p>
+<p>numba还支持多个用GPU加速的包，比如CUDA。</p>
+<h3 id="numba的精度问题">Numba的精度问题</h3>
+<p>精度方面，在上面我也谈到numba会自动转换数据类型以适应计算。但是在个别时候，<strong>这种自动转变类型可能会引起一些计算误差</strong>。通常这个误差是非常小的，几乎不会造成任何影响。但如果你所处理的问题会积累误差，比如求解非线性方程，那么在非常多的计算之后误差可能就是肉眼可见了。**如果你发现有这样的问题，记得在jit中指定输入输出的数据类型。**numba具有C所有的数据类型，比如对上面的求和函数，只需要把@nb.jit()改为@nb.jit(nb.int64(nb.int32[:]))即可。nb.int64是说输出的数字为int64类型，nb.int32是说输入的数据类型为int32，而[:]是说输入的是数组。</p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+  </div>
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'ABOUT MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/first/'>ABOUT MYSELF</a>
+    </h3>
+    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
+    </h3>
+    <p class = 'pale'><p>多任务有：多进程 多线程以及异步协程。</p>
+<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
+
+  </body>
+</html>

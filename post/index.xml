@@ -5,9 +5,9 @@
     <link>https://jxiaof.com/post/</link>
     <description>Recent content in Posts on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Thu, 17 Dec 2020 15:55:08 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 09:40:43 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ABOUT MYSELF</title>
       <link>https://jxiaof.com/post/first/</link>
@@ -25,6 +25,26 @@
       <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
       <description>&lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python Accelerate</title>
+      <link>https://jxiaof.com/post/python-accelerate/</link>
+      <pubDate>Tue, 02 Mar 2021 09:40:43 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/python-accelerate/</guid>
+      <description>python加速 python 程序性能优化的套路一般有两种：
+  jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
+  将python代码转换成c++/c代码，然后编译执行，这种方式有：cython和nuitka。总而言之，转换成c++/c代码以后编译成二进制文件执行的效率比用numba和pypy即时编译执行的效率要高。
+    Cython： Cython是让Python脚本支持C语言扩展的编译器，Cython能够将Python+C混合编码的.pyx脚本转换为C代码，主要用于优化Python脚本性能或Python调用C函数库。
+  Pypy：Pypy最重要的一点就是Pypy集成了JIT。同时针对CPython的缺点进行了各方面的改良，性能得到很大的提升。了解JIT技术的人都应该对Pypy很有好感。Pypy的优点是对纯Python项目兼容性极好，几乎可以直接运行并直接获得性能提升（官方宣称为6.3倍……但是实际上没感觉有这么多）；缺点是对很多C语言库支持性不好，Pypy社区一直有相关讨论。
+  Numba：Numba是一个库，可以在运行时将Python代码编译为本地机器指令，而不会强制大幅度的改变普通的Python代码。
+  通用性：在三个方案中，Cython和Numba的兼容性都非常好，而Pypy对于部分库的支持较差（如Numpy，Scipy）。
+速度：这三种方案的速度相差不大，通常来说Cython要快于Pypy，尤其是对于部分C扩展。Pypy要快于Numba，但针对于纯数值计算的工作，Numba甚至还要快于Cython。
+易用性：易用性最好的无疑是Pypy，Pypy是Python的解释器，我们针对纯Python使用Pypy，除了Pypy不支持的部分库外，不需要进行任何改动。然后是Numba，Numba的基本使用方法就是给函数加一个装饰器，易用性也很高，最后是Cython，因为Cython中需要使用Python+C混合编码，如果需要移植，代价会很大。
+**总结：**Pypy是非常理想的Python解释器，最大的瑕疵就是对部分库的兼容问题。Cython是一种Python + C的便利性组合，转为C编译的扩展执行效率非常高，但使用相对麻烦，移植CPython项目代价较高。Numba更适合针对性优化，效率高，并且不会大幅度的改变普通的Python代码。所以三者实在没法说谁最优秀，只是在不同的方向针对性及适用性更高。
+测试pypy anaconda安装pypy
+conda create -n &amp;lt;newenviromnentname&amp;gt; conda activate &amp;lt;newenviromnentname&amp;gt; conda install -c conda-forge pypy3.6 # 3.7.可以安装- 截止2021年3月2日 # test pypy3 -c &amp;#34;import sys; print(sys.version)&amp;#34; def run(): import time t1 = time.time() for i in range(100000000): continue print(&amp;#34;共计花费时间为: &amp;#34;,time.</description>
     </item>
     
     <item>

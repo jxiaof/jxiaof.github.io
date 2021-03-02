@@ -224,8 +224,50 @@ a <span style="color:#f92672">=</span> Solution()
 </code></pre></div><p>写一个线程安全的单例模式</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding:utf-8</span>
 <span style="color:#f92672">import</span> threading
+  
+<span style="color:#75715e"># 第1⃣️个实例</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(cls):
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+    _instance <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>():
+        <span style="color:#66d9ef">with</span> _instance_lock:
+            <span style="color:#66d9ef">if</span> cls <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _instance:
+                _instace[cls] <span style="color:#f92672">=</span> cls()
+        <span style="color:#66d9ef">return</span> _instace[cls]
+   	<span style="color:#66d9ef">return</span> bar
 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>(object):
+    _instance <span style="color:#f92672">=</span> None
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+    <span style="color:#66d9ef">def</span> __new__(cls):
+        <span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_instance_lock:
+            <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> None:
+                cls<span style="color:#f92672">.</span>_instace <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls)
+        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+    
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>(type):
+    _instances <span style="color:#f92672">=</span> {}
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+    <span style="color:#66d9ef">def</span> __call__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">if</span> cls <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_instances:
+        	<span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_instance_lock:
+                cls<span style="color:#f92672">.</span>_instances[cls] <span style="color:#f92672">=</span> super(Singleton, cls)<span style="color:#f92672">.</span>__call__(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instances[cls]
+    
+<span style="color:#75715e"># 或者</span>
 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>(type):
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+    <span style="color:#66d9ef">def</span> __new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> hasattr(Singleton, <span style="color:#e6db74">&#34;_instance&#34;</span>):
+            <span style="color:#66d9ef">with</span> Singleton<span style="color:#f92672">.</span>_instance_lock:
+                Singleton<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> super(Singleton, cls)<span style="color:#f92672">.</span>__new__(cls,<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+         <span style="color:#66d9ef">return</span> Singleton<span style="color:#f92672">.</span>_instance
+    
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>(metaclass<span style="color:#f92672">=</span>Singleton):
+    <span style="color:#66d9ef">pass</span>
+    
+<span style="color:#75715e"># 第2⃣️个实例        </span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">synchronized</span>(func):
 
     func<span style="color:#f92672">.</span>__lock__ <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
