@@ -289,6 +289,49 @@ a <span style="color:#f92672">=</span> Solution()
         <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">is</span> None:
             cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
         <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>instance
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
+<span style="color:#f92672">import</span> sys 
+<span style="color:#75715e">#str = input()</span>
+<span style="color:#75715e">#print(str)</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Hello,World!&#39;</span>)
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MinStack</span>:
+
+    <span style="color:#66d9ef">def</span> __init__(self):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        initialize your data structure here.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>item <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>item2 <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x: int) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(x, int):
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;need int object !&#34;</span>)
+        self<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>append(x)
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">is</span> None:
+            self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> x
+       <span style="color:#66d9ef">else</span>:
+           <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">&gt;</span> x:
+                self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> x
+        self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>append(self<span style="color:#f92672">.</span>min_val)
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#66d9ef">if</span> len(self<span style="color:#f92672">.</span>item2) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>:
+            self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>append(min(self<span style="color:#f92672">.</span>item))
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>item[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>item2[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+            self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>pop()
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>pop()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">top</span>(self) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item[len(self<span style="color:#f92672">.</span>item) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getMin</span>(self) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#75715e">#if len(self.item2) &lt; 1:</span>
+        <span style="color:#75715e">#    self.item2.append(min(self.item))</span>
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item2[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
 </code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
@@ -342,7 +385,7 @@ a <span style="color:#f92672">=</span> Solution()
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
@@ -353,10 +396,9 @@ a <span style="color:#f92672">=</span> Solution()
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
+      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
     </h3>
-    <p class = 'pale'><p>多任务有：多进程 多线程以及异步协程。</p>
-<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
+    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
   </div>
 </li>
 

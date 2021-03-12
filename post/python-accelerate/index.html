@@ -8,21 +8,24 @@
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = 'Python Accelerate' />
-<meta name="description" content="python加速 python 程序性能优化的套路一般有两种：
+<meta name="description" content="python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下:
+python 程序性能优化的套路一般有两种：
   jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
-  将python代码转换成c&#43;&#43;/c代码，然后编译执行，这种方式有：cython和nuitka。总而 …">
-<meta property = 'og:description' content = 'python加速 python 程序性能优化的套路一般有两种：
+  将python代码转换成c&#43;&#43;/c代码，然 …">
+<meta property = 'og:description' content = 'python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下:
+python 程序性能优化的套路一般有两种：
   jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
-  将python代码转换成c&#43;&#43;/c代码，然后编译执行，这种方式有：cython和nuitka。总而 …'>
+  将python代码转换成c&#43;&#43;/c代码，然 …'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/python-accelerate/' />
-<meta property = 'og:image' content = 'images/%!s()'/>
+<meta property = 'og:image' content = 'https://jxiaof.com/images/python.jpg'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = 'Python Accelerate' />
-<meta property = 'twitter:description'  content = 'python加速 python 程序性能优化的套路一般有两种：
+<meta property = 'twitter:description'  content = 'python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下:
+python 程序性能优化的套路一般有两种：
   jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
-  将python代码转换成c&#43;&#43;/c代码，然后编译执行，这种方式有：cython和nuitka。总而 …'/>
-<meta name = 'twitter:image' content = 'images/%!s()' />
+  将python代码转换成c&#43;&#43;/c代码，然 …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/python.jpg' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
 <link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
@@ -48,16 +51,16 @@
 
 
     <main>
-  
-<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/thumbnail.svg);'>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/python.jpg);'>
   <h1 class='post_title'>Python Accelerate</h1>
 </section>
 <div class = 'post'>
   <article class='post_content'><h1 id="python加速">python加速</h1>
+<p>我自己参与了这部分的工作,花了一两周时间去实践,如下:</p>
 <p>python 程序性能优化的套路一般有两种：</p>
 <ul>
 <li>
-<p>jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；</p>
+<p><strong>jit</strong>， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；</p>
 </li>
 <li>
 <p>将python代码转换成c++/c代码，然后编译执行，这种方式有：cython和nuitka。总而言之，转换成c++/c代码以后编译成二进制文件执行的效率比用numba和pypy即时编译执行的效率要高。</p>
@@ -85,6 +88,9 @@ conda activate &lt;newenviromnentname&gt;
 conda install -c conda-forge pypy3.6   <span style="color:#75715e"># 3.7.可以安装- 截止2021年3月2日</span>
 <span style="color:#75715e"># test</span>
 pypy3 -c <span style="color:#e6db74">&#34;import sys; print(sys.version)&#34;</span>
+
+pypy3 -m ensurepip
+pypy -m pip install 
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
     <span style="color:#f92672">import</span> time
     t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
@@ -165,10 +171,114 @@ run()
 <p>除了上面提到的jit和vectorize，其实numba还支持很多加速类型。常见的比如</p>
 <p>@nb.jit(nopython=True,fastmath=True) 牺牲一丢丢数学精度来提高速度</p>
 <p>@nb.jit(nopython=True,parallel=True) 自动进行并行计算</p>
-<p>numba还支持多个用GPU加速的包，比如CUDA。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># @jit
+# @jit(nopython=True)
+# @jit(nopython=True, parallel=True)
+# @jit(nopython=True, fastmath=True)
+</code></pre></div><p>numba还支持多个用GPU加速的包，比如CUDA。</p>
 <h3 id="numba的精度问题">Numba的精度问题</h3>
 <p>精度方面，在上面我也谈到numba会自动转换数据类型以适应计算。但是在个别时候，<strong>这种自动转变类型可能会引起一些计算误差</strong>。通常这个误差是非常小的，几乎不会造成任何影响。但如果你所处理的问题会积累误差，比如求解非线性方程，那么在非常多的计算之后误差可能就是肉眼可见了。**如果你发现有这样的问题，记得在jit中指定输入输出的数据类型。**numba具有C所有的数据类型，比如对上面的求和函数，只需要把@nb.jit()改为@nb.jit(nb.int64(nb.int32[:]))即可。nb.int64是说输出的数字为int64类型，nb.int32是说输入的数据类型为int32，而[:]是说输入的是数组。</p>
+<h1 id="numpy加速体验心得">numpy加速体验,心得</h1>
+<p>python 运行效率低，这对于有些任务不太友好，特别是大量的数据处理任务，如何提高数据处理的效率，本人有几点体会。</p>
+<ol>
+<li>尽量使用 numpy 进行处理，比如数组不要用 list 创建，而是用 np.array创建</li>
+<li>尽量使用 numpy 自带函数进行处理，比如计算数组a的长度，用 a.shape[0]，而不是 len(a)</li>
+<li>尽量避免 numpy 和 Python 自带的语法混合编程，如尽量少用 list，dict 等数据结构</li>
+<li>尽量避免循环，特别是多重循环</li>
+<li>如果循环不可避免，则循环形式尽可能接近 c 语言风格，比如采用 for i in range(a.shape[0])，而不是 for item in a。最后加上大杀器 numba 模块，则有时可使循环提速百倍以上。注意numba模块只需加入有循环的模块，所以尽可能使循环模块封装成一个独立函数，此函数尽可能简单，最简单到只有循环模块。</li>
+<li>numpy 自带函数都是经过优化的，使用 numba 几乎达不到优化效果</li>
+<li>其他知名模块如 scipy， 也都是经过优化的，使用 numba 几乎达不到优化效果</li>
+<li>最后优化会使代码难以调试，容易出错，所以优化是最后进行且只对程序热点进行优化</li>
+<li>多进程有时不仅不能提高效率，反而使效率减小很多倍。</li>
+</ol>
+<h2 id="简单运行cython代码">简单运行Cython代码</h2>
+<p>从语言层面来说，Cython是一种拓展的Python，其文件的扩展名为<code>.pyx</code>。这种类型的文件通过编译之后可以变成供Python直接调用的动态链接库（Linux/Mac下是<code>.so</code>，Windows下是<code>.pyd</code>）。根据官方文档，主要如下几编译方式：</p>
+<ol>
+<li><strong>(推荐)</strong> 通过<code>setup.py</code>中调用<code>Cython.Build</code>进行编译</li>
+<li>使用<code>pyximport</code>调用<code>.pyx</code>文件，这种方法<code>.pyx</code>文件相当于普通的<code>.py</code>文件</li>
+<li>在命令行使用<code>cython</code>命令从<code>.pyx</code>文件生成<code>.c</code>文件，再使用外部编译器将<code>.c</code>文件编译成Python可用的库</li>
+<li>使用<code>Jupyter Notebook</code>或者<code>Sage Notebook</code>直接运行Cython代码</li>
+</ol>
+<p>这上面四种方法里<strong>最简单的是第三种方法</strong>。</p>
+<p>运行<code>cythonize -i &lt;.pyx File&gt;</code>即可编译<code>.pyx</code>成二进制库，并保存在与<code>.pyx</code>文件相同的目录下。</p>
+<p><code>cythonize</code>命令有其他的参数，可以通过命令行查看。这个命令也可以通过<code>python -m Cython.Build.Cythonize -i &lt;.pyx File&gt;</code>来完成。</p>
+<p>不过推荐使用的是第一种方法，原理也就是通过指定<code>distutils</code>或者<code>setuptools</code>库中的<code>ext_modules</code>参数来编译Cython代码。以<a href="http://docs.cython.org/en/latest/src/quickstart/build.html#building-a-cython-module-using-distutils">官方示例</a>为例，它的<code>setup.py</code>文件如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
+<span style="color:#f92672">from</span> Cython.Build <span style="color:#f92672">import</span> cythonize
 
+setup(
+  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hello world app&#39;</span>,
+  ext_modules <span style="color:#f92672">=</span> cythonize(<span style="color:#e6db74">&#34;hello.pyx&#34;</span>),
+)
+</code></pre></div><p>其中<code>hello.pyx</code>的代码为</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hello_to</span>(name):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">!&#34;</span> <span style="color:#f92672">%</span> name)
+</code></pre></div><p>编辑保存之后直接运行<code>python setup.py build_ext --inplace</code>即可进行编译。其中<code>--inplace</code>参数可以让对应的链接库生成在源代码所在的目录。</p>
+<p>编译中可能遇到的问题有</p>
+<ul>
+<li><code>error: command 'cl.exe' failed: No such file or directory</code>: 这说明在环境中没有找到C编译器。由于我电脑中安装了Visual Studio，我的解决方法是根据平台使用VS的<strong>x86 Native Command Prompt</strong>或<strong>x64 Native Command Prompt</strong>来运行编译命令。此外还可以选择通过<code>python setup.py build_ext --inplace --compiler=mingw32</code>使用Anaconda内置的MinGW32编译器，不过这种情况下还可能会遇到<a href="https://stackoverflow.com/questions/24683305/python-cant-install-packages-typeerror-unorderable-types-nonetype-str">内置MinGW32的问题</a>，具体的解决方法在链接里。</li>
+</ul>
+<p>编译之后直接通过<code>import hello</code>或<code>from hello import say_hello_to</code>即可调用这个编译好的库。</p>
+<h2 id="复杂cython工程的setuppyhttpxn--cythonsetup-ic6tw20cv24ah31c11lpy"><a href="http://xn--cythonsetup-ic6tw20cv24ah31c11l.py/">复杂Cython工程的setup.py</a></h2>
+<p>如果的Cython工程中有很多<code>.pyx</code>文件，甚至有很多<code>.cpp</code>文件需要编译，那么这时候最好使用<code>setup.py</code>进行编译，并使用<code>Cython.Build.cythonize</code>模块。具体编写方式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
+<span style="color:#f92672">from</span> distutils.extension <span style="color:#f92672">import</span> Extension
+<span style="color:#f92672">from</span> Cython.Build <span style="color:#f92672">import</span> cythonize
+
+extensions <span style="color:#f92672">=</span> [
+    Extension(<span style="color:#e6db74">&#34;Module Name&#34;</span>, [<span style="color:#e6db74">&#34;file1.pyx&#34;</span>, <span style="color:#e6db74">&#34;file2.cpp&#34;</span>, <span style="color:#f92672">...</span>],
+        include_dirs <span style="color:#f92672">=</span> [<span style="color:#f92672">...</span>],
+        libraries <span style="color:#f92672">=</span> [<span style="color:#f92672">...</span>],
+        library_dirs <span style="color:#f92672">=</span> [<span style="color:#f92672">...</span>]),
+    Extension(<span style="color:#e6db74">&#34;Module 2&#34;</span>, <span style="color:#f92672">...</span>)
+]
+setup(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;XXX&#34;</span>,
+    ext_modules <span style="color:#f92672">=</span> cythonize(extensions),
+)
+</code></pre></div><p>最后的<code>setup</code>部分还有另一种写法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">setup(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;XXX&#34;</span>,
+    ext_modules <span style="color:#f92672">=</span> extensions,
+    cmdclass<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;build_ext&#39;</span>: Cython<span style="color:#f92672">.</span>Build<span style="color:#f92672">.</span>build_ext}
+)
+</code></pre></div><p>这样的写法可以让安装整个库的时候一起执行掉Cython代码的编译和安装。此外，如果要在编译<code>.pyx</code>和<code>.cpp</code>时指定语言或者编译参数，在<code>Extension</code>类的构造函数中添加合适的参数即可。</p>
+<blockquote>
+<p>.pyx 文件是由 Cython 编程语言 &ldquo;编写&rdquo; 而成的 Python 扩展模块源代码文件。</p>
+<p>.pyx 文件类似于 C 语言的 .c 源代码文件，.pyx 文件中有 Cython 模块的源代码。</p>
+<p>不像 Python 语言可直接解释使用的 .py 文件，.pyx 文件必须先被编译成 .c 文件，再编译成 .pyd (Windows 平台) 或 .so (Linux 平台) 文件，才可作为模块 import 导入使用。</p>
+</blockquote>
+<hr>
+<p>参考链接:</p>
+<p>​	https://zhuanlan.zhihu.com/p/20150641</p>
+<p>​	https://zyxin.xyz/blog/2017-12/CythonIntro/#简单运行Cython代码</p>
+<p>​    <a href="https://moonlet.gitbooks.io/cython-document-zh_cn/content/ch1-basic_tutorial.html">https://moonlet.gitbooks.io/cython-document-zh_cn/content/ch1-basic_tutorial.html</a></p>
+<h3 id="pip源如下">pip源如下:</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">（1）阿里云 http://mirrors.aliyun.com/pypi/simple/
+（2）豆瓣http://pypi.douban.com/simple/
+（3）清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+（4）中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+（5）华中科技大学http://pypi.hustunique.com/
+</code></pre></div><h3 id="conda全局配置源">conda全局配置源</h3>
+<p>中科大源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+conda config --set show_channel_urls yes 
+</code></pre></div><p>清华源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ 
+conda config --set show_channel_urls yes
+</code></pre></div><p>上海交通大学源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/
+conda config --set show_channel_urls yes
+</code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
@@ -221,7 +331,7 @@ run()
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
@@ -232,10 +342,9 @@ run()
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
+      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
     </h3>
-    <p class = 'pale'><p>多任务有：多进程 多线程以及异步协程。</p>
-<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
+    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
   </div>
 </li>
 
