@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>code on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/code/</link>
+    <description>Recent content in code on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Mon, 16 Nov 2020 17:12:40 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Funny</title>
+      <link>https://jxiaof.com/post/funny/</link>
+      <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/funny/</guid>
+      <description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps = 30 #帧率 size = (1280,720) fourcc = VideoWriter_fourcc(*&amp;#34;MJPG&amp;#34;) #支持jpg videoWriter = cv2.VideoWriter(out_root, fourcc, fps, size) im_names = os.listdir(img_root) print(len(im_names)) for im_name in range(len(im_names) - 2): string = img_root + &amp;#39;frame&amp;#39; + str(im_name) + &amp;#39;.jpg&amp;#39; print(string) frame = cv2.</description>
+    </item>
+    
+  </channel>
+</rss>

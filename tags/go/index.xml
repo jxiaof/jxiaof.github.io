@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/go/</link>
+    <description>Recent content in go on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Thu, 17 Dec 2020 15:55:08 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go</title>
+      <link>https://jxiaof.com/post/go/</link>
+      <pubDate>Thu, 17 Dec 2020 15:55:08 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/go/</guid>
+      <description>go 目前正在学习go语言
+了解到gin go-admin go-zero
+后期根据实际情况接触了解.</description>
+    </item>
+    
+  </channel>
+</rss>

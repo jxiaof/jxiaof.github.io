@@ -9,7 +9,7 @@
     <copyright>Designed By Felix</copyright>
     <lastBuildDate>Mon, 08 Mar 2021 12:02:47 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ABOUT MYSELF</title>
+      <title>ABOUT ME</title>
       <link>https://jxiaof.com/post/first/</link>
       <pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
       
@@ -245,7 +245,7 @@ import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize impor
       <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/docker/</guid>
-      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;hello&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt; hello, world ! &amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 停止容器并重新启动容器 docker container stop nginx &amp;amp;&amp;amp; docker container rm nginx docker run -d \  --rm \  -p 80:12345 \  -p 443:443 \  --name nginx \  -v /Users/jiangxiaofan/docker/nginx/html:/usr/share/nginx/html \  -v /Users/jiangxiaofan/docker/nginx/conf/nginx.</description>
+      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue 1nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;hello&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt; hello, world ! &amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 停止容器并重新启动容器 docker container stop nginx &amp;amp;&amp;amp; docker container rm nginx docker run -d \  --rm \  -p 80:12345 \  -p 443:443 \  --name nginx \  -v /Users/jiangxiaofan/docker/nginx/html:/usr/share/nginx/html \  -v /Users/jiangxiaofan/docker/nginx/conf/nginx.</description>
     </item>
     
     <item>

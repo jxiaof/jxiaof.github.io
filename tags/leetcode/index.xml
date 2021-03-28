@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>leetcode on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/leetcode/</link>
+    <description>Recent content in leetcode on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Wed, 14 Oct 2020 14:08:09 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leetcode</title>
+      <link>https://jxiaof.com/post/leetcode/</link>
+      <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/leetcode/</guid>
+      <description>买卖股票简答:
+class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru:
+# 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size = size self.linked_map = OrderedDict() def set(self, key, value): if key in self.linked_map: self.linked_map.pop(key) if self.size == len(self.linked_map): self.linked_map.popitem(last=False) self.linked_map.update({key: value}) def get(self, key): value = self.</description>
+    </item>
+    
+  </channel>
+</rss>

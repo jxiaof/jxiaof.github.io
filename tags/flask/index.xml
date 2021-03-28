@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flask on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/flask/</link>
+    <description>Recent content in flask on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Mon, 21 Sep 2020 23:05:02 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flask主线程以及短链接实现</title>
+      <link>https://jxiaof.com/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/flask01/</guid>
+      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

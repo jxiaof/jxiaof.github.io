@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mongo on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/mongo/</link>
+    <description>Recent content in mongo on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Thu, 15 Oct 2020 09:29:25 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mongo</title>
+      <link>https://jxiaof.com/post/mongo/</link>
+      <pubDate>Thu, 15 Oct 2020 09:29:25 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/mongo/</guid>
+      <description>Document Database¶   High Performance
+  Rich Query Language
+  High Availability
+  Support for Multiple Storage Engines
+  Horizontal Scalability
+   相关链接:
+https://docs.mongodb.com/v3.6/reference/sql-comparison/
+https://blog.csdn.net/luolian123456/article/details/83104242 /
+https://www.cnblogs.com/leskang/p/6000852.html
+ INSERT db.collection(&amp;#39;inventory&amp;#39;).insertMany([ // MongoDB adds the _id field with an ObjectId if _id is not present { item: &amp;#34;journal&amp;#34;, qty: 25, status: &amp;#34;A&amp;#34;, size: { h: 14, w: 21, uom: &amp;#34;cm&amp;#34; }, tags: [ &amp;#34;blank&amp;#34;, &amp;#34;red&amp;#34; ] }, { item: &amp;#34;notebook&amp;#34;, qty: 50, status: &amp;#34;A&amp;#34;, size: { h: 8.</description>
+    </item>
+    
+  </channel>
+</rss>

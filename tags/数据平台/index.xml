@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据平台 on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/</link>
+    <description>Recent content in 数据平台 on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Thu, 12 Nov 2020 09:45:51 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>devops数据平台设计</title>
+      <link>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 12 Nov 2020 09:45:51 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&#34;数据平台开发初衷&#34;&gt;数据平台开发初衷&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).&lt;/li&gt;
+&lt;li&gt;快捷查看公司资源分布图.&lt;/li&gt;
+&lt;li&gt;快捷分析资源流式计算.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

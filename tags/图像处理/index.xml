@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图像处理 on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 图像处理 on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Fri, 18 Sep 2020 17:48:09 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图像分析与处理</title>
+      <link>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 18 Sep 2020 17:48:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Python 图像处理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    本篇文章主要对图像处理有基本认知,是项目开发中容易遇到的问题,并非处理ai人工智能识别与转换.(此外,目前市面上的图像识别以及语音识别已经发展的相当不错.大部分的ai都是根据github开源调试参数.)&lt;/p&gt;
+&lt;p&gt;​       多数图像处理与操作技术可以被两个库有效完成，它们是 &lt;strong&gt;Python Imaging Library (PIL)&lt;/strong&gt; 与  &lt;strong&gt;OpenSource Computer Vision (OpenCV)&lt;/strong&gt; 。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 江小凡的博客</title>
+    <link>https://jxiaof.com/series/python/</link>
+    <description>Recent content in python on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Mon, 08 Mar 2021 12:02:47 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flask主线程以及短链接实现</title>
+      <link>https://jxiaof.com/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/flask01/</guid>
+      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>TFserving</title>
+      <link>https://jxiaof.com/post/tfserving/</link>
+      <pubDate>Mon, 08 Mar 2021 12:02:47 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/tfserving/</guid>
+      <description>模型部署tfserving 使用tensorflow训练好一个模型，使用keras其他框架也可以，只需要将模型转换为pb文件即可，根据不同的转换方式，有的接口转换之后只有一个saved_model.pb文件，有的有三个：saved_model.pb，variables.data-00000-of-00001，variables.index，其中后两个文件在variables文件夹
+假设模型的存储路径为：/my/model/path/m/1/saved_model.pb, 只生成pb文件。其中m表示模型名，1表示模型版本。在母机上启动tfserving
+docker run -p 8501:8501 -p 8500:8500 --mount type=bind,source=/my/model/path/m,target=/models/m -e MODEL_NAME=m -t tensorflow/serving:2.1.0  文章的部分内容被密码保护：
+  --- DON&#39;T MODIFY THIS LINE ---  参考文献:
+​
+  </description>
+    </item>
+    
+    <item>
+      <title>FastAPI</title>
+      <link>https://jxiaof.com/post/fastapi/</link>
+      <pubDate>Fri, 05 Mar 2021 10:05:04 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/fastapi/</guid>
+      <description> 文章的部分内容被密码保护：
+  --- DON&#39;T MODIFY THIS LINE --- pass
+  </description>
+    </item>
+    
+    <item>
+      <title>Python Accelerate</title>
+      <link>https://jxiaof.com/post/python-accelerate/</link>
+      <pubDate>Tue, 02 Mar 2021 09:40:43 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/python-accelerate/</guid>
+      <description>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下:
+python 程序性能优化的套路一般有两种：
+  jit， 即just in time compiler， 即时编译器，在运行时将某些函数编译成二进程代码，使用这种方式的有：numba 和pypy；
+  将python代码转换成c++/c代码，然后编译执行，这种方式有：cython和nuitka。总而言之，转换成c++/c代码以后编译成二进制文件执行的效率比用numba和pypy即时编译执行的效率要高。
+    Cython： Cython是让Python脚本支持C语言扩展的编译器，Cython能够将Python+C混合编码的.pyx脚本转换为C代码，主要用于优化Python脚本性能或Python调用C函数库。
+  Pypy：Pypy最重要的一点就是Pypy集成了JIT。同时针对CPython的缺点进行了各方面的改良，性能得到很大的提升。了解JIT技术的人都应该对Pypy很有好感。Pypy的优点是对纯Python项目兼容性极好，几乎可以直接运行并直接获得性能提升（官方宣称为6.3倍……但是实际上没感觉有这么多）；缺点是对很多C语言库支持性不好，Pypy社区一直有相关讨论。
+  Numba：Numba是一个库，可以在运行时将Python代码编译为本地机器指令，而不会强制大幅度的改变普通的Python代码。
+  通用性：在三个方案中，Cython和Numba的兼容性都非常好，而Pypy对于部分库的支持较差（如Numpy，Scipy）。
+速度：这三种方案的速度相差不大，通常来说Cython要快于Pypy，尤其是对于部分C扩展。Pypy要快于Numba，但针对于纯数值计算的工作，Numba甚至还要快于Cython。
+易用性：易用性最好的无疑是Pypy，Pypy是Python的解释器，我们针对纯Python使用Pypy，除了Pypy不支持的部分库外，不需要进行任何改动。然后是Numba，Numba的基本使用方法就是给函数加一个装饰器，易用性也很高，最后是Cython，因为Cython中需要使用Python+C混合编码，如果需要移植，代价会很大。
+**总结：**Pypy是非常理想的Python解释器，最大的瑕疵就是对部分库的兼容问题。Cython是一种Python + C的便利性组合，转为C编译的扩展执行效率非常高，但使用相对麻烦，移植CPython项目代价较高。Numba更适合针对性优化，效率高，并且不会大幅度的改变普通的Python代码。所以三者实在没法说谁最优秀，只是在不同的方向针对性及适用性更高。
+测试pypy anaconda安装pypy
+conda create -n &amp;lt;newenviromnentname&amp;gt; conda activate &amp;lt;newenviromnentname&amp;gt; conda install -c conda-forge pypy3.6 # 3.7.可以安装- 截止2021年3月2日 # test pypy3 -c &amp;#34;import sys; print(sys.version)&amp;#34; pypy3 -m ensurepip pypy -m pip install def run(): import time t1 = time.</description>
+    </item>
+    
+    <item>
+      <title>Funny</title>
+      <link>https://jxiaof.com/post/funny/</link>
+      <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/funny/</guid>
+      <description>some funny code   记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)  一、
+import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps = 30 #帧率 size = (1280,720) fourcc = VideoWriter_fourcc(*&amp;#34;MJPG&amp;#34;) #支持jpg videoWriter = cv2.VideoWriter(out_root, fourcc, fps, size) im_names = os.listdir(img_root) print(len(im_names)) for im_name in range(len(im_names) - 2): string = img_root + &amp;#39;frame&amp;#39; + str(im_name) + &amp;#39;.jpg&amp;#39; print(string) frame = cv2.</description>
+    </item>
+    
+    <item>
+      <title>Python类型注解</title>
+      <link>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 23 Oct 2020 16:30:19 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/</guid>
+      <description>typing &amp;mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样:
+def greeting(name: str) -&amp;gt; str: return &amp;#39;Hello &amp;#39; + name 在函数 greeting 中，参数 name 预期是 str 类型，并且返回 str 类型。子类型允许作为参数。
+类型别名 类型别名通过将类型分配给别名来定义。在这个例子中， Vector 和 List[float] 将被视为可互换的同义词:
+from typing import List Vector = List[float] def scale(scalar: float, vector: Vector) -&amp;gt; Vector: return [scalar * num for num in vector] # typechecks; a list of floats qualifies as a Vector. new_vector = scale(2.0, [1.0, -4.2, 5.4]) 类型别名可用于简化复杂类型签名。例如:
+from typing import Dict, Tuple, Sequence ConnectionOptions = Dict[str, str] Address = Tuple[str, int] Server = Tuple[Address, ConnectionOptions] def broadcast_message(message: str, servers: Sequence[Server]) -&amp;gt; None: .</description>
+    </item>
+    
+    <item>
+      <title>Leetcode</title>
+      <link>https://jxiaof.com/post/leetcode/</link>
+      <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/leetcode/</guid>
+      <description>买卖股票简答:
+class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru:
+# 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size = size self.linked_map = OrderedDict() def set(self, key, value): if key in self.linked_map: self.linked_map.pop(key) if self.size == len(self.linked_map): self.linked_map.popitem(last=False) self.linked_map.update({key: value}) def get(self, key): value = self.</description>
+    </item>
+    
+    <item>
+      <title>FUNCTOOLS的新功能</title>
+      <link>https://jxiaof.com/post/function_tools/</link>
+      <pubDate>Mon, 21 Sep 2020 22:36:03 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/function_tools/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;functools - 可调用对象的高阶函数和操作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;functools模块用于高阶函数：作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用对象都可以被视为函数。在实际开发中,经常用到,比如lru_cache以及partial.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图像分析与处理</title>
+      <link>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 18 Sep 2020 17:48:09 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Python 图像处理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    本篇文章主要对图像处理有基本认知,是项目开发中容易遇到的问题,并非处理ai人工智能识别与转换.(此外,目前市面上的图像识别以及语音识别已经发展的相当不错.大部分的ai都是根据github开源调试参数.)&lt;/p&gt;
+&lt;p&gt;​       多数图像处理与操作技术可以被两个库有效完成，它们是 &lt;strong&gt;Python Imaging Library (PIL)&lt;/strong&gt; 与  &lt;strong&gt;OpenSource Computer Vision (OpenCV)&lt;/strong&gt; 。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

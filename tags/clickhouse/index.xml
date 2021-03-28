@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>clickhouse on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/clickhouse/</link>
+    <description>Recent content in clickhouse on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Mon, 16 Nov 2020 17:44:29 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/clickhouse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ClickHouse</title>
+      <link>https://jxiaof.com/post/clickhouse/</link>
+      <pubDate>Mon, 16 Nov 2020 17:44:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/clickhouse/</guid>
+      <description>ClickHouse是“战斗民族”俄罗斯搜索巨头Yandex公司开源的一个极具&amp;quot;战斗力&amp;quot;的实时数据分析数据库，是面向 OLAP 的分布式列式DBMS，圈内人戏称为“喀秋莎数据库”。ClickHouse有一个简称&amp;quot;CK&amp;quot;，与Hadoop、Spark这些巨无霸组件相比，ClickHouse很轻量级，其特点包括：分布式、列式存储、异步复制、线性扩展、支持数据压缩和最终数据一致性，其数据量级在PB级别。
+LSM-Tree LSM-Tree全称是Log Structured Merge Tree，是一种分层，有序，面向磁盘的数据结构，其核心思想是充分利用磁盘,批量的顺序写要远比随机写性能高出很多
+关于clickhouse Clickhouse 技能脑图 部署
+实践
+ 携程日志系统
+clickhouse性能对比
+相关解读
+深入理解什么是LSM-Tree</description>
+    </item>
+    
+  </channel>
+</rss>

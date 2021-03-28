@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on 江小凡的博客</title>
+    <link>https://jxiaof.com/series/</link>
+    <description>Recent content in Series on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Mon, 08 Mar 2021 12:02:47 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://jxiaof.com/series/python/</link>
+      <pubDate>Mon, 08 Mar 2021 12:02:47 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://jxiaof.com/series/golang/</link>
+      <pubDate>Thu, 17 Dec 2020 15:55:08 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DB</title>
+      <link>https://jxiaof.com/series/db/</link>
+      <pubDate>Thu, 17 Dec 2020 11:23:00 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/db/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://jxiaof.com/series/git/</link>
+      <pubDate>Mon, 14 Dec 2020 11:42:36 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devlops</title>
+      <link>https://jxiaof.com/series/devlops/</link>
+      <pubDate>Mon, 23 Nov 2020 10:14:58 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/devlops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://jxiaof.com/series/docker/</link>
+      <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascrpt</title>
+      <link>https://jxiaof.com/series/javascrpt/</link>
+      <pubDate>Thu, 29 Oct 2020 16:31:16 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/javascrpt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>多任务</title>
+      <link>https://jxiaof.com/series/%E5%A4%9A%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Fri, 09 Oct 2020 15:55:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/%E5%A4%9A%E4%BB%BB%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>https://jxiaof.com/series/vim/</link>
+      <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>macOS</title>
+      <link>https://jxiaof.com/series/macos/</link>
+      <pubDate>Fri, 18 Sep 2020 21:56:44 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sql</title>
+      <link>https://jxiaof.com/series/sql/</link>
+      <pubDate>Wed, 26 Aug 2020 02:26:39 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>言论</title>
+      <link>https://jxiaof.com/series/%E8%A8%80%E8%AE%BA/</link>
+      <pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/%E8%A8%80%E8%AE%BA/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

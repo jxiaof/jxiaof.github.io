@@ -31,6 +31,10 @@ import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize impor
 
   <body><div class = 'nav-drop'>
   <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/%E4%B8%AA%E4%BA%BA%E8%A8%80%E8%AE%BA/' class = 'nav_item'>Remarks</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
       <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
     <div class = 'nav-close'></div>
   </div>
@@ -48,6 +52,7 @@ import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize impor
 <section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/programmer.png);'>
   <h1 class='post_title'>Funny</h1>
 </section>
+
 <div class = 'post'>
   <article class='post_content'><h1 id="some-funny-code">some funny code</h1>
 <hr>
@@ -115,6 +120,78 @@ call(command<span style="color:#f92672">.</span>split())
     robots <span style="color:#f92672">=</span> find_all_robots(<span style="color:#e6db74">&#39;logs&#39;</span>)
     <span style="color:#66d9ef">for</span> ipaddr <span style="color:#f92672">in</span> robots:
         <span style="color:#66d9ef">print</span>(ipaddr)
+</code></pre></div><p>三 查看临时文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
+
+
+<span style="color:#66d9ef">with</span> TemporaryDirectory(suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;_tempdir&#39;</span>, dir<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>getcwd()) <span style="color:#66d9ef">as</span> dirname:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;dirname is:&#39;</span>, dirname)
+    path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), dirname))
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;the path is:&#39;</span>, dirname)
+</code></pre></div><p>四 压缩文件处理</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> zipfile
+<span style="color:#f92672">import</span> io
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> cv2
+<span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://localhost:9999/Desktop/test.zip&#39;</span>
+    <span style="color:#75715e"># url = &#34;https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg&#34;</span>
+    r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+    check <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>is_zipfile(io<span style="color:#f92672">.</span>BytesIO(r<span style="color:#f92672">.</span>content))
+    <span style="color:#66d9ef">print</span>(check)
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> check:
+        <span style="color:#66d9ef">if</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
+            result <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>content
+            <span style="color:#66d9ef">print</span>(type(result))
+            image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imdecode(np<span style="color:#f92672">.</span>frombuffer(result, dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uint8&#39;</span>), <span style="color:#ae81ff">1</span>)
+            plt<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>)
+            plt<span style="color:#f92672">.</span>xticks([]), plt<span style="color:#f92672">.</span>yticks([])  <span style="color:#75715e"># to hide tick values on X and Y axis</span>
+            plt<span style="color:#f92672">.</span>show()
+            <span style="color:#66d9ef">return</span> image
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>
+    <span style="color:#66d9ef">else</span>:
+        z <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>ZipFile(io<span style="color:#f92672">.</span>BytesIO(r<span style="color:#f92672">.</span>content))
+        img_names <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;.png&#39;</span>, <span style="color:#e6db74">&#39;.jpeg&#39;</span>, <span style="color:#e6db74">&#39;.jpg&#39;</span>)  <span style="color:#75715e"># gif, tif, psd, dng, cr2, net</span>
+        file_names <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> z<span style="color:#f92672">.</span>namelist() <span style="color:#66d9ef">if</span> i<span style="color:#f92672">.</span>lower()<span style="color:#f92672">.</span>endswith(img_names)]
+        <span style="color:#66d9ef">print</span>(file_names)
+        <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> file_names:
+            <span style="color:#66d9ef">with</span> z<span style="color:#f92672">.</span>open(name) <span style="color:#66d9ef">as</span> f:
+                image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imdecode(np<span style="color:#f92672">.</span>frombuffer(f<span style="color:#f92672">.</span>read(), dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uint8&#39;</span>), <span style="color:#ae81ff">1</span>)
+                <span style="color:#66d9ef">if</span> image <span style="color:#f92672">is</span> None:
+                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> name: {name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+                    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-*-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>)
+                <span style="color:#75715e"># cv2.imshow(&#34;custom_image&#34;, image)</span>
+                <span style="color:#75715e"># cv2.waitKey(0)</span>
+                plt<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>)
+                plt<span style="color:#f92672">.</span>xticks([]), plt<span style="color:#f92672">.</span>yticks([])  <span style="color:#75715e"># to hide tick values on X and Y axis</span>
+                plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p>5.编码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+CHARS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&#34;</span>
+ENUM_CHARS <span style="color:#f92672">=</span> {v: k <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> enumerate(CHARS)}
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UrlSuffix</span>(object):
+    chars <span style="color:#f92672">=</span> CHARS
+    enum_chars <span style="color:#f92672">=</span> ENUM_CHARS
+
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>decode <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: sum([self<span style="color:#f92672">.</span>enum_chars[j] <span style="color:#f92672">*</span> <span style="color:#ae81ff">64</span> <span style="color:#f92672">**</span> i <span style="color:#66d9ef">for</span> i, j <span style="color:#f92672">in</span> enumerate(x[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])])
+        self<span style="color:#f92672">.</span>encode <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>chars[x <span style="color:#f92672">%</span> <span style="color:#ae81ff">64</span>] <span style="color:#66d9ef">if</span> x <span style="color:#f92672">//</span> <span style="color:#ae81ff">64</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>encode(x <span style="color:#f92672">//</span> <span style="color:#ae81ff">64</span>) <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>chars[x <span style="color:#f92672">%</span> <span style="color:#ae81ff">64</span>]
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    g <span style="color:#f92672">=</span> UrlSuffix()
+    <span style="color:#66d9ef">print</span>(g<span style="color:#f92672">.</span>encode(<span style="color:#ae81ff">123</span>))
+    <span style="color:#66d9ef">print</span>(g<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;44&#34;</span>))
 </code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
@@ -146,14 +223,19 @@ call(command<span style="color:#f92672">.</span>split())
        visitor: 'true'
    });
  </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
   </div>
+  
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'ABOUT MYSELF' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'ABOUT ME' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
   </a>
   <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/remarks' class = 'post_tag'>Remarks
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
   </svg>  
@@ -161,7 +243,7 @@ call(command<span style="color:#f92672">.</span>split())
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>ABOUT MYSELF</a>
+      <a href='https://jxiaof.com/post/first/'>ABOUT ME</a>
     </h3>
     <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
   </div>
@@ -171,7 +253,9 @@ call(command<span style="color:#f92672">.</span>split())
   <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
   </a>
   <div class = 'excerpt'>
-    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/flask' class = 'post_tag'>flask
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
   </svg>  
@@ -204,6 +288,7 @@ call(command<span style="color:#f92672">.</span>split())
   <div class = 'footer_inner wrap pale'>
     <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
     Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
   </div>
 </footer>
 <script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>

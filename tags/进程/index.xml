@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>进程 on 江小凡的博客</title>
+    <link>https://jxiaof.com/tags/%E8%BF%9B%E7%A8%8B/</link>
+    <description>Recent content in 进程 on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Fri, 09 Oct 2020 15:55:40 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/%E8%BF%9B%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>进程间的通信</title>
+      <link>https://jxiaof.com/post/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</link>
+      <pubDate>Fri, 09 Oct 2020 15:55:40 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</guid>
+      <description>进程间的通信方式  信号 管道 信号量 共享内存 消息队列 套接字  对比：
+   方式 传输的信息量 使用场景 关键词     信号 少量 任何 硬件来源、软件来源 / 信号队列   管道 大量 亲缘进程间 单向流动 / 内核缓冲区 / 循环队列 / 没有格式的字节流 / 操作系统负责同步   命名管道 大量 任何 磁盘文件 / 访问权限 / 无数据块 / 内核缓冲区 / 操作系统负责同步   信号量 N 任何 互斥同步 / 原子性 / P 减 V 增   共享内存 大量 多个进程 内存映射 / 简单快速 / 操作系统不保证同步   消息队列 比信号多，但有限制 任何 有格式 / 按消息类型过滤 / 操作系统负责同步   套接字 大量 不同主机的进程 读缓存区 / 写缓冲区 / 操作系统负责同步    信号 Signal 信号是 Linux 系统响应某些条件而产生的一个事件，由操作系统事先定义，接收到该信号的进程可以采取自定义的行为。这是一种“订阅-发布”的模式。</description>
+    </item>
+    
+  </channel>
+</rss>
