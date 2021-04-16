@@ -116,5 +116,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>video</title>
+      <link>https://jxiaof.com/series/video/</link>
+      <pubDate>Thu, 16 Apr 2020 16:34:03 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/video/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photo</title>
+      <link>https://jxiaof.com/series/photo/</link>
+      <pubDate>Thu, 16 Apr 2020 14:21:34 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/photo/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

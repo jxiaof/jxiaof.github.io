@@ -32,7 +32,7 @@
       <pubDate>Thu, 10 Sep 2020 14:57:37 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
-      <description>&lt;p&gt;多任务有：多进程 多线程以及异步协程。&lt;/p&gt;
+      <description>&lt;h2 id=&#34;多任务有多进程-多线程以及异步协程&#34;&gt;多任务有：多进程 多线程以及异步协程。&lt;/h2&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
     </item>
     
@@ -414,6 +414,28 @@ env LDFLAGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
       <guid>https://jxiaof.com/post/%E8%B0%88%E8%B0%88%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8sql%E5%BC%80%E5%8F%91/</guid>
       <description>&lt;p&gt;[toc]&lt;/p&gt;
 &lt;p&gt;​    Sql同样是一门编程语言，在某种意义上来讲，大部分的程序员写的代码都可以通过sql实现，sql应当是后端程序员基本功。sql在排查数据，如同脚本一样简单直接高效，非常实用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Video</title>
+      <link>https://jxiaof.com/post/video-2020/</link>
+      <pubDate>Thu, 16 Apr 2020 16:34:03 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/video-2020/</guid>
+      <description>让子弹飞。 直接点链接:</description>
+    </item>
+    
+    <item>
+      <title>2021年4月份图片记录</title>
+      <link>https://jxiaof.com/post/y2021m04d16/</link>
+      <pubDate>Thu, 16 Apr 2020 14:21:34 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/y2021m04d16/</guid>
+      <description>四月份,南方老家正是烟雨蒙蒙,也是很美丽的季节.我工作的地点离海不远,天气晴朗,阳光高照,最主要是天空海阔,海阔天空!
+记录时间: 2021年4月16日.
+p s: 还年轻,怎么能不经历一点挫折!
+ 后面两张图片,是准备的自己博客logo.最后一张是上一个博客用的logo,倒数第二张是准备给这个博客的,哪一个更好呢?
+ </description>
     </item>
     
   </channel>

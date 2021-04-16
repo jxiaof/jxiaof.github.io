@@ -298,7 +298,7 @@ url <span style="color:#f92672">=</span> mysql://grafana:grafana@localhost:3306/
 systemctl restart  grafana-server.service
 
 </code></pre></div><p>rabbitmq</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run -it -d --restart<span style="color:#f92672">=</span>always --name rabbitmq --hostname myRabbit -p 5672:5672 -p 15672:15672 -v /Users/jiangxiaofan/docker/rabbitmq:/var/lib/rabbitmq -e RABBITMQ_DEFAULT_VHOST<span style="color:#f92672">=</span>my_vhost  -e RABBITMQ_DEFAULT_USER<span style="color:#f92672">=</span>admin -e RABBITMQ_DEFAULT_PASS<span style="color:#f92672">=</span>admin  rabbitmq:3.8.14-management 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run -it -d --restart<span style="color:#f92672">=</span>always --name mq --hostname myRabbit -p 5672:5672 -p 15672:15672 -v /Users/jiangxiaofan/docker/rabbitmq:/var/lib/rabbitmq -e RABBITMQ_DEFAULT_VHOST<span style="color:#f92672">=</span>my_vhost  -e RABBITMQ_DEFAULT_USER<span style="color:#f92672">=</span>admin -e RABBITMQ_DEFAULT_PASS<span style="color:#f92672">=</span>admin  rabbitmq:3.8.14-management 
 
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 </code></pre></div><hr>
