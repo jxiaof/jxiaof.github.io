@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on 江小凡的博客</title>
+    <link>https://jxiaof.com/series/mysql/</link>
+    <description>Recent content in mysql on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Sun, 25 Apr 2021 09:57:36 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql Session</title>
+      <link>https://jxiaof.com/post/mysql-session/</link>
+      <pubDate>Sun, 25 Apr 2021 09:57:36 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/mysql-session/</guid>
+      <description>分库 分库讲白了就是比如现在你有一个数据库服务器，数据库中有两张表分别是用户表和订单表。如果要分库的话现在你需要买两台机子，搞两个数据库分别放</description>
+    </item>
+    
+  </channel>
+</rss>

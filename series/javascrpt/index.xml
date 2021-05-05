@@ -14,7 +14,7 @@
       <pubDate>Thu, 29 Oct 2020 16:31:16 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/js/</guid>
-      <description>使用JavaScript控制行为 JavaScript基本语法  语句和注释 变量和数据类型  声明和赋值 简单数据类型和复杂数据类型 变量的命名规则   表达式和运算符  赋值运算符 算术运算符 比较运算符 逻辑运算符   分支结构  if...else... switch...cas...default...   循环结构  for循环 while循环 do...while循环   数组  创建数组 操作数组中的元素   函数  声明函数 调用函数 参数和返回值 匿名函数 立即调用函数    面向对象  对象的概念 创建对象的字面量语法 访问成员运算符 创建对象的构造函数语法  this关键字   添加和删除属性  delete关键字   标准对象  Number / String / Boolean / Symbol / Array / Function Date / Error / Math / RegExp / Object / Map / Set JSON / Promise / Generator / Reflect / Proxy    BOM   window对象的属性和方法</description>
+      <description>使用JavaScript控制行为 JavaScript基本语法 语句和注释 变量和数据类型 声明和赋值 简单数据类型和复杂数据类型 变量的命名规则 表达式</description>
     </item>
     
   </channel>

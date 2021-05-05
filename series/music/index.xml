@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>music on 江小凡的博客</title>
+    <link>https://jxiaof.com/series/music/</link>
+    <description>Recent content in music on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Sat, 25 Apr 2020 11:01:16 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/music/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>work music</title>
+      <link>https://jxiaof.com/post/music-work/</link>
+      <pubDate>Sat, 25 Apr 2020 11:01:16 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/music-work/</guid>
+      <description>     </description>
+    </item>
+    
+  </channel>
+</rss>

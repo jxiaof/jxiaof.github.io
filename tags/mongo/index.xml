@@ -14,16 +14,7 @@
       <pubDate>Thu, 15 Oct 2020 09:29:25 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/mongo/</guid>
-      <description>Document Database¶   High Performance
-  Rich Query Language
-  High Availability
-  Support for Multiple Storage Engines
-  Horizontal Scalability
-   相关链接:
-https://docs.mongodb.com/v3.6/reference/sql-comparison/
-https://blog.csdn.net/luolian123456/article/details/83104242 /
-https://www.cnblogs.com/leskang/p/6000852.html
- INSERT db.collection(&amp;#39;inventory&amp;#39;).insertMany([ // MongoDB adds the _id field with an ObjectId if _id is not present { item: &amp;#34;journal&amp;#34;, qty: 25, status: &amp;#34;A&amp;#34;, size: { h: 14, w: 21, uom: &amp;#34;cm&amp;#34; }, tags: [ &amp;#34;blank&amp;#34;, &amp;#34;red&amp;#34; ] }, { item: &amp;#34;notebook&amp;#34;, qty: 50, status: &amp;#34;A&amp;#34;, size: { h: 8.</description>
+      <description>Document Database¶ High Performance Rich Query Language High Availability Support for Multiple Storage Engines Horizontal Scalability 相关链接: https://docs.mongodb.com/v3.6/reference/sql-comparison/ https://blog.csdn.net/luolian123456/article/details/83104242 / https://www.cnblogs.com/leskang/p/6000852.html INSERT db.collection(&amp;#39;inventory&amp;#39;).insertMany([ // MongoDB adds the _id field with an ObjectId if _id is not present { item: &amp;#34;journal&amp;#34;, qty: 25, status: &amp;#34;A&amp;#34;, size: { h: 14, w: 21, uom: &amp;#34;cm&amp;#34; }, tags: [ &amp;#34;blank&amp;#34;, &amp;#34;red&amp;#34; ]</description>
     </item>
     
   </channel>

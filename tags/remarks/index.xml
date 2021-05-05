@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Remarks on 江小凡的博客</title>
+    <title>remarks on 江小凡的博客</title>
     <link>https://jxiaof.com/tags/remarks/</link>
-    <description>Recent content in Remarks on 江小凡的博客</description>
+    <description>Recent content in remarks on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Tue, 11 Aug 2020 08:43:41 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/remarks/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ABOUT ME</title>
-      <link>https://jxiaof.com/post/first/</link>
-      <pubDate>Tue, 11 Aug 2020 08:43:41 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/first/</guid>
-      <description>&lt;p&gt;​        I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Tue, 11 Aug 2020 08:41:54 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/remarks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://jxiaof.com/about/</link>
       <pubDate>Tue, 11 Aug 2020 08:41:54 +0800</pubDate>
       
       <guid>https://jxiaof.com/about/</guid>
-      <description>​ This is the second time to build my blogs since my website was not running one year ago. Last year, work tasks takes over my life completely. There was a month when I worked 160 hours of overtime and the average overtime hours were more than 120 hours in other four month.
-​ That&amp;rsquo;s crazy and terrifying. I think about work only and other things are missing. so, I set up a blog again when after finishing my work now.</description>
+      <description>​ I am a light game enthusiast with poor gastrointestinal function. I go to bed early intermittently and stay up late.
+​ This is the second time to build my blogs since my website was not running two year ago (2019). Last year (2020), work tasks takes over my life completely. There was a month when I worked 160 hours of overtime and the average overtime hours were more than 120 hours in other four month.</description>
     </item>
     
   </channel>

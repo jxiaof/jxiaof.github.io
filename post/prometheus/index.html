@@ -2,23 +2,20 @@
 <html lang='en'><head>
   <title>Prometheus | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.76.5" />
+  <meta name="generator" content="Hugo 0.82.1" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = 'Prometheus' />
-<meta name="description" content="0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
-​	promrthus原本 …">
-<meta property = 'og:description' content = '0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
-​	promrthus原本 …'>
+<meta name="description" content="0. 概述 ​ 作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度">
+<meta property = 'og:description' content = '0. 概述 ​ 作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/prometheus/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/cover.png'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = 'Prometheus' />
-<meta property = 'twitter:description'  content = '0. 概述 ​	作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度项目,两者目的和使用方式有一些区别,这里说说prometheus.其中prometheus的exproter用于生产待导入数据,这是关键的一步.
-​	promrthus原本 …'/>
+<meta property = 'twitter:description'  content = '0. 概述 ​ 作为自动化监控指标,prometheus加上grafana已经是很好的一套组合.与此相似的还有ELKF架构.这两个都是不错的高完善度'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/cover.png' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -32,9 +29,11 @@
   <body><div class = 'nav-drop'>
   <div class = 'nav-body'>
       <a href = 'https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/' class = 'nav_item'>tech</a>
-      <a href = 'https://jxiaof.com/categories/%E4%B8%AA%E4%BA%BA%E8%A8%80%E8%AE%BA/' class = 'nav_item'>Remarks</a>
       <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
       <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
       <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
     <div class = 'nav-close'></div>
   </div>
@@ -164,11 +163,11 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/first/' title = 'ABOUT ME' style = 'background-image: url(https://jxiaof.com/images/speakers.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/remarks' class = 'post_tag'>Remarks
+      <a href = 'https://jxiaof.com/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97' class = 'post_tag'>并行计算
       </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
@@ -177,18 +176,19 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/first/'>ABOUT ME</a>
+      <a href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
     </h3>
-    <p class = 'pale'><p>​        I am a light game enthusiast with poor gastrointestinal function. I go to bed …</p></p>
+    <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
+<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
   </div>
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/redis/' title = '关于Redis的长期更新' style = 'background-image: url(https://jxiaof.com/images/redis.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/flask' class = 'post_tag'>flask
+      <a href = 'https://jxiaof.com/tags/redis' class = 'post_tag'>redis
       </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
@@ -197,9 +197,9 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
+      <a href='https://jxiaof.com/post/redis/'>关于Redis的长期更新</a>
     </h3>
-    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
+    <p class = 'pale'>redis数据类型分析 Redis的应用场景 高速缓存 - 将不常变化但又经常被访问的热点数据放到Redis数据库中，可以大大降低关系型数据库的压力</p>
   </div>
 </li>
 
@@ -225,7 +225,6 @@ manageStatus <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db
     <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
   </div>
 </footer>
-<script src = 'https://jxiaof.com/js/index.min.c3b0a769e56310d4359f30762ab615db8cd6ce33d555ee7f68d25e8a40c63ce18bf6b273d35a9b5c033a7f6e71b1d424e74d9f542d93482215c671b3f31f885f.js'></script>
-
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
   </body>
 </html>

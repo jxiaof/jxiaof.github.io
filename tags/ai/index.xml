@@ -14,12 +14,7 @@
       <pubDate>Mon, 08 Mar 2021 12:02:47 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/tfserving/</guid>
-      <description>模型部署tfserving 使用tensorflow训练好一个模型，使用keras其他框架也可以，只需要将模型转换为pb文件即可，根据不同的转换方式，有的接口转换之后只有一个saved_model.pb文件，有的有三个：saved_model.pb，variables.data-00000-of-00001，variables.index，其中后两个文件在variables文件夹
-假设模型的存储路径为：/my/model/path/m/1/saved_model.pb, 只生成pb文件。其中m表示模型名，1表示模型版本。在母机上启动tfserving
-docker run -p 8501:8501 -p 8500:8500 --mount type=bind,source=/my/model/path/m,target=/models/m -e MODEL_NAME=m -t tensorflow/serving:2.1.0  文章的部分内容被密码保护：
-  --- DON&#39;T MODIFY THIS LINE ---  参考文献:
-​
-  </description>
+      <description>模型部署tfserving 使用tensorflow训练好一个模型，使用keras其他框架也可以，只需要将模型转换为pb文件即可，根据不同的转</description>
     </item>
     
   </channel>
