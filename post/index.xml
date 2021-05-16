@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Fri, 30 Apr 2021 15:47:56 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 May 2021 22:38:27 +0800</lastBuildDate><atom:link href="https://jxiaof.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>python多任务处理</title>
       <link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
@@ -16,6 +16,15 @@
       <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
       <description>&lt;h2 id=&#34;多任务有多进程-多线程以及异步协程&#34;&gt;多任务有：多进程 多线程以及异步协程。&lt;/h2&gt;
 &lt;p&gt;平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运行，带来任务的高效率执行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Video 2021 05 16</title>
+      <link>https://jxiaof.com/post/video-2021-05-16/</link>
+      <pubDate>Sun, 16 May 2021 22:38:27 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/video-2021-05-16/</guid>
+      <description>电影的原视频就不放了,大家去电影院看. 推荐两个b站视频: 哔哩哔哩朝圣视频 另一个视频</description>
     </item>
     
     <item>
@@ -96,7 +105,7 @@
       <pubDate>Thu, 17 Dec 2020 15:55:08 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/go/</guid>
-      <description>go 目前正在学习go语言 了解到gin go-admin go-zero 后期根据实际情况接触了解.</description>
+      <description>go 目前正在学习go语言 了解了gin go-admin go-zero</description>
     </item>
     
     <item>
@@ -198,7 +207,7 @@
       <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/docker/</guid>
-      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue 1nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt;</description>
+      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt;</description>
     </item>
     
     <item>
@@ -238,12 +247,12 @@
     </item>
     
     <item>
-      <title>Leetcode</title>
+      <title></title>
       <link>https://jxiaof.com/post/leetcode/</link>
       <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/leetcode/</guid>
-      <description>买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru: # 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size =</description>
+      <description>中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p =</description>
     </item>
     
     <item>
@@ -338,7 +347,7 @@ env LDFLAGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span styl
       <pubDate>Thu, 16 Apr 2020 16:34:03 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/video-2020/</guid>
-      <description>    </description>
+      <description>让子弹飞</description>
     </item>
     
     <item>

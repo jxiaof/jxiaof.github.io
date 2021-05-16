@@ -72,12 +72,12 @@
     </item>
     
     <item>
-      <title>Leetcode</title>
+      <title></title>
       <link>https://jxiaof.com/post/leetcode/</link>
       <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/leetcode/</guid>
-      <description>买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru: # 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size =</description>
+      <description>中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p =</description>
     </item>
     
     <item>

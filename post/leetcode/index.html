@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang='en'><head>
-  <title>Leetcode | 江小凡的博客</title>
+  <title>江小凡的博客</title>
   <meta charset='utf-8'>
   <meta name="generator" content="Hugo 0.82.1" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
-<meta property = 'og:title' content = 'Leetcode' />
-<meta name="description" content="买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int &#34;&#34;&#34; min_p, max_p = 999999, 0 for i in …">
-<meta property = 'og:description' content = '买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int &#34;&#34;&#34; min_p, max_p = 999999, 0 for i in …'>
+<meta property = 'og:title' content = '' />
+<meta name="description" content="中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …">
+<meta property = 'og:description' content = '中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/leetcode/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/programmer.png'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = 'Leetcode' />
-<meta property = 'twitter:description'  content = '买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int &#34;&#34;&#34; min_p, max_p = 999999, 0 for i in …'/>
+<meta name = 'twitter:title' content = '' />
+<meta property = 'twitter:description'  content = '中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/programmer.png' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -49,11 +49,18 @@
 
     <main>
 <section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/programmer.png);'>
-  <h1 class='post_title'>Leetcode</h1>
+  <h1 class='post_title'></h1>
 </section>
 
 <div class = 'post'>
-  <article class='post_content'><p><strong>买卖股票简答:</strong></p>
+  <article class='post_content'><h1 id="中心思想">中心思想</h1>
+<blockquote>
+<p>由简单到复杂    (不先考虑边界问题)</p>
+<p>由局部到整体</p>
+<p>由粗糙到精细</p>
+<p>由厚到薄</p>
+</blockquote>
+<p><strong>买卖股票简答:</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maxProfit</span>(self, prices):
         <span style="color:#e6db74">&#34;&#34;&#34;
@@ -68,6 +75,9 @@
 </code></pre></div><p><strong>lru:</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># 使用有序字典(dict + 双向链表)</span>
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">给定一个有序字典,如果key存在,则删除key,然后更新 key: value, 如果size等于最大值,删除最后一组 key: value
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 
 <span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> OrderedDict
 
@@ -468,11 +478,11 @@ con <span style="color:#f92672">=</span> []
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/redis/' title = '关于Redis的长期更新' style = 'background-image: url(https://jxiaof.com/images/redis.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/video-2021-05-16/' title = 'Video 2021 05 16' style = 'background-image: url(https://jxiaof.com/images/video.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/redis' class = 'post_tag'>redis
+      <a href = 'https://jxiaof.com/tags/video' class = 'post_tag'>video
       </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
@@ -481,9 +491,9 @@ con <span style="color:#f92672">=</span> []
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/redis/'>关于Redis的长期更新</a>
+      <a href='https://jxiaof.com/post/video-2021-05-16/'>Video 2021 05 16</a>
     </h3>
-    <p class = 'pale'>redis数据类型分析 Redis的应用场景 高速缓存 - 将不常变化但又经常被访问的热点数据放到Redis数据库中，可以大大降低关系型数据库的压力</p>
+    <p class = 'pale'>电影的原视频就不放了,大家去电影院看. 推荐两个b站视频: 哔哩哔哩朝圣视频 另一个视频</p>
   </div>
 </li>
 

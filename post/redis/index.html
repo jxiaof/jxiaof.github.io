@@ -139,6 +139,35 @@ Master3负责10922~16383号哈希槽</p>
 如果某个实例距离最后一次有效回复ping命令的时间超过一定值，则会被标记为主观下线；
 如果master被标记为主观下线，那么其他正在监视master的哨兵以每秒的频率确认其确实进入主观下线状态，且数量达到一定值时，master会被标记为下线，然后通知其他的从服务器，修改配置文件，让它们切换主机；
 客户端在master节点发生故障时会重向哨兵要地址，此时会获得最新的master节点地址</p>
+<h1 id="补充">补充</h1>
+<blockquote>
+<p>增量复制:  断线线重连, 定时同步
+全量复制:  增加节点</p>
+<p>RDB 持久化是指在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是 fork 一个子进程，先将数据集写入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储</p>
+<p>AOF 持久化以日志的形式记录服务器所处理的每一个增删改操作，以文本的方式记录，可以打开文件看到详细的操作记录命令行
+批量生成id: 一次取一千放到内存,用完之后再去取1000.</p>
+<p>Redis: 避免big key ,避免一直堵塞</p>
+<p>电商购物车:
+商品加入到购物车 hset name:id 商品ID 商品数量
+增加商品数量 hincrby  name:id 商品ID 增加商品数量
+商品总数: hlen
+删除商品:hdel
+获取所有商品列表: hgetall</p>
+<p>不能设置过期时间,占用小查询快,跟哈希算法有关,集群拓展有分布不均匀问题.</p>
+<p>关注推送
+lpush
+微信微博点赞收藏和标签
+集合 交集并集
+共同好友, 可能认识</p>
+<p>分布式锁:
+单机多线程安全
+多机集群共享资源安全
+Setnx 同时使用expires  -  集群,单个pod宕机</p>
+<p>redis.   simple dynamic string
+sds: 二进制安全 len. hel\0lo
+内存预分配
+兼容c语言函数库</p>
+</blockquote>
 <hr>
 <p><a href="https://item.jd.com/12121730.html">《Redis开发与运维》</a>是一本不错的入门读物，而<a href="https://item.jd.com/11791607.html">《Redis实战》</a>是不错的进阶读物。</p>
 <hr>
@@ -202,11 +231,11 @@ Master3负责10922~16383号哈希槽</p>
 </li>
 
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/flask01/' title = 'Flask主线程以及短链接实现' style = 'background-image: url(https://jxiaof.com/images/fast-lane.jpg);'>
+  <a class = 'post_card' href='https://jxiaof.com/post/video-2021-05-16/' title = 'Video 2021 05 16' style = 'background-image: url(https://jxiaof.com/images/video.jpg);'>
   </a>
   <div class = 'excerpt'>
     <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/flask' class = 'post_tag'>flask
+      <a href = 'https://jxiaof.com/tags/video' class = 'post_tag'>video
       </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>
@@ -215,9 +244,9 @@ Master3负责10922~16383号哈希槽</p>
 
     </div>
     <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/flask01/'>Flask主线程以及短链接实现</a>
+      <a href='https://jxiaof.com/post/video-2021-05-16/'>Video 2021 05 16</a>
     </h3>
-    <p class = 'pale'><p>问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影 …</p></p>
+    <p class = 'pale'>电影的原视频就不放了,大家去电影院看. 推荐两个b站视频: 哔哩哔哩朝圣视频 另一个视频</p>
   </div>
 </li>
 

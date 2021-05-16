@@ -96,7 +96,7 @@
       <pubDate>Thu, 17 Dec 2020 15:55:08 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/go/</guid>
-      <description>go 目前正在学习go语言 了解到gin go-admin go-zero 后期根据实际情况接触了解.</description>
+      <description>go 目前正在学习go语言 了解了gin go-admin go-zero</description>
     </item>
     
     <item>
@@ -198,7 +198,7 @@
       <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/docker/</guid>
-      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue 1nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt;</description>
+      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt;</description>
     </item>
     
     <item>
@@ -238,12 +238,12 @@
     </item>
     
     <item>
-      <title>Leetcode</title>
+      <title></title>
       <link>https://jxiaof.com/post/leetcode/</link>
       <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/leetcode/</guid>
-      <description>买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p = max(max_p, prices[i] - min_p) return max_p lru: # 使用有序字典(dict + 双向链表) from collections import OrderedDict class LRUCache: def __init__(self, size): self.size =</description>
+      <description>中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p =</description>
     </item>
     
     <item>

@@ -97,6 +97,28 @@
 <h3 id="乐观锁optimistic-lock">乐观锁（Optimistic Lock）：</h3>
 <p>每次拿数据的时候都完全不担心会被别人修改（心态好很乐观），所以每次在拿数据的时候都不会上锁。但是在更新数据的时候去判断该期间是否被别人修改过（使用版本号等机制），期间该数据可以随便被其他人读取。
 两种锁各有优缺点，不能单纯的定义哪个好于哪个。乐观锁比较适合数据修改比较少，读取比较频繁的场景，即使出现了少量的冲突，这样也省去了大量的锁的开销，故而提高了系统的吞吐量。但是如果经常发生冲突（写数据比较多的情况下），上层应用不不断的retry，这样反而降低了性能，对于这种情况使用悲观锁就更合适。</p>
+<blockquote>
+<p>Start transaction 开始一个事物</p>
+<p>Savepoint  保存点</p>
+<p>rollback to</p>
+<p>rollback</p>
+<p>commit</p>
+<p>select @@tx_isolation;</p>
+<p>两个事物client</p>
+<p>a执行sql 但未提交, b读到修改之后的值,自己未提交.</p>
+<p>a 执行sql 已提交, b读到修改之后的值,自己未提交.</p>
+<p>可重复读</p>
+<p>序列化 加锁</p>
+<p>不能多个提交</p>
+<p>原子性 一致性 隔离性 持久性</p>
+<p>写入的效率会低一些,占用更多的磁盘保存索引和数据</p>
+</blockquote>
+<blockquote>
+<p>sql视图是一个虚拟表,基于一个真实表.过滤多个列数据</p>
+<p>更改视图数据会更新基表数据,同样基表更新也会更新视图.</p>
+<p>create view view_demo as select a,b,c from obj</p>
+<p>安全(查看权限),    性能(将相关的关联表的字段放到一个表), 灵活(将旧表资源利用,新表基于旧表)</p>
+</blockquote>
 
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
