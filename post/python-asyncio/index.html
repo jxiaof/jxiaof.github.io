@@ -60,8 +60,7 @@
 <p><strong>进程/线程：操作系统提供的一种并发处理任务的能力。</strong></p>
 <p><strong>协程：程序员通过高超的代码能力，在代码执行流程中人为的实现多任务并发，是单个线程内的任务调度技巧。</strong></p>
 <p><strong>网上的一个经典例子:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#f92672">import</span> time
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task1</span>():
     <span style="color:#66d9ef">while</span> True:
@@ -113,12 +112,12 @@ next(c1)
 next(c2)
 produce(c1, c2)
 </code></pre></div><h2 id="协程状态">协程状态</h2>
-<p>协程可以处于下面四个状态中的一个。当前状态可以导入inspect模块，使用inspect.getgeneratorstate(&hellip;) 方法查看，该方法会返回下述字符串中的一个。</p>
+<p>协程可以处于下面四个状态中的一个。当前状态可以导入inspect模块，使用inspect.getgeneratorstate(…) 方法查看，该方法会返回下述字符串中的一个。</p>
 <ul>
-<li>&lsquo;GEN_CREATED&rsquo;　　等待开始执行。</li>
-<li>&lsquo;GEN_RUNNING&rsquo;　　协程正在执行。</li>
-<li>&lsquo;GEN_SUSPENDED&rsquo; 在yield表达式处暂停。</li>
-<li>&lsquo;GEN_CLOSED&rsquo; 　　执行结束。</li>
+<li>‘GEN_CREATED’　　等待开始执行。</li>
+<li>‘GEN_RUNNING’　　协程正在执行。</li>
+<li>‘GEN_SUSPENDED’ 在yield表达式处暂停。</li>
+<li>‘GEN_CLOSED’ 　　执行结束。</li>
 </ul>
 <p>因为send()方法的参数会成为暂停的yield表达式的值，所以，仅当协程处于暂停状态时才能调用 send()方法，例如<code>my_coro.send(10)</code>。不过，如果协程还没激活（状态是<code>'GEN_CREATED'</code>），就立即把None之外的值发给它，会出现TypeError。因此，始终要先调用<code>next(my_coro)</code>激活协程（也可以调用<code>my_coro.send(None)</code>），这一过程被称作预激活。</p>
 <p>除了send()方法，其实还有throw()和close()方法：</p>
@@ -162,9 +161,6 @@ my_coro<span style="color:#f92672">.</span>close()
 </span><span style="color:#e6db74">GEN_CLOSED
 </span><span style="color:#e6db74">
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-
-
-
 </code></pre></div><h2 id="yield-from">yield from</h2>
 <p><strong>yield from 其实就是等待另外一个协程的返回,也有人说这是一种另类的for循环</strong></p>
 <p>我写了一个这样的例子, 看看返回结果就理解了:</p>
@@ -222,18 +218,14 @@ loop<span style="color:#f92672">.</span>run_until_complete(future)
 <span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
 loop<span style="color:#f92672">.</span>close()
 </code></pre></div><blockquote>
-<p>Ipython 和 Jupiter nootbook.  出现异常: RuntimeError: This event loop is already running</p>
-<p>这个问题在GitHub上已经有人提过了：
-“RuntimeError: This event loop is already running”; debugging aiohttp, asyncio and IDE “spyder3” in python 3.6.5 · Issue #7096 · spyder-ide/spyder
-async support by minrk · Pull Request #323 · ipython/ipykernel
-问题出现的原因是IPython/ipykernel不支持asyncio</p>
+<p>Ipython 和 Jupiter nootbook. 出现异常: RuntimeError: This event loop is already running</p>
+<p>这个问题在GitHub上已经有人提过了： “RuntimeError: This event loop is already running”; debugging aiohttp, asyncio and IDE “spyder3” in python 3.6.5 · Issue #7096 · spyder-ide/spyder async support by minrk · Pull Request #323 · ipython/ipykernel 问题出现的原因是IPython/ipykernel不支持asyncio</p>
 </blockquote>
 <p>asyncio代码建议pycharm下运行</p>
 <p>先更新到这里,后续再继续更新!</p>
 <hr>
 <p>参考如下:</p>
-<p>​	https://www.liujiangblog.com/course/python/83</p>
-<p>​</p>
+<p><a href="https://www.liujiangblog.com/course/python/83">https://www.liujiangblog.com/course/python/83</a></p>
 
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on 江小凡的博客</title>
+    <link>https://jxiaof.com/series/ai/</link>
+    <description>Recent content in AI on 江小凡的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Designed By Felix</copyright>
+    <lastBuildDate>Tue, 18 May 2021 10:49:05 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytorch2Onnx2TensorRT</title>
+      <link>https://jxiaof.com/post/pytorch2onnx2tensorrt/</link>
+      <pubDate>Tue, 18 May 2021 10:49:05 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/pytorch2onnx2tensorrt/</guid>
+      <description>pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models. 先将模型转成onnx格式 需要安装pytorch onnx, opencv 要转换结果模型，您只需要一个指令 torch</description>
+    </item>
+    
+  </channel>
+</rss>

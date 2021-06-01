@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Sun, 16 May 2021 22:38:27 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 May 2021 17:48:25 +0800</lastBuildDate><atom:link href="https://jxiaof.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>python多任务处理</title>
       <link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
@@ -19,12 +19,21 @@
     </item>
     
     <item>
-      <title>Video 2021 05 16</title>
-      <link>https://jxiaof.com/post/video-2021-05-16/</link>
-      <pubDate>Sun, 16 May 2021 22:38:27 +0800</pubDate>
+      <title>Python Asyncio</title>
+      <link>https://jxiaof.com/post/python-asyncio/</link>
+      <pubDate>Mon, 31 May 2021 17:48:25 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/video-2021-05-16/</guid>
-      <description>电影的原视频就不放了,大家去电影院看. 推荐两个b站视频: 哔哩哔哩朝圣视频 另一个视频</description>
+      <guid>https://jxiaof.com/post/python-asyncio/</guid>
+      <description>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</description>
+    </item>
+    
+    <item>
+      <title>Pytorch2Onnx2TensorRT</title>
+      <link>https://jxiaof.com/post/pytorch2onnx2tensorrt/</link>
+      <pubDate>Tue, 18 May 2021 10:49:05 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/pytorch2onnx2tensorrt/</guid>
+      <description>pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models. 先将模型转成onnx格式 需要安装pytorch onnx, opencv 要转换结果模型，您只需要一个指令 torch</description>
     </item>
     
     <item>
@@ -46,15 +55,6 @@
     </item>
     
     <item>
-      <title>Python Asyncio</title>
-      <link>https://jxiaof.com/post/python-asyncio/</link>
-      <pubDate>Fri, 30 Apr 2021 15:47:56 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/python-asyncio/</guid>
-      <description>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</description>
-    </item>
-    
-    <item>
       <title>Mysql Session</title>
       <link>https://jxiaof.com/post/mysql-session/</link>
       <pubDate>Sun, 25 Apr 2021 09:57:36 +0800</pubDate>
@@ -70,6 +70,15 @@
       
       <guid>https://jxiaof.com/post/mysql-index/</guid>
       <description>mysql索引 优势：可以快速检索，减少I/O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序； 劣势：索引本身也是表，因此会占用存储</description>
+    </item>
+    
+    <item>
+      <title>Video 2021 05 16</title>
+      <link>https://jxiaof.com/post/video-2021-05-16/</link>
+      <pubDate>Sun, 16 May 2021 22:38:27 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/video-2021-05-16/</guid>
+      <description>电影的原视频就不放了,大家去电影院看. 推荐两个b站视频: 哔哩哔哩朝圣视频 另一个视频</description>
     </item>
     
     <item>

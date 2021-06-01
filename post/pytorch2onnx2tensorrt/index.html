@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Pytorch2 onnx2 tensor rt | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Pytorch2Onnx2TensorRT' />
+<meta name="description" content="pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models. 先将模型转成onnx格式 需要安 …">
+<meta property = 'og:description' content = 'pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models. 先将模型转成onnx格式 需要安 …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/post/pytorch2onnx2tensorrt/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/python.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Pytorch2Onnx2TensorRT' />
+<meta property = 'twitter:description'  content = 'pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models. 先将模型转成onnx格式 需要安 …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/python.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/post/pytorch2onnx2tensorrt/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/python.png);'>
+  <h1 class='post_title'>Pytorch2Onnx2TensorRT</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h1 id="pytorch-转-onnx-再转-tensorrt">pytorch 转 onnx 再转 tensorRT</h1>
+<p><img src="https://developer.nvidia.com/blog/wp-content/uploads/2020/03/ONNX-workflow-625x119.jpg" alt=""></p>
+<ul>
+<li>ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models.</li>
+</ul>
+<p>先将模型转成onnx格式</p>
+<p>需要安装pytorch onnx, opencv</p>
+<p>要转换结果模型，您只需要一个指令 <strong>torch.onnx.export</strong>，这需要以下参数：</p>
+<table>
+<thead>
+<tr>
+<th>model</th>
+<th>预训练模型本身、</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input = Variable(torch.randn(1, 3, 224, 224)).cuda()</td>
+<td>输入数据大小相同的张量、</td>
+<td></td>
+</tr>
+<tr>
+<td>model_name</td>
+<td>ONNX文件名称、</td>
+<td></td>
+</tr>
+<tr>
+<td>input_names</td>
+<td>输入名称</td>
+<td></td>
+</tr>
+<tr>
+<td>output_names</td>
+<td>输出名称</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ONNX_FILE_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>
+torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, input, ONNX_FILE_PATH, input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input&#39;</span>],   output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output&#39;</span>],     export_params<span style="color:#f92672">=</span>True)
+</code></pre></div><p>要检查模型是否正常转换，请调用<strong>onnx.checker.check_model</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">onnx_model <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(ONNX_FILE_PATH)
+onnx<span style="color:#f92672">.</span>checker<span style="color:#f92672">.</span>check_model(onnx_model)
+</code></pre></div><p>一个实例:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torchvision
+<span style="color:#f92672">import</span> torch
+<span style="color:#f92672">from</span> torch.autograd <span style="color:#f92672">import</span> Variable
+<span style="color:#f92672">import</span> onnx
+<span style="color:#66d9ef">print</span>(torch<span style="color:#f92672">.</span>__version__)
+
+input_name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;input&#39;</span>]
+output_name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;output&#39;</span>]
+input <span style="color:#f92672">=</span> Variable(torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>))<span style="color:#f92672">.</span>cuda()
+model <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>resnet50(pretrained<span style="color:#f92672">=</span>True)<span style="color:#f92672">.</span>cuda()
+torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, input, <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>, input_names<span style="color:#f92672">=</span>input_name, output_names<span style="color:#f92672">=</span>output_name, verbose<span style="color:#f92672">=</span>True)
+</code></pre></div><p>另一个实例:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch
+ 
+device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span> <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;cpu&#34;</span>)
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">model_converter</span>():
+    model <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;resnet50.pth&#39;</span>)<span style="color:#f92672">.</span>to(device)  <span style="color:#75715e"># 这里保存的是完整模型</span>
+    model<span style="color:#f92672">.</span>eval()
+ 
+    dummy_input <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">96</span>, device<span style="color:#f92672">=</span>device)
+    input_names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;data&#39;</span>]
+    output_names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;fc&#39;</span>]
+    torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, dummy_input, <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>, 
+                      export_params<span style="color:#f92672">=</span>True, 
+                      verbose<span style="color:#f92672">=</span>True, 
+                      input_names<span style="color:#f92672">=</span>input_names, 
+                      output_names<span style="color:#f92672">=</span>output_names)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<span style="color:#f92672">import</span> argparse
+<span style="color:#f92672">import</span> torch
+<span style="color:#f92672">import</span> onnx
+
+<span style="color:#f92672">import</span> sys
+sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;{{project_path}}&#34;</span>)
+
+<span style="color:#f92672">from</span> model <span style="color:#f92672">import</span> U2NET  <span style="color:#75715e"># full size version 173.6 MB</span>
+<span style="color:#f92672">from</span> model <span style="color:#f92672">import</span> U2NETP  <span style="color:#75715e"># small version u2net 4.7 MB</span>
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
+    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--weights&#39;</span>, type<span style="color:#f92672">=</span>str, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{model_path}}&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;weights path&#39;</span>)
+    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--img-size&#39;</span>, nargs<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;+&#39;</span>, type<span style="color:#f92672">=</span>int, default<span style="color:#f92672">=</span>[<span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">320</span>], help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;image size&#39;</span>)
+    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--batch-size&#39;</span>, type<span style="color:#f92672">=</span>int, default<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;batch size&#39;</span>)
+    opt <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+    <span style="color:#75715e"># print(opt)</span>
+
+    <span style="color:#75715e"># Parameters</span>
+    f <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;model_new.onnx&#34;</span>  <span style="color:#75715e"># onnx filename</span>
+    img <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn((opt<span style="color:#f92672">.</span>batch_size, <span style="color:#ae81ff">3</span>, <span style="color:#f92672">*</span>opt<span style="color:#f92672">.</span>img_size))  <span style="color:#75715e"># image size, (1, 3, 320, 192) iDetection  todofix (1, 3, 320, 192)</span>
+
+    <span style="color:#75715e"># Load pytorch model</span>
+    model_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;u2net&#39;</span>  <span style="color:#75715e"># &#39;u2netp&#39;</span>
+    <span style="color:#66d9ef">if</span> (model_name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;u2net&#39;</span>):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;...load U2NET---173.6 MB&#34;</span>)
+        model <span style="color:#f92672">=</span> U2NET(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">elif</span> (model_name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;u2netp&#39;</span>):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;...load U2NEP---4.7 MB&#34;</span>)
+        model <span style="color:#f92672">=</span> U2NETP(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+
+    <span style="color:#75715e"># model = torch.load(opt.weights, map_location=torch.device(&#39;cpu&#39;))[&#39;model&#39;].float()</span>
+    <span style="color:#75715e"># loaded_model = torch.load(opt.weights, map_location=torch.device(&#39;cpu&#39;))</span>
+    loaded_model <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>load(opt<span style="color:#f92672">.</span>weights, map_location<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#39;cuda&#39;</span>))
+    model<span style="color:#f92672">.</span>load_state_dict(loaded_model)
+
+    model<span style="color:#f92672">.</span>eval()
+    <span style="color:#75715e"># Export to onnx</span>
+    _ <span style="color:#f92672">=</span> model(img)  <span style="color:#75715e"># dry run</span>
+    torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, img, f, verbose<span style="color:#f92672">=</span>False, opset_version<span style="color:#f92672">=</span><span style="color:#ae81ff">11</span>, input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input_test&#39;</span>], output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output_test_1&#39;</span>, <span style="color:#e6db74">&#39;output_test_2&#39;</span>, <span style="color:#e6db74">&#39;output_test-3&#39;</span>, <span style="color:#e6db74">&#39;output_test_4&#39;</span>, <span style="color:#e6db74">&#39;output_test_5&#39;</span>, <span style="color:#e6db74">&#39;output_test_6&#39;</span>, <span style="color:#e6db74">&#39;output_test_7&#39;</span>])  <span style="color:#75715e"># output_names=[&#39;classes&#39;, &#39;boxes&#39;]</span>
+
+    <span style="color:#75715e"># Check onnx model</span>
+    model <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(f)  <span style="color:#75715e"># load onnx model</span>
+    onnx<span style="color:#f92672">.</span>checker<span style="color:#f92672">.</span>check_model(model)  <span style="color:#75715e"># check onnx model</span>
+    <span style="color:#66d9ef">print</span>(onnx<span style="color:#f92672">.</span>helper<span style="color:#f92672">.</span>printable_graph(model<span style="color:#f92672">.</span>graph))  <span style="color:#75715e"># print a human readable representation of the graph</span>
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-*-&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Export complete. ONNX model saved to </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">View with https://github.com/lutzroeder/netron&#39;</span> <span style="color:#f92672">%</span> f)
+
+</code></pre></div><p>然后下载TensorRT</p>
+<p>略过</p>
+<p>tensor环境配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">export LD_LIBRARY_PATH=/usr/local/trt/TensorRT-8.0.0.3/lib:$LD_LIBRARY_PATH
+export CUDA_VISIBLE_DEVICES=0
+</code></pre></div><p>从 ONNX 创建 TensorRT 引擎</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorrt <span style="color:#f92672">as</span> trt
+
+TRT_LOGGER <span style="color:#f92672">=</span> trt<span style="color:#f92672">.</span>Logger(trt<span style="color:#f92672">.</span>Logger<span style="color:#f92672">.</span>WARNING)
+trt_runtime <span style="color:#f92672">=</span> trt<span style="color:#f92672">.</span>Runtime(TRT_LOGGER)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_engine</span>(onnx_path, shape <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">224</span>,<span style="color:#ae81ff">224</span>,<span style="color:#ae81ff">3</span>]):
+
+   <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">   This is the function to create the TensorRT engine
+</span><span style="color:#e6db74">   Args:
+</span><span style="color:#e6db74">      onnx_path : Path to onnx_file. 
+</span><span style="color:#e6db74">      shape : Shape of the input of the ONNX file. 
+</span><span style="color:#e6db74">  &#34;&#34;&#34;</span>
+   <span style="color:#66d9ef">with</span> trt<span style="color:#f92672">.</span>Builder(TRT_LOGGER) <span style="color:#66d9ef">as</span> builder, builder<span style="color:#f92672">.</span>create_network(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> network, trt<span style="color:#f92672">.</span>OnnxParser(network, TRT_LOGGER) <span style="color:#66d9ef">as</span> parser:
+       builder<span style="color:#f92672">.</span>max_workspace_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">256</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">20</span>)
+       <span style="color:#66d9ef">with</span> open(onnx_path, <span style="color:#e6db74">&#39;rb&#39;</span>) <span style="color:#66d9ef">as</span> model:
+           parser<span style="color:#f92672">.</span>parse(model<span style="color:#f92672">.</span>read())
+       network<span style="color:#f92672">.</span>get_input(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>shape <span style="color:#f92672">=</span> shape
+       engine <span style="color:#f92672">=</span> builder<span style="color:#f92672">.</span>build_cuda_engine(network)
+       <span style="color:#66d9ef">return</span> engine
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_engine</span>(engine, file_name):
+   buf <span style="color:#f92672">=</span> engine<span style="color:#f92672">.</span>serialize()
+   <span style="color:#66d9ef">with</span> open(file_name, <span style="color:#e6db74">&#39;wb&#39;</span>) <span style="color:#66d9ef">as</span> f:
+       f<span style="color:#f92672">.</span>write(buf)
+    
+    
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_engine</span>(trt_runtime, plan_path):
+   <span style="color:#66d9ef">with</span> open(engine_path, <span style="color:#e6db74">&#39;rb&#39;</span>) <span style="color:#66d9ef">as</span> f:
+       engine_data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+   engine <span style="color:#f92672">=</span> trt_runtime<span style="color:#f92672">.</span>deserialize_cuda_engine(engine_data)
+   <span style="color:#66d9ef">return</span> engine
+</code></pre></div><p><strong>16精度,一个消费者,显卡使用情况</strong></p>
+<p><img src="https://i.loli.net/2021/05/26/vz3KTJm9caA82S1.png" alt="image-20210526103345774"></p>
+<p><strong>请求访问时,pod资源使用情况</strong></p>
+<p><img src="https://i.loli.net/2021/05/26/YpEbWtMyFvKraVj.png" alt="image-20210526104218037"></p>
+<blockquote>
+<p>root@vm172-31-16-127:~# kubectl top -n salient-object-detection pod
+NAME                                               CPU(cores)   MEMORY(bytes)
+salient-object-detection-deploy-6c8c5999fc-729lb   15m          4066Mi</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/05/26/vrH9timefOxqcdz.png" alt="image-20210526104535285"></p>
+<p><img src="https://i.loli.net/2021/05/26/JEnfOlqiHk5XzU4.png" alt="image-20210526104650467"></p>
+<p>succ init portrait trt model: /code/salient_object_detection/trt/t4.portrait_best.fp32.trt, fp16: False</p>
+<p><img src="https://i.loli.net/2021/05/26/TKne45B6yfcwHql.png" alt="image-20210526101316824"></p>
+<p><img src="https://i.loli.net/2021/05/26/qdt26nARG1XJNfW.png" alt="image-20210526101109786"></p>
+<hr>
+<p>参考:</p>
+<p><a href="https://learnopencv.com/how-to-convert-a-model-from-pytorch-to-tensorrt-and-speed-up-inference/">https://learnopencv.com/how-to-convert-a-model-from-pytorch-to-tensorrt-and-speed-up-inference/</a></p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/tfserving/' title = 'TFserving' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/ai' class = 'post_tag'>AI
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/tfserving/'>TFserving</a>
+    </h3>
+    <p class = 'pale'>模型部署tfserving 使用tensorflow训练好一个模型，使用keras其他框架也可以，只需要将模型转换为pb文件即可，根据不同的转</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>
