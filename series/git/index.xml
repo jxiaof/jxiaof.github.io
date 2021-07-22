@@ -14,7 +14,7 @@
       <pubDate>Mon, 14 Dec 2020 11:42:36 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/git/</guid>
-      <description>git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 $ git branch -d [branch-name] git branch -r -d origin/branch-name # 删除分支 git push origin :branch-name # 删除远程分支 $ git push origin --delete [branch-name] $ git branch -dr [remote/branch] # 显示</description>
+      <description>git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 # delete branch locally git branch -d localBranchName # delete branch remotely git push origin --delete remoteBranchName # 删除分支 git push origin :branch-name # 删除远程分支 $ git push origin --delete [branch-name] $</description>
     </item>
     
   </channel>

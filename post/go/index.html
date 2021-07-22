@@ -8,14 +8,14 @@
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = 'Go' />
-<meta name="description" content="go 目前正在学习go语言 了解了gin go-admin go-zero">
-<meta property = 'og:description' content = 'go 目前正在学习go语言 了解了gin go-admin go-zero'>
+<meta name="description" content="go 这里暂时不介绍go语言,这里读一篇文章. 阮一峰的网络日志 » 首页 » 档案 上一篇：科技爱好者周刊（第 1 下一篇：科技爱好者周刊（第 1 分类： 译文集 程">
+<meta property = 'og:description' content = 'go 这里暂时不介绍go语言,这里读一篇文章. 阮一峰的网络日志 » 首页 » 档案 上一篇：科技爱好者周刊（第 1 下一篇：科技爱好者周刊（第 1 分类： 译文集 程'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/go/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/go.png'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = 'Go' />
-<meta property = 'twitter:description'  content = 'go 目前正在学习go语言 了解了gin go-admin go-zero'/>
+<meta property = 'twitter:description'  content = 'go 这里暂时不介绍go语言,这里读一篇文章. 阮一峰的网络日志 » 首页 » 档案 上一篇：科技爱好者周刊（第 1 下一篇：科技爱好者周刊（第 1 分类： 译文集 程'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/go.png' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -54,8 +54,249 @@
 
 <div class = 'post'>
   <article class='post_content'><h1 id="go">go</h1>
-<p>目前正在学习go语言</p>
-<p>了解了<code>gin</code> <code>go-admin</code> <code>go-zero</code></p>
+<p>这里暂时不介绍go语言,这里读一篇文章.</p>
+<p>阮一峰的网络日志 » <a href="https://www.ruanyifeng.com/blog/">首页</a> » <a href="https://www.ruanyifeng.com/blog/archives.html">档案</a></p>
+<p><a href="https://www.ruanyifeng.com/feed.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="img"></a></p>
+<ul>
+<li>上一篇：<a href="https://www.ruanyifeng.com/blog/2021/06/weekly-issue-164.html">科技爱好者周刊（第 1</a></li>
+<li>下一篇：<a href="https://www.ruanyifeng.com/blog/2021/07/weekly-issue-165.html">科技爱好者周刊（第 1</a></li>
+</ul>
+<p>分类：</p>
+<ul>
+<li><a href="https://www.ruanyifeng.com/blog/translations/">译文集</a></li>
+</ul>
+<h1 id="程序员的酒后真言">程序员的酒后真言</h1>
+<p>作者： <a href="https://www.ruanyifeng.com/">阮一峰</a></p>
+<p>日期： <a href="https://www.ruanyifeng.com/blog/2021/06/">2021年6月28日</a></p>
+<p>美国最大的论坛 Reddit，最近有一个<a href="https://old.reddit.com/r/ExperiencedDevs/comments/nmodyl/drunk_post_things_ive_learned_as_a_sr_engineer/">热帖</a>。</p>
+<p>一个程序员说自己喝醉了，软件工程师已经当了10年，心里有好多话想说，&ldquo;我可能会后悔今天说了这些话。&rdquo;</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202106/bg2021062802.jpg" alt="img"></p>
+<p>他洋洋洒洒写了一大堆，获得9700多个赞。内容很有意思，值得一读，下面是节选。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202106/bg2021062801.jpg" alt="img"></p>
+<p>（1）职业发展的最好方法是换公司。</p>
+<p>（2）技术栈不重要。技术领域有大约 10-20 条核心原则，重要的是这些原则，技术栈只是落实它们的方法。你如果不熟悉某个技术栈，不需要过度担心。</p>
+<p>（3）工作和人际关系是两回事。有一些公司，我交到了好朋友，但是工作得并不开心；另一些公司，我没有与任何同事建立友谊，但是工作得很开心。</p>
+<p>（4）我总是对经理实话实说。怕什么？他开除我？我会在两周内找到一份新工作。</p>
+<p>（5）如果一家公司的工程师超过 100 人，它的期权可能在未来十年内变得很有价值。对于工程师人数很少的公司，期权一般都是毫无价值。</p>
+<p>（6）好的代码是初级工程师可以理解的代码。伟大的代码可以被第一年的 CS 专业的新生理解。</p>
+<p>（7）作为一名工程师，最被低估的技能是记录。说真的，如果有人可以教我怎么写文档，我会付钱，也许是 1000 美元。</p>
+<p>（8）网上的口水战，几乎都无关紧要，别去参与。</p>
+<p>（9）如果我发现自己是公司里面最厉害的工程师，那就该离开了。</p>
+<p>（10）我们应该雇佣更多的实习生，他们很棒。那些精力充沛的小家伙用他们的想法乱搞。如果他们公开质疑或批评某事，那就更好了。我喜欢实习生。</p>
+<p>（11）技术栈很重要。如果你使用 Python 或 C++ 语言，就会忍不住想做一些非常不同的事情。因为某些工具确实擅长某些工作。</p>
+<p>（12）如果你不确定自己想做什么东西，请使用 Java。这是一种糟糕的编程语言，但几乎无所不能。</p>
+<p>（13）对于初学者来说，最赚钱的编程语言是 SQL，干翻所有其他语言。你只了解 SQL 而不会做其他事情，照样赚钱。人力资源专家的年薪？也许5万美元。懂 SQL 的人力资源专家？9万美元。</p>
+<p>（14）测试很重要，但 TDD （测试驱动的开发）几乎变成了一个邪教。</p>
+<p>（15） 政府单位很轻松，但并不像人们说的那样好。对于职业生涯早期到中期的工程师，12 万美元的年薪 + 各种福利 + 养老金听起来不错，但是你将被禁锢在深奥的专用工具里面，离开政府单位以后，这些知识就没用了。我非常尊重政府工作人员，但说真的，这些地方的工程师，年龄中位数在 50 岁以上是有原因的。</p>
+<p>（16）再倒一杯酒。</p>
+<p>（17）大多数头衔都无关紧要，随便什么公司都可以有首席工程师。</p>
+<p>（18）手腕和背部的健康问题可不是开玩笑的，好的设备值得花钱。</p>
+<p>（19）当一个软件工程师，最好的事情是什么？你可以结识很多想法相同的人，大家互相交流，不一定有相同的兴趣，但是对方会用跟你相同的方式思考问题，这很酷。</p>
+<p>（20）有些技术太流行，我不得不用它。我心里就会很讨厌这种技术，但会把它推荐给客户，比如我恨 Jenkins，但把它推荐给新客户，我不觉得做错了。</p>
+<p>（21）成为一名优秀的工程师意味着了解最佳实践，成为高级工程师意味着知道何时打破最佳实践。</p>
+<p>（22）发生事故时，如果周围的人试图将责任归咎于外部错误或底层服务中断，那么是时候离开这家公司，继续前进了。</p>
+<p>（23）我遇到的最好的领导，同意我的一部分观点，同时耐心跟我解释，为什么不同意我的另一部分观点。我正在努力成为像他们一样的人。</p>
+<p>（24）算法和数据结构确实重要，但不应该无限夸大，尤其是面试的时候。我没见过药剂师面试时，还要测试有机化学的细节。这个行业的面试过程有时候很糟糕。</p>
+<p>（25）做自己喜欢的事情并不重要，不要让我做讨厌的事情更重要。</p>
+<p>（26）越接近产品，就越接近推动收入增长。无论工作的技术性如何，只要它接近产品，我都感到越有价值。</p>
+<p>（27）即使我平时用 Windows 工作，Linux 也很重要。为什么？因为服务器是 Linux 系统，你最终在 Linux 系统上工作。</p>
+<p>（28）人死了以后，你想让代码成为你的遗产吗？如果是那样，就花很多时间在代码上面吧，因为那是你的遗产。但是，如果你像我一样，更看重与家人、朋友和生活中其他人相处的时光，而不是写的代码，那就别对它太在意。</p>
+<p>（29）我挣的钱还不错，对此心存感激，但还是需要省钱。</p>
+<p>（30）糟糕，我没酒了。</p>
+<p>（完）</p>
+<h3 id="文档信息">文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： 2021年6月28日</li>
+</ul>
+<h2 id="相关文章">相关文章</h2>
+<ul>
+<li>
+<p>2020.03.23: <a href="https://www.ruanyifeng.com/blog/2020/03/the-world-after-coronavirus.html">尤瓦尔·赫拉利《冠状病毒之后的世界》</a></p>
+<p>《人类简史》的作者尤瓦尔·赫拉利，上周末在《金融时报》发表了一篇长文《冠状病毒之后的世界》。</p>
+</li>
+<li>
+<p>2020.01.16: <a href="https://www.ruanyifeng.com/blog/2020/01/china-technology-review.html">我对中国科技行业的看法（译文）</a></p>
+<p>@danwwang 是彭博社的一个技术分析师，写了一篇2019年回顾，详细谈了他对中国科技行业、中美贸易战的看法。</p>
+</li>
+<li>
+<p>2019.12.19: <a href="https://www.ruanyifeng.com/blog/2019/12/30-years-software-career.html">一个老程序员的30年生涯回顾（译文）</a></p>
+<p>前几天，我读到一篇文章，一个60多岁老程序员回顾自己的人生。</p>
+</li>
+<li>
+<p>2018.08.26: <a href="https://www.ruanyifeng.com/blog/2018/08/san-francisco.html">漂在旧金山</a></p>
+<p>旧金山是美国房价最高的城市，因为它就在硅谷旁边，有大量的科技公司。</p>
+</li>
+</ul>
+<h2 id="留言35条">留言（35条）</h2>
+<p><strong><em>*<a href="http://www.jixiaokang.com/">xkloveme</a>*</em> 说：</strong></p>
+<p>职业发展的最好方法是换公司&gt;_</p>
+<p>2021年6月28日 09:31 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427596">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*Garry Kasparov*</em> 说：</strong></p>
+<p>职业发展的最好方法是换公司。</p>
+<p>-&ndash;
+修仙小说里，主角要不断从小地方、小帮派，慢慢到大地方、大帮派。我理解换公司有两种情况：
+\1. 当下公司承载不了你的个人发展了。
+\2. 当下公司因为固有印象，没法给你更高的工资。</p>
+<p>2021年6月28日 09:33 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427597">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*咕咕胖*</em> 说：</strong></p>
+<p>It&rsquo;s not important to do what I like. It&rsquo;s more important to do what I don&rsquo;t hate.</p>
+<p>2021年6月28日 09:33 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427598">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*z3xl*</em> 说：</strong></p>
+<p>职业发展的最好方法是换公司</p>
+<p>+ 10086</p>
+<p>2021年6月28日 09:36 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427599">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="https://www.xuezenghui.com/">Zander</a>*</em> 说：</strong></p>
+<p>再倒一杯酒！</p>
+<p>2021年6月28日 09:36 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427600">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="https://twitter.com/fengyiyi">熠熠</a>*</em> 说：</strong></p>
+<p>第2条和第11条同时存在是因为有时间的先后？</p>
+<p>2021年6月28日 09:37 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427601">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*Garry Kasparov*</em> 说：</strong></p>
+<p>职业发展的最好方法是换公司。</p>
+<p>-&ndash;
+修仙小说里，主角要不断从小地方、小帮派，慢慢到大地方、大帮派。我理解换公司有两种情况：
+\1. 当下公司承载不了你的个人发展了。
+\2. 当下公司因为固有印象，没法给你更高的工资。</p>
+<p>2021年6月28日 09:40 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427602">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*晴矢*</em> 说：</strong></p>
+<p>“我在八年级时有一个女朋友，我不想分手，即使我不喜欢她了，所以我开始不理她。太糟糕了对不起，莉娜”</p>
+<p>对不起，我的前女友。</p>
+<p>2021年6月28日 10:12 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427604">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="https://mehoon.com/">云淡风轻</a>*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用熠熠的发言：
+</code></pre></div><p>第2条和第11条同时存在是因为有时间的先后？</p>
+</blockquote>
+<p>Tech stack matters. OK I just said tech stack doesn&rsquo;t matter, but hear me out. If you hear Python dev vs C++ dev, you think very different things, right? That&rsquo;s because certain tools are really good at certain jobs.</p>
+<p>有道翻译：技术堆栈问题。好吧，我刚说了技术堆栈不重要，但听我说完。如果你听到Python dev和c++ dev，你会有不同的想法，对吗?这是因为某些工具确实适合于某些工作。</p>
+<p>2021年6月28日 10:25 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427606">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*seven*</em> 说：</strong></p>
+<p>2和11冲突吗</p>
+<p>2021年6月28日 10:57 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427607">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*luke*</em> 说：</strong></p>
+<p>It&rsquo;s not important to do what I like. It&rsquo;s more important to do what I don&rsquo;t hate.</p>
+<p>这句话翻译成“做我喜欢的并不重要，更重要的是做我不讨厌的事情。”更准确。</p>
+<p>2021年6月28日 11:21 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427608">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*qimiaojiyi*</em> 说：</strong></p>
+<p>个人理解：技术栈不重要是因为你可以很快的上手它；技术栈很重要是因为在某些方面它确实很好用。</p>
+<p>2021年6月28日 11:24 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427609">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*邱朗*</em> 说：</strong></p>
+<p>第4条这里没有翻译不妥，意思完全变了 “I&rsquo;ve learned to be honest with my manager. Not too honest, but honest enough where I can be authentic at work. ”</p>
+<p>2021年6月28日 11:45 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427611">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="https://s5s5.me/">s5s5</a>*</em> 说：</strong></p>
+<p>hi 峰哥~ 原贴的下面评论中, 作者还有很多酒后真言, 可以也一起补充翻译啊</p>
+<p>2021年6月28日 11:53 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427612">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*note*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用云淡风轻的发言：
+</code></pre></div><p>引用熠熠的发言：</p>
+<p>第2条和第11条同时存在是因为有时间的先后？</p>
+<p>Tech stack matters. OK I just said tech stack doesn&rsquo;t matter, but hear me out. If you hear Python dev vs C++ dev, you think very different things, right? That&rsquo;s because certain tools are really good at certain jobs.</p>
+<p>有道翻译：技术堆栈问题。好吧，我刚说了技术堆栈不重要，但听我说完。如果你听到Python dev和c++ dev，你会有不同的想法，对吗?这是因为某些工具确实适合于某些工作。</p>
+</blockquote>
+<p>“……你会认为是非常不同的事情，对吧？那是因为特定的工具真的是擅长特定的工作。”</p>
+<p>2021年6月28日 13:28 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427613">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="https://www.yuque.com/yuejiangliu">YueJiangLiu</a>*</em> 说：</strong></p>
+<p>前面提技术堆栈，是为了表明核心原则比技术堆栈更重要。
+后面提技术堆栈，是为了提一句不同编程语言确实有其擅长的领域。</p>
+<p>2021年6月28日 14:40 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427616">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="http://jointd.com/">恬惔</a>*</em> 说：</strong></p>
+<p>技术领域有大约 10-20 条核心原则，这些原则是什么呢？</p>
+<p>2021年6月28日 14:45 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427617">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*Marco*</em> 说：</strong></p>
+<p>我以前有个女朋友，当我意识到不爱她的时候，我没有说分手，而是用冷暴力对她，忽视她，那感觉真不好受，对不起，冷娜。</p>
+<p>2021年6月28日 15:20 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427618">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*柠檬*</em> 说：</strong></p>
+<p>（24）算法和数据结构确实重要，但不应该无限夸大，尤其是面试的时候。我没见过药剂师面试时，还要测试有机化学的细节。这个行业的面试过程有时候很糟糕。
+此处需要@字节跳动</p>
+<p>2021年6月28日 16:18 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427620">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*守望人*</em> 说：</strong></p>
+<p>有几条确实是干活, 换公司带来的收益是真的高</p>
+<p>2021年6月28日 18:00 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427622">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*sdf*</em> 说：</strong></p>
+<p>归根到底就是一句话：
+技术不重要， 业务才是第一位</p>
+<p>2021年6月29日 11:17 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427628">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*。*</em> 说：</strong></p>
+<p>加油 好好干</p>
+<p>2021年6月29日 11:23 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427629">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*ddsdggsg*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用恬惔的发言：
+</code></pre></div><p>技术领域有大约 10-20 条核心原则，这些原则是什么呢？</p>
+</blockquote>
+<p>同问，是不是设计能力 分析能力什么的？有没有什么书</p>
+<p>2021年6月30日 09:03 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427638">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*木匠*</em> 说：</strong></p>
+<p>原帖的留言也是相当精彩。</p>
+<p>2021年6月30日 10:12 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427639">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*余风*</em> 说：</strong></p>
+<p>“网上的口水战，几乎都无关紧要，别去参与” +身份证号
+能平心静气讨论问题的人的比例越来越少。</p>
+<p>2021年6月30日 11:00 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427640">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*松岛川树*</em> 说：</strong></p>
+<p>换公司！！</p>
+<p>2021年6月30日 23:28 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427648">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="http://ss/">ss</a>*</em> 说：</strong></p>
+<p>但是挣钱与好代码无关，因为老板又不懂代码，那些混子还工资高。难道是我瞎子看不到另一面好的</p>
+<p>2021年7月 1日 08:58 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427650">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*李二狗*</em> 说：</strong></p>
+<p>（18）手腕和背部的健康问题可不是开玩笑的，好的设备值得花钱。
+这句话是什么意思？</p>
+<p>2021年7月 1日 16:22 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427661">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*shiyiwan*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用李二狗的发言：
+</code></pre></div><p>（18）手腕和背部的健康问题可不是开玩笑的，好的设备值得花钱。
+这句话是什么意思？</p>
+</blockquote>
+<p>程序员健康阿，好椅子好鼠标</p>
+<p>2021年7月 1日 16:43 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427662">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*hb*</em> 说：</strong></p>
+<p>不建议把原文中的“我”省略掉，本来他在表达自己的看法自己的经验，省略掉后就像一个好为人师的过来人再告诉新人真理</p>
+<p>2021年7月 2日 08:42 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427667">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*<a href="https://www.xttblog.com/">业余草</a>*</em> 说：</strong></p>
+<p>面试造火箭，工作拧螺丝！</p>
+<p>2021年7月 2日 09:41 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427678">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*菠菜哥*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用luke的发言：
+</code></pre></div><p>It&rsquo;s not important to do what I like. It&rsquo;s more important to do what I don&rsquo;t hate.</p>
+<p>这句话翻译成“做我喜欢的并不重要，更重要的是做我不讨厌的事情。”更准确。</p>
+</blockquote>
+<p>学生吗？你这是机翻层面上的更准确的！内容上的更准确当然是不做讨厌的事啦</p>
+<p>2021年7月 2日 15:08 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427703">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*菠菜哥*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用qimiaojiyi的发言：
+</code></pre></div><p>个人理解：技术栈不重要是因为你可以很快的上手它；技术栈很重要是因为在某些方面它确实很好用。</p>
+</blockquote>
+<p>技术栈很重要事因为技术特性有时候决定了你的思考方式和一部分行为习惯</p>
+<p>2021年7月 2日 15:09 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427704">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*虎*</em> 说：</strong></p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">引用ddsdggsg的发言：
+</code></pre></div><p>同问，是不是设计能力 分析能力什么的？有没有什么书</p>
+</blockquote>
+<p>是啊是啊，峰哥，您的原则是什么？</p>
+<p>2021年7月 2日 15:15 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427706">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<p><strong><em>*子龙*</em> 说：</strong></p>
+<p>越来越水</p>
+<p>2021年7月 2日 16:40 | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-427714">#</a> | <a href="https://www.ruanyifeng.com/blog/2021/06/drunk-post-of-a-programmer.html#comment-text">引用</a></p>
+<h2 id="我要发表看法">我要发表看法</h2>
+<p>您的留言 （HTML标签部分可用）</p>
+<p>您的大名：</p>
+<p>«-必填</p>
+<p>电子邮件：</p>
+<p>«-必填，不公开</p>
+<p>个人网址：</p>
+<p>«-我信任你，不会填写广告链接</p>
+<p>记住个人信息？</p>
+<p>«- 点击按钮</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/202001/bg2020013101.jpg" alt="微信扫描"></p>
+<p><a href="https://weibo.com/ruanyf">Weibo</a> | <a href="https://twitter.com/ruanyf">Twitter</a> | <a href="https://github.com/ruanyf">GitHub</a></p>
+<p>Email: <a href="mailto:yifeng.ruan@gmail.com">yifeng.ruan@gmail.com</a></p>
 
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>

@@ -1,43 +1,28 @@
 <!DOCTYPE html>
 <html lang='en'><head>
-  <title>Macos使用更新 | 江小凡的博客</title>
+  <title>K8s | 江小凡的博客</title>
   <meta charset='utf-8'>
   <meta name="generator" content="Hugo 0.82.1" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
-<meta property = 'og:title' content = 'Macos使用更新' />
-<meta name="description" content="macos 安装 M2Crypto
-brew install openssl 
-brew install swig
-
-env LDFLAGS=&#34;-L$(brew --prefix openssl)/lib&#34; \
-CFLAGS=&#34;-I$(brew --prefix openssl) …">
-<meta property = 'og:description' content = 'macos 安装 M2Crypto
-brew install openssl 
-brew install swig
-
-env LDFLAGS=&#34;-L$(brew --prefix openssl)/lib&#34; \
-CFLAGS=&#34;-I$(brew --prefix openssl) …'>
-<meta property = 'og:url' content = 'https://jxiaof.com/post/macos%E5%AE%89%E8%A3%85m2crypto/' />
-<meta property = 'og:image' content = 'https://jxiaof.com/images/artist.jpg'/>
+<meta property = 'og:title' content = 'K8s' />
+<meta name="description" content="curl http://wpsai-ocr-merge-cpu.ocr-split:8080/healthz export |grep ENV ">
+<meta property = 'og:description' content = 'curl http://wpsai-ocr-merge-cpu.ocr-split:8080/healthz export |grep ENV '>
+<meta property = 'og:url' content = 'https://jxiaof.com/post/k8s/' />
+<meta property = 'og:image' content = 'images/%!s()'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = 'Macos使用更新' />
-<meta property = 'twitter:description'  content = 'macos 安装 M2Crypto
-brew install openssl 
-brew install swig
-
-env LDFLAGS=&#34;-L$(brew --prefix openssl)/lib&#34; \
-CFLAGS=&#34;-I$(brew --prefix openssl) …'/>
-<meta name = 'twitter:image' content = 'https://jxiaof.com/images/artist.jpg' />
+<meta name = 'twitter:title' content = 'K8s' />
+<meta property = 'twitter:description'  content = 'curl http://wpsai-ocr-merge-cpu.ocr-split:8080/healthz export |grep ENV '/>
+<meta name = 'twitter:image' content = 'images/%!s()' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
 <link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
 <link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
 
-  <link rel='canonical' href='https://jxiaof.com/post/macos%E5%AE%89%E8%A3%85m2crypto/'>
+  <link rel='canonical' href='https://jxiaof.com/post/k8s/'>
   <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
 </head>
 
@@ -63,53 +48,16 @@ CFLAGS=&#34;-I$(brew --prefix openssl) …'/>
 
 
     <main>
-<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/artist.jpg);'>
-  <h1 class='post_title'>Macos使用更新</h1>
+  
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/thumbnail.svg);'>
+  <h1 class='post_title'>K8s</h1>
 </section>
 
 <div class = 'post'>
-  <article class='post_content'><p>macos 安装 M2Crypto</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install openssl 
-brew install swig
-
-env LDFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-L</span><span style="color:#66d9ef">$(</span>brew --prefix openssl<span style="color:#66d9ef">)</span><span style="color:#e6db74">/lib&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>CFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-I</span><span style="color:#66d9ef">$(</span>brew --prefix openssl<span style="color:#66d9ef">)</span><span style="color:#e6db74">/include&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>SWIG_FEATURES<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-cpperraswarn -includeall -I</span><span style="color:#66d9ef">$(</span>brew --prefix openssl<span style="color:#66d9ef">)</span><span style="color:#e6db74">/include&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>pip install m2crypto
-</code></pre></div><p>解决homebrew被占用的问题</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf /usr/local/var/homebrew/locks
-</code></pre></div><h1 id="解决macos-mojave10146-ssh连接断开问题">解决macOS Mojave(10.14.6) SSH连接断开问题</h1>
-<p>在使用SSH客户端进行连接管理的时候如果长时间不输入命令， 服务器会自动断开连接， <code>macOS Mojave(10.14.6) </code>系统上问题比较严重，即时服务端一直发送数据，也会出现连接中断的情况，导致长时间执行的远程 <code>Shell</code> 会大概率失败。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 如果全局所有用户都有效，则调整如下文件$ sudo vim /etc/ssh/ssh_config </span>
-<span style="color:#75715e"># 如果仅仅当前用户都有效，则调整如下文件# vim ~/.ssh/config</span>
-</code></pre></div><p>然后在配置文件尾部，增加如下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Host *    SendEnv LANG LC_*     
-<span style="color:#75715e"># macOS Mojave 需要设置为 no 否则照样会断开     </span>
-TCPKeepAlive no     <span style="color:#75715e"># 客户端每隔 60S 发送一个空报文    </span>
-ServerAliveInterval <span style="color:#ae81ff">60</span>     <span style="color:#75715e"># macOS Mojave 需要增加，原因在于Qos检测命令不被对端支持，导致连接丢失    </span>
-<span style="color:#75715e"># packet_write_wait: Connection to 10.10.10.111 port 22: Broken pipe    IPQoS lowdelay throughput</span>
-</code></pre></div><p>同时，对于超长时间的SSH监控，需要设置屏幕关闭时不要让电脑休眠，否则依旧会断开，原因在于对端发送数据的时候，电脑休眠，对于长时间的空连接是没问题的，但是对于数据频繁发送的情况，是必须阻止电脑休眠的。如下图：</p>
-<p><a href="https://www.mobibrw.com/wp-content/uploads/2019/08/PowerSave.png"><img src="https://www.mobibrw.com/wp-content/uploads/2019/08/PowerSave-400x316.png" alt="img"></a></p>
-<h1 id="macos浏览器字符集">macos浏览器字符集</h1>
-<p>safari浏览器在编程使用中,有一定几率出现字符集问题:主要就是</p>
-<p><img src="https://gitee.com/felix_web/images/raw/master/uPic/image-20201219143800109.png" alt="image-20201219143800109"></p>
-<p>更改浏览器字符集为utf-8,可以解决此类问题.
-<img src="https://jxiaof.com/Users/jiangxiaofan/Library/Application%20Support/typora-user-images/image-20201219143656441.png" alt="image-20201219143656441"></p>
-<p>Pip更新错误,导致pip不可以使用</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python -m ensurepip <span style="color:#f92672">&amp;&amp;</span> python -m pip install --upgrade pip
-</code></pre></div><h4 id="参考链接"><strong>参考链接</strong></h4>
-<hr>
-<ul>
-<li><a href="http://www.mobibrw.com/?p=14741">Linux SSH保持连接（解决Broken pipe）</a></li>
-<li><a href="https://blog.csdn.net/weixin_34354945/article/details/93170011">mac上如何设置ssh不断掉，并且session保持</a></li>
-<li><a href="http://www.kbase101.com/question/4282.html">由于AppArmor，MySQL无法启动？</a></li>
-<li><a href="http://www.yellow-bricks.com/2018/11/26/ssh-broken-pipe-osx/">SSH on OSX Mojave failing with broken pipe error</a></li>
-<li><a href="https://medium.com/@prolixalias/vmware-fusion-11-0-0-macos-10-14-2-ssh-commands-git-in-my-case-throwing-broken-pipe-errors-8d08937dde89">VMware Fusion 11.0.0 + MacOS 10.14.2 — SSH commands (git in my case) throwing: ‘Broken pipe’ errors</a></li>
-<li><a href="https://communities.vmware.com/message/2778248#2778248">SSH connections dropped due to QoS flags</a></li>
-<li><a href="https://lvii.github.io/system/2018-08-31-openssh-7.8p1-broken-pipe-under-vmware-vm-with-nat-port-forward/">升级到 openssh 7.8p1 后 ssh 连接报错 packet_write_wait: Broken pipe</a></li>
-<li><a href="https://superuser.com/questions/1373697/ssh-fails-on-macos-mojave-10-14-1">SSH fails on macOS Mojave 10.14.1</a></li>
-<li><a href="https://www.jianshu.com/p/cf0d465dc648">防止macOS休眠断网的另类方法</a></li>
-</ul>
+  <article class='post_content'><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> curl http://wpsai-ocr-merge-cpu.ocr-split:8080/healthz
+ 
+ export |grep ENV
+</code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>

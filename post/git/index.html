@@ -8,14 +8,14 @@
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = 'Git' />
-<meta name="description" content="git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 $ git branch -d …">
-<meta property = 'og:description' content = 'git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 $ git branch -d …'>
+<meta name="description" content="git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 # delete branch locally git …">
+<meta property = 'og:description' content = 'git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 # delete branch locally git …'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/git/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/git.jpg'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = 'Git' />
-<meta property = 'twitter:description'  content = 'git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 $ git branch -d …'/>
+<meta property = 'twitter:description'  content = 'git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 # delete branch locally git …'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/git.jpg' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -53,18 +53,23 @@
 </section>
 
 <div class = 'post'>
-  <article class='post_content'><h1 id="git-一些实用的做法">git 一些实用的做法</h1>
+  <article class='post_content'><blockquote>
+<h1 id="git-一些实用的做法">git 一些实用的做法</h1>
+</blockquote>
 <p>长期更新</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git branch -r
 git branch --track <span style="color:#f92672">[</span>branch<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>remote-branch<span style="color:#f92672">]</span>
 git branch --set-upstream <span style="color:#f92672">[</span>branch<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>remote-branch<span style="color:#f92672">]</span>
 
 <span style="color:#75715e"># 删除分支</span>
-$ git branch -d <span style="color:#f92672">[</span>branch-name<span style="color:#f92672">]</span>
-git branch -r -d origin/branch-name
+<span style="color:#75715e"># delete branch locally</span>
+git branch -d localBranchName
+
+<span style="color:#75715e"># delete branch remotely</span>
+git push origin --delete remoteBranchName
+
 <span style="color:#75715e"># 删除分支</span>
 git push origin :branch-name
-
 
 <span style="color:#75715e"># 删除远程分支</span>
 $ git push origin --delete <span style="color:#f92672">[</span>branch-name<span style="color:#f92672">]</span>
@@ -85,10 +90,15 @@ git stash pop
 git stash apply
 git stash list
 git stash drop stash@<span style="color:#f92672">{</span>0<span style="color:#f92672">}</span>   or   git stash clear
-</code></pre></div><p><img src="https://i.loli.net/2021/04/23/SIvx9yLmgVZY2to.png" alt="1234"></p>
-<p><img src="https://i.loli.net/2021/04/23/vKZy24ouRYgawVf.png" alt="old"></p>
-<p><img src="https://i.loli.net/2021/04/23/SuRzByEmqOAgrao.png" alt="image-20210423173837135"></p>
 
+<span style="color:#75715e"># 删除服务器文件,本地保留</span>
+git rm --cached useless.log
+or
+git rm --cached -r useless
+git commit -m <span style="color:#e6db74">&#34;remove file from remote repository&#34;</span>
+git push
+ 
+</code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
     <use xlink:href="#copy"></use>

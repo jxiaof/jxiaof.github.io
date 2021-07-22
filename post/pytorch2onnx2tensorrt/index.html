@@ -226,6 +226,44 @@ salient-object-detection-deploy-6c8c5999fc-729lb   15m          4066Mi</p>
 <p>succ init portrait trt model: /code/salient_object_detection/trt/t4.portrait_best.fp32.trt, fp16: False</p>
 <p><img src="https://i.loli.net/2021/05/26/TKne45B6yfcwHql.png" alt="image-20210526101316824"></p>
 <p><img src="https://i.loli.net/2021/05/26/qdt26nARG1XJNfW.png" alt="image-20210526101109786"></p>
+<table>
+<thead>
+<tr>
+<th>显存</th>
+<th>内存</th>
+<th>耗时</th>
+<th>cpu</th>
+<th>gpu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.25G x 4=12.9G</td>
+<td></td>
+<td>49ms</td>
+<td>100%瞬时</td>
+<td>24%</td>
+</tr>
+<tr>
+<td>2.5 x 4 = 9.8G</td>
+<td></td>
+<td>19ms</td>
+<td></td>
+<td>9% - 11%</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>32精度</p>
+<p><img src="https://i.loli.net/2021/06/02/et1FhnU5bm2PfkT.png" alt="image-20210602151204154"></p>
+<p><img src="https://i.loli.net/2021/06/02/JhqRtyUe7XYKAB3.png" alt="image-20210602151500242"></p>
+<p><img src="https://i.loli.net/2021/06/02/9nzAw53pUQI4EDT.png" alt="image-20210602155707371"></p>
 <hr>
 <p>参考:</p>
 <p><a href="https://learnopencv.com/how-to-convert-a-model-from-pytorch-to-tensorrt-and-speed-up-inference/">https://learnopencv.com/how-to-convert-a-model-from-pytorch-to-tensorrt-and-speed-up-inference/</a></p>
