@@ -23,14 +23,38 @@
     <loc>https://jxiaof.com/post/mysql-index/</loc>
     <lastmod>2021-04-25T09:48:44+08:00</lastmod>
   </url><url>
+    <loc>https://jxiaof.com/categories/</loc>
+    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
     <loc>https://jxiaof.com/post/k8s/</loc>
+    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/tags/k8s/</loc>
+    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/series/k8s/</loc>
     <lastmod>2021-06-23T16:12:09+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/post/</loc>
     <lastmod>2021-06-23T16:12:09+08:00</lastmod>
   </url><url>
+    <loc>https://jxiaof.com/series/</loc>
+    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/tags/</loc>
+    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
     <loc>https://jxiaof.com/</loc>
     <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/tags/ai/</loc>
+    <lastmod>2021-06-22T17:24:13+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/series/ai/</loc>
+    <lastmod>2021-06-22T17:24:13+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/post/pytorch/</loc>
     <lastmod>2021-06-22T17:24:13+08:00</lastmod>
@@ -38,29 +62,11 @@
     <loc>https://jxiaof.com/tags/asyncio/</loc>
     <lastmod>2021-05-31T17:48:25+08:00</lastmod>
   </url><url>
-    <loc>https://jxiaof.com/categories/</loc>
-    <lastmod>2021-05-31T17:48:25+08:00</lastmod>
-  </url><url>
     <loc>https://jxiaof.com/tags/python/</loc>
     <lastmod>2021-05-31T17:48:25+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/series/python/</loc>
     <lastmod>2021-05-31T17:48:25+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/series/</loc>
-    <lastmod>2021-05-31T17:48:25+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/tags/</loc>
-    <lastmod>2021-05-31T17:48:25+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-05-31T17:48:25+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/tags/ai/</loc>
-    <lastmod>2021-05-18T10:49:05+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/series/ai/</loc>
-    <lastmod>2021-05-18T10:49:05+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/video/</loc>
     <lastmod>2021-05-16T22:38:27+08:00</lastmod>

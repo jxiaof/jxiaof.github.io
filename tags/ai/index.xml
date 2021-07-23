@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Tue, 18 May 2021 10:49:05 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jun 2021 17:24:13 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pytorch2Onnx2TensorRT</title>
       <link>https://jxiaof.com/post/pytorch2onnx2tensorrt/</link>
@@ -15,6 +15,15 @@
       
       <guid>https://jxiaof.com/post/pytorch2onnx2tensorrt/</guid>
       <description>pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open format built to represent machine learning models. 先将模型转成onnx格式 需要安装pytorch onnx, opencv 要转换结果模型，您只需要一个指令 torch</description>
+    </item>
+    
+    <item>
+      <title>Pytorch</title>
+      <link>https://jxiaof.com/post/pytorch/</link>
+      <pubDate>Tue, 22 Jun 2021 17:24:13 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/pytorch/</guid>
+      <description># 常用命令 torch.cuda.is_available() torch.cuda.current_device() torch.cuda.device_count() torch.cuda.device_name() python -c &amp;#39;import torch; print(torch.cuda.is_available(), torch.cuda.current_device(), torch.cuda.device_count(), torch.cuda.device_name(0))&amp;#39; python -c &amp;#39;import torch; print(torch.rand(2,3).cuda())&amp;#39; # setting device on GPU if available, else CPU device = torch.device(&amp;#39;cuda&amp;#39; if torch.cuda.is_available() else &amp;#39;cpu&amp;#39;) print(&amp;#39;Using device:&amp;#39;, device) print() #Additional Info when using cuda if device.type == &amp;#39;cuda&amp;#39;: print(torch.cuda.get_device_name(0)) print(&amp;#39;Memory Usage:&amp;#39;) print(&amp;#39;Allocated:&amp;#39;, round(torch.cuda.memory_allocated(0)/1024**3,1), &amp;#39;GB&amp;#39;) print(&amp;#39;Cached: &amp;#39;, round(torch.cuda.memory_reserved(0)/1024**3,1), &amp;#39;GB&amp;#39;) import torch import torch.nn as nn dev = torch.device(&amp;#34;cuda&amp;#34;)</description>
     </item>
     
     <item>

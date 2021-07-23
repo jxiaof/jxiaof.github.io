@@ -78,7 +78,7 @@
       <pubDate>Wed, 23 Jun 2021 16:12:09 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/k8s/</guid>
-      <description>curl http://wpsai-ocr-merge-cpu.ocr-split:8080/healthz export |grep ENV </description>
+      <description>curl http://{{sevices}}.{{namespace}}:8080/healthz kubectl exec - 在容器内执行命令 kubectl exec nginx-app ps aux export |grep ENV 命令补全 BASH # 在 bash 中设置当前 shell 的自动补全，要先安装 bash-completion 包 $ source &amp;lt;(kubectl completion bash) # 在您的 bash shell 中永久的添加自动补全 $ echo</description>
     </item>
     
     <item>
