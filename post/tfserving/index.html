@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Tfserving | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -56,7 +56,7 @@
   <article class='post_content'><h1 id="模型部署tfserving">模型部署tfserving</h1>
 <p>使用tensorflow训练好一个模型，使用keras其他框架也可以，只需要将模型转换为pb文件即可，根据不同的转换方式，有的接口转换之后只有一个saved_model.pb文件，有的有三个：saved_model.pb，variables.data-00000-of-00001，variables.index，其中后两个文件在variables文件夹</p>
 <p>假设模型的存储路径为：/my/model/path/m/1/saved_model.pb, 只生成pb文件。其中m表示模型名，1表示模型版本。在母机上启动tfserving</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run -p 8501:8501 -p 8500:8500 --mount type<span style="color:#f92672">=</span>bind,source<span style="color:#f92672">=</span>/my/model/path/m,target<span style="color:#f92672">=</span>/models/m -e MODEL_NAME<span style="color:#f92672">=</span>m -t tensorflow/serving:2.1.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run -p 8501:8501 -p 8500:8500 --mount type<span style="color:#f92672">=</span>bind,source<span style="color:#f92672">=</span>/my/model/path/m,target<span style="color:#f92672">=</span>/models/m -e MODEL_NAME<span style="color:#f92672">=</span>m -t tensorflow/serving:2.1.0
 
 </code></pre></div>
 
@@ -131,26 +131,6 @@
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/pytorch2onnx2tensorrt/' title = 'Pytorch2Onnx2TensorRT' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/ai' class = 'post_tag'>AI
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/pytorch2onnx2tensorrt/'>Pytorch2Onnx2TensorRT</a>
-    </h3>
-    <p class = 'pale'>pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open …</p>
-  </div>
-</li>
-
-<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/pytorch/' title = 'Pytorch' style = 'background-image: url(https://jxiaof.com/images/pytorch.png);'>
   </a>
   <div class = 'excerpt'>
@@ -167,6 +147,26 @@
       <a href='https://jxiaof.com/post/pytorch/'>Pytorch</a>
     </h3>
     <p class = 'pale'># 常用命令 torch.cuda.is_available() torch.cuda.current_device() torch.cuda.device_count() …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/pytorch2onnx2tensorrt/' title = 'Pytorch2Onnx2TensorRT' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/ai' class = 'post_tag'>AI
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/pytorch2onnx2tensorrt/'>Pytorch2Onnx2TensorRT</a>
+    </h3>
+    <p class = 'pale'>pytorch 转 onnx 再转 tensorRT ONNX stands for Open Neural Network Exchange. It is an open …</p>
   </div>
 </li>
 

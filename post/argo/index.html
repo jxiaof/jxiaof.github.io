@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Argo | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.88.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Argo' />
+<meta name="description" content="[toc] Templates There are several types of templates, divided into two different categories. The first category defines work to be done. This includes: …">
+<meta property = 'og:description' content = '[toc] Templates There are several types of templates, divided into two different categories. The first category defines work to be done. This includes: …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/post/argo/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/argo.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Argo' />
+<meta property = 'twitter:description'  content = '[toc] Templates There are several types of templates, divided into two different categories. The first category defines work to be done. This includes: …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/argo.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/post/argo/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/argo.png);'>
+  <h1 class='post_title'>Argo</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><p>[toc]</p>
+<h1 id="templates">Templates</h1>
+<p>There are several types of templates, divided into two different categories.</p>
+<p>The first category defines <strong>work</strong> to be done. This includes:</p>
+<ul>
+<li>Container</li>
+<li>Container Set</li>
+<li>Data</li>
+<li>Resource</li>
+<li>Script</li>
+</ul>
+<p>The second category <strong>orchestrate</strong> the work:</p>
+<ul>
+<li>DAG</li>
+<li>Steps</li>
+<li>Suspend</li>
+</ul>
+<p>We&rsquo;re going to take a deep-dive into the two most common: containers and DAG.</p>
+<h4 id="container-template">Container Template</h4>
+<p>A container templates is the most common type of template, lets look at a complete example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow                 </span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">container-   </span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main         </span>
+  <span style="color:#f92672">templates</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main             </span>
+    <span style="color:#f92672">container</span>:
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+      <span style="color:#f92672">command</span>: [<span style="color:#ae81ff">cowsay]         </span>
+      <span style="color:#f92672">args</span>: [<span style="color:#e6db74">&#34;hello world&#34;</span>]
+</code></pre></div><p>Let&rsquo;s run the workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">argo submit --watch container-workflow.yaml
+</code></pre></div><p>Open the Argo Server tab a navigate to the workflow, you should see a single container running.</p>
+<h4 id="template-tags">Template Tags</h4>
+<p><strong>Template tags</strong> (also knows as <strong>template variables</strong>) are a way for you to substitute data into your workflow at runtime. Template tags are delimited by <code>{{</code> and <code>}}</code> and will be replaced when the template is executed.</p>
+<p>What tags are available to use depends on the template type, and there are a number of global ones you can use, such as <code>{{workflow.name}}</code>, which is replaced by the workflow&rsquo;s name:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">cowsay ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;hello {{workflow.name}}&#34;</span> ]
+</code></pre></div><p>Look at the full example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat template-tag-workflow.yaml
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">template-tag-</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">templates</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">cowsay ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;hello {{workflow.name}}&#34;</span> ]
+</code></pre></div><p>Submit this workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch template-tag-workflow.yaml
+</code></pre></div><p>You can see the output by running</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo logs @latest
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"> __________________________ 
+&lt; hello template-tag-kqpc6 &gt;
+ -------------------------- 
+    \
+     \
+      \     
+                    ##        .            
+              ## ## ##       ==            
+           ## ## ## ##      ===            
+       /&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;___/ ===        
+  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
+       \______ o          __/            
+        \    \        __/             
+          \____\______/
+</code></pre></div><p>There are many more different tags, you can <a href="https://argoproj.github.io/argo-workflows/variables/">read more about template tags in the docs</a>.</p>
+<h4 id="work-templates">Work Templates</h4>
+<p>What other types of <em>work</em> template are there?</p>
+<p>A <strong>container set</strong> allows you to run multiple containers in a single pod. This is useful when you want the containers to share a common workspace.</p>
+<p>A <strong>data template</strong> allows you get data from storage (e.g. S3). This is useful when each item of data represents an item of work that needs doing.</p>
+<p>A <strong>resource template</strong> allows you to create a Kubernetes resource and wait for it to meet a condition (e.g. successful) . This is useful if you want to interoperate with another Kubernetes system, Spark EMR.</p>
+<p>A <strong>script template</strong> allows you to run a script in a container. This is very similar to a container template, but when you&rsquo;ve added a script to it.</p>
+<p>Every type of templates that does work does it by running a pod. So you can use <code>kubectl</code> to view these pods:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl get pods -l workflows.argoproj.io/workflow
+</code></pre></div><p>You can identify workflow pods by the <code>workflows.argoproj.io/workflow</code> label.</p>
+<p>You should see something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NAME                 READY   STATUS      RESTARTS   AGE
+container-m5664      0/2     Completed   <span style="color:#ae81ff">0</span>          5m21s
+template-tag-kqpc6   0/2     Completed   <span style="color:#ae81ff">0</span>          4m6s
+</code></pre></div><h4 id="dag-template">DAG Template</h4>
+<p>A DAG template is another common type of template, lets look at a complete example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">dag-</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">templates</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">a</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">whalesay</span>
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">b</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">whalesay</span>
+            <span style="color:#f92672">dependencies</span>:
+              - <span style="color:#ae81ff">a</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">whalesay</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">cowsay ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;hello world&#34;</span> ]
+</code></pre></div><p>In this example, we have two templates:</p>
+<ul>
+<li>The &ldquo;main&rdquo; template is our new DAG.</li>
+<li>The &ldquo;whalesay&rdquo; template is the same template as in the container example.</li>
+</ul>
+<p>The DAG has two tasks: &ldquo;a&rdquo; and &ldquo;b&rdquo;. Both run the &ldquo;whalesay&rdquo; template, but as &ldquo;b&rdquo; depends on &ldquo;a&rdquo;, it won&rsquo;t start until &quot; a&quot; has completed successfully.</p>
+<p>Let&rsquo;s run the workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch dag-workflow.yaml
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">STEP          TEMPLATE  PODNAME              DURATION  MESSAGE
+ ✔ dag-shxn5  main                                       
+ ├─✔ a        ctr       dag-shxn5-289972251  6s          
+ └─✔ b        ctr       dag-shxn5-306749870  6s
+</code></pre></div><p>Did you see how <code>b</code> did not start until <code>a</code> had completed?</p>
+<p>Open the Argo Server tab a navigate to the workflow, you should see a two containers.</p>
+<p>DAG模版</p>
+<p>在本例中A首先运行。一旦完成，B和C将并行运行，一旦它们都完成，D将运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">diamond</span>
+    <span style="color:#f92672">dag</span>:
+      <span style="color:#f92672">tasks</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">A</span>
+        <span style="color:#f92672">template</span>: <span style="color:#ae81ff">echo</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">B</span>
+        <span style="color:#f92672">dependencies</span>: [<span style="color:#ae81ff">A]</span>
+        <span style="color:#f92672">template</span>: <span style="color:#ae81ff">echo</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">C</span>
+        <span style="color:#f92672">dependencies</span>: [<span style="color:#ae81ff">A]</span>
+        <span style="color:#f92672">template</span>: <span style="color:#ae81ff">echo</span>
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">D</span>
+        <span style="color:#f92672">dependencies</span>: [<span style="color:#ae81ff">B, C]</span>
+        <span style="color:#f92672">template</span>: <span style="color:#ae81ff">echo</span>
+</code></pre></div><h4 id="loops">Loops</h4>
+<p>The ability to run large parallel processing jobs is one of the key features or Argo Workflows. Lets have a look at using loops to do this.</p>
+<h2 id="with-items">With Items</h2>
+<p>A DAG allows you to loop over a number of items using <code>withItems</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-message</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">whalesay</span>
+            <span style="color:#f92672">arguments</span>:
+              <span style="color:#f92672">parameters</span>:
+                - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+                  <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;{{item}}&#34;</span>
+            <span style="color:#f92672">withItems</span>:
+              - <span style="color:#e6db74">&#34;hello world&#34;</span>
+              - <span style="color:#e6db74">&#34;goodbye world&#34;</span>
+</code></pre></div><p>In this example, it will execute once for each of the listed items. We can see a <strong>template tag</strong> here. <code>{{item}}</code> will be replaced with &ldquo;hello world&rdquo; and &ldquo;goodbye world&rdquo;. DAGs execute in parallel, so both tasks will be started at the same time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">argo submit --watch with-items-workflow.yaml
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">STEP                                 TEMPLATE  PODNAME                      DURATION  MESSAGE
+ ✔ with-items-4qzg9                  main                                               
+ ├─✔ print-message<span style="color:#f92672">(</span>0:hello world<span style="color:#f92672">)</span>    whalesay  with-items-4qzg9-465751898   7s          
+ └─✔ print-message<span style="color:#f92672">(</span>1:goodbye world<span style="color:#f92672">)</span>  whalesay  with-items-4qzg9-2410280706  5s
+</code></pre></div><p>Notice how the two items ran at the same time.</p>
+<h2 id="with-sequence">With Sequence</h2>
+<p>You can also loop over a sequence of numbers using <code>withSequence</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-message</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">whalesay</span>
+            <span style="color:#f92672">arguments</span>:
+              <span style="color:#f92672">parameters</span>:
+                - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+                  <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;{{item}}&#34;</span>
+            <span style="color:#f92672">withSequence</span>:
+              <span style="color:#f92672">count</span>: <span style="color:#ae81ff">5</span>
+</code></pre></div><p>As usual, run it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">argo submit --watch with-sequence-workflow.yaml</span>
+<span style="color:#ae81ff">STEP                     TEMPLATE  PODNAME                         DURATION  MESSAGE</span>
+ <span style="color:#ae81ff">✔ with-sequence-8nrp5   main                                                  </span>
+ <span style="color:#ae81ff">├─✔ print-message(0:0)  whalesay  with-sequence-8nrp5-3678575801  9s          </span>
+ <span style="color:#ae81ff">├─✔ print-message(1:1)  whalesay  with-sequence-8nrp5-1828425621  7s          </span>
+ <span style="color:#ae81ff">├─✔ print-message(2:2)  whalesay  with-sequence-8nrp5-1644772305  13s         </span>
+ <span style="color:#ae81ff">├─✔ print-message(3:3)  whalesay  with-sequence-8nrp5-3766794981  15s         </span>
+ <span style="color:#ae81ff">└─✔ print-message(4:4)  whalesay  with-sequence-8nrp5-361941985   11s</span>
+</code></pre></div><p>See how 5 pods were run at the same time, and that their names have the item value in them, zero-indexed</p>
+<h4 id="orchestration-templates">Orchestration Templates</h4>
+<p>A DAG is an orchestration template. What other types of <em>orchestration</em> template are there?</p>
+<p>A <strong>steps template</strong> allows you to run a series of steps in sequence.</p>
+<p>A <strong>suspend template</strong> allows you to automatically suspend a workflow, e.g. while waiting on manual approval, or while an external system does some work.</p>
+<p>None of the templates that orchestrate work run pods. You can check by <code>kubectl get pods</code>.</p>
+<h4 id="exit-handler">Exit Handler</h4>
+<p>If you need to perform a task after something has is finished, you can use an exit handle. Exit handlers are specified using <code>onExit</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      dag:
+        tasks:
+          - name: a
+            template: whalesay
+            onExit: tidy-up
+</code></pre></div><p>They just state the name of the template that should be run on-exit.</p>
+<p>Lets look at a complete example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat exit-handler-workflow.yaml
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">exit-handler-</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">templates</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">a</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">whalesay</span>
+            <span style="color:#f92672">onExit</span>: <span style="color:#ae81ff">tidy-up</span>
+
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">whalesay</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tidy-up</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">cowsay ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;tidy up!&#34;</span> ]
+</code></pre></div><p>Run it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch exit-handler-workflow.yaml
+</code></pre></div><p>You should see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP                   TEMPLATE  PODNAME                        DURATION  MESSAGE
+ ✔ exit-handler-plvg7  main                                                 
+ ├─✔ a                 whalesay  exit-handler-plvg7-1651124468  5s          
+ └─✔ a.onExit          tidy-up   exit-handler-plvg7-3635807335  6s
+</code></pre></div><p>Note how the exit handler task ran last.</p>
+<h1 id="input-and-output">input and output</h1>
+<h4 id="parameters">Parameters</h4>
+<p>One type of input or output is a parameter. Unlike artifacts, these are plain string values, and are useful for most simple cases.</p>
+<h2 id="input-parameters">Input Parameters</h2>
+<p>Lets have a look at an example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    - name: main
+      inputs:
+        parameters:
+          - name: message
+      container:
+        image: docker/whalesay
+        command: [ cowsay ]
+        args: [ &#34;{{inputs.parameters.message}}&#34; ]
+</code></pre></div><p>This template declare that it has one input parameter named &ldquo;message&rdquo;.</p>
+<p>See the complete workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat input-parameters-workflow.yaml
+</code></pre></div><p>See how the workflow itself has arguments.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">input-parameters-</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">arguments</span>:
+    <span style="color:#f92672">parameters</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+        <span style="color:#f92672">value</span>: <span style="color:#ae81ff">hello world</span>
+  <span style="color:#f92672">templates</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">inputs</span>:
+        <span style="color:#f92672">parameters</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">cowsay ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;{{inputs.parameters.message}}&#34;</span> ]
+</code></pre></div><p>Run it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch input-parameters-workflow.yaml
+</code></pre></div><p>You should see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">  message:           hello world!
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP                       TEMPLATE  PODNAME                 DURATION  MESSAGE
+ ✔ input-parameters-mvtcw  main      input-parameters-mvtcw  8s
+</code></pre></div><p>If a workflow has parameters, you can change the parameters using <code>-p</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch input-parameters-workflow.yaml -p message=&#39;Hi Katacoda!&#39;
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">  message:           Hi Katacoda!
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP                       TEMPLATE  PODNAME                 DURATION  MESSAGE
+ ✔ input-parameters-lwkdx  main      input-parameters-lwkdx  5s
+</code></pre></div><p>Lets check the output in the logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo logs @latest
+</code></pre></div><p>You should see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"> ______________ 
+&lt; Hi Katacoda! &gt;
+ -------------- 
+    \
+     \
+      \     
+                    ##        .            
+              ## ## ##       ==            
+           ## ## ## ##      ===            
+       /&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;&#34;___/ ===        
+  ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
+       \______ o          __/            
+        \    \        __/             
+          \____\______/
+</code></pre></div><h2 id="output-parameters">Output Parameters</h2>
+<p>Output parameters can be from a few places, but typically the most versatile is from a file. It this example, the container creates a file with a message in it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">  - name: whalesay
+    container:
+      image: docker/whalesay
+      command: [sh, -c]
+      args: [&#34;echo -n hello world &gt; /tmp/hello_world.txt&#34;] 
+    outputs:
+      parameters:
+      - name: hello-param        
+        valueFrom:
+          path: /tmp/hello_world.txt
+</code></pre></div><p>In DAGs and steps template, you can reference the output from one task, as the input to another task using a <strong>template tag</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      dag:
+        tasks:
+          - name: generate-parameter
+            template: whalesay
+          - name: consume-parameter
+            template: print-message
+            dependencies:
+              - generate-parameter
+            arguments:
+              parameters:
+                - name: message
+                  value: &#34;{{tasks.generate-parameter.outputs.parameters.hello-param}}&#34;
+</code></pre></div><p>See the complete workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat parameters-workflow.yaml
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">parameters-</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">templates</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">generate-parameter</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">whalesay</span>
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">consume-parameter</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">print-message</span>
+            <span style="color:#f92672">dependencies</span>:
+              - <span style="color:#ae81ff">generate-parameter</span>
+            <span style="color:#f92672">arguments</span>:
+              <span style="color:#f92672">parameters</span>:
+                - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+                  <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;{{tasks.generate-parameter.outputs.parameters.hello-param}}&#34;</span>
+
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">whalesay</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">sh, -c ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;echo -n hello world &gt; /tmp/hello_world.txt&#34;</span> ]
+      <span style="color:#f92672">outputs</span>:
+        <span style="color:#f92672">parameters</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello-param</span>
+            <span style="color:#f92672">valueFrom</span>:
+              <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/tmp/hello_world.txt</span>
+
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-message</span>
+      <span style="color:#f92672">inputs</span>:
+        <span style="color:#f92672">parameters</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">cowsay ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;{{inputs.parameters.message}}&#34;</span> ]
+</code></pre></div><p>Run it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch parameters-workflow.yaml
+</code></pre></div><p>You should see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Name:                input-parameters-4c8lq
+Namespace:           argo
+ServiceAccount:      default
+Status:              Succeeded
+Conditions:          
+ PodRunning          False
+ Completed           True
+Created:             Tue Oct <span style="color:#ae81ff">12</span> 03:43:12 +0000 <span style="color:#f92672">(</span><span style="color:#ae81ff">7</span> seconds ago<span style="color:#f92672">)</span>
+Started:             Tue Oct <span style="color:#ae81ff">12</span> 03:43:12 +0000 <span style="color:#f92672">(</span><span style="color:#ae81ff">7</span> seconds ago<span style="color:#f92672">)</span>
+Finished:            Tue Oct <span style="color:#ae81ff">12</span> 03:43:19 +0000 <span style="color:#f92672">(</span>now<span style="color:#f92672">)</span>
+Duration:            <span style="color:#ae81ff">7</span> seconds
+Progress:            1/1
+ResourcesDuration:   3s*<span style="color:#f92672">(</span>100Mi memory<span style="color:#f92672">)</span>,3s*<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> cpu<span style="color:#f92672">)</span>
+Name:                parameters-ckfj5
+Namespace:           argo
+ServiceAccount:      default
+Status:              Succeeded
+Conditions:          
+ PodRunning          False
+ Completed           True
+Created:             Tue Oct <span style="color:#ae81ff">12</span> 03:48:35 +0000 <span style="color:#f92672">(</span><span style="color:#ae81ff">13</span> seconds ago<span style="color:#f92672">)</span>
+Started:             Tue Oct <span style="color:#ae81ff">12</span> 03:48:35 +0000 <span style="color:#f92672">(</span><span style="color:#ae81ff">13</span> seconds ago<span style="color:#f92672">)</span>
+Finished:            Tue Oct <span style="color:#ae81ff">12</span> 03:48:48 +0000 <span style="color:#f92672">(</span>now<span style="color:#f92672">)</span>
+Duration:            <span style="color:#ae81ff">13</span> seconds
+Progress:            2/2
+ResourcesDuration:   6s*<span style="color:#f92672">(</span>100Mi memory<span style="color:#f92672">)</span>,6s*<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> cpu<span style="color:#f92672">)</span>
+
+STEP                     TEMPLATE       PODNAME                      DURATION  MESSAGE
+ ✔ parameters-ckfj5      main                                                    
+ ├─✔ generate-parameter  whalesay       parameters-ckfj5-1900778028  5s          
+ └─✔ consume-parameter   print-message  parameters-ckfj5-1888421663  4s   
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP                     TEMPLATE       PODNAME                      DURATION  MESSAGE
+ ✔ parameters-vjvwg      main                                                    
+ ├─✔ generate-parameter  whalesay       parameters-vjvwg-4019940555  43s         
+ └─✔ consume-parameter   print-message  parameters-vjvwg-1497618270  8s
+</code></pre></div><h4 id="artifacts">Artifacts</h4>
+<p>Artifact is a fancy name for a file that is compressed and stored in S3.</p>
+<p>There are two kind of artifact in Argo:</p>
+<ul>
+<li>An <strong>input artifact</strong> is a file downloaded from storage (e.g. S3) and mounted as a volume within the container.</li>
+<li>An <strong>output artifact</strong> is a file created in the container that is uploaded to storage.</li>
+</ul>
+<p>Artifacts are typically uploaded into a bucket within some kind of storage such as S3 or GCP. We call that storage an <strong>artifact repository</strong>. Within these lessons we&rsquo;ll be using MinIO for this purpose, but you can just imagine it is S3 or what ever you&rsquo;re used too.</p>
+<h2 id="output-artifact">Output Artifact</h2>
+<p>Each task within a workflow can produce output artifacts. To specify an output artifact, you must include <code>outputs</code> in the manifest. Each output artifact declares:</p>
+<ul>
+<li>The <strong>path</strong> within the container where it can be found.</li>
+<li>A <strong>name</strong> so that it can be referred to.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    - name: save-message
+      container:
+        image: docker/whalesay
+        command: [ sh, -c ]
+        args: [ &#34;cowsay hello world &gt; /tmp/hello_world.txt&#34; ]
+      outputs:
+        artifacts:
+          - name: hello-art
+            path: /tmp/hello_world.txt
+</code></pre></div><p>When the container completes, the file is copied out of it, compressed, and stored.</p>
+<p>Files can also be directories, so when a directory is found all the files are compressed into an archive and stored.</p>
+<h2 id="input-artifact">Input Artifact</h2>
+<p>To declare an input artifact, you must include <code>inputs</code> in the manifest. Each input artifact must declare:</p>
+<ul>
+<li>Its <strong>name</strong>.</li>
+<li>The <strong>path</strong> where it should be created.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    - name: print-message
+      inputs:
+        artifacts:
+          - name: message
+            path: /tmp/message
+      container:
+        image: docker/whalesay
+        command: [ sh, -c ]
+        args: [ &#34;cat /tmp/message&#34; ]
+</code></pre></div><p>If the artifact was a compressed directory, it will be uncompressed and unpacked into the path.</p>
+<h2 id="inputs-and-outputs">Inputs and Outputs</h2>
+<p>You can&rsquo;t use inputs and output is isolation, you need to combine them together using either a steps or a DAG template:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">generate-artifact</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">save-message</span>
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">consume-artifact</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">print-message</span>
+            <span style="color:#f92672">dependencies</span>:
+              - <span style="color:#ae81ff">generate-artifact            </span>
+            <span style="color:#f92672">arguments</span>:
+              <span style="color:#f92672">artifacts</span>:
+                - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+                  <span style="color:#f92672">from</span>: <span style="color:#e6db74">&#34;{{tasks.generate-artifact.outputs.artifacts.hello-art}}&#34;</span>
+</code></pre></div><p>In the above example <code>arguments</code> is used to declare the value for the artifact input. This uses a <strong>template tag</strong>. In this example, <code>{{tasks.generate-artifact.outputs.artifacts.hello-art}}</code>becomes the path of the artifact in the repository.</p>
+<p>The task <code>consume-artifact</code> must run after <code>generate-artifact</code>, so we use <code>dependencies</code> to declare that relationship.</p>
+<p>Lets see the complete workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat artifacts-workflow.yaml
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Workflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">generateName</span>: <span style="color:#ae81ff">artifacts-</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">templates</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+      <span style="color:#f92672">dag</span>:
+        <span style="color:#f92672">tasks</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">generate-artifact</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">save-message</span>
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">consume-artifact</span>
+            <span style="color:#f92672">template</span>: <span style="color:#ae81ff">print-message</span>
+            <span style="color:#f92672">dependencies</span>:
+              - <span style="color:#ae81ff">generate-artifact</span>
+            <span style="color:#f92672">arguments</span>:
+              <span style="color:#f92672">artifacts</span>:
+                - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+                  <span style="color:#f92672">from</span>: <span style="color:#e6db74">&#34;{{tasks.generate-artifact.outputs.artifacts.hello-art}}&#34;</span>
+
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">save-message</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">sh, -c ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;cowsay hello world &gt; /tmp/hello_world.txt&#34;</span> ]
+      <span style="color:#f92672">outputs</span>:
+        <span style="color:#f92672">artifacts</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello-art</span>
+            <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/tmp/hello_world.txt</span>
+
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-message</span>
+      <span style="color:#f92672">inputs</span>:
+        <span style="color:#f92672">artifacts</span>:
+          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+            <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/tmp/message</span>
+      <span style="color:#f92672">container</span>:
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+        <span style="color:#f92672">command</span>: [ <span style="color:#ae81ff">sh, -c ]</span>
+        <span style="color:#f92672">args</span>: [ <span style="color:#e6db74">&#34;cat /tmp/message&#34;</span> ]
+</code></pre></div><p>Let&rsquo;s run an example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch artifacts-workflow.yaml
+</code></pre></div><p>You should see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP                    TEMPLATE       PODNAME                     DURATION  MESSAGE
+ ✔ artifacts-qvcpn      main                                                   
+ ├─✔ generate-artifact  save-message   artifacts-qvcpn-3260493969  7s          
+ └─✔ consume-artifact   print-message  artifacts-qvcpn-2991781604  8s
+</code></pre></div><h1 id="reuse">reuse</h1>
+<h4 id="workflow-templates">Workflow Templates</h4>
+<p><strong>Workflow templates</strong> (not to be confused with a template) allow you to create a library of code that can be reused. They&rsquo;re similar to pipelines in Jenkins.</p>
+<p>Workflow templates have a different <code>kind</code> to a workflow, but are otherwise very similar:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: hello
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      container:
+        image: docker/whalesay
+</code></pre></div><p>Lets created this workflow template:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo template create hello-workflowtemplate.yaml
+</code></pre></div><p>You can also manage templates using <code>kubectl</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl apply -f hello-workflowtemplate.yaml
+</code></pre></div><p>This allows you to use GitOps to manage your templates.</p>
+<p>To submit a template, you can use the UI or the CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo submit --watch --from workflowtemplate/hello
+</code></pre></div><p>You should see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP            TEMPLATE  PODNAME      DURATION  MESSAGE
+ ✔ hello-c622t  main      hello-c622t  33s
+</code></pre></div><p>Lets take a look at the workflow you created:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo get @latest -o yaml
+</code></pre></div><p>Look for the workflow specification in the output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">spec:
+  workflowTemplateRef:
+    name: hello
+</code></pre></div><p>Note how the specification of the workflow is actually a reference to the template.</p>
+<h2 id="exercise">Exercise</h2>
+<ul>
+<li>Use the user interface to submit a workflow template.</li>
+<li>Update the workflow template to add some parameters (e.g. to print a message). Use</li>
+</ul>
+<h4 id="cron-workflows">Cron Workflows</h4>
+<p>A <strong>cron workflow</strong> is a workflow that runs on a cron schedule:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">CronWorkflow</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">schedule</span>: <span style="color:#e6db74">&#34;* * * * *&#34;</span>
+  <span style="color:#f92672">workflowSpec</span>:
+    <span style="color:#f92672">entrypoint</span>: <span style="color:#ae81ff">main</span>
+    <span style="color:#f92672">templates</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+        <span style="color:#f92672">container</span>:
+          <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker/whalesay</span>
+</code></pre></div><p>When it should be run is set in the <code>schedule</code> field, in the example every minute.</p>
+<p>Lets created this cron workflow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo cron create hello-cronworkflow.yaml
+</code></pre></div><p>You&rsquo;ll need to wait for up to a minute to see the workflow run.</p>
+<h2 id="exercise-1">Exercise</h2>
+<p>Cron workflows can be submitted immediately from the CLI or the UI. Find out how.</p>
+<h1 id="using-api">using API</h1>
+<h4 id="info-endpoint">Info Endpoint</h4>
+<p>The Argo Server provides the API. This is secured using Kubernetes service accounts.</p>
+<p>All endpoints can be found under <code>http://localhost:2746/api/v1</code> URL and typically require an <strong>access token</strong>.</p>
+<p>Typically, it is good to be able to check you can access it first. This can be done using the info endpoint:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl http://localhost:2746/api/v1/info
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{&#34;code&#34;:16,&#34;message&#34;:&#34;token not valid for running mode&#34;}
+</code></pre></div><p>That&rsquo;s fine - you can connect - but we need to set-up an <strong>access token</strong>.</p>
+<h4 id="access-token">Access Token</h4>
+<p>If you want to automate tasks with the Argo Server API or CLI, you will need an <strong>access token</strong>. An access token is just a Kubernetes service account token. So, to set up a service account for our automation, we need to create:</p>
+<ul>
+<li>A <strong>role</strong> with the permission we want to use.</li>
+<li>A <strong>service account</strong> for our automation user.</li>
+<li>A <strong>role binding</strong> to bind the role to the service account:</li>
+</ul>
+<p>In our example, we want to create a role for Jenkins to use that can create, get and list workflows:</p>
+<p>Create the role:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create role felix --verb=create,get,list --resource=workflows.argoproj.io
+</code></pre></div><p>Create the service account:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create sa felix
+</code></pre></div><p>Bind the service account to the role:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create rolebinding felix --role=felix --serviceaccount=argo:felix
+</code></pre></div><p>Now we can get the name of the secret:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">SECRET=$(kubectl get sa -n argo felix -o=jsonpath=&#39;{.secrets[0].name}&#39;)
+</code></pre></div><p>Then we can get the secret and base-64 encode it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ARGO_TOKEN=&#34;Bearer $(kubectl get secret -n argo $SECRET -o=jsonpath=&#39;{.data.token}&#39; | base64 --decode)&#34;
+</code></pre></div><p>Print out the token:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo $ARGO_TOKEN
+</code></pre></div><p>You should something like :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6...
+</code></pre></div><p>To use the token, you add it as an <code>Authorization</code> header to you HTTP request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl http://localhost:2746/api/v1/info -H &#34;Authorization: $ARGO_TOKEN&#34;
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{&#34;managedNamespace&#34;:&#34;argo&#34;...
+</code></pre></div><h4 id="create-a-workflow">Create a Workflow</h4>
+<p>API endpoints take JSON rather than YAML as their payload, you can submit a workflow using <code>curl</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>   http://localhost:2746/api/v1/workflows/argo <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Authorization: </span>$ARGO_TOKEN<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">  &#34;workflow&#34;: {
+</span><span style="color:#e6db74">    &#34;metadata&#34;: {
+</span><span style="color:#e6db74">      &#34;generateName&#34;: &#34;hello-world-&#34;
+</span><span style="color:#e6db74">    },
+</span><span style="color:#e6db74">    &#34;spec&#34;: {
+</span><span style="color:#e6db74">      &#34;templates&#34;: [
+</span><span style="color:#e6db74">        {
+</span><span style="color:#e6db74">          &#34;name&#34;: &#34;main&#34;,
+</span><span style="color:#e6db74">          &#34;container&#34;: {
+</span><span style="color:#e6db74">            &#34;image&#34;: &#34;docker/whalesay&#34;,
+</span><span style="color:#e6db74">            &#34;command&#34;: [
+</span><span style="color:#e6db74">              &#34;cowsay&#34;
+</span><span style="color:#e6db74">            ],
+</span><span style="color:#e6db74">            &#34;args&#34;: [
+</span><span style="color:#e6db74">              &#34;hello world&#34;
+</span><span style="color:#e6db74">            ]
+</span><span style="color:#e6db74">          }
+</span><span style="color:#e6db74">        }
+</span><span style="color:#e6db74">      ],
+</span><span style="color:#e6db74">      &#34;entrypoint&#34;: &#34;main&#34;
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">}&#39;</span>
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;metadata&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;hello-world-mmbfs&#34;</span>,...
+</code></pre></div><p>We can wait for that workflow to complete by polling:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    http://localhost:2746/api/v1/workflows/argo/@latest <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: </span>$ARGO_TOKEN<span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;metadata&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;hello-world-2j74f&#34;</span>,...
+</code></pre></div><h2 id="exercise-2">Exercise</h2>
+<p>Create a workflow template and then submit the workflow template using the API. Tip: You&rsquo;ll need grant the <code>jenkins</code> service account the ability to read templates to do this.</p>
+<h4 id="网络钩子">网络钩子</h4>
+<p>我们使用<code>api/v1/workflows</code>端点创建工作流程，但有一个端点专门用于支持通过api创建工作流程：<code>api/v1/events</code>。对于大多数情况（包括Jenkins），您应该更喜欢这个：</p>
+<ol>
+<li>它只允许您从工作流模板创建工作流，因此更安全。</li>
+<li>它允许您解析HTTP有效负载并将其用作参数。</li>
+<li>它允许您与其他系统集成，而无需更改这些系统。</li>
+<li>Webhooks还支持Github和Gitlab，因此您可以从代码提交触发工作流程。</li>
+</ol>
+<p>要使用此功能，您需要创建一个工作流模板和工作流<strong>事件绑定</strong>。：</p>
+<p><strong>工作流事件绑定</strong>包括：</p>
+<ul>
+<li>匹配事件的事件<strong>选择器</strong>。</li>
+<li>对工作流程模板的引用。</li>
+<li>可选参数。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">WorkflowEventBinding</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">event</span>:
+    <span style="color:#f92672">selector</span>: <span style="color:#ae81ff">payload.message != &#34;&#34;</span>
+  <span style="color:#f92672">submit</span>:
+    <span style="color:#f92672">workflowTemplateRef</span>:
+      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+    <span style="color:#f92672">arguments</span>:
+      <span style="color:#f92672">parameters</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">message</span>
+          <span style="color:#f92672">valueFrom</span>:
+            <span style="color:#f92672">event</span>: <span style="color:#ae81ff">payload.message</span>
+</code></pre></div><p>在上述示例中，如果事件包含消息，那么我们将提交工作流模板，工作流将响应消息。</p>
+<p>创建工作流程模板：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl apply -f hello-workflowtemplate.yaml
+</code></pre></div><p>创建工作流事件绑定：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl apply -f hello-workfloweventbinding.yaml
+</code></pre></div><p>试试看：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl http://localhost:2746/api/v1/events/argo/- -H &#34;Authorization: $ARGO_TOKEN&#34; -d &#39;{&#34;message&#34;: &#34;hello events&#34;}&#39;
+</code></pre></div><p>您不会收到任何响应——这是异步处理的。</p>
+<p>等待大约5秒的工作流程开始，然后检查日志：</p>
+<h1 id="python">python</h1>
+<h4 id="creating-a-workflow">Creating a Workflow</h4>
+<p>To install <a href="https://github.com/couler-proj/couler">Couler</a> Python SDK, you need Python 3 and <a href="https://github.com/pypa/pip">pip</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pip3 install git+https://github.com/couler-proj/couler@v0.1.1rc8-stable --ignore-installed
+</code></pre></div><p>The following example combines the use of a Python function result, along with conditionals, to take a dynamic path in the workflow. In this example, depending on the result of the first step defined in <code>flip_coin()</code> which executes the function <code>random_code()</code>, the template will either run the <code>heads()</code>step or the <code>tails()</code> step.</p>
+<p>Steps can be defined via either <code>couler.run_script()</code> for Python functions or <code>couler.run_container()</code> for containers. In addition, the conditional logic to decide whether to flip the coin in this example is defined via the combined use of <code>couler.when()</code> and <code>couler.equal()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> couler.argo <span style="color:#66d9ef">as</span> couler
+<span style="color:#f92672">from</span> couler.argo_submitter <span style="color:#f92672">import</span> ArgoSubmitter
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">random_code</span>():
+    <span style="color:#f92672">import</span> random
+    res <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;heads&#34;</span> <span style="color:#66d9ef">if</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;tails&#34;</span>
+    print(res)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flip_coin</span>():
+    <span style="color:#66d9ef">return</span> couler<span style="color:#f92672">.</span>run_script(image<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;python:alpine3.6&#34;</span>, source<span style="color:#f92672">=</span>random_code)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">heads</span>():
+    <span style="color:#66d9ef">return</span> couler<span style="color:#f92672">.</span>run_container(
+        image<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alpine:3.6&#34;</span>, command<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#39;echo &#34;it was heads&#34;&#39;</span>]
+    )
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tails</span>():
+    <span style="color:#66d9ef">return</span> couler<span style="color:#f92672">.</span>run_container(
+        image<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alpine:3.6&#34;</span>, command<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;sh&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#39;echo &#34;it was tails&#34;&#39;</span>]
+    )
+
+result <span style="color:#f92672">=</span> flip_coin()
+couler<span style="color:#f92672">.</span>when(couler<span style="color:#f92672">.</span>equal(result, <span style="color:#e6db74">&#34;heads&#34;</span>), <span style="color:#66d9ef">lambda</span>: heads())
+couler<span style="color:#f92672">.</span>when(couler<span style="color:#f92672">.</span>equal(result, <span style="color:#e6db74">&#34;tails&#34;</span>), <span style="color:#66d9ef">lambda</span>: tails())
+
+submitter <span style="color:#f92672">=</span> ArgoSubmitter(namespace<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;argo&#34;</span>)
+couler<span style="color:#f92672">.</span>run(submitter<span style="color:#f92672">=</span>submitter)
+</code></pre></div><p>You can run this as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">python3 coin_flip_example.py
+</code></pre></div><p>Then you can watch the execution flow of it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo watch @latest
+</code></pre></div><p>You should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">STEP                 TEMPLATE   PODNAME                   DURATION  MESSAGE
+ ✔ example-2tk55     example                                                                               
+ ├───✔ flip-coin-17  flip-coin  example-2tk55-1879897647  11s                                              
+ └─┬─✔ heads-18      heads      example-2tk55-1470248445  4s                                               
+   └─○ tails-19      tails                                          when &#39;heads == tails&#39; evaluated false
+</code></pre></div><p>The next example demonstrates a different way to define the workflow as a directed-acyclic graph (DAG) by specifying the dependencies of each task via <code>couler.set_dependencies()</code> or <code>couler.dag()</code>. Please see the code comments for the specific shape of DAG that we&rsquo;ve defined in <code>linear()</code> and <code>diamond()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> couler.argo <span style="color:#66d9ef">as</span> couler
+<span style="color:#f92672">from</span> couler.argo_submitter <span style="color:#f92672">import</span> ArgoSubmitter
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">job</span>(name):
+    couler<span style="color:#f92672">.</span>run_container(
+        image<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;docker/whalesay:latest&#34;</span>,
+        command<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;cowsay&#34;</span>],
+        args<span style="color:#f92672">=</span>[name],
+        step_name<span style="color:#f92672">=</span>name,
+    )
+
+<span style="color:#75715e">#     A</span>
+<span style="color:#75715e">#    / \</span>
+<span style="color:#75715e">#   B   C</span>
+<span style="color:#75715e">#  /</span>
+<span style="color:#75715e"># D</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">linear</span>():
+    couler<span style="color:#f92672">.</span>set_dependencies(<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;A&#34;</span>), dependencies<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+    couler<span style="color:#f92672">.</span>set_dependencies(<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;B&#34;</span>), dependencies<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;A&#34;</span>])
+    couler<span style="color:#f92672">.</span>set_dependencies(<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C&#34;</span>), dependencies<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;A&#34;</span>])
+    couler<span style="color:#f92672">.</span>set_dependencies(<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D&#34;</span>), dependencies<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;B&#34;</span>])
+
+<span style="color:#75715e">#   A</span>
+<span style="color:#75715e">#  / \</span>
+<span style="color:#75715e"># B   C</span>
+<span style="color:#75715e">#  \ /</span>
+<span style="color:#75715e">#   D</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">diamond</span>():
+    couler<span style="color:#f92672">.</span>dag(
+        [
+            [<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;A&#34;</span>)],
+            [<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;A&#34;</span>), <span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;B&#34;</span>)],  <span style="color:#75715e"># A -&gt; B</span>
+            [<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;A&#34;</span>), <span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C&#34;</span>)],  <span style="color:#75715e"># A -&gt; C</span>
+            [<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;B&#34;</span>), <span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D&#34;</span>)],  <span style="color:#75715e"># B -&gt; D</span>
+            [<span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C&#34;</span>), <span style="color:#66d9ef">lambda</span>: job(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D&#34;</span>)],  <span style="color:#75715e"># C -&gt; D</span>
+        ]
+    )
+
+linear()
+submitter <span style="color:#f92672">=</span> ArgoSubmitter(namespace<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;argo&#34;</span>)
+couler<span style="color:#f92672">.</span>run(submitter<span style="color:#f92672">=</span>submitter)
+</code></pre></div><p>You can run this as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">python3 dag_example.py
+</code></pre></div><p>And then watch the execution flow until completion similar to the previous example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">argo watch @latest
+</code></pre></div><h2 id="exercise-3">Exercise</h2>
+<ul>
+<li>Edit dag_example.py and test the diamond pattern workflow and submit the workflow again</li>
+<li>Watch the execution flow using: <code>argo watch @latest</code></li>
+</ul>
+<h2 id="2021年10月22日补充">2021年10月22日补充</h2>
+<p><a href="http://dockone.io/uploads/article/20210113/2769879438f936241400d23d71170dab.png"><img src="https://i.loli.net/2021/10/22/E4WVCdJFXnxL67Y.png" alt="04.png"></a></p>
+<p>启动argo server</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># api地址为http://localhost:2746</span>
+argo server --secure<span style="color:#f92672">=</span>false 
+
+<span style="color:#75715e"># 也可以直接访问service argo-server</span>
+kubectl get svc -n argo´
+
+
+kubectl -n argo port-forward --address 0.0.0.0 svc/argo-server 2746:2746 &gt; /dev/null &amp;
+</code></pre></div><p>创建token</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SECRET<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get sa argo -n argo -o<span style="color:#f92672">=</span>jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.secrets[0].name}&#39;</span><span style="color:#66d9ef">)</span>
+ARGO_TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Bearer </span><span style="color:#66d9ef">$(</span>kubectl get secret $SECRET -n argo -o<span style="color:#f92672">=</span>jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.data.token}&#39;</span> | base64 --decode<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+echo $ARGO_TOKEN
+</code></pre></div><p>Argo Workflows 依赖于 ServiceAccount 进行验证与授权，而且默认情况下，它使用所在 namespace 的 <code>default</code> ServiceAccount 运行 workflow.</p>
+<p>可 <code>default</code> 这个 ServiceAccount 默认根本没有任何权限！所以 Argo 的 artifacts, outputs, access to secrets 等功能全都会因为权限不足而无法使用！</p>
+<p>为此，Argo 的官方文档提供了两个解决方法。</p>
+<p>方法一，直接给 default 绑定 <code>cluster-admin</code> ClusterRole，给它集群管理员的权限，只要一行命令（但是显然安全性堪忧）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create rolebinding default-admin --clusterrole<span style="color:#f92672">=</span>admin --serviceaccount<span style="color:#f92672">=</span>&lt;namespace&gt;:default -n &lt;namespace&gt;
+</code></pre></div><p>方法二，官方给出了<a href="https://argoproj.github.io/argo/workflow-rbac/">Argo Workflows 需要的最小权限的 Role 定义</a>，方便起见我将它改成一个 ClusterRole:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRole</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">argo-workflow-role</span>
+<span style="color:#f92672">rules</span>:
+<span style="color:#75715e"># pod get/watch is used to identify the container IDs of the current pod</span>
+<span style="color:#75715e"># pod patch is used to annotate the step&#39;s outputs back to controller (e.g. artifact location)</span>
+- <span style="color:#f92672">apiGroups</span>:
+  - <span style="color:#e6db74">&#34;&#34;</span>
+  <span style="color:#f92672">resources</span>:
+  - <span style="color:#ae81ff">pods</span>
+  <span style="color:#f92672">verbs</span>:
+  - <span style="color:#ae81ff">get</span>
+  - <span style="color:#ae81ff">watch</span>
+  - <span style="color:#ae81ff">patch</span>
+<span style="color:#75715e"># logs get/watch are used to get the pods logs for script outputs, and for log archival</span>
+- <span style="color:#f92672">apiGroups</span>:
+  - <span style="color:#e6db74">&#34;&#34;</span>
+  <span style="color:#f92672">resources</span>:
+  - <span style="color:#ae81ff">pods/log</span>
+  <span style="color:#f92672">verbs</span>:
+  - <span style="color:#ae81ff">get</span>
+  - <span style="color:#ae81ff">watch</span>
+</code></pre></div><p>创建好上面这个最小的 ClusterRole，然后为每个名字空间，跑一下如下命令，给 default 账号绑定这个 clusterrole:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create rolebinding default-argo-workflow --clusterrole<span style="color:#f92672">=</span>argo-workflow-role  --serviceaccount<span style="color:#f92672">=</span>&lt;namespace&gt;:default -n &lt;namespace&gt;
+
+</code></pre></div><p>这样就能给 default 账号提供最小的 workflow 运行权限。</p>
+<p>或者如果你希望使用别的 ServiceAccount 来运行 workflow，也可以自行创建 ServiceAccount，然后再走上面方法二的流程，但是最后，要记得在 workflow 的 <code>spec.serviceAccountName</code> 中设定好 ServiceAccount 名称。</p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/nvidia/' title = 'Nvidia' style = 'background-image: url(https://jxiaof.com/images/nvidia.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/k8s' class = 'post_tag'>k8s
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/nvidia/'>Nvidia</a>
+    </h3>
+    <p class = 'pale'>info shell 获取显卡信息 cat /proc/driver/nvidia/gpus/{{opus}}/information 获取显卡uuid nvidia-smi -L …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/k8s/' title = 'K8s' style = 'background-image: url(https://jxiaof.com/images/k8s.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/k8s' class = 'post_tag'>k8s
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/k8s/'>K8s</a>
+    </h3>
+    <p class = 'pale'>minikube does not support the LoadBalancer option yet curl …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Functools的新功能 | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -63,7 +63,7 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 将旧风格的比较函数转换为key函数。用于接受key函数的工具（例如sorted()，min()，max()，heapq.nlargest ），heapq.nsmallest()，itertools.groupby()）。此函数主要用作从支持使用比较函数的Python 2转换的程序的过渡工具。</p>
 <p>比较函数是任何一个可调用的函数，且包含两个参数，对参数进行比较，如果小于返回负数，等于返回0，大于返回正数。Key函数是一个可调用对象，它接受一个参数并返回另一个值作为排序的键。</p>
 <p>示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted(iterable, key<span style="color:#f92672">=</span>cmp_to_key(locale<span style="color:#f92672">.</span>strcoll))  <span style="color:#75715e"># locale-aware sort order</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted(iterable, key<span style="color:#f92672">=</span>cmp_to_key(locale<span style="color:#f92672">.</span>strcoll))  <span style="color:#75715e"># locale-aware sort order</span>
 </code></pre></div><p>版本3.2中的新功能。</p>
 <p><strong>@functools.lru_cache(maxsize=128, typed=False)</strong>
 装饰器用一个memoizing可调用函数来包装一个函数，它可以保存最近的maxsize个调用。当使用相同的参数定期调用昂贵的或I / O绑定的函数时，可以节省时间。</p>
@@ -75,7 +75,7 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 <p>原始的底层函数可以通过__wrapped__属性访问。这对于内省，绕过缓存或者用不同的缓存重新封装函数很有用。</p>
 <p>当最近的呼叫是即将来电的最佳预测因子时，LRU（最近最少使用）高速缓存效果最好（例如，新闻服务器上最受欢迎的文章往往每天都更改）。缓存的大小限制确保缓存不会在长时间运行的进程（如Web服务器）上不受限制地增长。</p>
 <p>用于静态Web内容的LRU缓存示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_pep</span>(num):
     <span style="color:#e6db74">&#39;Retrieve text of a Python Enhancement Proposal&#39;</span>
     resource <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://www.python.org/dev/peps/pep-</span><span style="color:#e6db74">%04d</span><span style="color:#e6db74">/&#39;</span> <span style="color:#f92672">%</span> num
@@ -87,13 +87,13 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">290</span>, <span style="color:#ae81ff">308</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">218</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">279</span>, <span style="color:#ae81ff">289</span>, <span style="color:#ae81ff">320</span>, <span style="color:#ae81ff">9991</span>:
 <span style="color:#f92672">&gt;&gt;&gt;</span>      pep <span style="color:#f92672">=</span> get_pep(n)
-<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(n, len(pep))
+<span style="color:#f92672">&gt;&gt;&gt;</span>      print(n, len(pep))
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> get_pep<span style="color:#f92672">.</span>cache_info()
 <span style="color:#f92672">&gt;&gt;&gt;</span> CacheInfo(hits<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, misses<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>, currsize<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">使用高速缓存实现动态规划技术有效计算斐波纳契数的示例：</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 使用高速缓存实现动态规划技术有效计算斐波纳契数的示例<span style="color:#960050;background-color:#1e0010">：</span>
 
-<span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span>None)
+<span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
     <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
         <span style="color:#66d9ef">return</span> n
@@ -103,14 +103,14 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 <span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">89</span>, <span style="color:#ae81ff">144</span>, <span style="color:#ae81ff">233</span>, <span style="color:#ae81ff">377</span>, <span style="color:#ae81ff">610</span>]
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> fib<span style="color:#f92672">.</span>cache_info()
-<span style="color:#f92672">&gt;&gt;&gt;</span> CacheInfo(hits<span style="color:#f92672">=</span><span style="color:#ae81ff">28</span>, misses<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, maxsize<span style="color:#f92672">=</span>None, currsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">版本</span><span style="color:#ae81ff">3.2</span><span style="color:#960050;background-color:#1e0010">中的新功能。</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> CacheInfo(hits<span style="color:#f92672">=</span><span style="color:#ae81ff">28</span>, misses<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, maxsize<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, currsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> 版本3<span style="color:#ae81ff">.2</span>中的新功能<span style="color:#960050;background-color:#1e0010">。</span>
 </code></pre></div><p>在版本3.3中更改：添加了类型选项。</p>
 <p><strong>@functools.total_ordering</strong>
 给定一个定义了一个或多个富比较排序方法的类，该方法提供了一个类装饰器。这简化了指定所有可能的富比较操作的工作量。</p>
 <p>类必须定义__lt__()，__le__()，__gt__()或__ge__()此外，该类应提供一个__eq__()方法。</p>
 <p>示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@total_ordering</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@total_ordering</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_is_valid_operand</span>(self, other):
         <span style="color:#66d9ef">return</span> (hasattr(other, <span style="color:#e6db74">&#34;lastname&#34;</span>) <span style="color:#f92672">and</span>
@@ -131,7 +131,7 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
 <p>在版本3.4中更改：现在支持从无法识别的类型的基础比较函数返回未实现。</p>
 <p><strong>functools.partial(func, *args, **keywords)</strong>
 返回一个新的partial对象，该对象在调用时的行为将类似采用位置参数args和关键字参数keywords对func的调用。如果提供多个参数调用， 它们会被追加给 args。如果提供额外的关键字参数， 它们会扩展和覆盖 keywords。大致相当于：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partial</span>(func, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>keywords):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partial</span>(func, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>keywords):
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">newfunc</span>(<span style="color:#f92672">*</span>fargs, <span style="color:#f92672">**</span>fkeywords):
         newkeywords <span style="color:#f92672">=</span> keywords<span style="color:#f92672">.</span>copy()
         newkeywords<span style="color:#f92672">.</span>update(fkeywords)
@@ -141,7 +141,7 @@ functools模块用于高阶函数：作用于或返回其他函数的函数。�
     newfunc<span style="color:#f92672">.</span>keywords <span style="color:#f92672">=</span> keywords
     <span style="color:#66d9ef">return</span> newfunc
 </code></pre></div><p>partial()用于部分函数应用程序，其“冻结”函数的参数和/或关键字的某些部分，从而产生具有简化声明的新对象。例如，partial()可用于创建一个可调用对象，其行为类似于int()函数但base参数默认为2：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
 basetwo <span style="color:#f92672">=</span> partial(int, base<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
 basetwo<span style="color:#f92672">.</span>__doc__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Convert base 2 string to an int.&#39;</span>
 basetwo(<span style="color:#e6db74">&#39;10010&#39;</span>)
@@ -152,30 +152,30 @@ basetwo(<span style="color:#e6db74">&#39;10010&#39;</span>)
 <p>When func is a descriptor (such as a normal Python function, classmethod(), staticmethod(), abstractmethod() or another instance of partialmethod), calls to <strong>get</strong> are delegated to the underlying descriptor, and an appropriate partial object returned as the result.</p>
 <p>当func是非描述符可调用时，将动态创建适当的绑定方法。在作为方法使用时，它的行为类似于普通的Python函数：self参数将被插入作为第一个位置参数，甚至在args和t2&gt;提供给partialmethod构造函数。</p>
 <p>示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cell</span>(object):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cell</span>(object):
      <span style="color:#66d9ef">def</span> __init__(self):
-         self<span style="color:#f92672">.</span>_alive <span style="color:#f92672">=</span> False
+         self<span style="color:#f92672">.</span>_alive <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
      <span style="color:#a6e22e">@property</span>
      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">alive</span>(self):
          <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_alive
      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_state</span>(self, state):
          self<span style="color:#f92672">.</span>_alive <span style="color:#f92672">=</span> bool(state)
-     set_alive <span style="color:#f92672">=</span> partialmethod(set_state, True)
-     set_dead <span style="color:#f92672">=</span> partialmethod(set_state, False)
+     set_alive <span style="color:#f92672">=</span> partialmethod(set_state, <span style="color:#66d9ef">True</span>)
+     set_dead <span style="color:#f92672">=</span> partialmethod(set_state, <span style="color:#66d9ef">False</span>)
 
 c <span style="color:#f92672">=</span> Cell()
 c<span style="color:#f92672">.</span>alive
-False
+<span style="color:#66d9ef">False</span>
 c<span style="color:#f92672">.</span>set_alive()
 c<span style="color:#f92672">.</span>alive
-True
-<span style="color:#960050;background-color:#1e0010">版本</span><span style="color:#ae81ff">3.4</span><span style="color:#960050;background-color:#1e0010">中的新功能。</span>
+<span style="color:#66d9ef">True</span>
+版本3<span style="color:#ae81ff">.4</span>中的新功能<span style="color:#960050;background-color:#1e0010">。</span>
 </code></pre></div><p><strong>functools.reduce(function, iterable[, initializer])</strong>
 将带有两个参数的 function 从左到右累积应用到 sequence 的元素中，以将该序列规约为单个值。例如，reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) 计算 ((((1+2)+3)+4)+5)。左参数 x 是累积值，右参数 y 是来自 sequence 的更新值。如果存在可选的 initializer，则它将放置在计算序列的元素之前，并在序列为空时用作默认值。如果未提供 initializer 且 sequence 只包含一个元素，则返回第一个元素。</p>
 <p>大致相当于：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reduce</span>(function, iterable, initializer<span style="color:#f92672">=</span>None):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reduce</span>(function, iterable, initializer<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
     it <span style="color:#f92672">=</span> iter(iterable)
-    <span style="color:#66d9ef">if</span> initializer <span style="color:#f92672">is</span> None:
+    <span style="color:#66d9ef">if</span> initializer <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
         value <span style="color:#f92672">=</span> next(it)
     <span style="color:#66d9ef">else</span>:
         value <span style="color:#f92672">=</span> initializer
@@ -185,68 +185,68 @@ True
 </code></pre></div><p><strong>@functools.singledispatch(default)</strong>
 将函数转换为single-dispatch generic function。</p>
 <p>要定义通用函数，请使用@singledispatch装饰器进行装饰。注意，分派发生在第一个参数的类型上，相应地创建你的函数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> singledispatch
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> singledispatch
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@singledispatch</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun</span>(arg, verbose<span style="color:#f92672">=</span>False):
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun</span>(arg, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Let me just say,&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(arg)
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">要向函数添加重载的实现，请使用通用函数的</span>register()<span style="color:#960050;background-color:#1e0010">属性。它是一个装饰器，接受一个类型参数和装饰实现该类型的操作的函数：</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>          print(<span style="color:#e6db74">&#34;Let me just say,&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>      print(arg)
+<span style="color:#f92672">&gt;&gt;&gt;</span> 要向函数添加重载的实现<span style="color:#960050;background-color:#1e0010">，</span>请使用通用函数的register()属性<span style="color:#960050;background-color:#1e0010">。</span>它是一个装饰器<span style="color:#960050;background-color:#1e0010">，</span>接受一个类型参数和装饰实现该类型的操作的函数<span style="color:#960050;background-color:#1e0010">：</span>
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun.register</span>(int)
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_</span>(arg, verbose<span style="color:#f92672">=</span>False):
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun</span><span style="color:#f92672">.</span>register(int)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_</span>(arg, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Strength in numbers, eh?&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(arg)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          print(<span style="color:#e6db74">&#34;Strength in numbers, eh?&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>      print(arg)
 <span style="color:#f92672">&gt;&gt;&gt;</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun.register</span>(list)
-<span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_</span>(arg, verbose<span style="color:#f92672">=</span>False):
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun</span><span style="color:#f92672">.</span>register(list)
+<span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_</span>(arg, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Enumerate this:&#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          print(<span style="color:#e6db74">&#34;Enumerate this:&#34;</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">for</span> i, elem <span style="color:#f92672">in</span> enumerate(arg):
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(i, elem)
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">要启用注册</span>lambda和预先存在的函数<span style="color:#960050;background-color:#1e0010">，可以以函数形式使用</span>register()<span style="color:#960050;background-color:#1e0010">属性：</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>          print(i, elem)
+<span style="color:#f92672">&gt;&gt;&gt;</span> 要启用注册lambda和预先存在的函数<span style="color:#960050;background-color:#1e0010">，</span>可以以函数形式使用register()属性<span style="color:#960050;background-color:#1e0010">：</span>
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nothing</span>(arg, verbose<span style="color:#f92672">=</span>False):
-<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Nothing.&#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nothing</span>(arg, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+<span style="color:#f92672">&gt;&gt;&gt;</span>      print(<span style="color:#e6db74">&#34;Nothing.&#34;</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>register(type(None), nothing)
-<span style="color:#f92672">&gt;&gt;&gt;</span> register()<span style="color:#960050;background-color:#1e0010">属性返回未装饰函数（原函数），该函数使装饰器堆叠，</span>pickle化<span style="color:#960050;background-color:#1e0010">（序列化）以及为每个变体独立创建单元测试：</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>register(type(<span style="color:#66d9ef">None</span>), nothing)
+<span style="color:#f92672">&gt;&gt;&gt;</span> register()属性返回未装饰函数<span style="color:#960050;background-color:#1e0010">（</span>原函数<span style="color:#960050;background-color:#1e0010">），</span>该函数使装饰器堆叠<span style="color:#960050;background-color:#1e0010">，</span>pickle化<span style="color:#960050;background-color:#1e0010">（</span>序列化<span style="color:#960050;background-color:#1e0010">）</span>以及为每个变体独立创建单元测试<span style="color:#960050;background-color:#1e0010">：</span>
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun.register</span>(float)
-<span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#a6e22e">@fun.register</span>(Decimal)
-<span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun_num</span>(arg, verbose<span style="color:#f92672">=</span>False):
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">@fun</span><span style="color:#f92672">.</span>register(float)
+<span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#a6e22e">@fun</span><span style="color:#f92672">.</span>register(Decimal)
+<span style="color:#f92672">&gt;&gt;&gt;</span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun_num</span>(arg, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
 <span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">if</span> verbose:
-<span style="color:#f92672">&gt;&gt;&gt;</span>          <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Half of your number:&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
-<span style="color:#f92672">&gt;&gt;&gt;</span>      <span style="color:#66d9ef">print</span>(arg <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>          print(<span style="color:#e6db74">&#34;Half of your number:&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span>      print(arg <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> 
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun_num <span style="color:#f92672">is</span> fun
-<span style="color:#f92672">&gt;&gt;&gt;</span> False
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">当被调用时，泛型函数调度第一个参数的类型：</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">False</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 当被调用时<span style="color:#960050;background-color:#1e0010">，</span>泛型函数调度第一个参数的类型<span style="color:#960050;background-color:#1e0010">：</span>
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">&#34;Hello, world.&#34;</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Hello, world<span style="color:#f92672">.</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">&#34;test.&#34;</span>, verbose<span style="color:#f92672">=</span>True)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#e6db74">&#34;test.&#34;</span>, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Let me just say, test<span style="color:#f92672">.</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#ae81ff">42</span>, verbose<span style="color:#f92672">=</span>True)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#ae81ff">42</span>, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Strength <span style="color:#f92672">in</span> numbers, eh<span style="color:#960050;background-color:#1e0010">?</span> <span style="color:#ae81ff">42</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun([<span style="color:#e6db74">&#39;spam&#39;</span>, <span style="color:#e6db74">&#39;spam&#39;</span>, <span style="color:#e6db74">&#39;eggs&#39;</span>, <span style="color:#e6db74">&#39;spam&#39;</span>], verbose<span style="color:#f92672">=</span>True)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun([<span style="color:#e6db74">&#39;spam&#39;</span>, <span style="color:#e6db74">&#39;spam&#39;</span>, <span style="color:#e6db74">&#39;eggs&#39;</span>, <span style="color:#e6db74">&#39;spam&#39;</span>], verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Enumerate this:
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">0</span> spam
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">1</span> spam
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span> eggs
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">3</span> spam
-<span style="color:#f92672">&gt;&gt;&gt;</span> fun(None)
+<span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#66d9ef">None</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Nothing<span style="color:#f92672">.</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun(<span style="color:#ae81ff">1.23</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">0.615</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">在没有针对特定类型的注册实现的情况下，其方法解析顺序用于找到更通用的实现。用</span><span style="color:#a6e22e">@singledispatch装饰的原始函数是为基础object类型注册的</span><span style="color:#960050;background-color:#1e0010">，这意味着如果没有找到更好的实现，则使用它。</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 在没有针对特定类型的注册实现的情况下<span style="color:#960050;background-color:#1e0010">，</span>其方法解析顺序用于找到更通用的实现<span style="color:#960050;background-color:#1e0010">。</span>用<span style="color:#a6e22e">@singledispatch装饰的原始函数是为基础object类型注册的</span><span style="color:#960050;background-color:#1e0010">，</span>这意味着如果没有找到更好的实现<span style="color:#960050;background-color:#1e0010">，</span>则使用它<span style="color:#960050;background-color:#1e0010">。</span>
 </code></pre></div><p>要检查通用函数为给定类型选择的实现，请使用dispatch()属性：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>dispatch(float)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>dispatch(float)
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span>function fun_num at <span style="color:#ae81ff">0x1035a2840</span><span style="color:#f92672">&gt;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>dispatch(dict)    <span style="color:#75715e"># note: default implementation</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span>function fun at <span style="color:#ae81ff">0x103fe0000</span><span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">要访问所有注册的实现，请使用只读</span>registry属性<span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 要访问所有注册的实现<span style="color:#960050;background-color:#1e0010">，</span>请使用只读registry属性<span style="color:#960050;background-color:#1e0010">：</span>
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>registry<span style="color:#f92672">.</span>keys()
 <span style="color:#f92672">&gt;&gt;&gt;</span> dict_keys([<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">NoneType</span><span style="color:#e6db74">&#39;&gt;, &lt;class &#39;</span>int<span style="color:#e6db74">&#39;&gt;, &lt;class &#39;</span>object<span style="color:#e6db74">&#39;&gt;,</span>
@@ -256,7 +256,7 @@ True
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span>function fun_num at <span style="color:#ae81ff">0x1035a2840</span><span style="color:#f92672">&gt;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> fun<span style="color:#f92672">.</span>registry[object]
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">&lt;</span>function fun at <span style="color:#ae81ff">0x103fe0000</span><span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#960050;background-color:#1e0010">版本</span><span style="color:#ae81ff">3.4</span><span style="color:#960050;background-color:#1e0010">中的新功能。</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 版本3<span style="color:#ae81ff">.4</span>中的新功能<span style="color:#960050;background-color:#1e0010">。</span>
 </code></pre></div><p><strong>functools.update_wrapper(wrapper, wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)</strong>
 更新一个 wrapper 函数让其更像一个 wrapped 函数。可选的参数是一个元祖，来指定原函数哪些属性被直接分配给装饰器中的匹配属性 ，哪些装饰器属性使用来自原函数的相应属性来更新。The default values for these arguments are the module level constants WRAPPER_ASSIGNMENTS (which assigns to the wrapper function’s <strong>module</strong>, <strong>name</strong>, <strong>qualname</strong>, <strong>annotations</strong> and <strong>doc</strong>, the documentation string) and WRAPPER_UPDATES (which updates the wrapper function’s <strong>dict</strong>, i.e. 实例的字典).</p>
 <p>为了允许访问原始功能以进行内省和其他目的（例如，绕过缓存装饰器（例如lru_cache()），此函数会自动向包装器添加一个__wrapped__属性，该属性引用要包装的函数。</p>
@@ -268,18 +268,18 @@ True
 <p>在版本3.4中更改： __wrapped__属性现在总是引用wrapped函数，即使该函数定义了__wrapped__属性。（参见问题17482）</p>
 <p><strong>@functools.wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)</strong>
 这是一个方便的函数，用于在定义包装器函数时调用update_wrapper()作为函数装饰器。它等效于partial（update_wrapper， wrapped = wrapped， assigned = assigned， updated = updated） t4 &gt;。示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> wraps
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> wraps
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_decorator</span>(f):
      <span style="color:#a6e22e">@wraps</span>(f)
      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">wrapper</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwds):
-         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Calling decorated function&#39;</span>)
+         print(<span style="color:#e6db74">&#39;Calling decorated function&#39;</span>)
          <span style="color:#66d9ef">return</span> f(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwds)
      <span style="color:#66d9ef">return</span> wrapper
 
 <span style="color:#a6e22e">@my_decorator</span>
  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">example</span>():
      <span style="color:#e6db74">&#34;&#34;&#34;Docstring&#34;&#34;&#34;</span>
-     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Called example function&#39;</span>)
+     print(<span style="color:#e6db74">&#39;Called example function&#39;</span>)
 
 example()
 Calling decorated function
@@ -288,7 +288,7 @@ example<span style="color:#f92672">.</span>__name__
 <span style="color:#e6db74">&#39;example&#39;</span>
 example<span style="color:#f92672">.</span>__doc__
 <span style="color:#e6db74">&#39;Docstring&#39;</span>
-<span style="color:#960050;background-color:#1e0010">没有使用这个装饰器工厂，示例函数的名称将是</span><span style="color:#e6db74">&#39;wrapper&#39;</span><span style="color:#960050;background-color:#1e0010">，原始</span>example()<span style="color:#960050;background-color:#1e0010">的</span>docstring将丢失<span style="color:#960050;background-color:#1e0010">。</span>
+没有使用这个装饰器工厂<span style="color:#960050;background-color:#1e0010">，</span>示例函数的名称将是<span style="color:#e6db74">&#39;wrapper&#39;</span><span style="color:#960050;background-color:#1e0010">，</span>原始example()的docstring将丢失<span style="color:#960050;background-color:#1e0010">。</span>
 </code></pre></div><p><strong>partial对象</strong>
 partial对象是由partial()创建的可调用对象。它们有三个只读属性：</p>
 <p><strong>partial.func</strong>
@@ -336,6 +336,26 @@ partial对象是由partial()创建的可调用对象。它们有三个只读属�
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -353,26 +373,6 @@ partial对象是由partial()创建的可调用对象。它们有三个只读属�
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

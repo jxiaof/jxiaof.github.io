@@ -2,20 +2,35 @@
 <html lang='en'><head>
   <title>Funny | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = 'Funny' />
-<meta name="description" content="some funny code 记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!) 一、 import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from …">
-<meta property = 'og:description' content = 'some funny code 记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!) 一、 import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from …'>
+<meta name="description" content="some funny code
+
+记录有趣的代码
+记录灵性的想法
+记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)
+">
+<meta property = 'og:description' content = 'some funny code
+
+记录有趣的代码
+记录灵性的想法
+记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)
+'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/funny/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/programmer.png'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = 'Funny' />
-<meta property = 'twitter:description'  content = 'some funny code 记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!) 一、 import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from …'/>
+<meta property = 'twitter:description'  content = 'some funny code
+
+记录有趣的代码
+记录灵性的想法
+记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)
+'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/programmer.png' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -60,7 +75,7 @@
 <li>记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)</li>
 </ul>
 <p>一、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2
 <span style="color:#f92672">from</span> cv2 <span style="color:#f92672">import</span> VideoWriter, VideoWriter_fourcc, imread, resize
 <span style="color:#f92672">import</span> os
 <span style="color:#f92672">from</span> subprocess <span style="color:#f92672">import</span> call
@@ -71,10 +86,10 @@ size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1280</spa
 fourcc <span style="color:#f92672">=</span> VideoWriter_fourcc(<span style="color:#f92672">*</span><span style="color:#e6db74">&#34;MJPG&#34;</span>)  <span style="color:#75715e">#支持jpg</span>
 videoWriter <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>VideoWriter(out_root, fourcc, fps, size)
 im_names <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(img_root)
-<span style="color:#66d9ef">print</span>(len(im_names))
+print(len(im_names))
 <span style="color:#66d9ef">for</span> im_name <span style="color:#f92672">in</span> range(len(im_names) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>):
     string <span style="color:#f92672">=</span> img_root <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;frame&#39;</span> <span style="color:#f92672">+</span> str(im_name) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.jpg&#39;</span>
-    <span style="color:#66d9ef">print</span>(string)
+    print(string)
     frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(string)
     frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>resize(frame, size)   <span style="color:#75715e">#注意这里resize大小要和视频的一样</span>
     videoWriter<span style="color:#f92672">.</span>write(frame)
@@ -83,7 +98,7 @@ dir <span style="color:#f92672">=</span> out_root<span style="color:#f92672">.</
 command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ffmpeg -i </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.avi </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.mp4&#34;</span> <span style="color:#f92672">%</span> (dir, dir)   <span style="color:#75715e">#使用ffmped将avi压缩为mp4,注意两个的路径</span>
 call(command<span style="color:#f92672">.</span>split())
 </code></pre></div><p>二 查看某文件记录</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># findrobots.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># findrobots.py</span>
 
 <span style="color:#f92672">import</span> gzip
 <span style="color:#f92672">import</span> io
@@ -117,17 +132,17 @@ call(command<span style="color:#f92672">.</span>split())
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
     robots <span style="color:#f92672">=</span> find_all_robots(<span style="color:#e6db74">&#39;logs&#39;</span>)
     <span style="color:#66d9ef">for</span> ipaddr <span style="color:#f92672">in</span> robots:
-        <span style="color:#66d9ef">print</span>(ipaddr)
+        print(ipaddr)
 </code></pre></div><p>三 查看临时文件</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
 
 
 <span style="color:#66d9ef">with</span> TemporaryDirectory(suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;_tempdir&#39;</span>, dir<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>getcwd()) <span style="color:#66d9ef">as</span> dirname:
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;dirname is:&#39;</span>, dirname)
+    print(<span style="color:#e6db74">&#39;dirname is:&#39;</span>, dirname)
     path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), dirname))
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;the path is:&#39;</span>, dirname)
+    print(<span style="color:#e6db74">&#39;the path is:&#39;</span>, dirname)
 </code></pre></div><p>四 压缩文件处理</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> os
 <span style="color:#f92672">import</span> zipfile
 <span style="color:#f92672">import</span> io
@@ -135,7 +150,7 @@ call(command<span style="color:#f92672">.</span>split())
 <span style="color:#f92672">import</span> cv2
 <span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 <span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
@@ -143,11 +158,11 @@ call(command<span style="color:#f92672">.</span>split())
     <span style="color:#75715e"># url = &#34;https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg&#34;</span>
     r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
     check <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>is_zipfile(io<span style="color:#f92672">.</span>BytesIO(r<span style="color:#f92672">.</span>content))
-    <span style="color:#66d9ef">print</span>(check)
+    print(check)
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> check:
         <span style="color:#66d9ef">if</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
             result <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>content
-            <span style="color:#66d9ef">print</span>(type(result))
+            print(type(result))
             image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imdecode(np<span style="color:#f92672">.</span>frombuffer(result, dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uint8&#39;</span>), <span style="color:#ae81ff">1</span>)
             plt<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>)
             plt<span style="color:#f92672">.</span>xticks([]), plt<span style="color:#f92672">.</span>yticks([])  <span style="color:#75715e"># to hide tick values on X and Y axis</span>
@@ -159,20 +174,20 @@ call(command<span style="color:#f92672">.</span>split())
         z <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>ZipFile(io<span style="color:#f92672">.</span>BytesIO(r<span style="color:#f92672">.</span>content))
         img_names <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;.png&#39;</span>, <span style="color:#e6db74">&#39;.jpeg&#39;</span>, <span style="color:#e6db74">&#39;.jpg&#39;</span>)  <span style="color:#75715e"># gif, tif, psd, dng, cr2, net</span>
         file_names <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> z<span style="color:#f92672">.</span>namelist() <span style="color:#66d9ef">if</span> i<span style="color:#f92672">.</span>lower()<span style="color:#f92672">.</span>endswith(img_names)]
-        <span style="color:#66d9ef">print</span>(file_names)
+        print(file_names)
         <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> file_names:
             <span style="color:#66d9ef">with</span> z<span style="color:#f92672">.</span>open(name) <span style="color:#66d9ef">as</span> f:
                 image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imdecode(np<span style="color:#f92672">.</span>frombuffer(f<span style="color:#f92672">.</span>read(), dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uint8&#39;</span>), <span style="color:#ae81ff">1</span>)
-                <span style="color:#66d9ef">if</span> image <span style="color:#f92672">is</span> None:
-                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> name: {name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
-                    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-*-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>)
+                <span style="color:#66d9ef">if</span> image <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> name: </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+                    print(<span style="color:#e6db74">&#34;-*-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>)
                 <span style="color:#75715e"># cv2.imshow(&#34;custom_image&#34;, image)</span>
                 <span style="color:#75715e"># cv2.waitKey(0)</span>
                 plt<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>)
                 plt<span style="color:#f92672">.</span>xticks([]), plt<span style="color:#f92672">.</span>yticks([])  <span style="color:#75715e"># to hide tick values on X and Y axis</span>
                 plt<span style="color:#f92672">.</span>show()
 </code></pre></div><p>5.编码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
 CHARS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&#34;</span>
 ENUM_CHARS <span style="color:#f92672">=</span> {v: k <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> enumerate(CHARS)}
 
@@ -188,8 +203,116 @@ ENUM_CHARS <span style="color:#f92672">=</span> {v: k <span style="color:#66d9ef
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
     g <span style="color:#f92672">=</span> UrlSuffix()
-    <span style="color:#66d9ef">print</span>(g<span style="color:#f92672">.</span>encode(<span style="color:#ae81ff">123</span>))
-    <span style="color:#66d9ef">print</span>(g<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;44&#34;</span>))
+    print(g<span style="color:#f92672">.</span>encode(<span style="color:#ae81ff">123</span>))
+    print(g<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;44&#34;</span>))
+</code></pre></div><p>6.临时文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> NamedTemporaryFile
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> pathlib
+<span style="color:#f92672">import</span> pytools.ks3    
+    
+    <span style="color:#75715e"># with time_block(&#34;上传ks3耗时&#34;):</span>
+        <span style="color:#75715e">#     with NamedTemporaryFile(prefix=&#39;sod_&#39;, suffix=&#39;.png&#39;, dir=&#39;/tmp&#39;) as f:</span>
+        <span style="color:#75715e">#         logger.debug(f.name)</span>
+        <span style="color:#75715e">#         cv2.imwrite(f.name, im_RGBA)</span>
+        <span style="color:#75715e">#         logger.debug(f&#39;Temp_file exists : {pathlib.Path(f.name).exists()}&#39;)</span>
+        <span style="color:#75715e">#         logger.debug(&#34;保存成功!&#34;)</span>
+        <span style="color:#75715e">#         # self.eff_dir = asyncio.run(pytools.ks3.aio_upload_ks3(input_path=f.name, ns=env.ks3_ns, expire_min=env.expire_min))</span>
+        <span style="color:#75715e">#         self.eff_dir = asyncio.run(self.upload_to_ks3(f.name))</span>
+        <span style="color:#75715e">#         logger.info(&#34;上传ks3成功!&#34;)</span>
+        <span style="color:#75715e">#     logger.debug(f&#39;Temp_file exists after close: {pathlib.Path(f.name).exists()}&#39; )</span>
+</code></pre></div><p>7.打包.so文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> shutil
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
+
+<span style="color:#f92672">from</span> Cython.Build <span style="color:#f92672">import</span> cythonize
+
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+curr_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#39;.&#39;</span>)
+parent_path <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;&#34;</span>
+setup_file <span style="color:#f92672">=</span> __file__<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;/&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span>)
+build_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;build&#34;</span>
+build_tmp_dir <span style="color:#f92672">=</span> build_dir <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/temp&#34;</span>
+
+s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;# cython: language_level=3&#34;</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_py</span>(base_path<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#39;.&#39;</span>), parent_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, excepts<span style="color:#f92672">=</span>(), copyOther<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, delC<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    获取py文件的路径
+</span><span style="color:#e6db74">    :param base_path: 根路径
+</span><span style="color:#e6db74">    :param parent_path: 父路径
+</span><span style="color:#e6db74">    :param excepts: 排除文件
+</span><span style="color:#e6db74">    :return: py文件的迭代器
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    full_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(base_path, parent_path, name)
+    <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(full_path):
+        full_filename <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(full_path, filename)
+        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(full_filename) <span style="color:#f92672">and</span> filename <span style="color:#f92672">!=</span> build_dir <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> filename<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;.&#39;</span>):
+            <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> get_py(base_path, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(parent_path, name), filename, excepts, copyOther, delC):
+                <span style="color:#66d9ef">yield</span> f
+        <span style="color:#66d9ef">elif</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(full_filename):
+            ext <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">if</span> ext <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;.c&#34;</span>:
+                <span style="color:#66d9ef">if</span> delC <span style="color:#f92672">and</span> os<span style="color:#f92672">.</span>stat(full_filename)<span style="color:#f92672">.</span>st_mtime <span style="color:#f92672">&gt;</span> start_time:
+                    os<span style="color:#f92672">.</span>remove(full_filename)
+            <span style="color:#66d9ef">elif</span> full_filename <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> excepts <span style="color:#f92672">and</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;.pyc&#39;</span>, <span style="color:#e6db74">&#39;.pyx&#39;</span>):
+                <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;.py&#39;</span>, <span style="color:#e6db74">&#39;.pyx&#39;</span>) <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> filename<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;__&#39;</span>):
+                    path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(parent_path, name, filename)
+                    <span style="color:#66d9ef">yield</span> path
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">pass</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pack_pyd</span>():
+    <span style="color:#75715e"># 获取py列表</span>
+    module_list <span style="color:#f92672">=</span> list(get_py(base_path<span style="color:#f92672">=</span>curr_dir, parent_path<span style="color:#f92672">=</span>parent_path, excepts<span style="color:#f92672">=</span>(setup_file,)))
+    <span style="color:#66d9ef">try</span>:
+        setup(
+            ext_modules<span style="color:#f92672">=</span>cythonize(module_list, compiler_directives<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;language_level&#39;</span>: <span style="color:#e6db74">&#34;3&#34;</span>}),
+            script_args<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;build_ext&#34;</span>, <span style="color:#e6db74">&#34;-b&#34;</span>, build_dir, <span style="color:#e6db74">&#34;-t&#34;</span>, build_tmp_dir],
+        )
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> ex:
+        print(<span style="color:#e6db74">&#34;error! &#34;</span>, str(ex))
+    <span style="color:#66d9ef">else</span>:
+        module_list <span style="color:#f92672">=</span> list(get_py(base_path<span style="color:#f92672">=</span>curr_dir, parent_path<span style="color:#f92672">=</span>parent_path, excepts<span style="color:#f92672">=</span>(setup_file,), copyOther<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>))
+
+    module_list <span style="color:#f92672">=</span> list(get_py(base_path<span style="color:#f92672">=</span>curr_dir, parent_path<span style="color:#f92672">=</span>parent_path, excepts<span style="color:#f92672">=</span>(setup_file,), delC<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>))
+    <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(build_tmp_dir):
+        shutil<span style="color:#f92672">.</span>rmtree(build_tmp_dir)
+
+    print(<span style="color:#e6db74">&#34;complate! time:&#34;</span>, time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time, <span style="color:#e6db74">&#39;s&#39;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_c</span>(path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.&#39;</span>, excepts<span style="color:#f92672">=</span>(setup_file,)):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    删除编译过程中生成的.c文件
+</span><span style="color:#e6db74">    :param path:
+</span><span style="color:#e6db74">    :param excepts:
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    dirs <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(path)
+    <span style="color:#66d9ef">for</span> dir <span style="color:#f92672">in</span> dirs:
+        new_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(path, dir)
+        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(new_dir):
+            ext <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(new_dir)[<span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">if</span> ext <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.c&#39;</span>:
+                os<span style="color:#f92672">.</span>remove(new_dir)
+        <span style="color:#66d9ef">elif</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(new_dir):
+            delete_c(new_dir)
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#66d9ef">try</span>:
+        pack_pyd()
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        print(str(e))
+    <span style="color:#66d9ef">finally</span>:
+        delete_c()
+
 </code></pre></div>
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>
@@ -228,6 +351,26 @@ ENUM_CHARS <span style="color:#f92672">=</span> {v: k <span style="color:#66d9ef
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -245,26 +388,6 @@ ENUM_CHARS <span style="color:#f92672">=</span> {v: k <span style="color:#66d9ef
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Pytorch2 onnx2 tensor rt | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -92,25 +92,25 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ONNX_FILE_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>
-torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, input, ONNX_FILE_PATH, input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input&#39;</span>],   output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output&#39;</span>],     export_params<span style="color:#f92672">=</span>True)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ONNX_FILE_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>
+torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, input, ONNX_FILE_PATH, input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input&#39;</span>],   output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output&#39;</span>],     export_params<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </code></pre></div><p>要检查模型是否正常转换，请调用<strong>onnx.checker.check_model</strong>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">onnx_model <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(ONNX_FILE_PATH)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">onnx_model <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(ONNX_FILE_PATH)
 onnx<span style="color:#f92672">.</span>checker<span style="color:#f92672">.</span>check_model(onnx_model)
 </code></pre></div><p>一个实例:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torchvision
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torchvision
 <span style="color:#f92672">import</span> torch
 <span style="color:#f92672">from</span> torch.autograd <span style="color:#f92672">import</span> Variable
 <span style="color:#f92672">import</span> onnx
-<span style="color:#66d9ef">print</span>(torch<span style="color:#f92672">.</span>__version__)
+print(torch<span style="color:#f92672">.</span>__version__)
 
 input_name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;input&#39;</span>]
 output_name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;output&#39;</span>]
 input <span style="color:#f92672">=</span> Variable(torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">224</span>, <span style="color:#ae81ff">224</span>))<span style="color:#f92672">.</span>cuda()
-model <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>resnet50(pretrained<span style="color:#f92672">=</span>True)<span style="color:#f92672">.</span>cuda()
-torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, input, <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>, input_names<span style="color:#f92672">=</span>input_name, output_names<span style="color:#f92672">=</span>output_name, verbose<span style="color:#f92672">=</span>True)
+model <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>resnet50(pretrained<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>cuda()
+torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, input, <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>, input_names<span style="color:#f92672">=</span>input_name, output_names<span style="color:#f92672">=</span>output_name, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </code></pre></div><p>另一个实例:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch
  
 device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span> <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;cpu&#34;</span>)
  
@@ -122,11 +122,11 @@ device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</
     input_names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;data&#39;</span>]
     output_names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;fc&#39;</span>]
     torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, dummy_input, <span style="color:#e6db74">&#39;resnet50.onnx&#39;</span>, 
-                      export_params<span style="color:#f92672">=</span>True, 
-                      verbose<span style="color:#f92672">=</span>True, 
+                      export_params<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, 
+                      verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, 
                       input_names<span style="color:#f92672">=</span>input_names, 
                       output_names<span style="color:#f92672">=</span>output_names)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> argparse
 <span style="color:#f92672">import</span> torch
 <span style="color:#f92672">import</span> onnx
@@ -152,10 +152,10 @@ sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>a
     <span style="color:#75715e"># Load pytorch model</span>
     model_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;u2net&#39;</span>  <span style="color:#75715e"># &#39;u2netp&#39;</span>
     <span style="color:#66d9ef">if</span> (model_name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;u2net&#39;</span>):
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;...load U2NET---173.6 MB&#34;</span>)
+        print(<span style="color:#e6db74">&#34;...load U2NET---173.6 MB&#34;</span>)
         model <span style="color:#f92672">=</span> U2NET(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
     <span style="color:#66d9ef">elif</span> (model_name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;u2netp&#39;</span>):
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;...load U2NEP---4.7 MB&#34;</span>)
+        print(<span style="color:#e6db74">&#34;...load U2NEP---4.7 MB&#34;</span>)
         model <span style="color:#f92672">=</span> U2NETP(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
 
     <span style="color:#75715e"># model = torch.load(opt.weights, map_location=torch.device(&#39;cpu&#39;))[&#39;model&#39;].float()</span>
@@ -166,22 +166,22 @@ sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>a
     model<span style="color:#f92672">.</span>eval()
     <span style="color:#75715e"># Export to onnx</span>
     _ <span style="color:#f92672">=</span> model(img)  <span style="color:#75715e"># dry run</span>
-    torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, img, f, verbose<span style="color:#f92672">=</span>False, opset_version<span style="color:#f92672">=</span><span style="color:#ae81ff">11</span>, input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input_test&#39;</span>], output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output_test_1&#39;</span>, <span style="color:#e6db74">&#39;output_test_2&#39;</span>, <span style="color:#e6db74">&#39;output_test-3&#39;</span>, <span style="color:#e6db74">&#39;output_test_4&#39;</span>, <span style="color:#e6db74">&#39;output_test_5&#39;</span>, <span style="color:#e6db74">&#39;output_test_6&#39;</span>, <span style="color:#e6db74">&#39;output_test_7&#39;</span>])  <span style="color:#75715e"># output_names=[&#39;classes&#39;, &#39;boxes&#39;]</span>
+    torch<span style="color:#f92672">.</span>onnx<span style="color:#f92672">.</span>export(model, img, f, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, opset_version<span style="color:#f92672">=</span><span style="color:#ae81ff">11</span>, input_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;input_test&#39;</span>], output_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;output_test_1&#39;</span>, <span style="color:#e6db74">&#39;output_test_2&#39;</span>, <span style="color:#e6db74">&#39;output_test-3&#39;</span>, <span style="color:#e6db74">&#39;output_test_4&#39;</span>, <span style="color:#e6db74">&#39;output_test_5&#39;</span>, <span style="color:#e6db74">&#39;output_test_6&#39;</span>, <span style="color:#e6db74">&#39;output_test_7&#39;</span>])  <span style="color:#75715e"># output_names=[&#39;classes&#39;, &#39;boxes&#39;]</span>
 
     <span style="color:#75715e"># Check onnx model</span>
     model <span style="color:#f92672">=</span> onnx<span style="color:#f92672">.</span>load(f)  <span style="color:#75715e"># load onnx model</span>
     onnx<span style="color:#f92672">.</span>checker<span style="color:#f92672">.</span>check_model(model)  <span style="color:#75715e"># check onnx model</span>
-    <span style="color:#66d9ef">print</span>(onnx<span style="color:#f92672">.</span>helper<span style="color:#f92672">.</span>printable_graph(model<span style="color:#f92672">.</span>graph))  <span style="color:#75715e"># print a human readable representation of the graph</span>
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-*-&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span>)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Export complete. ONNX model saved to </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">View with https://github.com/lutzroeder/netron&#39;</span> <span style="color:#f92672">%</span> f)
+    print(onnx<span style="color:#f92672">.</span>helper<span style="color:#f92672">.</span>printable_graph(model<span style="color:#f92672">.</span>graph))  <span style="color:#75715e"># print a human readable representation of the graph</span>
+    print(<span style="color:#e6db74">&#34;-*-&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span>)
+    print(<span style="color:#e6db74">&#39;Export complete. ONNX model saved to </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">View with https://github.com/lutzroeder/netron&#39;</span> <span style="color:#f92672">%</span> f)
 
 </code></pre></div><p>然后下载TensorRT</p>
 <p>略过</p>
 <p>tensor环境配置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">export LD_LIBRARY_PATH=/usr/local/trt/TensorRT-8.0.0.3/lib:$LD_LIBRARY_PATH
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">export LD_LIBRARY_PATH=/usr/local/trt/TensorRT-8.0.0.3/lib:$LD_LIBRARY_PATH
 export CUDA_VISIBLE_DEVICES=0
 </code></pre></div><p>从 ONNX 创建 TensorRT 引擎</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorrt <span style="color:#f92672">as</span> trt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorrt <span style="color:#66d9ef">as</span> trt
 
 TRT_LOGGER <span style="color:#f92672">=</span> trt<span style="color:#f92672">.</span>Logger(trt<span style="color:#f92672">.</span>Logger<span style="color:#f92672">.</span>WARNING)
 trt_runtime <span style="color:#f92672">=</span> trt<span style="color:#f92672">.</span>Runtime(TRT_LOGGER)

@@ -14,7 +14,12 @@
       <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/funny/</guid>
-      <description>some funny code 记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!) 一、 import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps</description>
+      <description>&lt;h1 id=&#34;some-funny-code&#34;&gt;some funny code&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;记录有趣的代码&lt;/li&gt;
+&lt;li&gt;记录灵性的想法&lt;/li&gt;
+&lt;li&gt;记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
   </channel>

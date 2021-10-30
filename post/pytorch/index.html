@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Pytorch | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -53,7 +53,7 @@
 </section>
 
 <div class = 'post'>
-  <article class='post_content'><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 常用命令</span>
+  <article class='post_content'><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 常用命令</span>
 torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available()
 torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>current_device()
 torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>device_count()
@@ -64,18 +64,18 @@ python <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#39;im
 
 <span style="color:#75715e"># setting device on GPU if available, else CPU</span>
 device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#39;cuda&#39;</span> <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;cpu&#39;</span>)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Using device:&#39;</span>, device)
-<span style="color:#66d9ef">print</span>()
+print(<span style="color:#e6db74">&#39;Using device:&#39;</span>, device)
+print()
 
 <span style="color:#75715e">#Additional Info when using cuda</span>
 <span style="color:#66d9ef">if</span> device<span style="color:#f92672">.</span>type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;cuda&#39;</span>:
-    <span style="color:#66d9ef">print</span>(torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>get_device_name(<span style="color:#ae81ff">0</span>))
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Memory Usage:&#39;</span>)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Allocated:&#39;</span>, round(torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>memory_allocated(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">**</span><span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#39;GB&#39;</span>)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Cached:   &#39;</span>, round(torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>memory_reserved(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">**</span><span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#39;GB&#39;</span>)
+    print(torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>get_device_name(<span style="color:#ae81ff">0</span>))
+    print(<span style="color:#e6db74">&#39;Memory Usage:&#39;</span>)
+    print(<span style="color:#e6db74">&#39;Allocated:&#39;</span>, round(torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>memory_allocated(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">**</span><span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#39;GB&#39;</span>)
+    print(<span style="color:#e6db74">&#39;Cached:   &#39;</span>, round(torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>memory_reserved(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">**</span><span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#39;GB&#39;</span>)
 
 <span style="color:#f92672">import</span> torch
-<span style="color:#f92672">import</span> torch.nn <span style="color:#f92672">as</span> nn
+<span style="color:#f92672">import</span> torch.nn <span style="color:#66d9ef">as</span> nn
 dev <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>) <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cpu&#34;</span>)
 t2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>to(dev)
 
@@ -116,7 +116,7 @@ my_tensor<span style="color:#f92672">.</span>is_cuda
 </table>
 <h2 id="多gpu中进行训练">多GPU中进行训练</h2>
 <p>涉及的代码为torch.nn.DataParallel，而且官方推荐使用nn.DataParallel而不是使用multiprocessing。官方代码文档如下：nn.DataParallel   教程文档如下：tutorial</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>DataParallel(module, device_ids<span style="color:#f92672">=</span>None, output_device<span style="color:#f92672">=</span>None, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>DataParallel(module, device_ids<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, output_device<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </code></pre></div><p>该函数实现了在module级别上的数据并行使用，注意batch size要大于GPU的数量。</p>
 
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>

@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Mongo | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -78,7 +78,7 @@
 <p><a href="https://www.cnblogs.com/leskang/p/6000852.html">https://www.cnblogs.com/leskang/p/6000852.html</a></p>
 </blockquote>
 <h1 id="insert">INSERT</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection(<span style="color:#e6db74">&#39;inventory&#39;</span>)<span style="color:#f92672">.</span>insertMany([
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection(<span style="color:#e6db74">&#39;inventory&#39;</span>)<span style="color:#f92672">.</span>insertMany([
    <span style="color:#f92672">//</span> MongoDB adds the _id field <span style="color:#66d9ef">with</span> an ObjectId <span style="color:#66d9ef">if</span> _id <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> present
    { item: <span style="color:#e6db74">&#34;journal&#34;</span>, qty: <span style="color:#ae81ff">25</span>, status: <span style="color:#e6db74">&#34;A&#34;</span>,
        size: { h: <span style="color:#ae81ff">14</span>, w: <span style="color:#ae81ff">21</span>, uom: <span style="color:#e6db74">&#34;cm&#34;</span> }, tags: [ <span style="color:#e6db74">&#34;blank&#34;</span>, <span style="color:#e6db74">&#34;red&#34;</span> ] },
@@ -98,13 +98,13 @@
 db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>insertOne()
 db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>insert()
 </code></pre></div><h1 id="select">SELECT</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{}</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{}</span>);
 const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{</span> status: <span style="color:#e6db74">&#39;D&#39;</span> <span style="color:#960050;background-color:#1e0010">}</span>);
 const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{</span><span style="color:#e6db74">&#39;size.uom&#39;</span>: <span style="color:#e6db74">&#39;in&#39;</span><span style="color:#960050;background-color:#1e0010">}</span>);
 const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{</span>tags: [<span style="color:#e6db74">&#39;red&#39;</span>, <span style="color:#e6db74">&#39;blank&#39;</span>]<span style="color:#960050;background-color:#1e0010">}</span>);
 
 db.cappedCollection.find().sort( <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">natural</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#960050;background-color:#1e0010">}</span> )
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>find({ <span style="color:#e6db74">&#34;field&#34;</span> : { <span style="color:#960050;background-color:#1e0010">$</span>gt: value1, <span style="color:#960050;background-color:#1e0010">$</span>lt: value2 } } );
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>find({ <span style="color:#e6db74">&#34;field&#34;</span> : { <span style="color:#960050;background-color:#1e0010">$</span>gt: value1, <span style="color:#960050;background-color:#1e0010">$</span>lt: value2 } } );
 db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find( { x : { <span style="color:#960050;background-color:#1e0010">$</span>ne : <span style="color:#ae81ff">3</span> } } );
 db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find({j:{<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">in</span>: [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>]}});
 db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find({j:{<span style="color:#960050;background-color:#1e0010">$</span>nin: [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>]}});
@@ -114,13 +114,13 @@ db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>
 db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find( { a: { <span style="color:#960050;background-color:#1e0010">$</span>all: [ <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span> ] } } );
 
 <span style="color:#75715e"># 正则匹配</span>
-<span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">查询商品名称长度大于</span><span style="color:#ae81ff">25</span><span style="color:#960050;background-color:#1e0010">个字符的商品</span>
-db<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item_name&#34;</span>: {<span style="color:#e6db74">&#34;$exists&#34;</span>: true, <span style="color:#e6db74">&#34;$regex&#34;</span>: <span style="color:#f92672">/^.</span>{<span style="color:#ae81ff">25</span>,}<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">/</span>}})<span style="color:#f92672">.</span>limit(<span style="color:#ae81ff">5</span>)   <span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">长度大于</span><span style="color:#ae81ff">25</span>
+<span style="color:#f92672">//</span>查询商品名称长度大于25个字符的商品
+db<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item_name&#34;</span>: {<span style="color:#e6db74">&#34;$exists&#34;</span>: true, <span style="color:#e6db74">&#34;$regex&#34;</span>: <span style="color:#f92672">/^.</span>{<span style="color:#ae81ff">25</span>,}<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">/</span>}})<span style="color:#f92672">.</span>limit(<span style="color:#ae81ff">5</span>)   <span style="color:#f92672">//</span> 长度大于25
  
-<span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">查询商品名称长度小于</span><span style="color:#ae81ff">5</span><span style="color:#960050;background-color:#1e0010">个字符的商品</span>
+<span style="color:#f92672">//</span>查询商品名称长度小于5个字符的商品
 db<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item_name&#34;</span>: {<span style="color:#e6db74">&#34;$regex&#34;</span>: <span style="color:#f92672">/^.</span>{<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">5</span>}<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">/</span>}})<span style="color:#f92672">.</span>limit(<span style="color:#ae81ff">5</span>)
 
-db<span style="color:#f92672">.</span>customers<span style="color:#f92672">.</span>find( { name : <span style="color:#f92672">/</span>acme<span style="color:#f92672">.*</span>corp<span style="color:#f92672">/</span>i } ); <span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">后面的</span>i的意思是区分大小写
+db<span style="color:#f92672">.</span>customers<span style="color:#f92672">.</span>find( { name : <span style="color:#f92672">/</span>acme<span style="color:#f92672">.*</span>corp<span style="color:#f92672">/</span>i } ); <span style="color:#f92672">//</span> 后面的i的意思是区分大小写
 
 <span style="color:#75715e">#	与或查询</span>
 
@@ -146,14 +146,14 @@ cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</spa
     {<span style="color:#e6db74">&#34;instock&#34;</span>: SON([(<span style="color:#e6db74">&#34;qty&#34;</span>, <span style="color:#ae81ff">5</span>), (<span style="color:#e6db74">&#34;warehouse&#34;</span>, <span style="color:#e6db74">&#34;A&#34;</span>)])})
 
 <span style="color:#75715e"># null 查询</span>
-cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: None})
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#66d9ef">None</span>})
 <span style="color:#75715e"># 类型检测</span>
 cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: {<span style="color:#e6db74">&#34;$type&#34;</span>: <span style="color:#ae81ff">10</span>}})
-cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: None})
-cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: {<span style="color:#e6db74">&#34;$exists&#34;</span>: False}})
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#66d9ef">None</span>})
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: {<span style="color:#e6db74">&#34;$exists&#34;</span>: <span style="color:#66d9ef">False</span>}})
 
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Subdocument key order matters in a few of these examples so we have</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Subdocument key order matters in a few of these examples so we have</span>
 <span style="color:#75715e"># to use bson.son.SON instead of a Python dict.</span>
 
 <span style="color:#75715e"># pymongo</span>
@@ -191,16 +191,16 @@ cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</spa
 <li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.update_many"><code>pymongo.collection.Collection.update_many()</code></a></li>
 <li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.replace_one"><code>pymongo.collection.Collection.replace_one()</code></a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>update_one(
     {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;paper&#34;</span>},
     {<span style="color:#e6db74">&#34;$set&#34;</span>: {<span style="color:#e6db74">&#34;size.uom&#34;</span>: <span style="color:#e6db74">&#34;cm&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;P&#34;</span>},
-     <span style="color:#e6db74">&#34;$currentDate&#34;</span>: {<span style="color:#e6db74">&#34;lastModified&#34;</span>: True}})
+     <span style="color:#e6db74">&#34;$currentDate&#34;</span>: {<span style="color:#e6db74">&#34;lastModified&#34;</span>: <span style="color:#66d9ef">True</span>}})
 
 db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>update_many(
     {<span style="color:#e6db74">&#34;qty&#34;</span>: {<span style="color:#e6db74">&#34;$lt&#34;</span>: <span style="color:#ae81ff">50</span>}},
     {<span style="color:#e6db74">&#34;$set&#34;</span>: {<span style="color:#e6db74">&#34;size.uom&#34;</span>: <span style="color:#e6db74">&#34;in&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;P&#34;</span>},
-     <span style="color:#e6db74">&#34;$currentDate&#34;</span>: {<span style="color:#e6db74">&#34;lastModified&#34;</span>: True}})
+     <span style="color:#e6db74">&#34;$currentDate&#34;</span>: {<span style="color:#e6db74">&#34;lastModified&#34;</span>: <span style="color:#66d9ef">True</span>}})
 
 db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>replace_one(
     {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;paper&#34;</span>},
@@ -219,7 +219,7 @@ db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</sp
 <li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.delete_one"><code>pymongo.collection.Collection.delete_one()</code></a></li>
 </ul>
 <h1 id="database">database</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">use myDB
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">use myDB
 
 <span style="color:#75715e"># create</span>
 use myNewDB
@@ -251,7 +251,7 @@ db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db7
 </tbody>
 </table>
 <h1 id="data-type">data type</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">var mydoc <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">var mydoc <span style="color:#f92672">=</span> {
                _id: ObjectId(<span style="color:#e6db74">&#34;5099803df3f4948bd2f98391&#34;</span>),
                name: { first: <span style="color:#e6db74">&#34;Alan&#34;</span>, last: <span style="color:#e6db74">&#34;Turing&#34;</span> },
                birth: new Date(<span style="color:#e6db74">&#39;Jun 23, 1912&#39;</span>),
@@ -281,7 +281,7 @@ db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db7
 <li>The <code>_id</code> field may contain values of any <a href="https://docs.mongodb.com/v3.6/reference/bson-types/">BSON data type</a>, other than an array.</li>
 </ul>
 <h1 id="validation">validation</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db74">&#34;students&#34;</span>, {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db74">&#34;students&#34;</span>, {
    validator: {
       <span style="color:#960050;background-color:#1e0010">$</span>jsonSchema: {
          bsonType: <span style="color:#e6db74">&#34;object&#34;</span>,
@@ -327,7 +327,7 @@ db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db7
 <p><strong>Embedded and reference relationships</strong></p>
 <h1 id="index">INDEX</h1>
 <h2 id="create-an-index">Create an Index</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>create_index([(<span style="color:#f92672">&lt;</span>key <span style="color:#f92672">and</span> index type specification<span style="color:#f92672">&gt;</span>)], <span style="color:#f92672">&lt;</span>options<span style="color:#f92672">&gt;</span> )
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>create_index([(<span style="color:#f92672">&lt;</span>key <span style="color:#f92672">and</span> index type specification<span style="color:#f92672">&gt;</span>)], <span style="color:#f92672">&lt;</span>options<span style="color:#f92672">&gt;</span> )
 
 collection<span style="color:#f92672">.</span>create_index([(<span style="color:#e6db74">&#34;name&#34;</span>, pymongo<span style="color:#f92672">.</span>DESCENDING)])
 </code></pre></div><p>mongo索引: <a href="https://developer.aliyun.com/article/33726">https://developer.aliyun.com/article/33726</a></p>
@@ -383,6 +383,26 @@ collection<span style="color:#f92672">.</span>create_index([(<span style="color:
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -400,26 +420,6 @@ collection<span style="color:#f92672">.</span>create_index([(<span style="color:
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

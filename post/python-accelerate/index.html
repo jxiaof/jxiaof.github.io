@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Python accelerate | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -76,7 +76,7 @@
 <p>**总结：**Pypy是非常理想的Python解释器，最大的瑕疵就是对部分库的兼容问题。Cython是一种Python + C的便利性组合，转为C编译的扩展执行效率非常高，但使用相对麻烦，移植CPython项目代价较高。Numba更适合针对性优化，效率高，并且不会大幅度的改变普通的Python代码。所以三者实在没法说谁最优秀，只是在不同的方向针对性及适用性更高。</p>
 <h1 id="测试pypy">测试pypy</h1>
 <p>anaconda安装pypy</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda create -n &lt;newenviromnentname&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda create -n &lt;newenviromnentname&gt;
 conda activate &lt;newenviromnentname&gt;
 conda install -c conda-forge pypy3.6   <span style="color:#75715e"># 3.7.可以安装- 截止2021年3月2日</span>
 <span style="color:#75715e"># test</span>
@@ -84,32 +84,32 @@ pypy3 -c <span style="color:#e6db74">&#34;import sys; print(sys.version)&#34;</s
 
 pypy3 -m ensurepip
 pypy -m pip install 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
     <span style="color:#f92672">import</span> time
     t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
     <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100000000</span>):
         <span style="color:#66d9ef">continue</span>
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;共计花费时间为: &#34;</span>,time<span style="color:#f92672">.</span>time()<span style="color:#f92672">-</span>t1)
+    print(<span style="color:#e6db74">&#34;共计花费时间为: &#34;</span>,time<span style="color:#f92672">.</span>time()<span style="color:#f92672">-</span>t1)
 
 run()
 
 </code></pre></div><p><img src="https://gitee.com/felix_web/images/raw/master/uPic/image-20210302105058223.png" alt="image-20210302105058223"></p>
 <p>加入一点计算环节</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>():
     <span style="color:#f92672">import</span> time
     t1 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
     j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
     <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100000000</span>):
         j <span style="color:#f92672">+=</span> i
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;共计花费时间为: &#34;</span>,time<span style="color:#f92672">.</span>time()<span style="color:#f92672">-</span>t1)
+    print(<span style="color:#e6db74">&#34;共计花费时间为: &#34;</span>,time<span style="color:#f92672">.</span>time()<span style="color:#f92672">-</span>t1)
 
 run()
 </code></pre></div><p><img src="https://gitee.com/felix_web/images/raw/master/uPic/image-20210302105458134.png" alt="image-20210302105458134"></p>
 <h1 id="测试使用numba">测试使用numba</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numba <span style="color:#f92672">as</span> nb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numba <span style="color:#66d9ef">as</span> nb
 
 
-<span style="color:#a6e22e">@nb.jit</span>()
+<span style="color:#a6e22e">@nb</span><span style="color:#f92672">.</span>jit()
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nb_sum</span>(a):
     Sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
     <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
@@ -125,7 +125,7 @@ run()
 
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+    <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
     a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>) <span style="color:#75715e"># 创建一个长度为100的数组</span>
     <span style="color:#f92672">import</span> time
     t0 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
@@ -137,10 +137,10 @@ run()
     t3 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
     py_sum(a) <span style="color:#75715e"># 没加速的求和函数</span>
     t4 <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;numpy自带的求和函数: {t1 - t0}&#34;</span>)
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;python自带的求和函数: {t2 - t1}&#34;</span>)
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;numba加速的求和函数: {t3 - t2}&#34;</span>)
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;没加速的求和函数: {t4 - t3}&#34;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;numpy自带的求和函数: </span><span style="color:#e6db74">{</span>t1 <span style="color:#f92672">-</span> t0<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;python自带的求和函数: </span><span style="color:#e6db74">{</span>t2 <span style="color:#f92672">-</span> t1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;numba加速的求和函数: </span><span style="color:#e6db74">{</span>t3 <span style="color:#f92672">-</span> t2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;没加速的求和函数: </span><span style="color:#e6db74">{</span>t4 <span style="color:#f92672">-</span> t3<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
     
     <span style="color:#75715e"># -----------------</span>
     <span style="color:#e6db74">&#34;&#34;&#34;
@@ -152,19 +152,19 @@ run()
 
 </code></pre></div><h3 id="兼容常用的科学计算包可以创建ufunc">兼容常用的科学计算包，可以创建ufunc</h3>
 <p>ufunc (universal functions)，它可以让一个函数同时处理很多数据。比如要求一个数组每一个元素的三角函数</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e"># 创建一个长度为100万的数组</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e"># 创建一个长度为100万的数组</span>
 <span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> sin
-<span style="color:#a6e22e">@nb.vectorize</span>()
+<span style="color:#a6e22e">@nb</span><span style="color:#f92672">.</span>vectorize()
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nb_vec_sin</span>(a):
     <span style="color:#66d9ef">return</span> sin(a)
 </code></pre></div><h3 id="自动调整精度保证准确性">自动调整精度，保证准确性</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>)
 </code></pre></div><p>用nb.typeof()查看，你会发现numba给出的结果是int64，而其他三个都是int32。<strong>numba不仅快还在精度方面表现很好</strong>！</p>
 <h3 id="更多numba的加速选项">更多numba的加速选项</h3>
 <p>除了上面提到的jit和vectorize，其实numba还支持很多加速类型。常见的比如</p>
 <p>@nb.jit(nopython=True,fastmath=True) 牺牲一丢丢数学精度来提高速度</p>
 <p>@nb.jit(nopython=True,parallel=True) 自动进行并行计算</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># @jit
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># @jit
 # @jit(nopython=True)
 # @jit(nopython=True, parallel=True)
 # @jit(nopython=True, fastmath=True)
@@ -196,7 +196,7 @@ run()
 <p>运行<code>cythonize -i &lt;.pyx File&gt;</code>即可编译<code>.pyx</code>成二进制库，并保存在与<code>.pyx</code>文件相同的目录下。</p>
 <p><code>cythonize</code>命令有其他的参数，可以通过命令行查看。这个命令也可以通过<code>python -m Cython.Build.Cythonize -i &lt;.pyx File&gt;</code>来完成。</p>
 <p>不过推荐使用的是第一种方法，原理也就是通过指定<code>distutils</code>或者<code>setuptools</code>库中的<code>ext_modules</code>参数来编译Cython代码。以<a href="http://docs.cython.org/en/latest/src/quickstart/build.html#building-a-cython-module-using-distutils">官方示例</a>为例，它的<code>setup.py</code>文件如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
 <span style="color:#f92672">from</span> Cython.Build <span style="color:#f92672">import</span> cythonize
 
 setup(
@@ -204,8 +204,8 @@ setup(
   ext_modules <span style="color:#f92672">=</span> cythonize(<span style="color:#e6db74">&#34;hello.pyx&#34;</span>),
 )
 </code></pre></div><p>其中<code>hello.pyx</code>的代码为</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hello_to</span>(name):
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">!&#34;</span> <span style="color:#f92672">%</span> name)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hello_to</span>(name):
+    print(<span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">!&#34;</span> <span style="color:#f92672">%</span> name)
 </code></pre></div><p>编辑保存之后直接运行<code>python setup.py build_ext --inplace</code>即可进行编译。其中<code>--inplace</code>参数可以让对应的链接库生成在源代码所在的目录。</p>
 <p>编译中可能遇到的问题有</p>
 <ul>
@@ -214,7 +214,7 @@ setup(
 <p>编译之后直接通过<code>import hello</code>或<code>from hello import say_hello_to</code>即可调用这个编译好的库。</p>
 <h2 id="复杂cython工程的setuppyhttpxn--cythonsetup-ic6tw20cv24ah31c11lpy"><a href="http://xn--cythonsetup-ic6tw20cv24ah31c11l.py/">复杂Cython工程的setup.py</a></h2>
 <p>如果的Cython工程中有很多<code>.pyx</code>文件，甚至有很多<code>.cpp</code>文件需要编译，那么这时候最好使用<code>setup.py</code>进行编译，并使用<code>Cython.Build.cythonize</code>模块。具体编写方式如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
 <span style="color:#f92672">from</span> distutils.extension <span style="color:#f92672">import</span> Extension
 <span style="color:#f92672">from</span> Cython.Build <span style="color:#f92672">import</span> cythonize
 
@@ -230,7 +230,7 @@ setup(
     ext_modules <span style="color:#f92672">=</span> cythonize(extensions),
 )
 </code></pre></div><p>最后的<code>setup</code>部分还有另一种写法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">setup(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">setup(
     name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;XXX&#34;</span>,
     ext_modules <span style="color:#f92672">=</span> extensions,
     cmdclass<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;build_ext&#39;</span>: Cython<span style="color:#f92672">.</span>Build<span style="color:#f92672">.</span>build_ext}
@@ -247,14 +247,14 @@ setup(
 <p>​	https://zyxin.xyz/blog/2017-12/CythonIntro/#简单运行Cython代码</p>
 <p>​    <a href="https://moonlet.gitbooks.io/cython-document-zh_cn/content/ch1-basic_tutorial.html">https://moonlet.gitbooks.io/cython-document-zh_cn/content/ch1-basic_tutorial.html</a></p>
 <h3 id="pip源如下">pip源如下:</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">（1）阿里云 https://mirrors.aliyun.com/pypi/simple/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">（1）阿里云 https://mirrors.aliyun.com/pypi/simple/
 （2）豆瓣http://pypi.douban.com/simple/
 （3）清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
 （4）中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
 （5）华中科技大学http://pypi.hustunique.com/
 </code></pre></div><h3 id="conda全局配置源">conda全局配置源</h3>
 <p>中科大源</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
 conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
 conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
@@ -262,12 +262,12 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
 conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
 conda config --set show_channel_urls yes 
 </code></pre></div><p>清华源</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ 
 conda config --set show_channel_urls yes
 </code></pre></div><p>上海交通大学源</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/
 conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/
 conda config --set show_channel_urls yes
@@ -309,6 +309,26 @@ conda config --set show_channel_urls yes
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -326,26 +346,6 @@ conda config --set show_channel_urls yes
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

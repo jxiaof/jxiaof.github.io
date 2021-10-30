@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Python asyncio | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -60,24 +60,24 @@
 <p><strong>进程/线程：操作系统提供的一种并发处理任务的能力。</strong></p>
 <p><strong>协程：程序员通过高超的代码能力，在代码执行流程中人为的实现多任务并发，是单个线程内的任务调度技巧。</strong></p>
 <p><strong>网上的一个经典例子:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task1</span>():
-    <span style="color:#66d9ef">while</span> True:
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
         <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;&lt;甲&gt;也累了，让&lt;乙&gt;工作一会儿&#34;</span>
         time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;&lt;甲&gt;工作了一段时间.....&#34;</span>)
+        print(<span style="color:#e6db74">&#34;&lt;甲&gt;工作了一段时间.....&#34;</span>)
 
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task2</span>(t):
     next(t)
-    <span style="color:#66d9ef">while</span> True:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-----------------------------------&#34;</span>)
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;&lt;乙&gt;工作了一段时间.....&#34;</span>)
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+        print(<span style="color:#e6db74">&#34;-----------------------------------&#34;</span>)
+        print(<span style="color:#e6db74">&#34;&lt;乙&gt;工作了一段时间.....&#34;</span>)
         time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;&lt;乙&gt;累了，让&lt;甲&gt;工作一会儿....&#34;</span>)
-        ret <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span>send(None)
-        <span style="color:#66d9ef">print</span>(ret)
+        print(<span style="color:#e6db74">&#34;&lt;乙&gt;累了，让&lt;甲&gt;工作一会儿....&#34;</span>)
+        ret <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span>send(<span style="color:#66d9ef">None</span>)
+        print(ret)
     t<span style="color:#f92672">.</span>close()
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
@@ -85,18 +85,18 @@
     task2(t)
     
 </code></pre></div><p><strong>再理解第二个:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">consumer</span>(name):
 
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">准备开始消费...&#34;</span><span style="color:#f92672">%</span>name)
+    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">准备开始消费...&#34;</span><span style="color:#f92672">%</span>name)
 
-    <span style="color:#66d9ef">while</span> True:
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
         goods <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span>
         <span style="color:#66d9ef">if</span> goods <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;q&#34;</span>:
             <span style="color:#66d9ef">break</span>
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> 消费 </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(name, goods))
+            print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> 消费 </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(name, goods))
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">produce</span>(<span style="color:#f92672">*</span>consumers):
 
@@ -129,26 +129,26 @@ produce(c1, c2)
 <li>generator.close()</li>
 </ul>
 <p>使生成器在暂停的yield表达式处抛出<code>GeneratorExit</code>异常。如果生成器没有处理这个异常，或者抛出了<code>StopIteration</code>异常（通常是指运行到结尾），调用方不会报错。如果收到<code>GeneratorExit</code>异常，生成器一定不能产出值，否则解释器会抛出<code>RuntimeError</code>异常。生成器抛出的其他异常会向上冒泡，传给调用方。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> inspect
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> inspect
 
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">simple_coroutine</span>():
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;-&gt; 启动协程&#39;</span>)
-    <span style="color:#66d9ef">while</span> True:
+    print(<span style="color:#e6db74">&#39;-&gt; 启动协程&#39;</span>)
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
         y <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
         x <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span> y
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;-&gt; 协程接收到了x的值:&#39;</span>, x)
+        print(<span style="color:#e6db74">&#39;-&gt; 协程接收到了x的值:&#39;</span>, x)
 
 my_coro <span style="color:#f92672">=</span> simple_coroutine()
-<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+print(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
 ret <span style="color:#f92672">=</span> next(my_coro)
-<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
-<span style="color:#66d9ef">print</span>(ret)
+print(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+print(ret)
 my_coro<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">10</span>)
-<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+print(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
 <span style="color:#75715e"># my_coro.throw(ValueError(&#34;hello error !&#34;))  # ValueError: hello error !</span>
 my_coro<span style="color:#f92672">.</span>close()
-<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+print(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
 
 
 <span style="color:#e6db74">&#34;&#34;&#34;
@@ -164,20 +164,20 @@ my_coro<span style="color:#f92672">.</span>close()
 </code></pre></div><h2 id="yield-from">yield from</h2>
 <p><strong>yield from 其实就是等待另外一个协程的返回,也有人说这是一种另类的for循环</strong></p>
 <p>我写了一个这样的例子, 看看返回结果就理解了:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
     i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">while</span> True:
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
         <span style="color:#66d9ef">yield</span> i
         i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;world&#34;</span>)  
+        print(<span style="color:#e6db74">&#34;world&#34;</span>)  
         
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>():
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
-    <span style="color:#66d9ef">yield</span> <span style="color:#f92672">from</span> foo()
+    print(<span style="color:#e6db74">&#34;hello&#34;</span>)
+    <span style="color:#66d9ef">yield from</span> foo()
           
 b <span style="color:#f92672">=</span> bar()
 <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
-    <span style="color:#66d9ef">print</span>(next(b))
+    print(next(b))
     
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">hello
@@ -203,19 +203,19 @@ b <span style="color:#f92672">=</span> bar()
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </code></pre></div><hr>
 <h2 id="asyncio">asyncio</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> asyncio
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> asyncio
 
 
-async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(future):
-    await asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(future):
+    <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
     future<span style="color:#f92672">.</span>set_result(<span style="color:#e6db74">&#39;Future is done!&#39;</span>)
 
 loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
 future <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>Future()
 asyncio<span style="color:#f92672">.</span>ensure_future(func(future))
-<span style="color:#66d9ef">print</span>(loop<span style="color:#f92672">.</span>is_running())  <span style="color:#75715e"># 查看当前状态时循环是否已经启动</span>
+print(loop<span style="color:#f92672">.</span>is_running())  <span style="color:#75715e"># 查看当前状态时循环是否已经启动</span>
 loop<span style="color:#f92672">.</span>run_until_complete(future)
-<span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
+print(future<span style="color:#f92672">.</span>result())
 loop<span style="color:#f92672">.</span>close()
 </code></pre></div><blockquote>
 <p>Ipython 和 Jupiter nootbook. 出现异常: RuntimeError: This event loop is already running</p>
@@ -300,7 +300,7 @@ loop<span style="color:#f92672">.</span>close()
     <h3 class = 'post_link'>
       <a href='https://jxiaof.com/post/fastapi/'>FastAPI</a>
     </h3>
-    <p class = 'pale'>文章的部分内容被密码保护： --- DON'T MODIFY THIS LINE --- pass</p>
+    <p class = 'pale'>​ 我个人认为fastapi,是一个非常不错的web 框架,为python web开发带来了新的活力,全新的文档openAPI2.0 ,更出色的io</p>
   </div>
 </li>
 

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang='en'><head>
-  <title>江小凡的博客</title>
+  <title>Leetcode | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
-<meta property = 'og:title' content = '' />
+<meta property = 'og:title' content = 'Leetcode' />
 <meta name="description" content="中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …">
 <meta property = 'og:description' content = '中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/leetcode/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/programmer.png'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
-<meta name = 'twitter:title' content = '' />
+<meta name = 'twitter:title' content = 'Leetcode' />
 <meta property = 'twitter:description'  content = '中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/programmer.png' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
@@ -49,7 +49,7 @@
 
     <main>
 <section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/programmer.png);'>
-  <h1 class='post_title'></h1>
+  <h1 class='post_title'>Leetcode</h1>
 </section>
 
 <div class = 'post'>
@@ -61,7 +61,7 @@
 <p>由厚到薄</p>
 </blockquote>
 <p><strong>买卖股票简答:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maxProfit</span>(self, prices):
         <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">        :type prices: List[int]
@@ -73,7 +73,7 @@
             max_p <span style="color:#f92672">=</span> max(max_p, prices[i] <span style="color:#f92672">-</span> min_p)
         <span style="color:#66d9ef">return</span> max_p
 </code></pre></div><p><strong>lru:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># 使用有序字典(dict + 双向链表)</span>
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">给定一个有序字典,如果key存在,则删除key,然后更新 key: value, 如果size等于最大值,删除最后一组 key: value
@@ -97,7 +97,7 @@
 
         <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>size <span style="color:#f92672">==</span> len(self<span style="color:#f92672">.</span>linked_map):
 
-            self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>popitem(last<span style="color:#f92672">=</span>False)
+            self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>popitem(last<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
 
         self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>update({key: value})
 
@@ -112,7 +112,7 @@
         <span style="color:#66d9ef">return</span> value
 
 </code></pre></div><p><strong>二分法</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BinarySearch</span>(array: list, t: int) <span style="color:#f92672">-&gt;</span> int:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BinarySearch</span>(array: list, t: int) <span style="color:#f92672">-&gt;</span> int:
     <span style="color:#e6db74">&#39;&#39;&#39;
 </span><span style="color:#e6db74">    index a item in object array
 </span><span style="color:#e6db74">    :param array: [1, 2, 3, 34, 56, 57, 78, 90, 107]
@@ -129,34 +129,34 @@
             height <span style="color:#f92672">=</span> mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
         <span style="color:#66d9ef">else</span>:
             <span style="color:#66d9ef">return</span> mid
-    <span style="color:#66d9ef">return</span> height <span style="color:#66d9ef">if</span> array[low] <span style="color:#f92672">==</span> t <span style="color:#66d9ef">else</span> f<span style="color:#e6db74">&#34;Not exist in object array, this new value may be place in: {height} !&#34;</span>
+    <span style="color:#66d9ef">return</span> height <span style="color:#66d9ef">if</span> array[low] <span style="color:#f92672">==</span> t <span style="color:#66d9ef">else</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Not exist in object array, this new value may be place in: </span><span style="color:#e6db74">{</span>height<span style="color:#e6db74">}</span><span style="color:#e6db74"> !&#34;</span>
 
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    <span style="color:#66d9ef">print</span>(BinarySearch([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">56</span>, <span style="color:#ae81ff">57</span>, <span style="color:#ae81ff">78</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">107</span>], <span style="color:#ae81ff">4</span>))
+    print(BinarySearch([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">56</span>, <span style="color:#ae81ff">57</span>, <span style="color:#ae81ff">78</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">107</span>], <span style="color:#ae81ff">4</span>))
 </code></pre></div><p><strong>最长节点</strong></p>
 <p>给定一个二叉树，找出其最大深度。</p>
 <p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
 <p>说明: 叶子节点是指没有子节点的节点。</p>
 <p>示例：
 给定二叉树 [3,9,20,null,null,15,7]，</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#ae81ff">3</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#ae81ff">3</span>
    <span style="color:#f92672">/</span> \
   <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">20</span>
     <span style="color:#f92672">/</span>  \
    <span style="color:#ae81ff">15</span>   <span style="color:#ae81ff">7</span>
 </code></pre></div><p>返回它的最大深度 3 。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maxDepth</span>(self, root: TreeNode) <span style="color:#f92672">-&gt;</span> int:
-        <span style="color:#66d9ef">if</span> root <span style="color:#f92672">==</span> None:
+        <span style="color:#66d9ef">if</span> root <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span>:
             <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">elif</span> root<span style="color:#f92672">.</span>right <span style="color:#f92672">==</span> None <span style="color:#f92672">and</span> root<span style="color:#f92672">.</span>left <span style="color:#f92672">==</span> None :
+        <span style="color:#66d9ef">elif</span> root<span style="color:#f92672">.</span>right <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">and</span> root<span style="color:#f92672">.</span>left <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span> :
             <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
         <span style="color:#66d9ef">else</span>:
             <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> max(self<span style="color:#f92672">.</span>maxDepth(root<span style="color:#f92672">.</span>left) ,  self<span style="color:#f92672">.</span>maxDepth(root<span style="color:#f92672">.</span>right))
 </code></pre></div><p><strong>Employee 表</strong></p>
 <p>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">+----+-------+--------+-----------+</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">+----+-------+--------+-----------+</span>
 <span style="color:#f92672">|</span> Id <span style="color:#f92672">|</span> Name  <span style="color:#f92672">|</span> Salary <span style="color:#f92672">|</span> ManagerId <span style="color:#f92672">|</span>
 <span style="color:#f92672">+----+-------+--------+-----------+</span>
 <span style="color:#f92672">|</span> <span style="color:#ae81ff">1</span>  <span style="color:#f92672">|</span> Joe   <span style="color:#f92672">|</span> <span style="color:#ae81ff">70000</span>  <span style="color:#f92672">|</span> <span style="color:#ae81ff">3</span>         <span style="color:#f92672">|</span>
@@ -165,12 +165,12 @@
 <span style="color:#f92672">|</span> <span style="color:#ae81ff">4</span>  <span style="color:#f92672">|</span> Max   <span style="color:#f92672">|</span> <span style="color:#ae81ff">90000</span>  <span style="color:#f92672">|</span> NULL      <span style="color:#f92672">|</span>
 <span style="color:#f92672">+----+-------+--------+-----------+</span>
 </code></pre></div><p>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">+----------+</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">+----------+</span>
 <span style="color:#f92672">|</span> Employee <span style="color:#f92672">|</span>
 <span style="color:#f92672">+----------+</span>
 <span style="color:#f92672">|</span> Joe      <span style="color:#f92672">|</span>
 <span style="color:#f92672">+----------+</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span>
 	b.NAME <span style="color:#66d9ef">AS</span> Employee 
 <span style="color:#66d9ef">FROM</span>
 	Employee <span style="color:#66d9ef">AS</span> a
@@ -178,7 +178,7 @@
 <span style="color:#66d9ef">WHERE</span>
 	b.Salary <span style="color:#f92672">&gt;</span> a.Salary
 </code></pre></div><hr>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
 
 <span style="color:#75715e"># 给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。</span>
 <span style="color:#75715e">#</span>
@@ -214,29 +214,29 @@
 </span><span style="color:#e6db74">        :type nums: List[int]
 </span><span style="color:#e6db74">        :rtype: int
 </span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        max_num, flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, False
+        max_num, flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">False</span>
         <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(nums)):
             min_idx <span style="color:#f92672">=</span> i
             <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, len(nums)):
                 <span style="color:#66d9ef">if</span> nums[min_idx] <span style="color:#f92672">&gt;</span> nums[j]:
                     min_idx <span style="color:#f92672">=</span> j
             nums[i], nums[min_idx] <span style="color:#f92672">=</span> nums[min_idx], nums[i]
-            <span style="color:#66d9ef">if</span> flag <span style="color:#f92672">is</span> True:
+            <span style="color:#66d9ef">if</span> flag <span style="color:#f92672">is</span> <span style="color:#66d9ef">True</span>:
                 <span style="color:#66d9ef">if</span> max_num <span style="color:#f92672">&lt;</span> nums[i] <span style="color:#f92672">-</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
                     max_num <span style="color:#f92672">=</span> nums[i] <span style="color:#f92672">-</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
             <span style="color:#66d9ef">else</span>:
-                flag <span style="color:#f92672">=</span> True
+                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
         <span style="color:#66d9ef">return</span> nums, max_num
 
 
 
 
 a <span style="color:#f92672">=</span> Solution()
-<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>maximumGap([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">1</span>]))
+print(a<span style="color:#f92672">.</span>maximumGap([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">1</span>]))
 
 <span style="color:#75715e"># leetcode submit region end(Prohibit modification and deletion)</span>
 </code></pre></div><p>写一个线程安全的单例模式</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding:utf-8</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding:utf-8</span>
 <span style="color:#f92672">import</span> threading
   
 <span style="color:#75715e"># 第1⃣️个实例</span>
@@ -251,11 +251,11 @@ a <span style="color:#f92672">=</span> Solution()
    	<span style="color:#66d9ef">return</span> bar
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>(object):
-    _instance <span style="color:#f92672">=</span> None
+    _instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
     _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
     <span style="color:#66d9ef">def</span> __new__(cls):
         <span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_instance_lock:
-            <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> None:
+            <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
                 cls<span style="color:#f92672">.</span>_instace <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls)
         <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
     
@@ -305,18 +305,18 @@ a <span style="color:#f92672">=</span> Solution()
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">    单例模式
 </span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-    instance <span style="color:#f92672">=</span> None
+    instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
 
     <span style="color:#a6e22e">@synchronized</span>
     <span style="color:#66d9ef">def</span> __new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
-        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">is</span> None:
+        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
             cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
         <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>instance
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
 <span style="color:#f92672">import</span> sys 
 <span style="color:#75715e">#str = input()</span>
 <span style="color:#75715e">#print(str)</span>
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Hello,World!&#39;</span>)
+print(<span style="color:#e6db74">&#39;Hello,World!&#39;</span>)
 
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MinStack</span>:
@@ -327,13 +327,13 @@ a <span style="color:#f92672">=</span> Solution()
 </span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
         self<span style="color:#f92672">.</span>item <span style="color:#f92672">=</span> []
         self<span style="color:#f92672">.</span>item2 <span style="color:#f92672">=</span> []
-        self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> None
+        self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x: int) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
         <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(x, int):
             <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;need int object !&#34;</span>)
         self<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>append(x)
-        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">is</span> None:
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
             self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> x
        <span style="color:#66d9ef">else</span>:
            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">&gt;</span> x:
@@ -341,7 +341,7 @@ a <span style="color:#f92672">=</span> Solution()
         self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>append(self<span style="color:#f92672">.</span>min_val)
         <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
         <span style="color:#66d9ef">if</span> len(self<span style="color:#f92672">.</span>item2) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>:
             self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>append(min(self<span style="color:#f92672">.</span>item))
         <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>item[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>item2[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
@@ -355,19 +355,19 @@ a <span style="color:#f92672">=</span> Solution()
         <span style="color:#75715e">#if len(self.item2) &lt; 1:</span>
         <span style="color:#75715e">#    self.item2.append(min(self.item))</span>
         <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item2[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 布隆过滤 加入会有跟多效果</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 布隆过滤 加入会有跟多效果</span>
 
 <span style="color:#f92672">import</span> bitarray
 r <span style="color:#f92672">=</span> bitarray<span style="color:#f92672">.</span>bitarray(<span style="color:#ae81ff">5000000000</span>)
 
 <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> open(file1):
-    r[int(line)] <span style="color:#f92672">=</span> True
+    r[int(line)] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 
 <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> open(file2):
     <span style="color:#66d9ef">if</span> r[int(line)]:
-        <span style="color:#66d9ef">print</span>(line)
+        print(line)
 </code></pre></div><p>这是朋友给的一道题目: (第一遍做错了,后面调整了一下,才满足要求)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">obj <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">obj <span style="color:#f92672">=</span> {
         <span style="color:#e6db74">&#34;a&#34;</span>:{
             <span style="color:#e6db74">&#34;b&#34;</span>:{
                 <span style="color:#e6db74">&#34;c&#34;</span>:{
@@ -420,13 +420,13 @@ con <span style="color:#f92672">=</span> []
     <span style="color:#66d9ef">return</span> tmp
 
 </code></pre></div><h2 id="最大子序列和">最大子序列和</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">arr <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">arr <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(arr):
     <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, len(arr)):
         arr[i] <span style="color:#f92672">=</span> arr[i] <span style="color:#f92672">+</span> max(arr[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">0</span>)
     <span style="color:#66d9ef">return</span> max(arr)
 </code></pre></div><h2 id="限流函数">限流函数</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> time
 <span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> wraps
 <span style="color:#f92672">from</span> contextlib <span style="color:#f92672">import</span> contextmanager
@@ -446,7 +446,7 @@ con <span style="color:#f92672">=</span> []
         <span style="color:#66d9ef">yield</span>
     <span style="color:#66d9ef">finally</span>:
         end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
-        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;{msg} : {end - sta: .3f}s&#39;</span>)
+        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>msg<span style="color:#e6db74">}</span><span style="color:#e6db74"> : </span><span style="color:#e6db74">{</span>end <span style="color:#f92672">-</span> sta<span style="color:#e6db74">:</span><span style="color:#e6db74"> .3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">s&#39;</span>)
 
 
 
@@ -479,14 +479,14 @@ con <span style="color:#f92672">=</span> []
                     counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
                 <span style="color:#75715e"># 超过限制时间，函数被释放，重置相关变量</span>
                 <span style="color:#66d9ef">else</span>:
-                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;cache expired ! func:【 {key} 】can call !&#34;</span>)
-                    result <span style="color:#f92672">=</span> None
+                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;cache expired ! func:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】can call !&#34;</span>)
+                    result <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
                     counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
                     updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
             <span style="color:#66d9ef">else</span>:
                 <span style="color:#75715e"># 第一次调用函数，初始化相关变量</span>
-                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;no cache for func:【 {key} 】!&#34;</span>)
-                result <span style="color:#f92672">=</span> None
+                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;no cache for func:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】!&#34;</span>)
+                result <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
                 counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
                 updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
             <span style="color:#75715e"># 如果过期，或则没有缓存调用方法</span>
@@ -494,10 +494,10 @@ con <span style="color:#f92672">=</span> []
                 result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
                 <span style="color:#75715e"># with self.lock:</span>
                 self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> (counter, result, updateTime)
-                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;already called {counter} times !&#34;</span>)
+                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;already called </span><span style="color:#e6db74">{</span>counter<span style="color:#e6db74">}</span><span style="color:#e6db74"> times !&#34;</span>)
             <span style="color:#66d9ef">else</span>:
-                <span style="color:#66d9ef">print</span>(
-                    f<span style="color:#e6db74">&#34;func name:【 {key} 】 call deny ! limit {self.limit_time}s call {self.limit_times} times, already call denied {time_gap: .3f}s !&#34;</span>)
+                print(
+                    <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;func name:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】 call deny ! limit </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>limit_time<span style="color:#e6db74">}</span><span style="color:#e6db74">s call </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>limit_times<span style="color:#e6db74">}</span><span style="color:#e6db74"> times, already call denied </span><span style="color:#e6db74">{</span>time_gap<span style="color:#e6db74">:</span><span style="color:#e6db74"> .3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">s !&#34;</span>)
 
         <span style="color:#66d9ef">return</span> result
 
@@ -512,7 +512,7 @@ con <span style="color:#f92672">=</span> []
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decorator</span>(func):
         <span style="color:#e6db74">&#34;cache for function result, which is immutable with fixed arguments&#34;</span>
-        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;initial cache for {func.__name__}&#34;</span>)
+        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;initial cache for </span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
         cache <span style="color:#f92672">=</span> {}
 
         <span style="color:#a6e22e">@wraps</span>(func)
@@ -528,24 +528,24 @@ con <span style="color:#f92672">=</span> []
                     counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
                 <span style="color:#75715e"># 超过限制时间，函数被释放，重置相关变量</span>
                 <span style="color:#66d9ef">else</span>:
-                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;cache expired ! func:【 {key} 】can call !&#34;</span>)
-                    result <span style="color:#f92672">=</span> None
+                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;cache expired ! func:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】can call !&#34;</span>)
+                    result <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
                     counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
                     updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
             <span style="color:#66d9ef">else</span>:
                 <span style="color:#75715e"># 第一次调用函数，初始化相关变量</span>
-                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;no cache for func:【 {key} 】!&#34;</span>)
-                result <span style="color:#f92672">=</span> None
+                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;no cache for func:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】!&#34;</span>)
+                result <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
                 counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
                 updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
             <span style="color:#75715e"># 如果过期，或则没有缓存调用方法</span>
             <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">&lt;=</span> limit_times:
                 result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
                 cache[key] <span style="color:#f92672">=</span> (counter, result, updateTime)
-                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;already called {counter} times !&#34;</span>)
+                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;already called </span><span style="color:#e6db74">{</span>counter<span style="color:#e6db74">}</span><span style="color:#e6db74"> times !&#34;</span>)
             <span style="color:#66d9ef">else</span>:
-                <span style="color:#66d9ef">print</span>(
-                    f<span style="color:#e6db74">&#34;func name:【 {key} 】 call deny ! limit {limit_time}s call {limit_times} times, already call denied {time_gap: .3f}s !&#34;</span>)
+                print(
+                    <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;func name:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】 call deny ! limit </span><span style="color:#e6db74">{</span>limit_time<span style="color:#e6db74">}</span><span style="color:#e6db74">s call </span><span style="color:#e6db74">{</span>limit_times<span style="color:#e6db74">}</span><span style="color:#e6db74"> times, already call denied </span><span style="color:#e6db74">{</span>time_gap<span style="color:#e6db74">:</span><span style="color:#e6db74"> .3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">s !&#34;</span>)
 
             <span style="color:#66d9ef">return</span> result
 
@@ -563,7 +563,7 @@ con <span style="color:#f92672">=</span> []
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">outter</span>(func):
         <span style="color:#e6db74">&#34;cache for function result, which is immutable with fixed arguments&#34;</span>
-        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;initial cache for {func.__name__}&#34;</span>)
+        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;initial cache for </span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
         cache <span style="color:#f92672">=</span> {}
         lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
 
@@ -583,14 +583,14 @@ con <span style="color:#f92672">=</span> []
                         counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
                     <span style="color:#75715e"># 超过限制时间，函数被释放，重置相关变量</span>
                     <span style="color:#66d9ef">else</span>:
-                        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;cache expired ! func:【 {key} 】can call !&#34;</span>)
-                        result <span style="color:#f92672">=</span> None
+                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;cache expired ! func:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】can call !&#34;</span>)
+                        result <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
                         counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
                         updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
                 <span style="color:#66d9ef">else</span>:
                     <span style="color:#75715e"># 第一次调用函数，初始化相关变量</span>
-                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;no cache for func:【 {key} 】!&#34;</span>)
-                    result <span style="color:#f92672">=</span> None
+                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;no cache for func:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】!&#34;</span>)
+                    result <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
                     counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
                     updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
                 <span style="color:#75715e"># 如果过期，或则没有缓存调用方法</span>
@@ -598,10 +598,10 @@ con <span style="color:#f92672">=</span> []
                     result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
                     <span style="color:#75715e"># with lock:</span>
                     cache[key] <span style="color:#f92672">=</span> (counter, result, updateTime)
-                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;already called {counter} times !&#34;</span>)
+                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;already called </span><span style="color:#e6db74">{</span>counter<span style="color:#e6db74">}</span><span style="color:#e6db74"> times !&#34;</span>)
                 <span style="color:#66d9ef">else</span>:
-                    <span style="color:#66d9ef">print</span>(
-                        f<span style="color:#e6db74">&#34;func name:【 {key} 】 call deny ! limit {limit_time}s call {limit_times} times, already call denied {time_gap: .3f}s !&#34;</span>)
+                    print(
+                        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;func name:【 </span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> 】 call deny ! limit </span><span style="color:#e6db74">{</span>limit_time<span style="color:#e6db74">}</span><span style="color:#e6db74">s call </span><span style="color:#e6db74">{</span>limit_times<span style="color:#e6db74">}</span><span style="color:#e6db74"> times, already call denied </span><span style="color:#e6db74">{</span>time_gap<span style="color:#e6db74">:</span><span style="color:#e6db74"> .3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">s !&#34;</span>)
 
                 <span style="color:#66d9ef">return</span> result
 
@@ -611,15 +611,15 @@ con <span style="color:#f92672">=</span> []
 
 <span style="color:#a6e22e">@call_limiter</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>():
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;hello world !&#39;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;hello world !&#39;</span>)
 
 
 <span style="color:#a6e22e">@call_limiter_lock</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logic</span>():
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;hello world !&#39;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;hello world !&#39;</span>)
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;hello world !&#34;</span>)
+    print(<span style="color:#e6db74">&#34;hello world !&#34;</span>)
 
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
@@ -674,6 +674,26 @@ con <span style="color:#f92672">=</span> []
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -691,26 +711,6 @@ con <span style="color:#f92672">=</span> []
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

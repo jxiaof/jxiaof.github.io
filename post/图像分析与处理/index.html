@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>图像分析与处理 | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
@@ -83,18 +83,18 @@
 <h2 id="使用-image-类">使用 Image 类</h2>
 <p>PIL最重要的类是 <a href="python/../reference/Image.html#PIL.Image.Image"><code>Image</code></a> class, 你可以通过多种方法创建这个类的实例；你可以从文件加载图像，或者处理其他图像, 或者从 scratch 创建。</p>
 <p>要从文件加载图像，使用 <a href="python/../reference/Image.html#PIL.Image.open"><code>open()</code></a> 函数， 在 <a href="python/../reference/Image.html#module-PIL.Image"><code>Image</code></a> 模块:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
 <span style="color:#f92672">&gt;&gt;&gt;</span> im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>)
   
 </code></pre></div><p>加载成功将返回一个 <a href="python/../reference/Image.html#PIL.Image.Image"><code>Image</code></a> 对象。 你现在可以使用示例属性检查文件内容:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">print</span>(im<span style="color:#f92672">.</span>format, im<span style="color:#f92672">.</span>size, im<span style="color:#f92672">.</span>mode)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<span style="color:#f92672">&gt;&gt;&gt;</span> print(im<span style="color:#f92672">.</span>format, im<span style="color:#f92672">.</span>size, im<span style="color:#f92672">.</span>mode)
   PPM (<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">512</span>) RGB
   
 </code></pre></div><p><code>format</code> 这个属性标识了图像来源。如果图像不是从文件读取它的值就是None。size属性是一个二元tuple，包含width和height（宽度和高度，单位都是px）。 <code>mode</code> 属性定义了图像bands的数量和名称，以及像素类型和深度。常见的modes 有 “L” (luminance) 表示灰度图像, “RGB” 表示真彩色图像, and “CMYK” 表示出版图像。</p>
 <p>如果文件打开错误，返回 <code>IOError</code> 错误。</p>
 <p>只要你有了 <a href="python/../reference/Image.html#PIL.Image.Image"><code>Image</code></a> 类的实例，你就可以通过类的方法处理图像。比如，下列方法可以显示图像:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> im<span style="color:#f92672">.</span>show()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> im<span style="color:#f92672">.</span>show()
   
 </code></pre></div><p>注解</p>
 <p>标准的 <a href="python/../reference/Image.html#PIL.Image.Image.show"><code>show()</code></a> 效率并不高，它需要保存图像到临时文件然后通过 <strong>xv</strong> 显示图像。你需要先安装 <strong>xv</strong> ，显示图像有助于调试和测试。</p>
@@ -103,7 +103,7 @@
 <p>PIL 模块支持大量图片格式。使用在 <a href="python/../reference/Image.html#module-PIL.Image"><code>Image</code></a> 模块的 <a href="python/../reference/Image.html#PIL.Image.open"><code>open()</code></a> 函数从磁盘读取文件。你不需要知道文件格式就能打开它，这个库能够根据文件内容自动确定文件格式。</p>
 <p>要保存文件，使用 <a href="python/../reference/Image.html#PIL.Image.Image"><code>Image</code></a> 类的 <a href="python/../reference/Image.html#PIL.Image.Image.save"><code>save()</code></a> 方法。保存文件的时候文件名变得重要了。除非你指定格式，否则这个库将会以文件名的扩展名作为格式保存。</p>
 <h3 id="转换文件格式到jpeg">转换文件格式到JPEG</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
 <span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> sys
 <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
 
@@ -114,11 +114,11 @@
     <span style="color:#66d9ef">try</span>:
       Image<span style="color:#f92672">.</span>open(infile)<span style="color:#f92672">.</span>save(outfile)
       <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">IOError</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;cannot convert&#34;</span>, infile)
+        print(<span style="color:#e6db74">&#34;cannot convert&#34;</span>, infile)
   
 </code></pre></div><p><a href="python/../reference/Image.html#PIL.Image.Image.save"><code>save()</code></a> 方法的第二个参数可以指定文件格式，如果你使用非标准的扩展名你必须这样做：</p>
 <h3 id="创建-jpeg-缩略图">创建 JPEG 缩略图</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
 <span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> sys
 <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
 
@@ -132,35 +132,35 @@ size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">128</span
       im<span style="color:#f92672">.</span>thumbnail(size)
       im<span style="color:#f92672">.</span>save(outfile, <span style="color:#e6db74">&#34;JPEG&#34;</span>)
       <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">IOError</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;cannot create thumbnail for&#34;</span>, infile)
+        print(<span style="color:#e6db74">&#34;cannot create thumbnail for&#34;</span>, infile)
   
 </code></pre></div><p>很重要的一点是这个库不会直接解码或者加载图像栅格数据。当你打开一个文件，只会读取文件头信息用来确定格式，颜色模式，大小等等，文件的剩余部分不会主动处理。这意味着打开一个图像文件的操作十分快速，跟图片大小和压缩方式无关。下面是一个简单的脚本用来快速验证大量图片。</p>
 <h3 id="验证图像文件">验证图像文件</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
 <span style="color:#f92672">import</span> sys
 <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
 
 <span style="color:#66d9ef">for</span> infile <span style="color:#f92672">in</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>:]:
   <span style="color:#66d9ef">try</span>:
     <span style="color:#66d9ef">with</span> Image<span style="color:#f92672">.</span>open(infile) <span style="color:#66d9ef">as</span> im:
-      <span style="color:#66d9ef">print</span>(infile, im<span style="color:#f92672">.</span>format, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">x</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> im<span style="color:#f92672">.</span>size, im<span style="color:#f92672">.</span>mode)
+      print(infile, im<span style="color:#f92672">.</span>format, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">x</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> im<span style="color:#f92672">.</span>size, im<span style="color:#f92672">.</span>mode)
       <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">IOError</span>:
         <span style="color:#66d9ef">pass</span>
   
 </code></pre></div><h2 id="剪切粘贴合并图像">剪切，粘贴，合并图像</h2>
 <p><a href="python/../reference/Image.html#PIL.Image.Image"><code>Image</code></a> 类包含的方法允许你操作图像部分选区。使用:py:meth:~PIL.Image.Image.crop 方法获取图像的一个子矩形选区。</p>
 <h3 id="从图像中复制出一个矩形选区">从图像中复制出一个矩形选区</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">box <span style="color:#f92672">=</span> (<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">400</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">box <span style="color:#f92672">=</span> (<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">400</span>)
 region <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>crop(box)
   
 </code></pre></div><p>矩形选区有一个4元元组定义，分别表示左、上、右、下的坐标。这个库以左上角为坐标原点，单位是px，所以上诉代码复制了一个 300x300 pixels 的矩形选区。这个选区现在可以被处理并且粘贴到原图。</p>
 <h3 id="处理复制的矩形选区并粘贴到原图">处理复制的矩形选区并粘贴到原图</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">region <span style="color:#f92672">=</span> region<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_180)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">region <span style="color:#f92672">=</span> region<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_180)
 im<span style="color:#f92672">.</span>paste(region, box)
   
 </code></pre></div><p>当你粘贴矩形选区的时候必须保证尺寸一致。此外，矩形选区不能在图像外。然而你不必保证矩形选区和原图的颜色模式一致，因为矩形选区会被自动转换颜色（参看下面的 <a href="#color-transforms"><em>颜色变换</em></a> 部分），下面是一个例子：</p>
 <h3 id="rolling-an-image">Rolling an image</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">roll</span>(image, delta):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">roll</span>(image, delta):
       <span style="color:#e6db74">&#34;Roll an image sideways&#34;</span>
   
       xsize, ysize <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>size
@@ -178,19 +178,19 @@ im<span style="color:#f92672">.</span>paste(region, box)
 </code></pre></div><p>For more advanced tricks, the paste method can also take a transparency mask as an optional argument. In this mask, the value 255 indicates that the pasted image is opaque in that position (that is, the pasted image should be used as is). The value 0 means that the pasted image is completely transparent. Values in-between indicate different levels of transparency.</p>
 <p>The Python Imaging Library also allows you to work with the individual bands of an multi-band image, such as an RGB image. The split method creates a set of new images, each containing one band from the original multi-band image. The merge function takes a mode and a tuple of images, and combines them into a new image. The following sample swaps the three bands of an RGB image:</p>
 <h3 id="分离和合并颜色通道">分离和合并颜色通道</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">r, g, b <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>split()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">r, g, b <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>split()
 im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>merge(<span style="color:#e6db74">&#34;RGB&#34;</span>, (b, g, r))
   
 </code></pre></div><p>Note that for a single-band image, <a href="python/../reference/Image.html#PIL.Image.Image.split"><code>split()</code></a> returns the image itself. To work with individual color bands, you may want to convert the image to “RGB” first.</p>
 <h2 id="几何变换">几何变换</h2>
 <p>The <a href="python/../reference/Image.html#PIL.Image.Image"><code>PIL.Image.Image</code></a> class contains methods to <a href="python/../reference/Image.html#PIL.Image.Image.resize"><code>resize()</code></a> and <a href="python/../reference/Image.html#PIL.Image.Image.rotate"><code>rotate()</code></a> an image. The former takes a tuple giving the new size, the latter the angle in degrees counter-clockwise.</p>
 <h3 id="简单的几何变换">简单的几何变换</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>resize((<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>))
   out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>rotate(<span style="color:#ae81ff">45</span>) <span style="color:#75715e"># degrees counter-clockwise</span>
   
 </code></pre></div><p>To rotate the image in 90 degree steps, you can either use the <a href="python/../reference/Image.html#PIL.Image.Image.rotate"><code>rotate()</code></a> method or the <a href="python/../reference/Image.html#PIL.Image.Image.transpose"><code>transpose()</code></a> method. The latter can also be used to flip an image around its horizontal or vertical axis.</p>
 <h3 id="旋转图像">旋转图像</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_LEFT_RIGHT)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_LEFT_RIGHT)
   out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>FLIP_TOP_BOTTOM)
   out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_90)
   out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>transpose(Image<span style="color:#f92672">.</span>ROTATE_180)
@@ -201,7 +201,7 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
 <h2 id="颜色变换">颜色变换</h2>
 <p>The Python Imaging Library allows you to convert images between different pixel representations using the <a href="python/../reference/Image.html#PIL.Image.Image.convert"><code>convert()</code></a> method.</p>
 <h3 id="颜色模式转换">颜色模式转换</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>)<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#34;L&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>)<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#34;L&#34;</span>)
   
 </code></pre></div><p>The library supports transformations between each supported mode and the “L” and “RGB” modes. To convert between other modes, you may have to use an intermediate image (typically an “RGB” image).</p>
 <h2 id="颜色增强">颜色增强</h2>
@@ -209,18 +209,18 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
 <h3 id="过滤器">过滤器</h3>
 <p>The <a href="python/../reference/ImageFilter.html#module-PIL.ImageFilter"><code>ImageFilter</code></a> module contains a number of pre-defined enhancement filters that can be used with the <a href="python/../reference/Image.html#PIL.Image.Image.filter"><code>filter()</code></a> method.</p>
 <h4 id="应用过滤器">应用过滤器</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> ImageFilter
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> ImageFilter
   out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>filter(ImageFilter<span style="color:#f92672">.</span>DETAIL)
   
 </code></pre></div><h3 id="点操作">点操作</h3>
 <p>The <a href="python/../reference/Image.html#PIL.Image.Image.point"><code>point()</code></a> method can be used to translate the pixel values of an image (e.g. image contrast manipulation). In most cases, a function object expecting one argument can be passed to the this method. Each pixel is processed according to that function:</p>
 <h4 id="应用点操作">应用点操作</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># multiply each pixel by 1.2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># multiply each pixel by 1.2</span>
   out <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>point(<span style="color:#66d9ef">lambda</span> i: i <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.2</span>)
   
 </code></pre></div><p>Using the above technique, you can quickly apply any simple expression to an image. You can also combine the <a href="python/../reference/Image.html#PIL.Image.Image.point"><code>point()</code></a> and <a href="python/../reference/Image.html#PIL.Image.Image.paste"><code>paste()</code></a> methods to selectively modify an image:</p>
 <h4 id="处理个别bands">处理个别bands</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># split the image into individual bands</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># split the image into individual bands</span>
   source <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>split()
   
   R, G, B <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>
@@ -232,20 +232,20 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
   out <span style="color:#f92672">=</span> source[G]<span style="color:#f92672">.</span>point(<span style="color:#66d9ef">lambda</span> i: i <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.7</span>)
   
   <span style="color:#75715e"># paste the processed band back, but only where red was &lt; 100</span>
-  source[G]<span style="color:#f92672">.</span>paste(out, None, mask)
+  source[G]<span style="color:#f92672">.</span>paste(out, <span style="color:#66d9ef">None</span>, mask)
   
   <span style="color:#75715e"># build a new multiband image</span>
   im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>merge(im<span style="color:#f92672">.</span>mode, source)
   
 </code></pre></div><p>Note the syntax used to create the mask:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">imout <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>point(<span style="color:#66d9ef">lambda</span> i: expression <span style="color:#f92672">and</span> <span style="color:#ae81ff">255</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">imout <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>point(<span style="color:#66d9ef">lambda</span> i: expression <span style="color:#f92672">and</span> <span style="color:#ae81ff">255</span>)
   
 </code></pre></div><p>Python only evaluates the portion of a logical expression as is necessary to determine the outcome, and returns the last value examined as the result of the expression. So if the expression above is false (0), Python does not look at the second operand, and thus returns 0. Otherwise, it returns 255.</p>
 <h3 id="增强">增强</h3>
 <p>For more advanced image enhancement, you can use the classes in the <a href="python/../reference/ImageEnhance.html#module-PIL.ImageEnhance"><code>ImageEnhance</code></a> module. Once created from an image, an enhancement object can be used to quickly try out different settings.</p>
 <p>You can adjust contrast, brightness, color balance and sharpness in this way.</p>
 <h4 id="增强图形">增强图形</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> ImageEnhance
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> ImageEnhance
   
   enh <span style="color:#f92672">=</span> ImageEnhance<span style="color:#f92672">.</span>Contrast(im)
   enh<span style="color:#f92672">.</span>enhance(<span style="color:#ae81ff">1.3</span>)<span style="color:#f92672">.</span>show(<span style="color:#e6db74">&#34;30% more contrast&#34;</span>)
@@ -254,7 +254,7 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
 <p>The Python Imaging Library contains some basic support for image sequences (also called animation formats). Supported sequence formats include FLI/FLC, GIF, and a few experimental formats. TIFF files can also contain more than one frame.</p>
 <p>When you open a sequence file, PIL automatically loads the first frame in the sequence. You can use the seek and tell methods to move between different frames:</p>
 <h3 id="读取序列">读取序列</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
   
   im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;animation.gif&#34;</span>)
   im<span style="color:#f92672">.</span>seek(<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># skip to the second frame</span>
@@ -270,7 +270,7 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
 <p>Note that most drivers in the current version of the library only allow you to seek to the next frame (as in the above example). To rewind the file, you may have to reopen it.</p>
 <p>The following iterator class lets you to use the for-statement to loop over the sequence:</p>
 <h3 id="序列迭代-class">序列迭代 class</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">class ImageSequence:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">class ImageSequence:
       def __init__(self, im):
           self.im = im
       def __getitem__(self, ix):
@@ -286,7 +286,7 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
 </code></pre></div><h2 id="postscript-打印">Postscript 打印</h2>
 <p>The Python Imaging Library includes functions to print images, text and graphics on Postscript printers. Here’s a simple example:</p>
 <h3 id="drawing-postscript">Drawing Postscript</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
   <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> PSDraw
   
   im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>)
@@ -309,22 +309,22 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
   
 </code></pre></div><h2 id="更多关于读取图像">更多关于读取图像</h2>
 <p>As described earlier, the <a href="python/../reference/Image.html#PIL.Image.open"><code>open()</code></a> function of the <a href="python/../reference/Image.html#module-PIL.Image"><code>Image</code></a> module is used to open an image file. In most cases, you simply pass it the filename as an argument:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>)
   
 </code></pre></div><p>If everything goes well, the result is an <a href="python/../reference/Image.html#PIL.Image.Image"><code>PIL.Image.Image</code></a> object. Otherwise, an <code>IOError</code> exception is raised.</p>
 <p>You can use a file-like object instead of the filename. The object must implement <a href="http://docs.python.org/2/library/stdtypes.html#file.read"><code>read()</code></a>, <a href="http://docs.python.org/2/library/stdtypes.html#file.seek"><code>seek()</code></a> and <a href="http://docs.python.org/2/library/stdtypes.html#file.tell"><code>tell()</code></a> methods, and be opened in binary mode.</p>
 <h3 id="从文件读取">从文件读取</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fp <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fp <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;lena.ppm&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>)
 im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(fp)
   
 </code></pre></div><p>To read an image from string data, use the <a href="http://docs.python.org/2/library/stringio.html#StringIO.StringIO"><code>StringIO</code></a> class:</p>
 <h3 id="从-string-读取">从 string 读取</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> StringIO
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> StringIO
 im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(StringIO<span style="color:#f92672">.</span>StringIO(buffer))
   
 </code></pre></div><p>Note that the library rewinds the file (using <code>seek(0)</code>) before reading the image header. In addition, seek will also be used when the image data is read (by the load method). If the image file is embedded in a larger file, such as a tar file, you can use the <a href="python/../PIL.html#module-PIL.ContainerIO"><code>ContainerIO</code></a> or <a href="python/../PIL.html#module-PIL.TarIO"><code>TarIO</code></a> modules to access it.</p>
 <h3 id="从压缩包读取">从压缩包读取</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> TarIO
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> TarIO
 
 fp <span style="color:#f92672">=</span> TarIO<span style="color:#f92672">.</span>TarIO(<span style="color:#e6db74">&#34;Imaging.tar&#34;</span>, <span style="color:#e6db74">&#34;Imaging/test/lena.ppm&#34;</span>)
 im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(fp)
@@ -333,15 +333,15 @@ im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span
 <p>Some decoders allow you to manipulate the image while reading it from a file. This can often be used to speed up decoding when creating thumbnails (when speed is usually more important than quality) and printing to a monochrome laser printer (when only a greyscale version of the image is needed).</p>
 <p>The <a href="python/../reference/Image.html#PIL.Image.Image.draft"><code>draft()</code></a> method manipulates an opened but not yet loaded image so it as closely as possible matches the given mode and size. This is done by reconfiguring the image decoder.</p>
 <h3 id="reading-in-draft-mode">Reading in draft mode</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
 im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(file)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;original =&#34;</span>, im<span style="color:#f92672">.</span>mode, im<span style="color:#f92672">.</span>size)
+print(<span style="color:#e6db74">&#34;original =&#34;</span>, im<span style="color:#f92672">.</span>mode, im<span style="color:#f92672">.</span>size)
 
 im<span style="color:#f92672">.</span>draft(<span style="color:#e6db74">&#34;L&#34;</span>, (<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>))
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;draft =&#34;</span>, im<span style="color:#f92672">.</span>mode, im<span style="color:#f92672">.</span>size)
+print(<span style="color:#e6db74">&#34;draft =&#34;</span>, im<span style="color:#f92672">.</span>mode, im<span style="color:#f92672">.</span>size)
   
 </code></pre></div><p>This prints something like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">original <span style="color:#f92672">=</span> RGB (<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">512</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">original <span style="color:#f92672">=</span> RGB (<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">512</span>)
 draft <span style="color:#f92672">=</span> L (<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>)
   
 </code></pre></div><p>Note that the resulting image may not exactly match the requested mode and size. To make sure that the image is not larger than the given size, use the thumbnail method instead.</p>
@@ -383,6 +383,26 @@ draft <span style="color:#f92672">=</span> L (<span style="color:#ae81ff">128</s
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -400,26 +420,6 @@ draft <span style="color:#f92672">=</span> L (<span style="color:#ae81ff">128</s
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

@@ -2,52 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</loc>
-    <lastmod>2020-09-10T14:57:37+08:00</lastmod>
-  </url><url>
     <loc>https://jxiaof.com/post/python-asyncio/</loc>
     <lastmod>2021-05-31T17:48:25+08:00</lastmod>
   </url><url>
-    <loc>https://jxiaof.com/post/pytorch2onnx2tensorrt/</loc>
-    <lastmod>2021-05-18T10:49:05+08:00</lastmod>
+    <loc>https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2020-09-10T14:57:37+08:00</lastmod>
   </url><url>
-    <loc>https://jxiaof.com/post/redis/</loc>
-    <lastmod>2020-10-14T11:11:39+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/post/flask01/</loc>
-    <lastmod>2020-09-21T23:05:02+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/post/mysql-session/</loc>
-    <lastmod>2021-04-25T09:57:36+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/post/mysql-index/</loc>
-    <lastmod>2021-04-25T09:48:44+08:00</lastmod>
+    <loc>https://jxiaof.com/post/argo/</loc>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/categories/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/post/k8s/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/k8s/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/series/k8s/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/post/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/series/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-06-23T16:12:09+08:00</lastmod>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/</loc>
+    <lastmod>2021-10-11T16:41:45+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/series/tools/</loc>
+    <lastmod>2021-09-27T14:18:05+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/tags/vscode/</loc>
+    <lastmod>2021-09-27T14:18:05+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/post/vscode/</loc>
+    <lastmod>2021-09-27T14:18:05+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/post/nvidia/</loc>
+    <lastmod>2021-09-08T16:33:16+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/post/fastapi/</loc>
+    <lastmod>2021-09-05T10:05:04+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/tags/fastapi/</loc>
+    <lastmod>2021-09-05T10:05:04+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/tags/python/</loc>
+    <lastmod>2021-09-05T10:05:04+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/series/python/</loc>
+    <lastmod>2021-09-05T10:05:04+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/post/k8s/</loc>
     <lastmod>2021-06-23T16:12:09+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/ai/</loc>
@@ -62,11 +74,8 @@
     <loc>https://jxiaof.com/tags/asyncio/</loc>
     <lastmod>2021-05-31T17:48:25+08:00</lastmod>
   </url><url>
-    <loc>https://jxiaof.com/tags/python/</loc>
-    <lastmod>2021-05-31T17:48:25+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/series/python/</loc>
-    <lastmod>2021-05-31T17:48:25+08:00</lastmod>
+    <loc>https://jxiaof.com/post/pytorch2onnx2tensorrt/</loc>
+    <lastmod>2021-05-18T10:49:05+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/video/</loc>
     <lastmod>2021-05-16T22:38:27+08:00</lastmod>
@@ -86,17 +95,17 @@
     <loc>https://jxiaof.com/series/mysql/</loc>
     <lastmod>2021-04-25T09:57:36+08:00</lastmod>
   </url><url>
+    <loc>https://jxiaof.com/post/mysql-session/</loc>
+    <lastmod>2021-04-25T09:57:36+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/post/mysql-index/</loc>
+    <lastmod>2021-04-25T09:48:44+08:00</lastmod>
+  </url><url>
     <loc>https://jxiaof.com/series/mysql-index/</loc>
     <lastmod>2021-04-25T09:48:44+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/post/tfserving/</loc>
     <lastmod>2021-03-08T12:02:47+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/post/fastapi/</loc>
-    <lastmod>2021-03-05T10:05:04+08:00</lastmod>
-  </url><url>
-    <loc>https://jxiaof.com/tags/fastapi/</loc>
-    <lastmod>2021-03-05T10:05:04+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/accelerate/</loc>
     <lastmod>2021-03-02T09:40:43+08:00</lastmod>
@@ -215,6 +224,9 @@
     <loc>https://jxiaof.com/tags/redis/</loc>
     <lastmod>2020-10-14T11:11:39+08:00</lastmod>
   </url><url>
+    <loc>https://jxiaof.com/post/redis/</loc>
+    <lastmod>2020-10-14T11:11:39+08:00</lastmod>
+  </url><url>
     <loc>https://jxiaof.com/series/%E5%A4%9A%E4%BB%BB%E5%8A%A1/</loc>
     <lastmod>2020-10-09T15:55:40+08:00</lastmod>
   </url><url>
@@ -225,6 +237,9 @@
     <lastmod>2020-10-09T15:55:40+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/flask/</loc>
+    <lastmod>2020-09-21T23:05:02+08:00</lastmod>
+  </url><url>
+    <loc>https://jxiaof.com/post/flask01/</loc>
     <lastmod>2020-09-21T23:05:02+08:00</lastmod>
   </url><url>
     <loc>https://jxiaof.com/tags/functools/</loc>

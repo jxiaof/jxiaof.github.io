@@ -2,41 +2,23 @@
 <html lang='en'><head>
   <title>Devops数据平台设计 | 江小凡的博客</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.88.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
 <meta property = 'og:title' content = 'devops数据平台设计' />
-<meta name="description" content="[toc]
-数据平台开发初衷
-
-快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).
-快捷查看公司资源分布图.
-快捷分析资源流式计算.
-目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.
-">
-<meta property = 'og:description' content = '[toc]
-数据平台开发初衷
-
-快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).
-快捷查看公司资源分布图.
-快捷分析资源流式计算.
-目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.
-'>
+<meta name="description" content="数据平台开发初衷
+数据平台就是对于数据的处理和应用">
+<meta property = 'og:description' content = '数据平台开发初衷
+数据平台就是对于数据的处理和应用'>
 <meta property = 'og:url' content = 'https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/' />
 <meta property = 'og:image' content = 'https://jxiaof.com/images/small.jpg'/>
 <meta name = 'twitter:card' content = 'summary_large_image' />
 <meta name = 'twitter:creator' content = ''>
 <meta name = 'twitter:title' content = 'devops数据平台设计' />
-<meta property = 'twitter:description'  content = '[toc]
-数据平台开发初衷
-
-快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).
-快捷查看公司资源分布图.
-快捷分析资源流式计算.
-目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.
-'/>
+<meta property = 'twitter:description'  content = '数据平台开发初衷
+数据平台就是对于数据的处理和应用'/>
 <meta name = 'twitter:image' content = 'https://jxiaof.com/images/small.jpg' />
 <link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
 <link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
@@ -74,14 +56,18 @@
 </section>
 
 <div class = 'post'>
-  <article class='post_content'><p>[toc]</p>
-<h1 id="数据平台开发初衷">数据平台开发初衷</h1>
+  <article class='post_content'><h1 id="数据平台开发初衷">数据平台开发初衷</h1>
+<p>数据平台就是对于数据的处理和应用</p>
 <ol>
 <li>快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).</li>
 <li>快捷查看公司资源分布图.</li>
 <li>快捷分析资源流式计算.</li>
 <li><strong>目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.</strong></li>
 </ol>
+
+
+
+
 <div class="hugo-encryptor-container">
   <div class="hugo-encryptor-prompt">
     
@@ -106,7 +92,7 @@
     style="display: none;"
   >
     <span style="display: none;">--- DON'T MODIFY THIS LINE ---</span>
-    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">数据平台-&gt;运维各部门:   提 供 实 时 报 表  与 数 据 分 析
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">数据平台-&gt;运维各部门:   提 供 实 时 报 表  与 数 据 分 析
 Note right of 运维各部门: 循环
 运维各部门--&gt;数据平台: 提 供 实 时 数 据
 </code></pre></div><p>示意图:</p>
@@ -130,7 +116,7 @@ Note right of 运维各部门: 循环
 <li>角色权限控制</li>
 </ul>
 <p><strong>整体流程图如下所示:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% 过程图
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% 过程图
   sequenceDiagram
     MateDate-&gt;&gt;grafana: 传送数据
     alt 使用echarts图表
@@ -147,7 +133,7 @@ Note right of 运维各部门: 循环
 <p><strong>某公司系统架构</strong></p>
 <p><img src="https://i.loli.net/2020/11/17/KSxZfPUMtQ1dyFH.jpg" alt="img"></p>
 <p><strong>我公司现有的RDS存储方案架构</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">graph LR
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">graph LR
 A[appmonitor ] --&gt;B(Kafka)
     B --&gt; C{写入器}
     C --&gt;| | D[ ClickHouse ] 
@@ -162,7 +148,7 @@ A[appmonitor ] --&gt;B(Kafka)
 <ol>
 <li>clickhouse-driver 示例</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>driver
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>driver
 
 <span style="color:#f92672">from</span> clickhouse_driver <span style="color:#f92672">import</span> Client
 client <span style="color:#f92672">=</span> Client(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;9000&#39;</span>,user<span style="color:#f92672">=</span>clickhouse_user ,password<span style="color:#f92672">=</span>clickhouse_pwd)
@@ -171,7 +157,7 @@ ans <span style="color:#f92672">=</span> client<span style="color:#f92672">.</sp
 </code></pre></div><ol start="2">
 <li>clickhouse-Sqlalchemy 示例</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>sqlalchemy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>sqlalchemy
 
 <span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine, Column, MetaData, literal
 <span style="color:#f92672">from</span> clickhouse_sqlalchemy <span style="color:#f92672">import</span> Table, make_session, get_declarative_base, types, engines
@@ -185,21 +171,21 @@ metadata <span style="color:#f92672">=</span> MetaData(bind<span style="color:#f
 Base <span style="color:#f92672">=</span> get_declarative_base(metadata<span style="color:#f92672">=</span>metadata)
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rate</span>(Base):
-    day <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>Date, primary_key<span style="color:#f92672">=</span>True)
+    day <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>Date, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
     value <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>Int32)
     other_value <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>DateTime, clickhouse_codec<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;DoubleDelta&#39;</span>, <span style="color:#e6db74">&#39;ZSTD&#39;</span>),)
 
     __table_args__ <span style="color:#f92672">=</span> (engines<span style="color:#f92672">.</span>Memory(), )
 
 another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6db74">&#39;another_rate&#39;</span>, metadata,
-    Column(<span style="color:#e6db74">&#39;day&#39;</span>, types<span style="color:#f92672">.</span>Date, primary_key<span style="color:#f92672">=</span>True),
+    Column(<span style="color:#e6db74">&#39;day&#39;</span>, types<span style="color:#f92672">.</span>Date, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>),
     Column(<span style="color:#e6db74">&#39;value&#39;</span>, types<span style="color:#f92672">.</span>Int32, server_default<span style="color:#f92672">=</span>literal(<span style="color:#ae81ff">1</span>)),
     engines<span style="color:#f92672">.</span>Memory()
 )
 </code></pre></div><ol start="3">
 <li>mysql数据迁移</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>mysql
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>mysql
 </code></pre></div><hr>
 <h1 id="ui原型布局">UI原型布局</h1>
 <p><strong><a href="https://tongji.baidu.com/web/demo/source/all?siteId=5503017">百度统计</a></strong></p>
@@ -211,7 +197,7 @@ another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6d
 <p>待补充</p>
 <hr>
 <h1 id="数据平台数据库模型设计">数据平台数据库模型设计</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">classDiagram
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">classDiagram
       Animal &lt;|-- Duck
       Animal &lt;|-- Fish
       Animal &lt;|-- Zebra
@@ -309,7 +295,7 @@ another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6d
 <li>上线频率:  两周上线一次,钟摆敏捷开发模式.</li>
 </ul>
 <p>如下示例:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% Example with selection of syntaxes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% Example with selection of syntaxes
         gantt
         dateFormat  YYYY-MM-DD
         title 项目进度示意图
@@ -454,6 +440,26 @@ another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6d
   <aside><h3></h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='https://jxiaof.com/post/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -471,26 +477,6 @@ another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6d
     </h3>
     <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
 <p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='https://jxiaof.com/post/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='https://jxiaof.com/post/python-asyncio/'>Python Asyncio</a>
-    </h3>
-    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
   </div>
 </li>
 

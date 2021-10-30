@@ -45,14 +45,8 @@
       <pubDate>Thu, 12 Nov 2020 09:45:51 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/</guid>
-      <description>&lt;p&gt;[toc]&lt;/p&gt;
-&lt;h1 id=&#34;数据平台开发初衷&#34;&gt;数据平台开发初衷&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).&lt;/li&gt;
-&lt;li&gt;快捷查看公司资源分布图.&lt;/li&gt;
-&lt;li&gt;快捷分析资源流式计算.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;</description>
+      <description>&lt;h1 id=&#34;数据平台开发初衷&#34;&gt;数据平台开发初衷&lt;/h1&gt;
+&lt;p&gt;数据平台就是对于数据的处理和应用&lt;/p&gt;</description>
     </item>
     
     <item>

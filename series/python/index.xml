@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Mon, 31 May 2021 17:48:25 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Sep 2021 10:05:04 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python Asyncio</title>
       <link>https://jxiaof.com/post/python-asyncio/</link>
@@ -18,12 +18,12 @@
     </item>
     
     <item>
-      <title>Flask主线程以及短链接实现</title>
-      <link>https://jxiaof.com/post/flask01/</link>
-      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      <title>FastAPI</title>
+      <link>https://jxiaof.com/post/fastapi/</link>
+      <pubDate>Sun, 05 Sep 2021 10:05:04 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/flask01/</guid>
-      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
+      <guid>https://jxiaof.com/post/fastapi/</guid>
+      <description>​ 我个人认为fastapi,是一个非常不错的web 框架,为python web开发带来了新的活力,全新的文档openAPI2.0 ,更出色的io</description>
     </item>
     
     <item>
@@ -33,15 +33,6 @@
       
       <guid>https://jxiaof.com/post/tfserving/</guid>
       <description>模型部署tfserving 使用tensorflow训练好一个模型，使用keras其他框架也可以，只需要将模型转换为pb文件即可，根据不同的转</description>
-    </item>
-    
-    <item>
-      <title>FastAPI</title>
-      <link>https://jxiaof.com/post/fastapi/</link>
-      <pubDate>Fri, 05 Mar 2021 10:05:04 +0800</pubDate>
-      
-      <guid>https://jxiaof.com/post/fastapi/</guid>
-      <description>文章的部分内容被密码保护： --- DON&#39;T MODIFY THIS LINE --- pass</description>
     </item>
     
     <item>
@@ -59,7 +50,12 @@
       <pubDate>Mon, 16 Nov 2020 17:12:40 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/funny/</guid>
-      <description>some funny code 记录有趣的代码 记录灵性的想法 记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!) 一、 import cv2 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize import os from subprocess import call img_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/&amp;#39; out_root = &amp;#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&amp;#39; fps</description>
+      <description>&lt;h1 id=&#34;some-funny-code&#34;&gt;some funny code&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;记录有趣的代码&lt;/li&gt;
+&lt;li&gt;记录灵性的想法&lt;/li&gt;
+&lt;li&gt;记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -72,12 +68,21 @@
     </item>
     
     <item>
-      <title></title>
+      <title>Leetcode</title>
       <link>https://jxiaof.com/post/leetcode/</link>
       <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
       
       <guid>https://jxiaof.com/post/leetcode/</guid>
       <description>中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p =</description>
+    </item>
+    
+    <item>
+      <title>Flask主线程以及短链接实现</title>
+      <link>https://jxiaof.com/post/flask01/</link>
+      <pubDate>Mon, 21 Sep 2020 23:05:02 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/post/flask01/</guid>
+      <description>&lt;p&gt;问题是这样的：开始有一个功能因为处理流程比较复杂，中间需要对接其他平台，自然在整个访问的稳定性以及访问延迟难以保障，甚至还会出现http连接错误，已经导致服务变慢，其他服务也受到影响不能正常稳定提供服务。此外在高并发下，这个功能业务是需要保证在同一事务下执行。&lt;/p&gt;</description>
     </item>
     
     <item>
