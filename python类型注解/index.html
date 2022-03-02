@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Python类型注解 | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Python类型注解' />
+<meta name="description" content="typing &mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样: def greeting(name: str) -&gt; str: return &#39;Hello &#39; &#43; name 在函数 greeting 中，参数 name 预期是 str 类型，并且返回 str 类型。子类型允 …">
+<meta property = 'og:description' content = 'typing &mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样: def greeting(name: str) -&gt; str: return &#39;Hello &#39; &#43; name 在函数 greeting 中，参数 name 预期是 str 类型，并且返回 str 类型。子类型允 …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/typing.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Python类型注解' />
+<meta property = 'twitter:description'  content = 'typing &mdash; 类型标注支持 函数接受并返回一个字符串，注释像下面这样: def greeting(name: str) -&gt; str: return &#39;Hello &#39; &#43; name 在函数 greeting 中，参数 name 预期是 str 类型，并且返回 str 类型。子类型允 …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/typing.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/python%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/typing.png);'>
+  <h1 class='post_title'>Python类型注解</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h1 id="typingmodule-typing-----类型标注支持"><a href="#module-typing"><code>typing</code></a> &mdash; 类型标注支持</h1>
+<p>函数接受并返回一个字符串，注释像下面这样:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greeting</span>(name: str) <span style="color:#f92672">-&gt;</span> str:
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Hello &#39;</span> <span style="color:#f92672">+</span> name
+</code></pre></div><p><img src="https://i.loli.net/2020/10/23/I1XSqJHwdz2vVG3.png" alt="image-20201023165006564"></p>
+<p>在函数 <code>greeting</code> 中，参数 <code>name</code> 预期是 <a href="stdtypes.html#str"><code>str</code></a> 类型，并且返回 <a href="stdtypes.html#str"><code>str</code></a> 类型。子类型允许作为参数。</p>
+<h2 id="类型别名">类型别名</h2>
+<p>类型别名通过将类型分配给别名来定义。在这个例子中， <code>Vector</code> 和 <code>List[float]</code> 将被视为可互换的同义词:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> List
+Vector <span style="color:#f92672">=</span> List[float]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scale</span>(scalar: float, vector: Vector) <span style="color:#f92672">-&gt;</span> Vector:
+    <span style="color:#66d9ef">return</span> [scalar <span style="color:#f92672">*</span> num <span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> vector]
+
+<span style="color:#75715e"># typechecks; a list of floats qualifies as a Vector.</span>
+new_vector <span style="color:#f92672">=</span> scale(<span style="color:#ae81ff">2.0</span>, [<span style="color:#ae81ff">1.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">4.2</span>, <span style="color:#ae81ff">5.4</span>])
+</code></pre></div><p><img src="https://i.loli.net/2020/10/23/ZdlowPf7UErVs65.png" alt="image-20201023165601264"></p>
+<p>类型别名可用于简化复杂类型签名。例如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Dict, Tuple, Sequence
+
+ConnectionOptions <span style="color:#f92672">=</span> Dict[str, str]
+Address <span style="color:#f92672">=</span> Tuple[str, int]
+Server <span style="color:#f92672">=</span> Tuple[Address, ConnectionOptions]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">broadcast_message</span>(message: str, servers: Sequence[Server]) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#f92672">...</span>
+
+<span style="color:#75715e"># The static type checker will treat the previous type signature as</span>
+<span style="color:#75715e"># being exactly equivalent to this one.</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">broadcast_message</span>(
+        message: str,
+        servers: Sequence[Tuple[Tuple[str, int], Dict[str, str]]]) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#f92672">...</span>
+</code></pre></div><p>请注意，<code>None</code> 作为类型提示是一种特殊情况，并且由 <code>type(None)</code> 取代。</p>
+<h2 id="newtype">NewType</h2>
+<p>使用 <a href="#typing.NewType"><code>NewType()</code></a> 辅助函数创建不同的类型:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> NewType
+
+UserId <span style="color:#f92672">=</span> NewType(<span style="color:#e6db74">&#39;UserId&#39;</span>, int)
+some_id <span style="color:#f92672">=</span> UserId(<span style="color:#ae81ff">524313</span>)
+</code></pre></div><p>静态类型检查器会将新类型视为它是原始类型的子类。这对于帮助捕捉逻辑错误非常有用:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_name</span>(user_id: UserId) <span style="color:#f92672">-&gt;</span> str:
+    <span style="color:#f92672">...</span>
+
+<span style="color:#75715e"># typechecks</span>
+user_a <span style="color:#f92672">=</span> get_user_name(UserId(<span style="color:#ae81ff">42351</span>))
+
+<span style="color:#75715e"># does not typecheck; an int is not a UserId</span>
+user_b <span style="color:#f92672">=</span> get_user_name(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><p>您仍然可以对 <code>UserId</code> 类型的变量执行所有的 <code>int</code> 支持的操作，但结果将始终为 <code>int</code> 类型。这可以让你在需要 <code>int</code> 的地方传入 <code>UserId</code>，但会阻止你以无效的方式无意中创建 <code>UserId</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># &#39;output&#39; is of type &#39;int&#39;, not &#39;UserId&#39;</span>
+output <span style="color:#f92672">=</span> UserId(<span style="color:#ae81ff">23413</span>) <span style="color:#f92672">+</span> UserId(<span style="color:#ae81ff">54341</span>)
+</code></pre></div><p>请注意，这些检查仅通过静态类型检查程序来强制。在运行时，语句 <code>Derived = NewType('Derived'，Base)</code>将 <code>Derived</code> 设为一个函数，该函数立即返回您传递它的任何参数。这意味着表达式 <code>Derived(some_value)</code> 不会创建一个新的类或引入任何超出常规函数调用的开销。</p>
+<p>更确切地说，表达式 <code>some_value is Derived(some_value)</code> 在运行时总是为真。</p>
+<p>这也意味着无法创建 <code>Derived</code> 的子类型，因为它是运行时的标识函数，而不是实际的类型:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> NewType
+
+UserId <span style="color:#f92672">=</span> NewType(<span style="color:#e6db74">&#39;UserId&#39;</span>, int)
+
+<span style="color:#75715e"># Fails at runtime and does not typecheck</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AdminUserId</span>(UserId): <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>但是，可以基于&rsquo;derived' <code>NewType</code> 创建 <a href="#typing.NewType"><code>NewType()</code></a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> NewType
+
+UserId <span style="color:#f92672">=</span> NewType(<span style="color:#e6db74">&#39;UserId&#39;</span>, int)
+
+ProUserId <span style="color:#f92672">=</span> NewType(<span style="color:#e6db74">&#39;ProUserId&#39;</span>, UserId)
+</code></pre></div><h2 id="2021年10月19日更新">2021年10月19日更新</h2>
+<p>检测代码是否符合规范</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install mypy
+mypy test.py
+</code></pre></div><p>并且 <code>ProUserId</code> 的类型检查将按预期工作。</p>
+<p>有关更多详细信息，请参阅 <a href="https://www.python.org/dev/peps/pep-0484"><strong>PEP 484</strong></a>。</p>
+<p>注解</p>
+<p>回想一下，使用类型别名声明两种类型彼此 <em>等效</em> 。<code>Alias = Original</code> 将使静态类型检查对待所有情况下 <code>Alias</code> <em>完全等同于</em> <code>Original</code>。当您想简化复杂类型签名时，这很有用。</p>
+<p>相反，<code>NewType</code> 声明一种类型是另一种类型的子类型。<code>Derived = NewType('Derived', Original)</code> 将使静态类型检查器将 <code>Derived</code> 当作 <code>Original</code> 的 <em>子类</em> ，这意味着 <code>Original</code> 类型的值不能用于 <code>Derived</code> 类型的值需要的地方。当您想以最小的运行时间成本防止逻辑错误时，这非常有用.</p>
+<hr>
+<p>参考文档: <a href="https://docs.python.org/zh-cn/3/library/typing.html">https://docs.python.org/zh-cn/3/library/typing.html</a></p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

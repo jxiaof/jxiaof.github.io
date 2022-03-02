@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/tags/leetcode/</link>
     <description>Recent content in leetcode on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 14 Oct 2020 14:08:09 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leetcode</title>
-      <link>https://jxiaof.com/post/leetcode/</link>
+      <link>https://jxiaof.com/leetcode/</link>
       <pubDate>Wed, 14 Oct 2020 14:08:09 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/leetcode/</guid>
+      <guid>https://jxiaof.com/leetcode/</guid>
       <description>中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &amp;#34;&amp;#34;&amp;#34; :type prices: List[int] :rtype: int &amp;#34;&amp;#34;&amp;#34; min_p, max_p = 999999, 0 for i in range(len(prices)): min_p = min(min_p, prices[i]) max_p =</description>
     </item>
     

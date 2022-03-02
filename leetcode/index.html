@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Leetcode | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Leetcode' />
+<meta name="description" content="中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …">
+<meta property = 'og:description' content = '中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/leetcode/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/programmer.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Leetcode' />
+<meta property = 'twitter:description'  content = '中心思想 由简单到复杂 (不先考虑边界问题) 由局部到整体 由粗糙到精细 由厚到薄 买卖股票简答: class Solution: def maxProfit(self, prices): &#34;&#34;&#34; :type prices: List[int] :rtype: int …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/programmer.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/leetcode/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/programmer.png);'>
+  <h1 class='post_title'>Leetcode</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h1 id="中心思想">中心思想</h1>
+<blockquote>
+<p>由简单到复杂    (不先考虑边界问题)</p>
+<p>由局部到整体</p>
+<p>由粗糙到精细</p>
+<p>由厚到薄</p>
+</blockquote>
+<p><strong>买卖股票简答:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maxProfit</span>(self, prices):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        :type prices: List[int]
+</span><span style="color:#e6db74">        :rtype: int
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        min_p, max_p <span style="color:#f92672">=</span> <span style="color:#ae81ff">999999</span>, <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(prices)):
+            min_p <span style="color:#f92672">=</span> min(min_p, prices[i])
+            max_p <span style="color:#f92672">=</span> max(max_p, prices[i] <span style="color:#f92672">-</span> min_p)
+        <span style="color:#66d9ef">return</span> max_p
+</code></pre></div><p><strong>lru:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#75715e"># 使用有序字典(dict + 双向链表)</span>
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">给定一个有序字典,如果key存在,则删除key,然后更新 key: value, 如果size等于最大值,删除最后一组 key: value
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+
+<span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> OrderedDict
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LRUCache</span>:
+
+    <span style="color:#66d9ef">def</span> __init__(self, size):
+
+        self<span style="color:#f92672">.</span>size <span style="color:#f92672">=</span> size
+
+        self<span style="color:#f92672">.</span>linked_map <span style="color:#f92672">=</span> OrderedDict()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set</span>(self, key, value):
+
+        <span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>linked_map:
+
+            self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>pop(key)
+
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>size <span style="color:#f92672">==</span> len(self<span style="color:#f92672">.</span>linked_map):
+
+            self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>popitem(last<span style="color:#f92672">=</span>False)
+
+        self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>update({key: value})
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, key):
+
+        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>get(key)
+
+        self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>pop(key)
+
+        self<span style="color:#f92672">.</span>linked_map<span style="color:#f92672">.</span>update({key: value})
+
+        <span style="color:#66d9ef">return</span> value
+
+</code></pre></div><p><strong>二分法</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BinarySearch</span>(array: list, t: int) <span style="color:#f92672">-&gt;</span> int:
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    index a item in object array
+</span><span style="color:#e6db74">    :param array: [1, 2, 3, 34, 56, 57, 78, 90, 107]
+</span><span style="color:#e6db74">    :param t: 4
+</span><span style="color:#e6db74">    :return: item index
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    low <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    height <span style="color:#f92672">=</span> len(array) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">while</span> low <span style="color:#f92672">&lt;</span> height:
+        mid <span style="color:#f92672">=</span> (low<span style="color:#f92672">+</span>height) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">if</span> array[mid] <span style="color:#f92672">&lt;</span> t:
+            low <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">elif</span> array[mid] <span style="color:#f92672">&gt;</span> t:
+            height <span style="color:#f92672">=</span> mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> mid
+    <span style="color:#66d9ef">return</span> height <span style="color:#66d9ef">if</span> array[low] <span style="color:#f92672">==</span> t <span style="color:#66d9ef">else</span> f<span style="color:#e6db74">&#34;Not exist in object array, this new value may be place in: {height} !&#34;</span>
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#66d9ef">print</span>(BinarySearch([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">56</span>, <span style="color:#ae81ff">57</span>, <span style="color:#ae81ff">78</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">107</span>], <span style="color:#ae81ff">4</span>))
+</code></pre></div><p><strong>最长节点</strong></p>
+<p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p>说明: 叶子节点是指没有子节点的节点。</p>
+<p>示例：
+给定二叉树 [3,9,20,null,null,15,7]，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#ae81ff">3</span>
+   <span style="color:#f92672">/</span> \
+  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">20</span>
+    <span style="color:#f92672">/</span>  \
+   <span style="color:#ae81ff">15</span>   <span style="color:#ae81ff">7</span>
+</code></pre></div><p>返回它的最大深度 3 。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maxDepth</span>(self, root: TreeNode) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#66d9ef">if</span> root <span style="color:#f92672">==</span> None:
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">elif</span> root<span style="color:#f92672">.</span>right <span style="color:#f92672">==</span> None <span style="color:#f92672">and</span> root<span style="color:#f92672">.</span>left <span style="color:#f92672">==</span> None :
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> max(self<span style="color:#f92672">.</span>maxDepth(root<span style="color:#f92672">.</span>left) ,  self<span style="color:#f92672">.</span>maxDepth(root<span style="color:#f92672">.</span>right))
+</code></pre></div><p><strong>Employee 表</strong></p>
+<p>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">+----+-------+--------+-----------+</span>
+<span style="color:#f92672">|</span> Id <span style="color:#f92672">|</span> Name  <span style="color:#f92672">|</span> Salary <span style="color:#f92672">|</span> ManagerId <span style="color:#f92672">|</span>
+<span style="color:#f92672">+----+-------+--------+-----------+</span>
+<span style="color:#f92672">|</span> <span style="color:#ae81ff">1</span>  <span style="color:#f92672">|</span> Joe   <span style="color:#f92672">|</span> <span style="color:#ae81ff">70000</span>  <span style="color:#f92672">|</span> <span style="color:#ae81ff">3</span>         <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> <span style="color:#ae81ff">2</span>  <span style="color:#f92672">|</span> Henry <span style="color:#f92672">|</span> <span style="color:#ae81ff">80000</span>  <span style="color:#f92672">|</span> <span style="color:#ae81ff">4</span>         <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> <span style="color:#ae81ff">3</span>  <span style="color:#f92672">|</span> Sam   <span style="color:#f92672">|</span> <span style="color:#ae81ff">60000</span>  <span style="color:#f92672">|</span> NULL      <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> <span style="color:#ae81ff">4</span>  <span style="color:#f92672">|</span> Max   <span style="color:#f92672">|</span> <span style="color:#ae81ff">90000</span>  <span style="color:#f92672">|</span> NULL      <span style="color:#f92672">|</span>
+<span style="color:#f92672">+----+-------+--------+-----------+</span>
+</code></pre></div><p>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">+----------+</span>
+<span style="color:#f92672">|</span> Employee <span style="color:#f92672">|</span>
+<span style="color:#f92672">+----------+</span>
+<span style="color:#f92672">|</span> Joe      <span style="color:#f92672">|</span>
+<span style="color:#f92672">+----------+</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span>
+	b.NAME <span style="color:#66d9ef">AS</span> Employee 
+<span style="color:#66d9ef">FROM</span>
+	Employee <span style="color:#66d9ef">AS</span> a
+	<span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> Employee <span style="color:#66d9ef">AS</span> b <span style="color:#66d9ef">ON</span> a.id <span style="color:#f92672">=</span> b.ManagerId 
+<span style="color:#66d9ef">WHERE</span>
+	b.Salary <span style="color:#f92672">&gt;</span> a.Salary
+</code></pre></div><hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+
+<span style="color:#75715e"># 给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  如果数组元素个数小于 2，则返回 0。</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  示例 1:</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  输入: [3,6,9,1]</span>
+<span style="color:#75715e"># 输出: 3</span>
+<span style="color:#75715e"># 解释: 排序后的数组是 [1,3,6,9], 其中相邻元素 (3,6) 和 (6,9) 之间都存在最大差值 3。</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  示例 2:</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  输入: [10]</span>
+<span style="color:#75715e"># 输出: 0</span>
+<span style="color:#75715e"># 解释: 数组元素个数小于 2，因此返回 0。</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  说明:</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  你可以假设数组中所有元素都是非负整数，且数值在 32 位有符号整数范围内。</span>
+<span style="color:#75715e">#  请尝试在线性时间复杂度和空间复杂度的条件下解决此问题。</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e">#  Related Topics 排序</span>
+<span style="color:#75715e">#  👍 291 👎 0</span>
+
+
+<span style="color:#75715e"># leetcode submit region begin(Prohibit modification and deletion)</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maximumGap</span>(self, nums):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        [3,6,9,1]
+</span><span style="color:#e6db74">        :type nums: List[int]
+</span><span style="color:#e6db74">        :rtype: int
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        max_num, flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, False
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(nums)):
+            min_idx <span style="color:#f92672">=</span> i
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, len(nums)):
+                <span style="color:#66d9ef">if</span> nums[min_idx] <span style="color:#f92672">&gt;</span> nums[j]:
+                    min_idx <span style="color:#f92672">=</span> j
+            nums[i], nums[min_idx] <span style="color:#f92672">=</span> nums[min_idx], nums[i]
+            <span style="color:#66d9ef">if</span> flag <span style="color:#f92672">is</span> True:
+                <span style="color:#66d9ef">if</span> max_num <span style="color:#f92672">&lt;</span> nums[i] <span style="color:#f92672">-</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+                    max_num <span style="color:#f92672">=</span> nums[i] <span style="color:#f92672">-</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">else</span>:
+                flag <span style="color:#f92672">=</span> True
+        <span style="color:#66d9ef">return</span> nums, max_num
+
+
+
+
+a <span style="color:#f92672">=</span> Solution()
+<span style="color:#66d9ef">print</span>(a<span style="color:#f92672">.</span>maximumGap([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">1</span>]))
+
+<span style="color:#75715e"># leetcode submit region end(Prohibit modification and deletion)</span>
+</code></pre></div><p>写一个线程安全的单例模式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding:utf-8</span>
+<span style="color:#f92672">import</span> threading
+  
+<span style="color:#75715e"># 第1⃣️个实例</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(cls):
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+    _instance <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>():
+        <span style="color:#66d9ef">with</span> _instance_lock:
+            <span style="color:#66d9ef">if</span> cls <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _instance:
+                _instace[cls] <span style="color:#f92672">=</span> cls()
+        <span style="color:#66d9ef">return</span> _instace[cls]
+   	<span style="color:#66d9ef">return</span> bar
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>(object):
+    _instance <span style="color:#f92672">=</span> None
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+    <span style="color:#66d9ef">def</span> __new__(cls):
+        <span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_instance_lock:
+            <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> None:
+                cls<span style="color:#f92672">.</span>_instace <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls)
+        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+    
+    
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>(type):
+    _instances <span style="color:#f92672">=</span> {}
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+
+    <span style="color:#66d9ef">def</span> __call__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">if</span> cls <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_instances:
+            <span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_instance_lock:
+                <span style="color:#66d9ef">if</span> cls <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_instances:
+                    cls<span style="color:#f92672">.</span>_instances[cls] <span style="color:#f92672">=</span> super(Singleton, cls)<span style="color:#f92672">.</span>__call__(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instances[cls]
+
+<span style="color:#75715e"># 或者</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>(type):
+    <span style="color:#75715e"># meta class for making a class singleton</span>
+    _instance_lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+
+    <span style="color:#66d9ef">def</span> __call__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+
+        <span style="color:#66d9ef">try</span>:
+            <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>__instance
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">AttributeError</span>:
+            <span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_instance_lock:
+                cls<span style="color:#f92672">.</span>__instance <span style="color:#f92672">=</span> super(Singleton, cls)<span style="color:#f92672">.</span>__call__(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+                <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>__instance
+    
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>(metaclass<span style="color:#f92672">=</span>Singleton):
+    <span style="color:#66d9ef">pass</span>
+    
+
+<span style="color:#75715e"># 第2⃣️个实例        </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">synchronized</span>(func):
+
+    func<span style="color:#f92672">.</span>__lock__ <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lock_func</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">with</span> func<span style="color:#f92672">.</span>__lock__:
+            <span style="color:#66d9ef">return</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+    <span style="color:#66d9ef">return</span> lock_func
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>(object):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    单例模式
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    instance <span style="color:#f92672">=</span> None
+
+    <span style="color:#a6e22e">@synchronized</span>
+    <span style="color:#66d9ef">def</span> __new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">is</span> None:
+            cls<span style="color:#f92672">.</span>instance <span style="color:#f92672">=</span> object<span style="color:#f92672">.</span>__new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>instance
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
+<span style="color:#f92672">import</span> sys 
+<span style="color:#75715e">#str = input()</span>
+<span style="color:#75715e">#print(str)</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Hello,World!&#39;</span>)
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MinStack</span>:
+
+    <span style="color:#66d9ef">def</span> __init__(self):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        initialize your data structure here.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>item <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>item2 <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> None
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x: int) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(x, int):
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;need int object !&#34;</span>)
+        self<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>append(x)
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">is</span> None:
+            self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> x
+       <span style="color:#66d9ef">else</span>:
+           <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">&gt;</span> x:
+                self<span style="color:#f92672">.</span>min_val <span style="color:#f92672">=</span> x
+        self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>append(self<span style="color:#f92672">.</span>min_val)
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#66d9ef">if</span> len(self<span style="color:#f92672">.</span>item2) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>:
+            self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>append(min(self<span style="color:#f92672">.</span>item))
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>item[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>item2[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+            self<span style="color:#f92672">.</span>item2<span style="color:#f92672">.</span>pop()
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>pop()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">top</span>(self) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item[len(self<span style="color:#f92672">.</span>item) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getMin</span>(self) <span style="color:#f92672">-&gt;</span> int:
+        <span style="color:#75715e">#if len(self.item2) &lt; 1:</span>
+        <span style="color:#75715e">#    self.item2.append(min(self.item))</span>
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>item2[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 布隆过滤 加入会有跟多效果</span>
+
+<span style="color:#f92672">import</span> bitarray
+r <span style="color:#f92672">=</span> bitarray<span style="color:#f92672">.</span>bitarray(<span style="color:#ae81ff">5000000000</span>)
+
+<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> open(file1):
+    r[int(line)] <span style="color:#f92672">=</span> True
+
+<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> open(file2):
+    <span style="color:#66d9ef">if</span> r[int(line)]:
+        <span style="color:#66d9ef">print</span>(line)
+</code></pre></div><p>这是朋友给的一道题目: (第一遍做错了,后面调整了一下,才满足要求)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">obj <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#34;a&#34;</span>:{
+            <span style="color:#e6db74">&#34;b&#34;</span>:{
+                <span style="color:#e6db74">&#34;c&#34;</span>:{
+                    <span style="color:#e6db74">&#34;f&#34;</span>:<span style="color:#e6db74">&#34;aa&#34;</span>
+                }
+            },
+            <span style="color:#e6db74">&#34;d&#34;</span>:{
+                <span style="color:#e6db74">&#34;e&#34;</span>:{
+                    <span style="color:#e6db74">&#34;g&#34;</span>:<span style="color:#e6db74">&#34;bb&#34;</span>
+                },
+                <span style="color:#e6db74">&#34;h&#34;</span>:{
+                    <span style="color:#e6db74">&#34;i&#34;</span>:<span style="color:#e6db74">&#34;cc&#34;</span>
+                }
+            },
+            <span style="color:#e6db74">&#34;j&#34;</span>:{
+                <span style="color:#e6db74">&#34;k&#34;</span>:<span style="color:#e6db74">&#34;dd&#34;</span>
+            }
+        }
+    }
+
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">输入obj, 输出如下:
+</span><span style="color:#e6db74">[f,g,i,c,e,h,k,b,d,j,a]
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+
+con <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(obj: dict, i: int):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    处理结构
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">global</span> con
+    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">if</span> isinstance(obj, dict):
+        <span style="color:#66d9ef">if</span> len(con) <span style="color:#f92672">&lt;</span> i:
+            con<span style="color:#f92672">.</span>append([]) 
+        <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> obj<span style="color:#f92672">.</span>items():
+            con[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>append(k)
+            foo(v, i)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>(li: list) <span style="color:#f92672">-&gt;</span> list:
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    打印输出
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    tmp <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> li[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+        <span style="color:#66d9ef">if</span> isinstance(i, list) <span style="color:#f92672">and</span> len(i) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">for</span> it <span style="color:#f92672">in</span> i:
+                tmp<span style="color:#f92672">.</span>append(it)
+    <span style="color:#66d9ef">return</span> tmp
+
+</code></pre></div><h2 id="最大子序列和">最大子序列和</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">arr <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(arr):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, len(arr)):
+        arr[i] <span style="color:#f92672">=</span> arr[i] <span style="color:#f92672">+</span> max(arr[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">return</span> max(arr)
+</code></pre></div><h2 id="限流函数">限流函数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> wraps
+<span style="color:#f92672">from</span> contextlib <span style="color:#f92672">import</span> contextmanager
+<span style="color:#75715e"># from logger import logger</span>
+<span style="color:#f92672">import</span> threading
+
+
+<span style="color:#a6e22e">@contextmanager</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">time_block</span>(msg):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    代码块计时函数
+</span><span style="color:#e6db74">    :param msg:
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    sta <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#66d9ef">yield</span>
+    <span style="color:#66d9ef">finally</span>:
+        end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;{msg} : {end - sta: .3f}s&#39;</span>)
+
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CallLimitor</span>(object):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    函数访问限制器
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#75715e"># limit_time = 60</span>
+    <span style="color:#75715e"># limit_times = 2</span>
+    <span style="color:#75715e"># cache = {}</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, limit_time<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span>, limit_times<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>):
+        self<span style="color:#f92672">.</span>limit_time <span style="color:#f92672">=</span> limit_time
+        self<span style="color:#f92672">.</span>limit_times <span style="color:#f92672">=</span> limit_times
+        self<span style="color:#f92672">.</span>cache <span style="color:#f92672">=</span> {}
+        self<span style="color:#f92672">.</span>lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+
+    <span style="color:#66d9ef">def</span> __call__(self, func, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#75715e"># 函数的名称作为key</span>
+        key <span style="color:#f92672">=</span> func<span style="color:#f92672">.</span>__name__
+        <span style="color:#75715e"># self.func_name = key</span>
+        <span style="color:#75715e"># 判断是否存在缓存</span>
+        <span style="color:#75715e"># if key in self.cache.keys():</span>
+        <span style="color:#66d9ef">with</span> self<span style="color:#f92672">.</span>lock:
+            <span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>keys():
+                (counter, result, updateTime) <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cache[key]
+                <span style="color:#75715e"># 过期时间固定为 limit_time 秒</span>
+                time_gap <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> updateTime
+                <span style="color:#66d9ef">if</span> time_gap <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>limit_time:
+                    counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+                <span style="color:#75715e"># 超过限制时间，函数被释放，重置相关变量</span>
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;cache expired ! func:【 {key} 】can call !&#34;</span>)
+                    result <span style="color:#f92672">=</span> None
+                    counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#75715e"># 第一次调用函数，初始化相关变量</span>
+                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;no cache for func:【 {key} 】!&#34;</span>)
+                result <span style="color:#f92672">=</span> None
+                counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+            <span style="color:#75715e"># 如果过期，或则没有缓存调用方法</span>
+            <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">&lt;=</span> self<span style="color:#f92672">.</span>limit_times:
+                result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+                <span style="color:#75715e"># with self.lock:</span>
+                self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> (counter, result, updateTime)
+                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;already called {counter} times !&#34;</span>)
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#66d9ef">print</span>(
+                    f<span style="color:#e6db74">&#34;func name:【 {key} 】 call deny ! limit {self.limit_time}s call {self.limit_times} times, already call denied {time_gap: .3f}s !&#34;</span>)
+
+        <span style="color:#66d9ef">return</span> result
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call_limiter</span>(limit_time, limit_times):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    限制函数访问次数
+</span><span style="color:#e6db74">    :param limit_time: 访问限制时间
+</span><span style="color:#e6db74">    :param limit_times: 访问限制时间内限制访问次数
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decorator</span>(func):
+        <span style="color:#e6db74">&#34;cache for function result, which is immutable with fixed arguments&#34;</span>
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;initial cache for {func.__name__}&#34;</span>)
+        cache <span style="color:#f92672">=</span> {}
+
+        <span style="color:#a6e22e">@wraps</span>(func)
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decorated_func</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+            <span style="color:#75715e"># 函数的名称作为key</span>
+            key <span style="color:#f92672">=</span> func<span style="color:#f92672">.</span>__name__
+            <span style="color:#75715e"># 判断是否存在缓存</span>
+            <span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> cache<span style="color:#f92672">.</span>keys():
+                (counter, result, updateTime) <span style="color:#f92672">=</span> cache[key]
+                <span style="color:#75715e"># 过期时间固定为 limit_time 秒</span>
+                time_gap <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> updateTime
+                <span style="color:#66d9ef">if</span> time_gap <span style="color:#f92672">&lt;</span> limit_time:
+                    counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+                <span style="color:#75715e"># 超过限制时间，函数被释放，重置相关变量</span>
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;cache expired ! func:【 {key} 】can call !&#34;</span>)
+                    result <span style="color:#f92672">=</span> None
+                    counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#75715e"># 第一次调用函数，初始化相关变量</span>
+                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;no cache for func:【 {key} 】!&#34;</span>)
+                result <span style="color:#f92672">=</span> None
+                counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+            <span style="color:#75715e"># 如果过期，或则没有缓存调用方法</span>
+            <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">&lt;=</span> limit_times:
+                result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+                cache[key] <span style="color:#f92672">=</span> (counter, result, updateTime)
+                <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;already called {counter} times !&#34;</span>)
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#66d9ef">print</span>(
+                    f<span style="color:#e6db74">&#34;func name:【 {key} 】 call deny ! limit {limit_time}s call {limit_times} times, already call denied {time_gap: .3f}s !&#34;</span>)
+
+            <span style="color:#66d9ef">return</span> result
+
+        <span style="color:#66d9ef">return</span> decorated_func
+
+    <span style="color:#66d9ef">return</span> decorator
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call_limiter_lock</span>(limit_time, limit_times):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    限制函数访问次数,适用于单进程多线程环境
+</span><span style="color:#e6db74">    :param limit_time: 访问限制时间
+</span><span style="color:#e6db74">    :param limit_times: 访问限制时间内限制访问次数
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">outter</span>(func):
+        <span style="color:#e6db74">&#34;cache for function result, which is immutable with fixed arguments&#34;</span>
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;initial cache for {func.__name__}&#34;</span>)
+        cache <span style="color:#f92672">=</span> {}
+        lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+
+        <span style="color:#a6e22e">@wraps</span>(func)
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+            <span style="color:#75715e"># 函数的名称作为key</span>
+            key <span style="color:#f92672">=</span> func<span style="color:#f92672">.</span>__name__
+            <span style="color:#75715e"># 判断是否存在缓存</span>
+            <span style="color:#75715e"># if key in cache.keys():  # 先判断,然后再加锁,防止多线程同时调用函数频繁加锁</span>
+            <span style="color:#66d9ef">with</span> lock:
+                <span style="color:#75715e"># 判断是否存在缓存</span>
+                <span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> cache<span style="color:#f92672">.</span>keys():
+                    (counter, result, updateTime) <span style="color:#f92672">=</span> cache[key]
+                    <span style="color:#75715e"># 过期时间固定为 limit_time 秒</span>
+                    time_gap <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> updateTime
+                    <span style="color:#66d9ef">if</span> time_gap <span style="color:#f92672">&lt;</span> limit_time:
+                        counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+                    <span style="color:#75715e"># 超过限制时间，函数被释放，重置相关变量</span>
+                    <span style="color:#66d9ef">else</span>:
+                        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;cache expired ! func:【 {key} 】can call !&#34;</span>)
+                        result <span style="color:#f92672">=</span> None
+                        counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                        updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#75715e"># 第一次调用函数，初始化相关变量</span>
+                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;no cache for func:【 {key} 】!&#34;</span>)
+                    result <span style="color:#f92672">=</span> None
+                    counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                    updateTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+                <span style="color:#75715e"># 如果过期，或则没有缓存调用方法</span>
+                <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">&lt;=</span> limit_times:
+                    result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+                    <span style="color:#75715e"># with lock:</span>
+                    cache[key] <span style="color:#f92672">=</span> (counter, result, updateTime)
+                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;already called {counter} times !&#34;</span>)
+                <span style="color:#66d9ef">else</span>:
+                    <span style="color:#66d9ef">print</span>(
+                        f<span style="color:#e6db74">&#34;func name:【 {key} 】 call deny ! limit {limit_time}s call {limit_times} times, already call denied {time_gap: .3f}s !&#34;</span>)
+
+                <span style="color:#66d9ef">return</span> result
+
+        <span style="color:#66d9ef">return</span> inner
+
+    <span style="color:#66d9ef">return</span> outter
+
+<span style="color:#a6e22e">@call_limiter</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>():
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;hello world !&#39;</span>)
+
+
+<span style="color:#a6e22e">@call_limiter_lock</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logic</span>():
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;hello world !&#39;</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;hello world !&#34;</span>)
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    lim <span style="color:#f92672">=</span> CallLimitor(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>)
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+        lim(foo)
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.1</span>)
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.1</span>)
+        logic()
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.1</span>)
+        bar()
+</code></pre></div><p>见笑了,入门题目,别人问起的时候在几分钟之内没想出来,后面自己在对方不理睬的时候就写出来了.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#75715e">// 两个 go 循环交替打印1-100数字
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">print1</span>(<span style="color:#a6e22e">ch</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">Print2</span>(<span style="color:#a6e22e">ch</span>)
+	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>)
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;-----------------&#34;</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test4</span>() {
+	<span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+	<span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">NUM</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+			<span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">i</span>
+			<span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;-------&#34;</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#a6e22e">n</span>)
+		}
+	}()
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">NUM</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+			<span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ch</span>
+			<span style="color:#a6e22e">ch</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">n</span>
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;+++++++&#34;</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+		}
+	}()
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">test5</span>() {
+	<span style="color:#75715e">//设置可同时使用的CPU核数为1
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">GOMAXPROCS</span>(<span style="color:#ae81ff">1</span>)
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">NUM</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span> {
+			<span style="color:#75715e">//奇数
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;线程1打印:&#34;</span>, <span style="color:#a6e22e">i</span>)
+			<span style="color:#75715e">//让出cpu
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Gosched</span>()
+		}
+	}()
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Gosched</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">NUM</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span> {
+			<span style="color:#75715e">//偶数
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;线程2打印:&#34;</span>, <span style="color:#a6e22e">i</span>)
+			<span style="color:#75715e">//让出cpu
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">Gosched</span>()
+		}
+	}()
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+</code></pre></div><p>循环打印: dog   cat  fox</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">3</span>
+	<span style="color:#a6e22e">dog</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{})
+	<span style="color:#a6e22e">cat</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{})
+	<span style="color:#a6e22e">fox</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{})
+	<span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">3</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+			<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">dog</span>
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;dog&#34;</span>)
+			<span style="color:#a6e22e">cat</span> <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">struct</span>{}{}
+		}
+	}(<span style="color:#a6e22e">num</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+			<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">cat</span>
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;cat&#34;</span>)
+			<span style="color:#a6e22e">fox</span> <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">struct</span>{}{}
+		}
+	}(<span style="color:#a6e22e">num</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;------&#34;</span>, <span style="color:#a6e22e">i</span>)
+			<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">fox</span>
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;fox&#34;</span>)
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> {
+				<span style="color:#a6e22e">dog</span> <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">struct</span>{}{}
+			}
+		}
+	}(<span style="color:#a6e22e">num</span>)
+	<span style="color:#a6e22e">dog</span> <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">struct</span>{}{}
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;finished!!!&#34;</span>)
+}
+
+</code></pre></div><p>这是一道有意思的题目,手写平方根</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">mySqrt</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    }
+    <span style="color:#a6e22e">C</span>, <span style="color:#a6e22e">x0</span> <span style="color:#f92672">:=</span> float64(<span style="color:#a6e22e">x</span>), float64(<span style="color:#a6e22e">x</span>)
+    <span style="color:#66d9ef">for</span> {
+        <span style="color:#a6e22e">xi</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> (<span style="color:#a6e22e">x0</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">C</span><span style="color:#f92672">/</span><span style="color:#a6e22e">x0</span>)
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Abs</span>(<span style="color:#a6e22e">x0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">xi</span>) &lt; <span style="color:#ae81ff">1e-7</span> {
+            <span style="color:#66d9ef">break</span>
+        }
+        <span style="color:#a6e22e">x0</span> = <span style="color:#a6e22e">xi</span>
+    }
+    <span style="color:#66d9ef">return</span> int(<span style="color:#a6e22e">x0</span>)
+}
+</code></pre></div>
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

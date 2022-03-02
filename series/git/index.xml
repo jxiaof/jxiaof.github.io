@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/series/git/</link>
     <description>Recent content in git on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 14 Dec 2020 11:42:36 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git</title>
-      <link>https://jxiaof.com/post/git/</link>
+      <link>https://jxiaof.com/git/</link>
       <pubDate>Mon, 14 Dec 2020 11:42:36 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/git/</guid>
+      <guid>https://jxiaof.com/git/</guid>
       <description>git 一些实用的做法 长期更新 git branch -r git branch --track [branch] [remote-branch] git branch --set-upstream [branch] [remote-branch] # 删除分支 # delete branch locally git branch -d localBranchName # delete branch remotely git push origin --delete remoteBranchName # 删除分支 git push origin :branch-name # 删除远程分支 $ git push origin --delete [branch-name] $</description>
     </item>
     

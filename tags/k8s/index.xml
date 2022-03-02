@@ -5,33 +5,33 @@
     <link>https://jxiaof.com/tags/k8s/</link>
     <description>Recent content in k8s on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 11 Oct 2021 16:41:45 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Argo</title>
-      <link>https://jxiaof.com/post/argo/</link>
+      <link>https://jxiaof.com/argo/</link>
       <pubDate>Mon, 11 Oct 2021 16:41:45 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/argo/</guid>
+      <guid>https://jxiaof.com/argo/</guid>
       <description>[toc] Templates There are several types of templates, divided into two different categories. The first category defines work to be done. This includes: Container Container Set Data Resource Script The second category orchestrate the work: DAG Steps Suspend We&amp;rsquo;re going to take a deep-dive into the two most common: containers and DAG. Container Template A container templates is the most common type of template, lets look at a complete example:</description>
     </item>
     
     <item>
       <title>Nvidia</title>
-      <link>https://jxiaof.com/post/nvidia/</link>
+      <link>https://jxiaof.com/nvidia/</link>
       <pubDate>Wed, 08 Sep 2021 16:33:16 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/nvidia/</guid>
+      <guid>https://jxiaof.com/nvidia/</guid>
       <description>info shell 获取显卡信息 cat /proc/driver/nvidia/gpus/{{opus}}/information 获取显卡uuid nvidia-smi -L 获取全部info nvidia-smi -q 设置nvidia export NVIDIA_VISIBLE_DEVICES=`nvidia-smi -L</description>
     </item>
     
     <item>
       <title>K8s</title>
-      <link>https://jxiaof.com/post/k8s/</link>
+      <link>https://jxiaof.com/k8s/</link>
       <pubDate>Wed, 23 Jun 2021 16:12:09 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/k8s/</guid>
+      <guid>https://jxiaof.com/k8s/</guid>
       <description>minikube does not support the LoadBalancer option yet curl http://{{sevices}}.{{namespace}}:8080/healthz kubectl exec - 在容器内执行命令 kubectl exec nginx-app ps aux export |grep ENV 命令补全 BASH # 在 bash 中设置当前 shell 的自动补全，要先安装 bash-completion 包 $ source &amp;lt;(kubectl completion bash) # 在您的 bash shell 中永久的</description>
     </item>
     

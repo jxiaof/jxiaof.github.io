@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/tags/vim/</link>
     <description>Recent content in vim on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 21 Sep 2020 19:57:29 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VIM使用记录</title>
-      <link>https://jxiaof.com/post/vim/</link>
+      <link>https://jxiaof.com/vim/</link>
       <pubDate>Mon, 21 Sep 2020 19:57:29 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/vim/</guid>
+      <guid>https://jxiaof.com/vim/</guid>
       <description>&lt;h2 id=&#34;vim解决痛点使用记录&#34;&gt;vim解决痛点使用记录&lt;/h2&gt;
 &lt;p&gt;vim 对于一般的需求,确实用不到.很多时候前端用不太到,后端不做数据处理用不太到,不做linux下的高频率开发用不到,并且使用起来没有那么直观,学习曲线前期相当陡峭,但是vim一直很优秀,一直就是编辑器的指向标,现在许多的编辑器特性,也是参考vim快捷键实现的.比如向上移动一行代码功能,vim使用 &lt;strong&gt;ddkp&lt;/strong&gt;同样可以实现,比如过滤删除等.许多时候简直有一种如鱼得水的开发快感.下面我会持续记录一些vim我自己实实在在解决痛点的用法.&lt;/p&gt;</description>
     </item>

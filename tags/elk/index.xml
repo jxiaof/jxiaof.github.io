@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/tags/elk/</link>
     <description>Recent content in ELK on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 03 Nov 2020 17:13:21 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/elk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ELK实践与应用</title>
-      <link>https://jxiaof.com/post/elk/</link>
+      <link>https://jxiaof.com/elk/</link>
       <pubDate>Tue, 03 Nov 2020 17:13:21 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/elk/</guid>
+      <guid>https://jxiaof.com/elk/</guid>
       <description>elasticsearch 索引与mysql索引的区别 elkf日志平台搭建 grafana github链接 Grafana 的仪表盘市场 参考资料: https://juejin.im/post/6844903991340597255 参考资料: https://juejin.im/post/6844904147557285895</description>
     </item>
     

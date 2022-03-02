@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>K8s | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'K8s' />
+<meta name="description" content="minikube does not support the LoadBalancer option yet curl http://{{sevices}}.{{namespace}}:8080/healthz kubectl exec - 在容器内执行命令 kubectl exec nginx-app ps aux …">
+<meta property = 'og:description' content = 'minikube does not support the LoadBalancer option yet curl http://{{sevices}}.{{namespace}}:8080/healthz kubectl exec - 在容器内执行命令 kubectl exec nginx-app ps aux …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/k8s/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/k8s.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'K8s' />
+<meta property = 'twitter:description'  content = 'minikube does not support the LoadBalancer option yet curl http://{{sevices}}.{{namespace}}:8080/healthz kubectl exec - 在容器内执行命令 kubectl exec nginx-app ps aux …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/k8s.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/k8s/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/k8s.png);'>
+  <h1 class='post_title'>K8s</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><p><img src="https://i.loli.net/2021/07/23/234FVSMIiemNwgP.png" alt="简单了解一下K8S"></p>
+<blockquote>
+<p>minikube does not support the LoadBalancer option yet</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> curl http://<span style="color:#f92672">{{</span>sevices<span style="color:#f92672">}}</span>.<span style="color:#f92672">{{</span>namespace<span style="color:#f92672">}}</span>:8080/healthz
+ kubectl exec - 在容器内执行命令
+ kubectl exec nginx-app ps aux
+ 
+ export |grep ENV
+</code></pre></div><h2 id="命令补全">命令补全</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">BASH
+# 在 bash 中设置当前 shell 的自动补全，要先安装 bash-completion 包
+$ source &lt;(kubectl completion bash)
+
+# 在您的 bash shell 中永久的添加自动补全
+$ echo &#34;source &lt;(kubectl completion bash)&#34; &gt;&gt; ~/.bashrc
+ZSH
+# 在 zsh 中设置当前 shell 的自动补全
+$ source &lt;(kubectl completion zsh)
+
+# 在您的 zsh shell 中永久的添加自动补全
+$ echo &#34;if [ $commands[kubectl] ]; then source &lt;(kubectl completion zsh); fi&#34; &gt;&gt; ~/.zshrc
+</code></pre></div><h2 id="run-命令在集群中创建并运行一个或多个容器镜像"><strong>run 命令</strong>：在集群中创建并运行一个或多个容器镜像。</h2>
+<blockquote>
+<p><code>语法</code>：run NAME &ndash;image=image [&ndash;env=&ldquo;key=value&rdquo;] [&ndash;port=port] [&ndash;replicas=replicas] [&ndash;dry-run=bool] [&ndash;overrides=inline-json] [&ndash;command] &ndash; [COMMAND] [args&hellip;]</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">示例</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">运行一个名称为nginx</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">副本数为3</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">标签为app</span><span style="color:#f92672">=</span><span style="color:#a6e22e">example</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">镜像为nginx</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.10</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">端口为80的容器实例</span>
+
+<span style="color:#a6e22e">$</span> <span style="color:#a6e22e">kubectl</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">nginx</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">replicas</span><span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">labels</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app=example&#34;</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">image</span><span style="color:#f92672">=</span><span style="color:#a6e22e">nginx</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.10</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">示例</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">运行一个名称为nginx</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">副本数为3</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">标签为app</span><span style="color:#f92672">=</span><span style="color:#a6e22e">example</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">镜像为nginx</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.10</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">端口为80的容器实例</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并绑定到k8s</span><span style="color:#f92672">-</span><span style="color:#a6e22e">node1上$</span> <span style="color:#a6e22e">kubectl</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">nginx</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">image</span><span style="color:#f92672">=</span><span style="color:#a6e22e">nginx</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1.10</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">replicas</span><span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">labels</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app=example&#34;</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#ae81ff">80</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">overrides</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{&#34;apiVersion&#34;:&#34;apps/v1&#34;,&#34;spec&#34;:{&#34;template&#34;:{&#34;spec&#34;:{&#34;nodeSelector&#34;:{&#34;kubernetes.io/hostname&#34;:&#34;k8s-node1&#34;}}}}}&#39;</span>
+</code></pre></div><h3 id="kubectl-label---给资源打标签">kubectl label - 给资源打标签</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 设置标签</span>
+$ kubectl label pod $POD_NAME app<span style="color:#f92672">=</span>v1
+<span style="color:#75715e"># 设置之后, 可如下使用: </span>
+$ kubectl get pods -l app<span style="color:#f92672">=</span>v1
+<span style="color:#75715e"># 通过标签筛选删除一个服务</span>
+$ kubectl delete service -l run<span style="color:#f92672">=</span>kubernetes-bootcam
+</code></pre></div><h2 id="日志查看">日志查看</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 返回仅包含一个容器的pod nginx的日志快照</span>
+$ kubectl logs nginx
+
+<span style="color:#75715e"># 返回pod ruby中已经停止的容器web-1的日志快照</span>
+$ kubectl logs -p -c ruby web-1
+
+<span style="color:#75715e"># 持续输出pod ruby中的容器web-1的日志</span>
+$ kubectl logs -f -c ruby web-1
+
+<span style="color:#75715e"># 仅输出pod nginx中最近的20条日志</span>
+$ kubectl logs --tail<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> nginx
+
+<span style="color:#75715e"># 输出pod nginx中最近一小时内产生的所有日志</span>
+$ kubectl logs --since<span style="color:#f92672">=</span>1h nginx
+</code></pre></div><blockquote>
+<ul>
+<li>-c, &ndash;container=&quot;&quot;: 容器名。</li>
+<li>-f, &ndash;follow[=false]: 指定是否持续输出日志（实时日志）。</li>
+<li>&ndash;interactive[=true]: 如果为true，当需要时提示用户进行输入。默认为true。</li>
+<li>&ndash;limit-bytes=0: 输出日志的最大字节数。默认无限制。</li>
+<li>-p, &ndash;previous[=false]: 如果为true，输出pod中曾经运行过，但目前已终止的容器的日志。</li>
+<li>&ndash;since=0: 仅返回相对时间范围，如5s、2m或3h，之内的日志。默认返回所有日志。只能同时使用since和since-time中的一种。</li>
+<li>&ndash;since-time=&quot;&quot;: 仅返回指定时间（RFC3339格式）之后的日志。默认返回所有日志。只能同时使用since和since-time中的一种。</li>
+<li>&ndash;tail=-1: 要显示的最新的日志条数。默认为-1，显示所有的日志。</li>
+<li>&ndash;timestamps[=false]: 在日志中包含时间戳。</li>
+</ul>
+</blockquote>
+<h2 id="更新现有资源的容器镜像">更新现有资源的容器镜像</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 将deployment中的nginx容器镜像设置为“nginx：1.9.1”</span>
+$ kubectl set image deployment/nginx busybox<span style="color:#f92672">=</span>busybox nginx<span style="color:#f92672">=</span>nginx:1.9.1
+
+<span style="color:#75715e"># 所有deployment和rc的nginx容器镜像更新为“nginx：1.9.1”</span>
+$ kubectl set image deployments,rc nginx<span style="color:#f92672">=</span>nginx:1.9.1 --all
+
+<span style="color:#75715e"># 将daemonset abc的所有容器镜像更新为“nginx：1.9.1”</span>
+$ kubectl set image daemonset abc *<span style="color:#f92672">=</span>nginx:1.9.1
+
+<span style="color:#75715e"># 从本地文件中更新nginx容器镜像</span>
+$ kubectl set image -f path/to/file.yaml nginx<span style="color:#f92672">=</span>nginx:1.9.1 --local -o yaml
+
+
+$ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp<span style="color:#f92672">=</span>jocatalin/kubernetes-bootcamp:v2
+</code></pre></div><blockquote>
+<p>可用资源对象包括：<code>pod (po)</code>、<code>replicationcontroller (rc)</code>、<code>deployment (deploy)</code>、<code>daemonset (ds)</code>、<code>job</code>、<code>replicaset (rs)</code>。</p>
+<blockquote>
+<p><code>语法</code>：image (-f FILENAME | TYPE NAME) CONTAINER_NAME_1=CONTAINER_IMAGE_1 &hellip; CONTAINER_NAME_N=CONTAINER_IMAGE_N</p>
+</blockquote>
+</blockquote>
+<h2 id="回滚资源">回滚资源</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp<span style="color:#f92672">=</span>gcr.io/google-samples/kubernetes-bootcamp:v10
+$ kubectl rollout undo deployments/kubernetes-bootcamp
+</code></pre></div><p><strong>explain 命令</strong>：用于显示资源文档信息</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span> <span style="color:#a6e22e">kubectl</span> <span style="color:#a6e22e">explain</span> <span style="color:#a6e22e">rs</span>
+</code></pre></div><p><strong>edit 命令</strong>: 用于编辑资源信息</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">编辑Deployment</span> <span style="color:#a6e22e">nginx的一些信息</span>
+<span style="color:#a6e22e">$</span> <span style="color:#a6e22e">kubectl</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">deployment</span> <span style="color:#a6e22e">nginx</span>
+
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">编辑service类型的nginx的一些信息</span>
+<span style="color:#a6e22e">$</span> <span style="color:#a6e22e">kubectl</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">/</span><span style="color:#a6e22e">nginx</span>
+</code></pre></div><h3 id="2021年10月21号更新">2021年10月21号更新</h3>
+<p>指定pod使用资源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">nodeSelector</span>:
+	<span style="color:#f92672">nvidia.com/gpu</span>: <span style="color:#ae81ff">nvidia-p40</span>
+
+<span style="color:#f92672">resources</span>:
+    <span style="color:#f92672">limits</span>:
+    	<span style="color:#f92672">cpu</span>: <span style="color:#e6db74">&#39;1&#39;</span>
+		<span style="color:#f92672">memory</span>: <span style="color:#ae81ff">96Mi</span>
+    <span style="color:#f92672">requests</span>:
+    	<span style="color:#f92672">cpu</span>: <span style="color:#ae81ff">10m</span>
+    	<span style="color:#f92672">memory</span>: <span style="color:#ae81ff">1Mi</span>
+
+</code></pre></div><h1 id="scale">Scale</h1>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/argo/' title = 'Argo' style = 'background-image: url(https://jxiaof.com/images/argo.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/k8s' class = 'post_tag'>k8s
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/argo/'>Argo</a>
+    </h3>
+    <p class = 'pale'>[toc] Templates There are several types of templates, divided into two different …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/nvidia/' title = 'Nvidia' style = 'background-image: url(https://jxiaof.com/images/nvidia.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/k8s' class = 'post_tag'>k8s
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/nvidia/'>Nvidia</a>
+    </h3>
+    <p class = 'pale'>info shell 获取显卡信息 cat /proc/driver/nvidia/gpus/{{opus}}/information 获取显卡uuid nvidia-smi -L …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

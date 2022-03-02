@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/series/golang/</link>
     <description>Recent content in golang on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 17 Dec 2020 15:55:08 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go</title>
-      <link>https://jxiaof.com/post/go/</link>
+      <link>https://jxiaof.com/go/</link>
       <pubDate>Thu, 17 Dec 2020 15:55:08 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/go/</guid>
+      <guid>https://jxiaof.com/go/</guid>
       <description>go 这里暂时不介绍go语言,这里读一篇文章. 阮一峰的网络日志 » 首页 » 档案 上一篇：科技爱好者周刊（第 1 下一篇：科技爱好者周刊（第 1 分类： 译文集 程</description>
     </item>
     

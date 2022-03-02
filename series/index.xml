@@ -5,9 +5,18 @@
     <link>https://jxiaof.com/series/</link>
     <description>Recent content in Series on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
-    <lastBuildDate>Mon, 11 Oct 2021 16:41:45 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 09 Feb 2022 12:01:21 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>grpc</title>
+      <link>https://jxiaof.com/series/grpc/</link>
+      <pubDate>Wed, 09 Feb 2022 12:01:21 +0800</pubDate>
+      
+      <guid>https://jxiaof.com/series/grpc/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>k8s</title>
       <link>https://jxiaof.com/series/k8s/</link>

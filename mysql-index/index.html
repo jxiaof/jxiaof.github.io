@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Mysql index | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Mysql Index' />
+<meta name="description" content="mysql索引 优势：可以快速检索，减少I/O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序； 劣势：索引本身也是表，因此会占用存储">
+<meta property = 'og:description' content = 'mysql索引 优势：可以快速检索，减少I/O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序； 劣势：索引本身也是表，因此会占用存储'>
+<meta property = 'og:url' content = 'https://jxiaof.com/mysql-index/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/sql.jpg'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Mysql Index' />
+<meta property = 'twitter:description'  content = 'mysql索引 优势：可以快速检索，减少I/O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序； 劣势：索引本身也是表，因此会占用存储'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/sql.jpg' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/mysql-index/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/sql.jpg);'>
+  <h1 class='post_title'>Mysql Index</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h2 id="mysql索引">mysql索引</h2>
+<ol>
+<li>优势：可以快速检索，减少I/O次数，加快检索速度；根据索引分组和排序，可以加快分组和排序；</li>
+<li>劣势：索引本身也是表，因此会占用存储空间，一般来说，索引表占用的空间的数据表的1.5倍；索引表的维护和创建需要时间成本，这个成本随着数据量增大而增大；构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表；</li>
+</ol>
+<h2 id="索引类型">索引类型</h2>
+<p>常见的索引类型有：主键索引、唯一索引、普通索引、全文索引、组合索引</p>
+<ol>
+<li>
+<p>主键索引：即主索引，根据主键pk_clolum（length）建立索引，不允许重复，不允许空值；</p>
+<blockquote>
+<p>ALTER TABLE &lsquo;table_name&rsquo; ADD PRIMARY KEY pk_index(&lsquo;col&rsquo;)；</p>
+</blockquote>
+</li>
+<li>
+<p>唯一索引：用来建立索引的列的值必须是唯一的，允许空值</p>
+<blockquote>
+<p>ALTER TABLE &lsquo;table_name&rsquo; ADD UNIQUE index_name(&lsquo;col&rsquo;)；</p>
+</blockquote>
+</li>
+<li>
+<p>普通索引：用表中的普通列构建的索引，没有任何限制</p>
+<blockquote>
+<p>ALTER TABLE &lsquo;table_name&rsquo; ADD INDEX index_name(&lsquo;col&rsquo;)；</p>
+</blockquote>
+</li>
+<li>
+<p>全文索引：用大文本对象的列构建的索引（下一部分会讲解）</p>
+<blockquote>
+<p>ALTER TABLE &lsquo;table_name&rsquo; ADD FULLTEXT INDEX ft_index(&lsquo;col&rsquo;)；</p>
+</blockquote>
+</li>
+<li>
+<p>组合索引：用多个列组合构建的索引，这多个列中的值不允许有空值</p>
+<blockquote>
+<p>ALTER TABLE &lsquo;table_name&rsquo; ADD INDEX index_name(&lsquo;col1&rsquo;,&lsquo;col2&rsquo;,&lsquo;col3&rsquo;)；
+<em>遵循“最左前缀”原则，把最常用作为检索或排序的列放在最左，依次递减，组合索引相当于建立了col1,col1col2,col1col2col3三个索引，而col2或者col3是不能使用索引的。</em></p>
+<p>在使用组合索引的时候可能因为列名长度过长而导致索引的key太大，导致效率降低，在允许的情况下，可以只取col1和col2的前几个字符作为索引ALTER TABLE &lsquo;table_name&rsquo; ADD INDEX index_name(col1(4),col（3))；
+表示使用col1的前4个字符和col2的前3个字符作为索引</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="explain命令的使用">explain命令的使用</h2>
+<p>EXPLAIN 命令的输出内容大致如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">explain</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> user_info <span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">G</span>
+<span style="color:#f92672">***************************</span> <span style="color:#ae81ff">1</span>. <span style="color:#66d9ef">row</span> <span style="color:#f92672">***************************</span>
+           id: <span style="color:#ae81ff">1</span>
+  select_type: <span style="color:#66d9ef">SIMPLE</span>
+        <span style="color:#66d9ef">table</span>: user_info
+   partitions: <span style="color:#66d9ef">NULL</span>
+         <span style="color:#66d9ef">type</span>: const
+possible_keys: <span style="color:#66d9ef">PRIMARY</span>
+          <span style="color:#66d9ef">key</span>: <span style="color:#66d9ef">PRIMARY</span>
+      key_len: <span style="color:#ae81ff">8</span>
+          <span style="color:#66d9ef">ref</span>: const
+         <span style="color:#66d9ef">rows</span>: <span style="color:#ae81ff">1</span>
+     filtered: <span style="color:#ae81ff">100</span>.<span style="color:#ae81ff">00</span>
+        Extra: <span style="color:#66d9ef">NULL</span>
+<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span>, <span style="color:#ae81ff">1</span> warning (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div><p><strong>各列的含义如下:</strong></p>
+<p>​	<code>id</code>: SELECT 查询的标识符. 每个 SELECT 都会自动分配一个唯一的标识符.</p>
+<p>​	<code>select_type</code>: SELECT 查询的类型.</p>
+<p>​	<code>table</code>: 查询的是哪个表</p>
+<p>​	<code>partitions</code>: 匹配的分区</p>
+<p>​	<code>type</code>: join 类型</p>
+<p>​	<code>possible_keys</code>: 此次查询中可能选用的索引</p>
+<p>​	<code>key</code>: 此次查询中确切使用到的索引.</p>
+<p>​	<code>ref</code>: 哪个字段或常数与 key 一起被使用</p>
+<p>​	<code>rows</code>: 显示此查询一共扫描了多少行. 这个是一个估计值.</p>
+<p>​	<code>filtered</code>: 表示此查询条件所过滤的数据的百分比</p>
+<p>​	<code>extra</code>: 额外的信息</p>
+<h2 id="补充">补充</h2>
+<p>BTree是平衡搜索多叉树，设树的度为2d（d&gt;1），高度为h，那么BTree要满足以一下条件：</p>
+<p>每个叶子结点的高度一样，等于h；
+每个非叶子结点由n-1个key和n个指针point组成，其中d&lt;=n&lt;=2d,key和point相互间隔，结点两端一定是key；
+叶子结点指针都为null；
+非叶子结点的key都是[key,data]二元组，其中key表示作为索引的键，data为键值所在行的数据；
+BTree的结构如下：</p>
+<p>在BTree的机构下，就可以使用二分查找的查找方式，查找复杂度为h*log(n)，一般来说树的高度是很小的，一般为3左右，因此BTree是一个非常高效的查找结构。</p>
+<p>B+Tree索引
+B+Tree是BTree的一个变种，设d为树的度数，h为树的高度，B+Tree和BTree的不同主要在于：</p>
+<p>B+Tree中的非叶子结点不存储数据，只存储键值；
+B+Tree的叶子结点没有指针，所有键值都会出现在叶子结点上，且key存储的键值对应data数据的物理地址；
+B+Tree的每个非叶子节点由n个键值key和n个指针point组成；</p>
+<blockquote>
+<p>大量查询字段可以添加索引</p>
+<p>类似性别,重复字段,不需要创建索引</p>
+</blockquote>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/mysql-session/' title = 'Mysql Session' style = 'background-image: url(https://jxiaof.com/images/sql.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/mysql' class = 'post_tag'>mysql
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/mysql-session/'>Mysql Session</a>
+    </h3>
+    <p class = 'pale'>分库 分库讲白了就是比如现在你有一个数据库服务器，数据库中有两张表分别是用户表和订单表。如果要分库的话现在你需要买两台机子，搞两个数据库分别放</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

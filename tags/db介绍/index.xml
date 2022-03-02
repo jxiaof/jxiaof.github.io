@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/tags/db%E4%BB%8B%E7%BB%8D/</link>
     <description>Recent content in DB介绍 on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Fri, 20 Nov 2020 02:26:39 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/db%E4%BB%8B%E7%BB%8D/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于存储的笔记</title>
-      <link>https://jxiaof.com/post/%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8/</link>
+      <link>https://jxiaof.com/%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8/</link>
       <pubDate>Fri, 20 Nov 2020 02:26:39 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8/</guid>
+      <guid>https://jxiaof.com/%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8/</guid>
       <description>存储系统科普——硬件层介绍 简介 该篇blog只是存储系列文章中的第一篇，所有文章请参考： 博客所有文章 在工程架构领域里，存储是一个非常重要的方向</description>
     </item>
     

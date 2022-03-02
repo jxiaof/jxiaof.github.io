@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/tags/redis/</link>
     <description>Recent content in redis on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 14 Oct 2020 11:11:39 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于Redis的长期更新</title>
-      <link>https://jxiaof.com/post/redis/</link>
+      <link>https://jxiaof.com/redis/</link>
       <pubDate>Wed, 14 Oct 2020 11:11:39 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/redis/</guid>
+      <guid>https://jxiaof.com/redis/</guid>
       <description>redis数据类型分析 Redis的应用场景 高速缓存 - 将不常变化但又经常被访问的热点数据放到Redis数据库中，可以大大降低关系型数据库的压力</description>
     </item>
     

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Macos使用记录 | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Macos使用记录' />
+<meta name="description" content="macos 安装 M2Crypto
+brew install openssl 
+brew install swig
+
+env LDFLAGS=&#34;-L$(brew --prefix openssl)/lib&#34; \
+CFLAGS=&#34;-I$(brew --prefix openssl) …">
+<meta property = 'og:description' content = 'macos 安装 M2Crypto
+brew install openssl 
+brew install swig
+
+env LDFLAGS=&#34;-L$(brew --prefix openssl)/lib&#34; \
+CFLAGS=&#34;-I$(brew --prefix openssl) …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/macos%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/artist.jpg'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Macos使用记录' />
+<meta property = 'twitter:description'  content = 'macos 安装 M2Crypto
+brew install openssl 
+brew install swig
+
+env LDFLAGS=&#34;-L$(brew --prefix openssl)/lib&#34; \
+CFLAGS=&#34;-I$(brew --prefix openssl) …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/artist.jpg' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/macos%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/artist.jpg);'>
+  <h1 class='post_title'>Macos使用记录</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><p>macos 安装 M2Crypto</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install openssl 
+brew install swig
+
+env LDFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-L</span><span style="color:#66d9ef">$(</span>brew --prefix openssl<span style="color:#66d9ef">)</span><span style="color:#e6db74">/lib&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>CFLAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-I</span><span style="color:#66d9ef">$(</span>brew --prefix openssl<span style="color:#66d9ef">)</span><span style="color:#e6db74">/include&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>SWIG_FEATURES<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-cpperraswarn -includeall -I</span><span style="color:#66d9ef">$(</span>brew --prefix openssl<span style="color:#66d9ef">)</span><span style="color:#e6db74">/include&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>pip install m2crypto
+</code></pre></div><p>解决homebrew被占用的问题</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf /usr/local/var/homebrew/locks
+</code></pre></div><h1 id="解决macos-mojave10146-ssh连接断开问题">解决macOS Mojave(10.14.6) SSH连接断开问题</h1>
+<p>在使用SSH客户端进行连接管理的时候如果长时间不输入命令， 服务器会自动断开连接， <code>macOS Mojave(10.14.6) </code>系统上问题比较严重，即时服务端一直发送数据，也会出现连接中断的情况，导致长时间执行的远程 <code>Shell</code> 会大概率失败。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 如果全局所有用户都有效，则调整如下文件$ sudo vim /etc/ssh/ssh_config </span>
+<span style="color:#75715e"># 如果仅仅当前用户都有效，则调整如下文件# vim ~/.ssh/config</span>
+</code></pre></div><p>然后在配置文件尾部，增加如下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Host *    SendEnv LANG LC_*     
+<span style="color:#75715e"># macOS Mojave 需要设置为 no 否则照样会断开     </span>
+TCPKeepAlive no     <span style="color:#75715e"># 客户端每隔 60S 发送一个空报文    </span>
+ServerAliveInterval <span style="color:#ae81ff">60</span>     <span style="color:#75715e"># macOS Mojave 需要增加，原因在于Qos检测命令不被对端支持，导致连接丢失    </span>
+<span style="color:#75715e"># packet_write_wait: Connection to 10.10.10.111 port 22: Broken pipe    IPQoS lowdelay throughput</span>
+</code></pre></div><p>同时，对于超长时间的SSH监控，需要设置屏幕关闭时不要让电脑休眠，否则依旧会断开，原因在于对端发送数据的时候，电脑休眠，对于长时间的空连接是没问题的，但是对于数据频繁发送的情况，是必须阻止电脑休眠的。如下图：</p>
+<p><a href="https://www.mobibrw.com/wp-content/uploads/2019/08/PowerSave.png"><img src="https://www.mobibrw.com/wp-content/uploads/2019/08/PowerSave-400x316.png" alt="img"></a></p>
+<h1 id="macos浏览器字符集">macos浏览器字符集</h1>
+<p>safari浏览器在编程使用中,有一定几率出现字符集问题:主要就是</p>
+<p><img src="https://gitee.com/felix_web/images/raw/master/uPic/image-20201219143800109.png" alt="image-20201219143800109"></p>
+<p>更改浏览器字符集为utf-8,可以解决此类问题.
+<img src="https://jxiaof.com/Users/jiangxiaofan/Library/Application%20Support/typora-user-images/image-20201219143656441.png" alt="image-20201219143656441"></p>
+<p>Pip更新错误,导致pip不可以使用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python -m ensurepip <span style="color:#f92672">&amp;&amp;</span> python -m pip install --upgrade pip
+</code></pre></div><h1 id="brew">brew</h1>
+<p>添加源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>更新 Homebrew 自己：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew update
+</code></pre></div><p>查看哪些安装包需要更新：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew outdated
+</code></pre></div><p>更新：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew upgrade             <span style="color:#75715e"># 更新所有的包</span>
+brew upgrade $FORMULA    <span style="color:#75715e"># 更新指定的包</span>
+</code></pre></div><p>清理旧版本：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew cleanup             <span style="color:#75715e"># 清理所有包的旧版本</span>
+brew cleanup $FORMULA    <span style="color:#75715e"># 清理指定包的旧版本</span>
+brew cleanup -n          <span style="color:#75715e"># 查看可清理的旧版本包，不执行实际操作</span>
+</code></pre></div><p>锁定不想更新的包：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew pin $FORMULA      <span style="color:#75715e"># 锁定某个包</span>
+brew unpin $FORMULA    <span style="color:#75715e"># 取消锁定</span>
+</code></pre></div><p>查看安装包的相关信息：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew info $FORMULA    <span style="color:#75715e"># 显示某个包的信息</span>
+brew info             <span style="color:#75715e"># 显示安装了包数量，文件数量，和总占用空间</span>
+brew deps --installed --tree <span style="color:#75715e"># 查看已安装的包的依赖，树形显示</span>
+</code></pre></div><h1 id="其他">其他</h1>
+<p>列出已安装包</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">brew list
+</code></pre></div><p>删除</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew rm $FORMULA                <span style="color:#75715e"># 删除某个包</span>
+brew uninstall --force $FORMULA <span style="color:#75715e"># 删除所有版本</span>
+</code></pre></div><h4 id="参考链接"><strong>参考链接</strong></h4>
+<hr>
+<ul>
+<li><a href="http://www.mobibrw.com/?p=14741">Linux SSH保持连接（解决Broken pipe）</a></li>
+<li><a href="https://blog.csdn.net/weixin_34354945/article/details/93170011">mac上如何设置ssh不断掉，并且session保持</a></li>
+<li><a href="http://www.kbase101.com/question/4282.html">由于AppArmor，MySQL无法启动？</a></li>
+<li><a href="http://www.yellow-bricks.com/2018/11/26/ssh-broken-pipe-osx/">SSH on OSX Mojave failing with broken pipe error</a></li>
+<li><a href="https://medium.com/@prolixalias/vmware-fusion-11-0-0-macos-10-14-2-ssh-commands-git-in-my-case-throwing-broken-pipe-errors-8d08937dde89">VMware Fusion 11.0.0 + MacOS 10.14.2 — SSH commands (git in my case) throwing: ‘Broken pipe’ errors</a></li>
+<li><a href="https://communities.vmware.com/message/2778248#2778248">SSH connections dropped due to QoS flags</a></li>
+<li><a href="https://lvii.github.io/system/2018-08-31-openssh-7.8p1-broken-pipe-under-vmware-vm-with-nat-port-forward/">升级到 openssh 7.8p1 后 ssh 连接报错 packet_write_wait: Broken pipe</a></li>
+<li><a href="https://superuser.com/questions/1373697/ssh-fails-on-macos-mojave-10-14-1">SSH fails on macOS Mojave 10.14.1</a></li>
+<li><a href="https://www.jianshu.com/p/cf0d465dc648">防止macOS休眠断网的另类方法</a></li>
+<li><a href="https://www.jianshu.com/p/6f650badc462">brew使用</a></li>
+</ul>
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

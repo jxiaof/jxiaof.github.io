@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Python asyncio | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Python Asyncio' />
+<meta name="description" content="协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程">
+<meta property = 'og:description' content = '协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程'>
+<meta property = 'og:url' content = 'https://jxiaof.com/python-asyncio/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/python.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Python Asyncio' />
+<meta property = 'twitter:description'  content = '协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/python.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/python-asyncio/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/python.png);'>
+  <h1 class='post_title'>Python Asyncio</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h2 id="协程描述">协程描述</h2>
+<p><strong>协程，又称微线程，英文名<code>Coroutine</code></strong>，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程的切换不同于线程切换，是由程序自身控制的，没有切换的开销。协程不需要多线程的锁机制，因为都是在同一个线程中运行，所以没有同时访问数据的问题，执行效率比多线程高很多。</p>
+<p>Python中的协程经历了很长的一段发展历程。最初的生成器<code>yield</code>和<code>send()</code>语法，然后在Python3.4中加入了<code>asyncio</code>模块，引入<code>@asyncio.coroutine</code>装饰器和<code>yield from</code>语法，在Python3.5上又提供了<code>async/await</code>语法，目前正式发布的Python3.6中<code>asynico</code>也由临时版改为了稳定版。</p>
+<p>描述如下:</p>
+<p><strong>进程/线程：操作系统提供的一种并发处理任务的能力。</strong></p>
+<p><strong>协程：程序员通过高超的代码能力，在代码执行流程中人为的实现多任务并发，是单个线程内的任务调度技巧。</strong></p>
+<p><strong>网上的一个经典例子:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task1</span>():
+    <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;&lt;甲&gt;也累了，让&lt;乙&gt;工作一会儿&#34;</span>
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;&lt;甲&gt;工作了一段时间.....&#34;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task2</span>(t):
+    next(t)
+    <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-----------------------------------&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;&lt;乙&gt;工作了一段时间.....&#34;</span>)
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;&lt;乙&gt;累了，让&lt;甲&gt;工作一会儿....&#34;</span>)
+        ret <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span>send(None)
+        <span style="color:#66d9ef">print</span>(ret)
+    t<span style="color:#f92672">.</span>close()
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    t <span style="color:#f92672">=</span> task1()
+    task2(t)
+    
+</code></pre></div><p><strong>再理解第二个:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">consumer</span>(name):
+
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">准备开始消费...&#34;</span><span style="color:#f92672">%</span>name)
+
+    <span style="color:#66d9ef">while</span> True:
+        goods <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span>
+        <span style="color:#66d9ef">if</span> goods <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;q&#34;</span>:
+            <span style="color:#66d9ef">break</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> 消费 </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(name, goods))
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">produce</span>(<span style="color:#f92672">*</span>consumers):
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+        goods <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;馒头[</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">]&#34;</span><span style="color:#f92672">%</span>i;
+        <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> consumers:
+            c<span style="color:#f92672">.</span>send(goods)
+
+c1 <span style="color:#f92672">=</span> consumer(<span style="color:#e6db74">&#34;张飞&#34;</span>)
+c2 <span style="color:#f92672">=</span> consumer(<span style="color:#e6db74">&#34;李逵&#34;</span>)
+next(c1)
+next(c2)
+produce(c1, c2)
+</code></pre></div><h2 id="协程状态">协程状态</h2>
+<p>协程可以处于下面四个状态中的一个。当前状态可以导入inspect模块，使用inspect.getgeneratorstate(…) 方法查看，该方法会返回下述字符串中的一个。</p>
+<ul>
+<li>‘GEN_CREATED’　　等待开始执行。</li>
+<li>‘GEN_RUNNING’　　协程正在执行。</li>
+<li>‘GEN_SUSPENDED’ 在yield表达式处暂停。</li>
+<li>‘GEN_CLOSED’ 　　执行结束。</li>
+</ul>
+<p>因为send()方法的参数会成为暂停的yield表达式的值，所以，仅当协程处于暂停状态时才能调用 send()方法，例如<code>my_coro.send(10)</code>。不过，如果协程还没激活（状态是<code>'GEN_CREATED'</code>），就立即把None之外的值发给它，会出现TypeError。因此，始终要先调用<code>next(my_coro)</code>激活协程（也可以调用<code>my_coro.send(None)</code>），这一过程被称作预激活。</p>
+<p>除了send()方法，其实还有throw()和close()方法：</p>
+<ul>
+<li>generator.throw(exc_type[, exc_value[, traceback]])</li>
+</ul>
+<p>使生成器在暂停的yield表达式处抛出指定的异常。如果生成器处理了抛出的异常，代码会向前执行到下一个yield表达式，而产出的值会成为调用<code>generator.throw()</code>方法得到的返回值。如果生成器没有处理抛出的异常，异常会向上冒泡，传到调用方的上下文中。</p>
+<ul>
+<li>generator.close()</li>
+</ul>
+<p>使生成器在暂停的yield表达式处抛出<code>GeneratorExit</code>异常。如果生成器没有处理这个异常，或者抛出了<code>StopIteration</code>异常（通常是指运行到结尾），调用方不会报错。如果收到<code>GeneratorExit</code>异常，生成器一定不能产出值，否则解释器会抛出<code>RuntimeError</code>异常。生成器抛出的其他异常会向上冒泡，传给调用方。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> inspect
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">simple_coroutine</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;-&gt; 启动协程&#39;</span>)
+    <span style="color:#66d9ef">while</span> True:
+        y <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+        x <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span> y
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;-&gt; 协程接收到了x的值:&#39;</span>, x)
+
+my_coro <span style="color:#f92672">=</span> simple_coroutine()
+<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+ret <span style="color:#f92672">=</span> next(my_coro)
+<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+<span style="color:#66d9ef">print</span>(ret)
+my_coro<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">10</span>)
+<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+<span style="color:#75715e"># my_coro.throw(ValueError(&#34;hello error !&#34;))  # ValueError: hello error !</span>
+my_coro<span style="color:#f92672">.</span>close()
+<span style="color:#66d9ef">print</span>(inspect<span style="color:#f92672">.</span>getgeneratorstate(my_coro))
+
+
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">GEN_CREATED
+</span><span style="color:#e6db74">-&gt; 启动协程
+</span><span style="color:#e6db74">GEN_SUSPENDED
+</span><span style="color:#e6db74">10
+</span><span style="color:#e6db74">-&gt; 协程接收到了x的值: 10
+</span><span style="color:#e6db74">GEN_SUSPENDED
+</span><span style="color:#e6db74">GEN_CLOSED
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</code></pre></div><h2 id="yield-from">yield from</h2>
+<p><strong>yield from 其实就是等待另外一个协程的返回,也有人说这是一种另类的for循环</strong></p>
+<p>我写了一个这样的例子, 看看返回结果就理解了:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
+    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">yield</span> i
+        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;world&#34;</span>)  
+        
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bar</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
+    <span style="color:#66d9ef">yield</span> <span style="color:#f92672">from</span> foo()
+          
+b <span style="color:#f92672">=</span> bar()
+<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+    <span style="color:#66d9ef">print</span>(next(b))
+    
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">hello
+</span><span style="color:#e6db74">0
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">1
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">2
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">3
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">4
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">5
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">6
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">7
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">8
+</span><span style="color:#e6db74">world
+</span><span style="color:#e6db74">9
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</code></pre></div><hr>
+<h2 id="asyncio">asyncio</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> asyncio
+
+
+async <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(future):
+    await asyncio<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+    future<span style="color:#f92672">.</span>set_result(<span style="color:#e6db74">&#39;Future is done!&#39;</span>)
+
+loop <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>get_event_loop()
+future <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>Future()
+asyncio<span style="color:#f92672">.</span>ensure_future(func(future))
+<span style="color:#66d9ef">print</span>(loop<span style="color:#f92672">.</span>is_running())  <span style="color:#75715e"># 查看当前状态时循环是否已经启动</span>
+loop<span style="color:#f92672">.</span>run_until_complete(future)
+<span style="color:#66d9ef">print</span>(future<span style="color:#f92672">.</span>result())
+loop<span style="color:#f92672">.</span>close()
+</code></pre></div><blockquote>
+<p>Ipython 和 Jupiter nootbook. 出现异常: RuntimeError: This event loop is already running</p>
+<p>这个问题在GitHub上已经有人提过了： “RuntimeError: This event loop is already running”; debugging aiohttp, asyncio and IDE “spyder3” in python 3.6.5 · Issue #7096 · spyder-ide/spyder async support by minrk · Pull Request #323 · ipython/ipykernel 问题出现的原因是IPython/ipykernel不支持asyncio</p>
+</blockquote>
+<p>asyncio代码建议pycharm下运行</p>
+<p>先更新到这里,后续再继续更新!</p>
+<hr>
+<p>参考如下:</p>
+<p><a href="https://www.liujiangblog.com/course/python/83">https://www.liujiangblog.com/course/python/83</a></p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/' title = 'python多任务处理' style = 'background-image: url(https://jxiaof.com/images/read.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97' class = 'post_tag'>并行计算
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/%E5%85%B3%E4%BA%8Epython%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/'>python多任务处理</a>
+    </h3>
+    <p class = 'pale'><h2 id="多任务有多进程-多线程以及异步协程">多任务有：多进程 多线程以及异步协程。</h2>
+<p>平时多任务我们会使用 mutilprocess 或者threading 模块 甚至 gvent加上monkey_patch补丁，实现多任务运 …</p></p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

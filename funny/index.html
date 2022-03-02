@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Funny | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Funny' />
+<meta name="description" content="some funny code
+
+记录有趣的代码
+记录灵性的想法
+记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)
+">
+<meta property = 'og:description' content = 'some funny code
+
+记录有趣的代码
+记录灵性的想法
+记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)
+'>
+<meta property = 'og:url' content = 'https://jxiaof.com/funny/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/programmer.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Funny' />
+<meta property = 'twitter:description'  content = 'some funny code
+
+记录有趣的代码
+记录灵性的想法
+记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)
+'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/programmer.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/funny/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/programmer.png);'>
+  <h1 class='post_title'>Funny</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h1 id="some-funny-code">some funny code</h1>
+<ul>
+<li>记录有趣的代码</li>
+<li>记录灵性的想法</li>
+<li>记录王多鱼的投资项目(这个项目王多鱼必定投资,手动狗头!)</li>
+</ul>
+<p>一、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2
+<span style="color:#f92672">from</span> cv2 <span style="color:#f92672">import</span> VideoWriter, VideoWriter_fourcc, imread, resize
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> subprocess <span style="color:#f92672">import</span> call
+img_root <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/Users/jiangxiaofan/Downloads/image/&#39;</span>
+out_root <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/Users/jiangxiaofan/Downloads/image/PeppaPig.avi&#39;</span>
+fps <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>   <span style="color:#75715e">#帧率</span>
+size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1280</span>,<span style="color:#ae81ff">720</span>)
+fourcc <span style="color:#f92672">=</span> VideoWriter_fourcc(<span style="color:#f92672">*</span><span style="color:#e6db74">&#34;MJPG&#34;</span>)  <span style="color:#75715e">#支持jpg</span>
+videoWriter <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>VideoWriter(out_root, fourcc, fps, size)
+im_names <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(img_root)
+<span style="color:#66d9ef">print</span>(len(im_names))
+<span style="color:#66d9ef">for</span> im_name <span style="color:#f92672">in</span> range(len(im_names) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>):
+    string <span style="color:#f92672">=</span> img_root <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;frame&#39;</span> <span style="color:#f92672">+</span> str(im_name) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.jpg&#39;</span>
+    <span style="color:#66d9ef">print</span>(string)
+    frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(string)
+    frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>resize(frame, size)   <span style="color:#75715e">#注意这里resize大小要和视频的一样</span>
+    videoWriter<span style="color:#f92672">.</span>write(frame)
+videoWriter<span style="color:#f92672">.</span>release()
+dir <span style="color:#f92672">=</span> out_root<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">&#34;.avi&#34;</span>)
+command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ffmpeg -i </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.avi </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.mp4&#34;</span> <span style="color:#f92672">%</span> (dir, dir)   <span style="color:#75715e">#使用ffmped将avi压缩为mp4,注意两个的路径</span>
+call(command<span style="color:#f92672">.</span>split())
+</code></pre></div><p>二 查看某文件记录</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># findrobots.py</span>
+
+<span style="color:#f92672">import</span> gzip
+<span style="color:#f92672">import</span> io
+<span style="color:#f92672">import</span> glob
+<span style="color:#f92672">from</span> concurrent <span style="color:#f92672">import</span> futures
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_robots</span>(filename):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    Find all of the hosts that access robots.txt in a single log file
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    robots <span style="color:#f92672">=</span> set()
+    <span style="color:#66d9ef">with</span> gzip<span style="color:#f92672">.</span>open(filename) <span style="color:#66d9ef">as</span> f:
+        <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> io<span style="color:#f92672">.</span>TextIOWrapper(f,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ascii&#39;</span>):
+            fields <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>split()
+            <span style="color:#66d9ef">if</span> fields[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/robots.txt&#39;</span>:
+                robots<span style="color:#f92672">.</span>add(fields[<span style="color:#ae81ff">0</span>])
+    <span style="color:#66d9ef">return</span> robots
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_all_robots</span>(logdir):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    Find all hosts across and entire sequence of files
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    files <span style="color:#f92672">=</span> glob<span style="color:#f92672">.</span>glob(logdir<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;/*.log.gz&#39;</span>)
+    all_robots <span style="color:#f92672">=</span> set()
+    <span style="color:#66d9ef">with</span> futures<span style="color:#f92672">.</span>ProcessPoolExecutor() <span style="color:#66d9ef">as</span> pool:
+        <span style="color:#66d9ef">for</span> robots <span style="color:#f92672">in</span> pool<span style="color:#f92672">.</span>map(find_robots, files):
+            all_robots<span style="color:#f92672">.</span>update(robots)
+    <span style="color:#66d9ef">return</span> all_robots
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    robots <span style="color:#f92672">=</span> find_all_robots(<span style="color:#e6db74">&#39;logs&#39;</span>)
+    <span style="color:#66d9ef">for</span> ipaddr <span style="color:#f92672">in</span> robots:
+        <span style="color:#66d9ef">print</span>(ipaddr)
+</code></pre></div><p>三 查看临时文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
+
+
+<span style="color:#66d9ef">with</span> TemporaryDirectory(suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;_tempdir&#39;</span>, dir<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>getcwd()) <span style="color:#66d9ef">as</span> dirname:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;dirname is:&#39;</span>, dirname)
+    path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), dirname))
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;the path is:&#39;</span>, dirname)
+</code></pre></div><p>四 压缩文件处理</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> zipfile
+<span style="color:#f92672">import</span> io
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> cv2
+<span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> TemporaryDirectory
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://localhost:9999/Desktop/test.zip&#39;</span>
+    <span style="color:#75715e"># url = &#34;https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg&#34;</span>
+    r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+    check <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>is_zipfile(io<span style="color:#f92672">.</span>BytesIO(r<span style="color:#f92672">.</span>content))
+    <span style="color:#66d9ef">print</span>(check)
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> check:
+        <span style="color:#66d9ef">if</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
+            result <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>content
+            <span style="color:#66d9ef">print</span>(type(result))
+            image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imdecode(np<span style="color:#f92672">.</span>frombuffer(result, dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uint8&#39;</span>), <span style="color:#ae81ff">1</span>)
+            plt<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>)
+            plt<span style="color:#f92672">.</span>xticks([]), plt<span style="color:#f92672">.</span>yticks([])  <span style="color:#75715e"># to hide tick values on X and Y axis</span>
+            plt<span style="color:#f92672">.</span>show()
+            <span style="color:#66d9ef">return</span> image
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>
+    <span style="color:#66d9ef">else</span>:
+        z <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>ZipFile(io<span style="color:#f92672">.</span>BytesIO(r<span style="color:#f92672">.</span>content))
+        img_names <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;.png&#39;</span>, <span style="color:#e6db74">&#39;.jpeg&#39;</span>, <span style="color:#e6db74">&#39;.jpg&#39;</span>)  <span style="color:#75715e"># gif, tif, psd, dng, cr2, net</span>
+        file_names <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> z<span style="color:#f92672">.</span>namelist() <span style="color:#66d9ef">if</span> i<span style="color:#f92672">.</span>lower()<span style="color:#f92672">.</span>endswith(img_names)]
+        <span style="color:#66d9ef">print</span>(file_names)
+        <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> file_names:
+            <span style="color:#66d9ef">with</span> z<span style="color:#f92672">.</span>open(name) <span style="color:#66d9ef">as</span> f:
+                image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imdecode(np<span style="color:#f92672">.</span>frombuffer(f<span style="color:#f92672">.</span>read(), dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uint8&#39;</span>), <span style="color:#ae81ff">1</span>)
+                <span style="color:#66d9ef">if</span> image <span style="color:#f92672">is</span> None:
+                    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> name: {name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+                    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-*-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>)
+                <span style="color:#75715e"># cv2.imshow(&#34;custom_image&#34;, image)</span>
+                <span style="color:#75715e"># cv2.waitKey(0)</span>
+                plt<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, interpolation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bicubic&#39;</span>)
+                plt<span style="color:#f92672">.</span>xticks([]), plt<span style="color:#f92672">.</span>yticks([])  <span style="color:#75715e"># to hide tick values on X and Y axis</span>
+                plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p>5.编码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*-coding:utf-8 -*-</span>
+CHARS <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&#34;</span>
+ENUM_CHARS <span style="color:#f92672">=</span> {v: k <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> enumerate(CHARS)}
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UrlSuffix</span>(object):
+    chars <span style="color:#f92672">=</span> CHARS
+    enum_chars <span style="color:#f92672">=</span> ENUM_CHARS
+
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>decode <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: sum([self<span style="color:#f92672">.</span>enum_chars[j] <span style="color:#f92672">*</span> <span style="color:#ae81ff">64</span> <span style="color:#f92672">**</span> i <span style="color:#66d9ef">for</span> i, j <span style="color:#f92672">in</span> enumerate(x[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])])
+        self<span style="color:#f92672">.</span>encode <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>chars[x <span style="color:#f92672">%</span> <span style="color:#ae81ff">64</span>] <span style="color:#66d9ef">if</span> x <span style="color:#f92672">//</span> <span style="color:#ae81ff">64</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>encode(x <span style="color:#f92672">//</span> <span style="color:#ae81ff">64</span>) <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>chars[x <span style="color:#f92672">%</span> <span style="color:#ae81ff">64</span>]
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    g <span style="color:#f92672">=</span> UrlSuffix()
+    <span style="color:#66d9ef">print</span>(g<span style="color:#f92672">.</span>encode(<span style="color:#ae81ff">123</span>))
+    <span style="color:#66d9ef">print</span>(g<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;44&#34;</span>))
+</code></pre></div><p>6.临时文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> tempfile <span style="color:#f92672">import</span> NamedTemporaryFile
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> pathlib
+<span style="color:#f92672">import</span> pytools.ks3    
+    
+    <span style="color:#75715e"># with time_block(&#34;上传ks3耗时&#34;):</span>
+        <span style="color:#75715e">#     with NamedTemporaryFile(prefix=&#39;sod_&#39;, suffix=&#39;.png&#39;, dir=&#39;/tmp&#39;) as f:</span>
+        <span style="color:#75715e">#         logger.debug(f.name)</span>
+        <span style="color:#75715e">#         cv2.imwrite(f.name, im_RGBA)</span>
+        <span style="color:#75715e">#         logger.debug(f&#39;Temp_file exists : {pathlib.Path(f.name).exists()}&#39;)</span>
+        <span style="color:#75715e">#         logger.debug(&#34;保存成功!&#34;)</span>
+        <span style="color:#75715e">#         # self.eff_dir = asyncio.run(pytools.ks3.aio_upload_ks3(input_path=f.name, ns=env.ks3_ns, expire_min=env.expire_min))</span>
+        <span style="color:#75715e">#         self.eff_dir = asyncio.run(self.upload_to_ks3(f.name))</span>
+        <span style="color:#75715e">#         logger.info(&#34;上传ks3成功!&#34;)</span>
+        <span style="color:#75715e">#     logger.debug(f&#39;Temp_file exists after close: {pathlib.Path(f.name).exists()}&#39; )</span>
+</code></pre></div><p>7.打包.so文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> shutil
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> distutils.core <span style="color:#f92672">import</span> setup
+
+<span style="color:#f92672">from</span> Cython.Build <span style="color:#f92672">import</span> cythonize
+
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+curr_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#39;.&#39;</span>)
+parent_path <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;&#34;</span>
+setup_file <span style="color:#f92672">=</span> __file__<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;/&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span>)
+build_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;build&#34;</span>
+build_tmp_dir <span style="color:#f92672">=</span> build_dir <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/temp&#34;</span>
+
+s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;# cython: language_level=3&#34;</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_py</span>(base_path<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#39;.&#39;</span>), parent_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, excepts<span style="color:#f92672">=</span>(), copyOther<span style="color:#f92672">=</span>False, delC<span style="color:#f92672">=</span>False):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    获取py文件的路径
+</span><span style="color:#e6db74">    :param base_path: 根路径
+</span><span style="color:#e6db74">    :param parent_path: 父路径
+</span><span style="color:#e6db74">    :param excepts: 排除文件
+</span><span style="color:#e6db74">    :return: py文件的迭代器
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    full_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(base_path, parent_path, name)
+    <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(full_path):
+        full_filename <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(full_path, filename)
+        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(full_filename) <span style="color:#f92672">and</span> filename <span style="color:#f92672">!=</span> build_dir <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> filename<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;.&#39;</span>):
+            <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> get_py(base_path, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(parent_path, name), filename, excepts, copyOther, delC):
+                <span style="color:#66d9ef">yield</span> f
+        <span style="color:#66d9ef">elif</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(full_filename):
+            ext <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">if</span> ext <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;.c&#34;</span>:
+                <span style="color:#66d9ef">if</span> delC <span style="color:#f92672">and</span> os<span style="color:#f92672">.</span>stat(full_filename)<span style="color:#f92672">.</span>st_mtime <span style="color:#f92672">&gt;</span> start_time:
+                    os<span style="color:#f92672">.</span>remove(full_filename)
+            <span style="color:#66d9ef">elif</span> full_filename <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> excepts <span style="color:#f92672">and</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;.pyc&#39;</span>, <span style="color:#e6db74">&#39;.pyx&#39;</span>):
+                <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(filename)[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;.py&#39;</span>, <span style="color:#e6db74">&#39;.pyx&#39;</span>) <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> filename<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;__&#39;</span>):
+                    path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(parent_path, name, filename)
+                    <span style="color:#66d9ef">yield</span> path
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">pass</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pack_pyd</span>():
+    <span style="color:#75715e"># 获取py列表</span>
+    module_list <span style="color:#f92672">=</span> list(get_py(base_path<span style="color:#f92672">=</span>curr_dir, parent_path<span style="color:#f92672">=</span>parent_path, excepts<span style="color:#f92672">=</span>(setup_file,)))
+    <span style="color:#66d9ef">try</span>:
+        setup(
+            ext_modules<span style="color:#f92672">=</span>cythonize(module_list, compiler_directives<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;language_level&#39;</span>: <span style="color:#e6db74">&#34;3&#34;</span>}),
+            script_args<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;build_ext&#34;</span>, <span style="color:#e6db74">&#34;-b&#34;</span>, build_dir, <span style="color:#e6db74">&#34;-t&#34;</span>, build_tmp_dir],
+        )
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> ex:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;error! &#34;</span>, str(ex))
+    <span style="color:#66d9ef">else</span>:
+        module_list <span style="color:#f92672">=</span> list(get_py(base_path<span style="color:#f92672">=</span>curr_dir, parent_path<span style="color:#f92672">=</span>parent_path, excepts<span style="color:#f92672">=</span>(setup_file,), copyOther<span style="color:#f92672">=</span>True))
+
+    module_list <span style="color:#f92672">=</span> list(get_py(base_path<span style="color:#f92672">=</span>curr_dir, parent_path<span style="color:#f92672">=</span>parent_path, excepts<span style="color:#f92672">=</span>(setup_file,), delC<span style="color:#f92672">=</span>True))
+    <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(build_tmp_dir):
+        shutil<span style="color:#f92672">.</span>rmtree(build_tmp_dir)
+
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;complate! time:&#34;</span>, time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time, <span style="color:#e6db74">&#39;s&#39;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_c</span>(path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.&#39;</span>, excepts<span style="color:#f92672">=</span>(setup_file,)):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    删除编译过程中生成的.c文件
+</span><span style="color:#e6db74">    :param path:
+</span><span style="color:#e6db74">    :param excepts:
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    dirs <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(path)
+    <span style="color:#66d9ef">for</span> dir <span style="color:#f92672">in</span> dirs:
+        new_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(path, dir)
+        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(new_dir):
+            ext <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(new_dir)[<span style="color:#ae81ff">1</span>]
+            <span style="color:#66d9ef">if</span> ext <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.c&#39;</span>:
+                os<span style="color:#f92672">.</span>remove(new_dir)
+        <span style="color:#66d9ef">elif</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(new_dir):
+            delete_c(new_dir)
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#66d9ef">try</span>:
+        pack_pyd()
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        <span style="color:#66d9ef">print</span>(str(e))
+    <span style="color:#66d9ef">finally</span>:
+        delete_c()
+
+</code></pre></div>
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

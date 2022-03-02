@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Devops数据平台设计 | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'devops数据平台设计' />
+<meta name="description" content="数据平台开发初衷
+数据平台就是对于数据的处理和应用">
+<meta property = 'og:description' content = '数据平台开发初衷
+数据平台就是对于数据的处理和应用'>
+<meta property = 'og:url' content = 'https://jxiaof.com/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/small.jpg'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'devops数据平台设计' />
+<meta property = 'twitter:description'  content = '数据平台开发初衷
+数据平台就是对于数据的处理和应用'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/small.jpg' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/small.jpg);'>
+  <h1 class='post_title'>devops数据平台设计</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h1 id="数据平台开发初衷">数据平台开发初衷</h1>
+<p>数据平台就是对于数据的处理和应用</p>
+<ol>
+<li>快捷查看应用资源占用情况(主机资源, 网络资源, 存储资源等).</li>
+<li>快捷查看公司资源分布图.</li>
+<li>快捷分析资源流式计算.</li>
+<li><strong>目标: 数据平台需要承受大量数据,高请求量,提供快捷查询展示以及流式计算服务.</strong></li>
+</ol>
+
+
+
+
+<div class="hugo-encryptor-container">
+  <div class="hugo-encryptor-prompt">
+    
+      <p>文章的部分内容被密码保护：</p>
+    
+  </div>
+  <div class="hugo-encryptor-form">
+    <input
+      class="hugo-encryptor-input"
+      placeholder='请输入密码'
+    />
+    <input
+      class="hugo-encryptor-button"
+      type="button"
+      value='点击验证'
+      onclick="_click_handler(this)"
+    />
+  </div>
+  <div
+    class="hugo-encryptor-cipher-text"
+    data-password="admin23"
+    style="display: none;"
+  >
+    <span style="display: none;">--- DON'T MODIFY THIS LINE ---</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">数据平台-&gt;运维各部门:   提 供 实 时 报 表  与 数 据 分 析
+Note right of 运维各部门: 循环
+运维各部门--&gt;数据平台: 提 供 实 时 数 据
+</code></pre></div><p>示意图:</p>
+<p><img src="https://i.loli.net/2020/11/17/MOQp7GtIgcWmL21.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/11/17/9dr6oTH4utez1Rw.png" alt="preview"></p>
+<hr>
+<h1 id="项目方案">项目方案</h1>
+<p><strong>产品构思</strong></p>
+<ol>
+<li>选用grafana 或 ELK 作为数据展示工具(现有成熟方案进行展示与自有平台开发)</li>
+<li>开发python时序数据库展示平台,数据平台作为依托,打造运维平台新型数据管理展示分析平台.</li>
+<li>产品原型设计,参考 <strong>百度统计</strong> 以及 <strong>谷歌分析</strong> 两大分析网站设计.</li>
+<li>后期技术选型: flask + vue + element + echart (暂定)</li>
+</ol>
+<p><strong>元数据</strong></p>
+<p><img src="https://i.loli.net/2020/11/18/hj34iKkUyerSXFf.png" alt="img"></p>
+<p><strong>待建设内容如下所示:</strong></p>
+<ul>
+<li>数据内容搜集</li>
+<li>功能指标模块建设</li>
+<li>角色权限控制</li>
+</ul>
+<p><strong>整体流程图如下所示:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% 过程图
+  sequenceDiagram
+    MateDate-&gt;&gt;grafana: 传送数据
+    alt 使用echarts图表
+    MateDate-&gt;&gt;echarts: 传送数据
+    echarts-&gt;&gt;viewer: 定制图表计算输出图表
+    else 使用kibana &amp; grafana
+    MateDate-&gt;&gt;grafana: 传送数据
+    grafana-&gt;&gt;viewer: 直接展示输出图表
+    end
+    opt 其他 mysql / redis
+    MateDate-&gt;&gt;viewer: 直接返回列表数据
+    end
+</code></pre></div><h2 id="架构选型与评比">架构选型与评比</h2>
+<p><strong>某公司系统架构</strong></p>
+<p><img src="https://i.loli.net/2020/11/17/KSxZfPUMtQ1dyFH.jpg" alt="img"></p>
+<p><strong>我公司现有的RDS存储方案架构</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">graph LR
+A[appmonitor ] --&gt;B(Kafka)
+    B --&gt; C{写入器}
+    C --&gt;| | D[ ClickHouse ] 
+    C --&gt;| | E[ ElasticSearch ]
+</code></pre></div><p><img src="https://i.loli.net/2020/11/16/v39Ut4FOP7wHifn.png" alt="image-20201116163921586"></p>
+<p><strong>数据平台初步使用RDS架构存储架构</strong></p>
+<p><img src="https://i.loli.net/2020/11/17/JhHzUnVkcv37NbS.png" alt="img"></p>
+<p><strong>数据采集以及元数据消费流程</strong></p>
+<p><img src="https://i.loli.net/2020/11/16/A1bxztuniRZIKad.png" alt="img"></p>
+<hr>
+<h2 id="clickhouse驱动选择">clickhouse驱动选择</h2>
+<ol>
+<li>clickhouse-driver 示例</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>driver
+
+<span style="color:#f92672">from</span> clickhouse_driver <span style="color:#f92672">import</span> Client
+client <span style="color:#f92672">=</span> Client(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,port<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;9000&#39;</span>,user<span style="color:#f92672">=</span>clickhouse_user ,password<span style="color:#f92672">=</span>clickhouse_pwd)
+sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;select * from db_name.tb_name limit 0, 1000&#39;</span>
+ans <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>execute(sql)
+</code></pre></div><ol start="2">
+<li>clickhouse-Sqlalchemy 示例</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>sqlalchemy
+
+<span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine, Column, MetaData, literal
+<span style="color:#f92672">from</span> clickhouse_sqlalchemy <span style="color:#f92672">import</span> Table, make_session, get_declarative_base, types, engines
+
+uri <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;clickhouse://default:@localhost/test&#39;</span>
+
+engine <span style="color:#f92672">=</span> create_engine(uri)
+session <span style="color:#f92672">=</span> make_session(engine)
+metadata <span style="color:#f92672">=</span> MetaData(bind<span style="color:#f92672">=</span>engine)
+
+Base <span style="color:#f92672">=</span> get_declarative_base(metadata<span style="color:#f92672">=</span>metadata)
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rate</span>(Base):
+    day <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>Date, primary_key<span style="color:#f92672">=</span>True)
+    value <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>Int32)
+    other_value <span style="color:#f92672">=</span> Column(types<span style="color:#f92672">.</span>DateTime, clickhouse_codec<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;DoubleDelta&#39;</span>, <span style="color:#e6db74">&#39;ZSTD&#39;</span>),)
+
+    __table_args__ <span style="color:#f92672">=</span> (engines<span style="color:#f92672">.</span>Memory(), )
+
+another_table <span style="color:#f92672">=</span> Table(<span style="color:#e6db74">&#39;another_rate&#39;</span>, metadata,
+    Column(<span style="color:#e6db74">&#39;day&#39;</span>, types<span style="color:#f92672">.</span>Date, primary_key<span style="color:#f92672">=</span>True),
+    Column(<span style="color:#e6db74">&#39;value&#39;</span>, types<span style="color:#f92672">.</span>Int32, server_default<span style="color:#f92672">=</span>literal(<span style="color:#ae81ff">1</span>)),
+    engines<span style="color:#f92672">.</span>Memory()
+)
+</code></pre></div><ol start="3">
+<li>mysql数据迁移</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install clickhouse<span style="color:#f92672">-</span>mysql
+</code></pre></div><hr>
+<h1 id="ui原型布局">UI原型布局</h1>
+<p><strong><a href="https://tongji.baidu.com/web/demo/source/all?siteId=5503017">百度统计</a></strong></p>
+<p><img src="https://i.loli.net/2020/11/17/53wrYIzavTQx1AF.png" alt="image-20201117120136679"></p>
+<p><a href="https://analytics.google.com/analytics/web/#/p252936700/reports/defaulthome?params=_u..nav%3Ddefault">谷歌分析</a></p>
+<p><img src="https://i.loli.net/2020/11/17/MNdIpgkX2EWmazZ.png" alt="image-20201117161029428"></p>
+<hr>
+<h1 id="ui原型设计">UI原型设计</h1>
+<p>待补充</p>
+<hr>
+<h1 id="数据平台数据库模型设计">数据平台数据库模型设计</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">classDiagram
+      Animal &lt;|-- Duck
+      Animal &lt;|-- Fish
+      Animal &lt;|-- Zebra
+      Animal : +int age
+      Animal : +String gender
+      Animal: +isMammal()
+      Animal: +mate()
+      class Duck{
+          +String beakColor
+          +swim()
+          +quack()
+      }
+      class Fish{
+          -int sizeInFeet
+          -canEat()
+      }
+      class Zebra{
+          +bool is_wild
+          +run()
+      }
+</code></pre></div><p>待补充</p>
+<hr>
+<h1 id="接口调用流程图">接口调用流程图</h1>
+<p>待补充</p>
+<hr>
+<h1 id="项目计划的一些要素">项目计划的一些要素</h1>
+<p><strong>项目分析</strong></p>
+<ul>
+<li>图表展示为主,数据分析视频.</li>
+<li>元数据来源: cmdb, itsm, 监控, 安全,采购等.</li>
+<li>为保证水平拓展与过度, 数据最好能用es或者mysql等容易对接的数据存储端, 方便后期搭建flask + vue + mysql+ echart 细化分析.</li>
+<li>其他存储端: 时序数据库存储, es,clickhouse(现有方案,rds存储方案: LSM+列式存储，读写性能高；压缩率高；物化视图；架构、部署简单).</li>
+</ul>
+<p><strong>项目时间周期</strong></p>
+<ol>
+<li>项目第一期,主要目的是搭建数据平台,其中线上数据平台部署与管理,线下平台搭建以及资源整合与接入工作.使用elk 或者 grafana配置展示页面信息,预计用时2 ~ 3 月.</li>
+<li>项目第二期,主要将已搭建的平台资源与采集到的数据放入自有平台建设,预计用时(9月+)</li>
+</ol>
+<blockquote>
+<p><strong>第一期包含内容</strong></p>
+<ul>
+<li>
+<p>搭建clickhouse数据存储环境,部署clickhouse.</p>
+</li>
+<li>
+<p>整理clickhouse的python驱动与python语言结合使用规范开发文档.</p>
+</li>
+<li>
+<p>整理主机监控 &amp; 流量监控 &amp; db监控 &amp; 容器应用监控 &amp; 安全信息监控数据</p>
+</li>
+<li>
+<p>搜集三方系统日志(nginx/redis/mysql/kafka/mfs等) &amp; 资产配件更换/故障事件 &amp; 日志平台记录信息</p>
+</li>
+<li>
+<p>商定数据对接规范文档,确定数据对接规范.</p>
+</li>
+<li>
+<p>实现 grafana 或 kibana 图表定制展示.</p>
+</li>
+<li>
+<p>flask 项目搭建element-admin-ui与 grafana 或 kibana 图表嵌入展示.</p>
+</li>
+<li>
+<p>服务入口流量指标展示,包含(理论最大QPS, 实际访问QPS )</p>
+</li>
+<li>
+<p>按业务划分展示 ==主机资源/网络IO流量== 使用情况</p>
+</li>
+<li>
+<p>发布平台提供业务模型</p>
+</li>
+</ul>
+<p><strong>第二期包含内容</strong></p>
+<ul>
+<li>
+<p>个性化定制多个元数据平台页面,独立页面入口.</p>
+</li>
+<li>
+<p>引入数据分析与数据清洗,提供分组,聚合,转换数据分析服务.</p>
+</li>
+<li>
+<p>集成RBAC权限管理机制,为独立页面分配权限管理,提供访问流量,ip管控.</p>
+</li>
+<li>
+<p>集成自定义报表导出功能,提供自定义指标导出.</p>
+</li>
+<li>
+<p>构建数据paas平台服务,为其他平台提供服务.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>项目进度计划</strong></p>
+<ul>
+<li>目标: 采用公司okr目标实施管理方法</li>
+<li>上线频率:  两周上线一次,钟摆敏捷开发模式.</li>
+</ul>
+<p>如下示例:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">%% Example with selection of syntaxes
+        gantt
+        dateFormat  YYYY-MM-DD
+        title 项目进度示意图
+
+        section 对接云主机
+        接口商定          :done,    des1, 2021-01-06, 2021-01-08
+        主机接口打通               :active,  des2, 2021-01-09, 3d
+        开发需求              :         des3, after des2, 5d
+        测试代码并上线              :         des4, after des3, 5d
+
+        section 对接vpc网络
+        对接网络 :crit, done, 2021-01-06,24h
+        规划网络资源展示         :crit, done, after des1, 2d
+        对接kibana和grafana             :crit, active, 3d
+        开发需求      :crit, 5d
+        测试页面          :2d
+        整理上线                     :1d
+
+        section 对接 db server
+        task1             :active, a1, after des1, 3d
+        task2    :after a1  , 20h
+        task3   :doc1, after a1  , 48h
+
+        section 对接 app unit
+        App unit   任务一            :after doc1, 3d
+        test    : 20h
+        App unit   任务三      : 48h
+</code></pre></div><p><strong>项目沟通计划</strong></p>
+<ul>
+<li>预计1~2周时间,对接元数据平台各部门数据负责人,完成本公司兄弟项目元数据信息接入的交流与对接.</li>
+<li>主要涉及: 采购平台, 安全平台, cmdb, 平台规划 等.</li>
+<li>rds存储方案落地</li>
+</ul>
+<p><strong>项目质量管理</strong></p>
+<ul>
+<li>全员参与、基于上线使用效果与事实持续改进。</li>
+<li>单元测试(待议)</li>
+<li>设置sit测试环境,集成公司测试用例与自动化测试通过100%,占上线周期一至三天.</li>
+</ul>
+<p><strong>项目风险与变更</strong></p>
+<ul>
+<li>本身就属于运维部,项目一旦出现运维故障,自行手动自动拉起与纠错.</li>
+<li>按照项目okr报告按期提前或有计划顺延.</li>
+<li>补充</li>
+</ul>
+<hr>
+<h1 id="待讨论问题">待讨论问题</h1>
+<ol>
+<li>
+<p>数据存储部署的无状态处理</p>
+</li>
+<li>
+<p>Flink数据分析是否介入</p>
+</li>
+<li>
+<p>kafka接入讨论</p>
+</li>
+<li>
+<p>接入svg渲染图表</p>
+</li>
+<li>
+<p>数据接入规范</p>
+</li>
+<li>
+<p>待补充</p>
+</li>
+</ol>
+<p>相关问题信息补充如下:</p>
+<blockquote>
+<ul>
+<li>
+<p>一个应用可能的状态分为了五大类，需要针对容器化时每一类状态需要解决的问题进行讨论。</p>
+<ol>
+<li>持久性状态（Presistent state）</li>
+<li>配置状态(Configuration state)</li>
+<li>会话状态(Session state)</li>
+<li>连接状态(Connection state)</li>
+<li>集群状态(Cluster state</li>
+</ol>
+</li>
+<li>
+<p><a href="http://flink.apache.org/">Apache Flink</a>是一个高效、分布式、基于Java实现的通用大数据分析引擎，它具有分布式 MapReduce一类平台的高效性、灵活性和扩展性以及并行数据库查询优化方案，它支持批量和基于流的数据分析，且提供了基于Java和Scala的API。</p>
+</li>
+<li>
+<p>数据接入规范</p>
+</li>
+<li>
+<p>任务拆解分析</p>
+</li>
+</ul>
+</blockquote>
+<hr>
+<p>参考内容如下展示:</p>
+<p><a href="https://www.cnpython.com/pypi/clickhouse-driver">https://www.cnpython.com/pypi/clickhouse-driver</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1700703">https://cloud.tencent.com/developer/article/1700703</a></p>
+<p><a href="https://clickhouse.tech/docs/zh/">clickhouse文档</a></p>
+<p><a href="https://developer.aliyun.com/article/762461">ClickHouse表引擎选择</a></p>
+<p><a href="https://www.cnblogs.com/treesoft/p/11963831.html">clickhouse可视化查询工具</a></p>
+<p><a href="https://clickhouse.tech/docs/zh/interfaces/third-party/gui/">第三方可视化工具</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/161248414">clickhouse实战分析</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1441835">LSM-tree</a></p>
+<p><a href="https://www.jianshu.com/p/b02fcea7eb5b">轻量级BI工具Superset的搭建与使用</a></p>
+<p><a href="https://ld246.com/article/1516326071123">ClickHouse 对接 Superset(快船)</a></p>
+<p><a href="https://www.bookstack.cn/read/clickhouse-20.3-zh/0e1ecee823c315ce.md">clickhouse教程</a></p>
+
+  </div>
+</div>
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

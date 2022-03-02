@@ -5,16 +5,16 @@
     <link>https://jxiaof.com/series/docker/</link>
     <description>Recent content in docker on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 08 Nov 2020 12:14:08 +0800</lastBuildDate><atom:link href="https://jxiaof.com/series/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker</title>
-      <link>https://jxiaof.com/post/docker/</link>
+      <link>https://jxiaof.com/docker/</link>
       <pubDate>Sun, 08 Nov 2020 12:14:08 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/docker/</guid>
-      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf /root/docker/nginx/conf/conf.d/default.conf 配置index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt;</description>
+      <guid>https://jxiaof.com/docker/</guid>
+      <description>ps auxw|head -1;ps auxw|sort -rn -k3|head -3 cat /etc/issue # 防止时间不一致 ENV TZ=Asia/Shanghai RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;amp;&amp;amp; echo $TZ &amp;gt; /etc/timezone nginx 第一次运行 docker run -d --name nginx -p 80:80 nginx 新建挂载目录 mkdir -p /root/docker/nginx/{conf, logs, html, ssl, conf/conf.d} 拷贝文件信息 docker cp nginx:/etc/nginx/nginx.conf /root/docker/nginx/conf &amp;amp;&amp;amp; docker cp nginx:/etc/nginx/conf.d/default.conf</description>
     </item>
     
   </channel>

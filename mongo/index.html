@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Mongo | 江小凡的博客</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Mongo' />
+<meta name="description" content="Document Database¶ High Performance Rich Query Language High Availability Support for Multiple Storage Engines Horizontal Scalability 相关链接: …">
+<meta property = 'og:description' content = 'Document Database¶ High Performance Rich Query Language High Availability Support for Multiple Storage Engines Horizontal Scalability 相关链接: …'>
+<meta property = 'og:url' content = 'https://jxiaof.com/mongo/' />
+<meta property = 'og:image' content = 'https://jxiaof.com/images/mongo.png'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'Mongo' />
+<meta property = 'twitter:description'  content = 'Document Database¶ High Performance Rich Query Language High Availability Support for Multiple Storage Engines Horizontal Scalability 相关链接: …'/>
+<meta name = 'twitter:image' content = 'https://jxiaof.com/images/mongo.png' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://jxiaof.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://jxiaof.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://jxiaof.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://jxiaof.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://jxiaof.com/mongo/'>
+  <link rel = 'stylesheet' href = 'https://jxiaof.com/css/styles.b934c9412cc837b60543673c5f879b59569b1c7bea59b56896858a3b0a15220c8dbd91e80317b591a1857e31aa26b3bf8fbaca17c5bab12ff1231a272cd6bd6d.css' integrity = 'sha512-uTTJQSzIN7YFQ2c8X4ebWVabHHvqWbVoloWKOwoVIgyNvZHoAxe1kaGFfjGqJrO/j7rKF8W6sS/xIxonLNa9bQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://jxiaof.com/categories/tech/' class = 'nav_item'>tech</a>
+      <a href = 'https://jxiaof.com/categories/photo/' class = 'nav_item'>photo</a>
+      <a href = 'https://jxiaof.com/categories/music/' class = 'nav_item'>music</a>
+      <a href = 'https://jxiaof.com/categories/video/' class = 'nav_item'>video</a>
+      <a href = 'https://jxiaof.com/categories/discuss/' class = 'nav_item'>discuss</a>
+      <a href = 'https://jxiaof.com/categories/remarks/' class = 'nav_item'>remarks</a>
+      <a href = 'https://jxiaof.com/about/' class = 'nav_item'>About</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://jxiaof.com/' class = 'nav-brand nav_item'>江小凡的博客</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://jxiaof.com/images/mongo.png);'>
+  <h1 class='post_title'>Mongo</h1>
+</section>
+
+<div class = 'post'>
+  <article class='post_content'><h2 id="document-databasehttpsdocsmongodbcomv36introductiondocument-database">Document Database<a href="https://docs.mongodb.com/v3.6/introduction/#document-database">¶</a></h2>
+<ul>
+<li>
+<p>High Performance</p>
+</li>
+<li>
+<p>Rich Query Language</p>
+</li>
+<li>
+<p>High Availability</p>
+</li>
+<li>
+<p>Support for Multiple Storage Engines</p>
+</li>
+<li>
+<p>Horizontal Scalability</p>
+</li>
+</ul>
+<blockquote>
+<p>相关链接:</p>
+<p><a href="https://docs.mongodb.com/v3.6/reference/sql-comparison/">https://docs.mongodb.com/v3.6/reference/sql-comparison/</a></p>
+<p><a href="https://blog.csdn.net/luolian123456/article/details/83104242">https://blog.csdn.net/luolian123456/article/details/83104242</a> /</p>
+<p><a href="https://www.cnblogs.com/leskang/p/6000852.html">https://www.cnblogs.com/leskang/p/6000852.html</a></p>
+</blockquote>
+<h1 id="insert">INSERT</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection(<span style="color:#e6db74">&#39;inventory&#39;</span>)<span style="color:#f92672">.</span>insertMany([
+   <span style="color:#f92672">//</span> MongoDB adds the _id field <span style="color:#66d9ef">with</span> an ObjectId <span style="color:#66d9ef">if</span> _id <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> present
+   { item: <span style="color:#e6db74">&#34;journal&#34;</span>, qty: <span style="color:#ae81ff">25</span>, status: <span style="color:#e6db74">&#34;A&#34;</span>,
+       size: { h: <span style="color:#ae81ff">14</span>, w: <span style="color:#ae81ff">21</span>, uom: <span style="color:#e6db74">&#34;cm&#34;</span> }, tags: [ <span style="color:#e6db74">&#34;blank&#34;</span>, <span style="color:#e6db74">&#34;red&#34;</span> ] },
+   { item: <span style="color:#e6db74">&#34;notebook&#34;</span>, qty: <span style="color:#ae81ff">50</span>, status: <span style="color:#e6db74">&#34;A&#34;</span>,
+       size: { h: <span style="color:#ae81ff">8.5</span>, w: <span style="color:#ae81ff">11</span>, uom: <span style="color:#e6db74">&#34;in&#34;</span> }, tags: [ <span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;blank&#34;</span> ] },
+   { item: <span style="color:#e6db74">&#34;paper&#34;</span>, qty: <span style="color:#ae81ff">100</span>, status: <span style="color:#e6db74">&#34;D&#34;</span>,
+       size: { h: <span style="color:#ae81ff">8.5</span>, w: <span style="color:#ae81ff">11</span>, uom: <span style="color:#e6db74">&#34;in&#34;</span> }, tags: [ <span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;blank&#34;</span>, <span style="color:#e6db74">&#34;plain&#34;</span> ] },
+   { item: <span style="color:#e6db74">&#34;planner&#34;</span>, qty: <span style="color:#ae81ff">75</span>, status: <span style="color:#e6db74">&#34;D&#34;</span>,
+       size: { h: <span style="color:#ae81ff">22.85</span>, w: <span style="color:#ae81ff">30</span>, uom: <span style="color:#e6db74">&#34;cm&#34;</span> }, tags: [ <span style="color:#e6db74">&#34;blank&#34;</span>, <span style="color:#e6db74">&#34;red&#34;</span> ] },
+   { item: <span style="color:#e6db74">&#34;postcard&#34;</span>, qty: <span style="color:#ae81ff">45</span>, status: <span style="color:#e6db74">&#34;A&#34;</span>,
+       size: { h: <span style="color:#ae81ff">10</span>, w: <span style="color:#ae81ff">15.25</span>, uom: <span style="color:#e6db74">&#34;cm&#34;</span> }, tags: [ <span style="color:#e6db74">&#34;blue&#34;</span> ] }
+])
+<span style="color:#f92672">.</span>then(function(result) {
+  <span style="color:#f92672">//</span> process result
+})
+
+db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>insertOne()
+db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>insert()
+</code></pre></div><h1 id="select">SELECT</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{}</span>);
+const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{</span> status: <span style="color:#e6db74">&#39;D&#39;</span> <span style="color:#960050;background-color:#1e0010">}</span>);
+const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{</span><span style="color:#e6db74">&#39;size.uom&#39;</span>: <span style="color:#e6db74">&#39;in&#39;</span><span style="color:#960050;background-color:#1e0010">}</span>);
+const <span style="color:#66d9ef">cursor</span> <span style="color:#f92672">=</span> db.collection(<span style="color:#e6db74">&#39;inventory&#39;</span>).find(<span style="color:#960050;background-color:#1e0010">{</span>tags: [<span style="color:#e6db74">&#39;red&#39;</span>, <span style="color:#e6db74">&#39;blank&#39;</span>]<span style="color:#960050;background-color:#1e0010">}</span>);
+
+db.cappedCollection.find().sort( <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">natural</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#960050;background-color:#1e0010">}</span> )
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>find({ <span style="color:#e6db74">&#34;field&#34;</span> : { <span style="color:#960050;background-color:#1e0010">$</span>gt: value1, <span style="color:#960050;background-color:#1e0010">$</span>lt: value2 } } );
+db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find( { x : { <span style="color:#960050;background-color:#1e0010">$</span>ne : <span style="color:#ae81ff">3</span> } } );
+db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find({j:{<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">in</span>: [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>]}});
+db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find({j:{<span style="color:#960050;background-color:#1e0010">$</span>nin: [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>]}});
+
+db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find( { a : { <span style="color:#960050;background-color:#1e0010">$</span>mod : [ <span style="color:#ae81ff">10</span> , <span style="color:#ae81ff">1</span> ] } } )
+
+db<span style="color:#f92672">.</span>things<span style="color:#f92672">.</span>find( { a: { <span style="color:#960050;background-color:#1e0010">$</span>all: [ <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span> ] } } );
+
+<span style="color:#75715e"># 正则匹配</span>
+<span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">查询商品名称长度大于</span><span style="color:#ae81ff">25</span><span style="color:#960050;background-color:#1e0010">个字符的商品</span>
+db<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item_name&#34;</span>: {<span style="color:#e6db74">&#34;$exists&#34;</span>: true, <span style="color:#e6db74">&#34;$regex&#34;</span>: <span style="color:#f92672">/^.</span>{<span style="color:#ae81ff">25</span>,}<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">/</span>}})<span style="color:#f92672">.</span>limit(<span style="color:#ae81ff">5</span>)   <span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">长度大于</span><span style="color:#ae81ff">25</span>
+ 
+<span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">查询商品名称长度小于</span><span style="color:#ae81ff">5</span><span style="color:#960050;background-color:#1e0010">个字符的商品</span>
+db<span style="color:#f92672">.</span>item<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item_name&#34;</span>: {<span style="color:#e6db74">&#34;$regex&#34;</span>: <span style="color:#f92672">/^.</span>{<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">5</span>}<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">/</span>}})<span style="color:#f92672">.</span>limit(<span style="color:#ae81ff">5</span>)
+
+db<span style="color:#f92672">.</span>customers<span style="color:#f92672">.</span>find( { name : <span style="color:#f92672">/</span>acme<span style="color:#f92672">.*</span>corp<span style="color:#f92672">/</span>i } ); <span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">后面的</span>i的意思是区分大小写
+
+<span style="color:#75715e">#	与或查询</span>
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find(
+    {<span style="color:#e6db74">&#34;$or&#34;</span>: [{<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>}, {<span style="color:#e6db74">&#34;qty&#34;</span>: {<span style="color:#e6db74">&#34;$lt&#34;</span>: <span style="color:#ae81ff">30</span>}}]})
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({
+    <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>,
+    <span style="color:#e6db74">&#34;$or&#34;</span>: [{<span style="color:#e6db74">&#34;qty&#34;</span>: {<span style="color:#e6db74">&#34;$lt&#34;</span>: <span style="color:#ae81ff">30</span>}}, {<span style="color:#e6db74">&#34;item&#34;</span>: {<span style="color:#e6db74">&#34;$regex&#34;</span>: <span style="color:#e6db74">&#34;^p&#34;</span>}}]})
+
+<span style="color:#75715e"># array</span>
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find(
+    {<span style="color:#e6db74">&#34;dim_cm&#34;</span>: {<span style="color:#e6db74">&#34;$elemMatch&#34;</span>: {<span style="color:#e6db74">&#34;$gt&#34;</span>: <span style="color:#ae81ff">22</span>, <span style="color:#e6db74">&#34;$lt&#34;</span>: <span style="color:#ae81ff">30</span>}}})
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;tags&#34;</span>: {<span style="color:#e6db74">&#34;$size&#34;</span>: <span style="color:#ae81ff">3</span>}})
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find(
+    {<span style="color:#e6db74">&#34;instock.qty&#34;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;instock.warehouse&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>})
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#39;instock.0.qty&#39;</span>: {<span style="color:#e6db74">&#34;$lte&#34;</span>: <span style="color:#ae81ff">20</span>}})
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find(
+    {<span style="color:#e6db74">&#34;instock&#34;</span>: SON([(<span style="color:#e6db74">&#34;qty&#34;</span>, <span style="color:#ae81ff">5</span>), (<span style="color:#e6db74">&#34;warehouse&#34;</span>, <span style="color:#e6db74">&#34;A&#34;</span>)])})
+
+<span style="color:#75715e"># null 查询</span>
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: None})
+<span style="color:#75715e"># 类型检测</span>
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: {<span style="color:#e6db74">&#34;$type&#34;</span>: <span style="color:#ae81ff">10</span>}})
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: None})
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find({<span style="color:#e6db74">&#34;item&#34;</span>: {<span style="color:#e6db74">&#34;$exists&#34;</span>: False}})
+
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Subdocument key order matters in a few of these examples so we have</span>
+<span style="color:#75715e"># to use bson.son.SON instead of a Python dict.</span>
+
+<span style="color:#75715e"># pymongo</span>
+<span style="color:#f92672">from</span> bson.son <span style="color:#f92672">import</span> SON
+db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>insert_many([
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;journal&#34;</span>,
+     <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">25</span>,
+     <span style="color:#e6db74">&#34;size&#34;</span>: SON([(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#ae81ff">14</span>), (<span style="color:#e6db74">&#34;w&#34;</span>, <span style="color:#ae81ff">21</span>), (<span style="color:#e6db74">&#34;uom&#34;</span>, <span style="color:#e6db74">&#34;cm&#34;</span>)]),
+     <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>},
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;notebook&#34;</span>,
+     <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">50</span>,
+     <span style="color:#e6db74">&#34;size&#34;</span>: SON([(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#ae81ff">8.5</span>), (<span style="color:#e6db74">&#34;w&#34;</span>, <span style="color:#ae81ff">11</span>), (<span style="color:#e6db74">&#34;uom&#34;</span>, <span style="color:#e6db74">&#34;in&#34;</span>)]),
+     <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>},
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;paper&#34;</span>,
+     <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">100</span>,
+     <span style="color:#e6db74">&#34;size&#34;</span>: SON([(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#ae81ff">8.5</span>), (<span style="color:#e6db74">&#34;w&#34;</span>, <span style="color:#ae81ff">11</span>), (<span style="color:#e6db74">&#34;uom&#34;</span>, <span style="color:#e6db74">&#34;in&#34;</span>)]),
+     <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;D&#34;</span>},
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;planner&#34;</span>,
+     <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">75</span>,
+     <span style="color:#e6db74">&#34;size&#34;</span>: SON([(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#ae81ff">22.85</span>), (<span style="color:#e6db74">&#34;w&#34;</span>, <span style="color:#ae81ff">30</span>), (<span style="color:#e6db74">&#34;uom&#34;</span>, <span style="color:#e6db74">&#34;cm&#34;</span>)]),
+     <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;D&#34;</span>},
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;postcard&#34;</span>,
+     <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">45</span>,
+     <span style="color:#e6db74">&#34;size&#34;</span>: SON([(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#ae81ff">10</span>), (<span style="color:#e6db74">&#34;w&#34;</span>, <span style="color:#ae81ff">15.25</span>), (<span style="color:#e6db74">&#34;uom&#34;</span>, <span style="color:#e6db74">&#34;cm&#34;</span>)]),
+     <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>}])
+
+cursor <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>find(
+    {<span style="color:#e6db74">&#34;size&#34;</span>: SON([(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#ae81ff">14</span>), (<span style="color:#e6db74">&#34;w&#34;</span>, <span style="color:#ae81ff">21</span>), (<span style="color:#e6db74">&#34;uom&#34;</span>, <span style="color:#e6db74">&#34;cm&#34;</span>)])})
+
+
+
+</code></pre></div><h1 id="update">UPDATE</h1>
+<ul>
+<li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.update_one"><code>pymongo.collection.Collection.update_one()</code></a></li>
+<li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.update_many"><code>pymongo.collection.Collection.update_many()</code></a></li>
+<li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.replace_one"><code>pymongo.collection.Collection.replace_one()</code></a></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>update_one(
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;paper&#34;</span>},
+    {<span style="color:#e6db74">&#34;$set&#34;</span>: {<span style="color:#e6db74">&#34;size.uom&#34;</span>: <span style="color:#e6db74">&#34;cm&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;P&#34;</span>},
+     <span style="color:#e6db74">&#34;$currentDate&#34;</span>: {<span style="color:#e6db74">&#34;lastModified&#34;</span>: True}})
+
+db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>update_many(
+    {<span style="color:#e6db74">&#34;qty&#34;</span>: {<span style="color:#e6db74">&#34;$lt&#34;</span>: <span style="color:#ae81ff">50</span>}},
+    {<span style="color:#e6db74">&#34;$set&#34;</span>: {<span style="color:#e6db74">&#34;size.uom&#34;</span>: <span style="color:#e6db74">&#34;in&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;P&#34;</span>},
+     <span style="color:#e6db74">&#34;$currentDate&#34;</span>: {<span style="color:#e6db74">&#34;lastModified&#34;</span>: True}})
+
+db<span style="color:#f92672">.</span>inventory<span style="color:#f92672">.</span>replace_one(
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;paper&#34;</span>},
+    {<span style="color:#e6db74">&#34;item&#34;</span>: <span style="color:#e6db74">&#34;paper&#34;</span>,
+     <span style="color:#e6db74">&#34;instock&#34;</span>: [
+         {<span style="color:#e6db74">&#34;warehouse&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">60</span>},
+         {<span style="color:#e6db74">&#34;warehouse&#34;</span>: <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#e6db74">&#34;qty&#34;</span>: <span style="color:#ae81ff">40</span>}]})
+
+
+<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">Once set, you cannot update the value of the _id field nor can you replace an existing document with a replacement document that has a different _id field value.
+</span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</code></pre></div><h1 id="delete">DELETE</h1>
+<ul>
+<li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.delete_many"><code>pymongo.collection.Collection.delete_many()</code></a></li>
+<li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.delete_one"><code>pymongo.collection.Collection.delete_one()</code></a></li>
+</ul>
+<h1 id="database">database</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">use myDB
+
+<span style="color:#75715e"># create</span>
+use myNewDB
+
+db<span style="color:#f92672">.</span>myNewCollection1<span style="color:#f92672">.</span>insertOne( { x: <span style="color:#ae81ff">1</span> } )
+db<span style="color:#f92672">.</span>myNewCollection3<span style="color:#f92672">.</span>createIndex( { y: <span style="color:#ae81ff">1</span> } )
+
+db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db74">&#34;log&#34;</span>, { capped : true, size : <span style="color:#ae81ff">5242880</span>, max : <span style="color:#ae81ff">5000</span> } )
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Commands</th>
+<th style="text-align:left">Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://docs.mongodb.com/v3.6/reference/command/create/#dbcmd.create"><code>create</code></a></td>
+<td style="text-align:left"><a href="https://docs.mongodb.com/v3.6/reference/method/db.createCollection/#db.createCollection"><code>db.createCollection()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.createView/#db.createView"><code>db.createView()</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://docs.mongodb.com/v3.6/reference/command/collMod/#dbcmd.collMod"><code>collMod</code></a></td>
+<td style="text-align:left"><a href="https://docs.mongodb.com/v3.6/reference/method/db.getCollection/#db.getCollection"><code>db.getCollection()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.getCollectionInfos/#db.getCollectionInfos"><code>db.getCollectionInfos()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.getCollectionNames/#db.getCollectionNames"><code>db.getCollectionNames()</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://docs.mongodb.com/v3.6/reference/command/find/#dbcmd.find"><code>find</code></a><a href="https://docs.mongodb.com/v3.6/reference/command/distinct/#dbcmd.distinct"><code>distinct</code></a><a href="https://docs.mongodb.com/v3.6/reference/command/count/#dbcmd.count"><code>count</code></a></td>
+<td style="text-align:left"><a href="https://docs.mongodb.com/v3.6/reference/method/db.collection.aggregate/#db.collection.aggregate"><code>db.collection.aggregate()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.collection.find/#db.collection.find"><code>db.collection.find()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.collection.findOne/#db.collection.findOne"><code>db.collection.findOne()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.collection.count/#db.collection.count"><code>db.collection.count()</code></a><a href="https://docs.mongodb.com/v3.6/reference/method/db.collection.distinct/#db.collection.distinct"><code>db.collection.distinct()</code></a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="data-type">data type</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">var mydoc <span style="color:#f92672">=</span> {
+               _id: ObjectId(<span style="color:#e6db74">&#34;5099803df3f4948bd2f98391&#34;</span>),
+               name: { first: <span style="color:#e6db74">&#34;Alan&#34;</span>, last: <span style="color:#e6db74">&#34;Turing&#34;</span> },
+               birth: new Date(<span style="color:#e6db74">&#39;Jun 23, 1912&#39;</span>),
+               death: new Date(<span style="color:#e6db74">&#39;Jun 07, 1954&#39;</span>),
+               contribs: [ <span style="color:#e6db74">&#34;Turing machine&#34;</span>, <span style="color:#e6db74">&#34;Turing test&#34;</span>, <span style="color:#e6db74">&#34;Turingery&#34;</span> ],
+               views : NumberLong(<span style="color:#ae81ff">1250000</span>)
+            }
+</code></pre></div><h1 id="field">Field</h1>
+<p>Field names are strings.</p>
+<p><a href="https://docs.mongodb.com/v3.6/core/document/#">Documents</a> have the following restrictions on field names:</p>
+<ul>
+<li>
+<p>The field name <code>_id</code> is reserved for use as a primary key; its value must be unique in the collection, is immutable, and may be of any type other than an array.</p>
+</li>
+<li>
+<p>Field names <strong>cannot</strong> contain the <code>null</code> character.</p>
+</li>
+<li>
+<p>Top-level field names <strong>cannot</strong> start with the dollar sign (<code>$</code>) character.</p>
+<p>Otherwise, starting in MongoDB 3.6, the server permits storage of field names that contain dots (i.e. <code>.</code>) and dollar signs (i.e. <code>$</code>).</p>
+</li>
+</ul>
+<p>The <code>_id</code> field has the following behavior and constraints:</p>
+<ul>
+<li>By default, MongoDB creates a unique index on the <code>_id</code> field during the creation of a collection.</li>
+<li>The <code>_id</code> field is always the first field in the documents. If the server receives a document that does not have the <code>_id</code> field first, then the server will move the field to the beginning.</li>
+<li>The <code>_id</code> field may contain values of any <a href="https://docs.mongodb.com/v3.6/reference/bson-types/">BSON data type</a>, other than an array.</li>
+</ul>
+<h1 id="validation">validation</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>createCollection(<span style="color:#e6db74">&#34;students&#34;</span>, {
+   validator: {
+      <span style="color:#960050;background-color:#1e0010">$</span>jsonSchema: {
+         bsonType: <span style="color:#e6db74">&#34;object&#34;</span>,
+         required: [ <span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;year&#34;</span>, <span style="color:#e6db74">&#34;major&#34;</span>, <span style="color:#e6db74">&#34;address&#34;</span> ],
+         properties: {
+            name: {
+               bsonType: <span style="color:#e6db74">&#34;string&#34;</span>,
+               description: <span style="color:#e6db74">&#34;must be a string and is required&#34;</span>
+            },
+            year: {
+               bsonType: <span style="color:#e6db74">&#34;int&#34;</span>,
+               minimum: <span style="color:#ae81ff">2017</span>,
+               maximum: <span style="color:#ae81ff">3017</span>,
+               description: <span style="color:#e6db74">&#34;must be an integer in [ 2017, 3017 ] and is required&#34;</span>
+            },
+            major: {
+               enum: [ <span style="color:#e6db74">&#34;Math&#34;</span>, <span style="color:#e6db74">&#34;English&#34;</span>, <span style="color:#e6db74">&#34;Computer Science&#34;</span>, <span style="color:#e6db74">&#34;History&#34;</span>, null ],
+               description: <span style="color:#e6db74">&#34;can only be one of the enum values and is required&#34;</span>
+            },
+            gpa: {
+               bsonType: [ <span style="color:#e6db74">&#34;double&#34;</span> ],
+               description: <span style="color:#e6db74">&#34;must be a double if the field exists&#34;</span>
+            },
+            address: {
+               bsonType: <span style="color:#e6db74">&#34;object&#34;</span>,
+               required: [ <span style="color:#e6db74">&#34;city&#34;</span> ],
+               properties: {
+                  street: {
+                     bsonType: <span style="color:#e6db74">&#34;string&#34;</span>,
+                     description: <span style="color:#e6db74">&#34;must be a string if the field exists&#34;</span>
+                  },
+                  city: {
+                     bsonType: <span style="color:#e6db74">&#34;string&#34;</span>,
+                     <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;must be a string and is required&#34;</span>
+                  }
+               }
+            }
+         }
+      }
+   }
+})
+</code></pre></div><h1 id="relationships">Relationships</h1>
+<p><strong>Embedded and reference relationships</strong></p>
+<h1 id="index">INDEX</h1>
+<h2 id="create-an-index">Create an Index</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db<span style="color:#f92672">.</span>collection<span style="color:#f92672">.</span>create_index([(<span style="color:#f92672">&lt;</span>key <span style="color:#f92672">and</span> index type specification<span style="color:#f92672">&gt;</span>)], <span style="color:#f92672">&lt;</span>options<span style="color:#f92672">&gt;</span> )
+
+collection<span style="color:#f92672">.</span>create_index([(<span style="color:#e6db74">&#34;name&#34;</span>, pymongo<span style="color:#f92672">.</span>DESCENDING)])
+</code></pre></div><p>mongo索引: <a href="https://developer.aliyun.com/article/33726">https://developer.aliyun.com/article/33726</a></p>
+<p>索引优化与详解: <a href="https://www.jianshu.com/p/2b09821a365d">https://www.jianshu.com/p/2b09821a365d</a></p>
+<h1 id="mongo-分片-副本集-以及-主节点推举机制">mongo 分片 副本集 以及 主节点推举机制</h1>
+<p><img src="https://i.loli.net/2020/10/15/vgi6XemrM5lKfd3.png" alt="img"></p>
+<p>推举机制: <a href="https://www.cnblogs.com/ExMan/p/9665110.html">https://www.cnblogs.com/ExMan/p/9665110.html</a></p>
+<p>分片与副本集的关系: <a href="https://blog.csdn.net/baidu_36095053/article/details/80192239">https://blog.csdn.net/baidu_36095053/article/details/80192239</a></p>
+<h1 id="mongodb分片机制">MongoDB分片机制</h1>
+<p><a href="https://www.jianshu.com/p/baed80df9300">https://www.jianshu.com/p/baed80df9300</a></p>
+<h1 id="mongodb-存储引擎wiredtiger和in-memory">MongoDB 存储引擎：WiredTiger和In-Memory</h1>
+<p><a href="https://www.cnblogs.com/ljhdo/p/4947357.html">https://www.cnblogs.com/ljhdo/p/4947357.html</a></p>
+<h1 id="mongodb使用小结">MongoDB使用小结</h1>
+<p><a href="https://www.jianshu.com/p/c566e541bb91">https://www.jianshu.com/p/c566e541bb91</a></p>
+<p>关于PyMongo更多的知识可以通过它的<a href="https://api.mongodb.com/python/current/tutorial.html">官方文档</a>进行了解，也可以使用pymongo / <a href="https://pypi.org/project/mongoengine/">MongoEngine</a>这样的库来简化Python程序对MongoDB的操作，除此之外，还有以异步I/O方式访问MongoDB的三方库<a href="https://pypi.org/project/motor/">motor</a>都是不错的选择。</p>
+<hr>
+<p>参考内容: <a href="https://api.mongodb.com/python/current/tutorial.html">https://api.mongodb.com/python/current/tutorial.html</a></p>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+
+  </article>
+  <div class="post-comment">
+       
+       <h3>Comments welcome !</h3>
+
+
+
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+ <script type="text/javascript">
+   new Valine({
+       el: '#vcomments' ,
+       appId: 'xb5Xl8O60fXEK4d13KsazkkL-gzGzoHsz',
+       appKey: 'qyztiJ2tgf6AhvsrH088N29o',
+       notify: 'false', 
+       verify: 'false', 
+       avatar:'mm', 
+       placeholder: '说说你的看法吧...',
+       visitor: 'true'
+   });
+ </script>
+<hr style="border:2px double #e8e8e8"/>
+<div align="center">~ the end ~</div>
+  </div>
+  
+  <aside><h3></h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-asyncio/' title = 'Python Asyncio' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/asyncio' class = 'post_tag'>Asyncio
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-asyncio/'>Python Asyncio</a>
+    </h3>
+    <p class = 'pale'>协程描述 协程，又称微线程，英文名Coroutine，是运行在单线程中的“并发”，协程相比多线程的一大优势就是省去了多线程之间的切换开销. 协程</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='https://jxiaof.com/python-accelerate/' title = 'python accelerate' style = 'background-image: url(https://jxiaof.com/images/python.png);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://jxiaof.com/tags/accelerate' class = 'post_tag'>Accelerate
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://jxiaof.com/python-accelerate/'>python accelerate</a>
+    </h3>
+    <p class = 'pale'>python加速 我自己参与了这部分的工作,花了一两周时间去实践,如下: python 程序性能优化的套路一般有两种： jit， 即just in time compiler</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://jxiaof.com/js/autosize.min.js'></script>
+<script src = 'https://jxiaof.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy;&nbsp;<span class = 'year'></span>&nbsp;江小凡的博客.
+    Designed by  <a href = 'https://www.github.com/jxiaof' title = 'Linkedin Profile'>江小凡</a></p>
+    <a href="mailto:soovvbot@gmail.com">click to send an email to soovvbot@Gmail.com</a>
+  </div>
+</footer>
+<script src = 'https://jxiaof.com/js/index.min.4c4377eef0046b9d599ace9d5223b99e448815ec44de663396de4e3574f81792aa022d6e3314a1a64f629482d2222e8fb93f45ad2c5172146c3a8f9c2fbea9f8.js'></script>
+  </body>
+</html>

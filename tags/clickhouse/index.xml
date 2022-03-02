@@ -5,15 +5,15 @@
     <link>https://jxiaof.com/tags/clickhouse/</link>
     <description>Recent content in clickhouse on 江小凡的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <copyright>Designed By Felix</copyright>
+    <language>en-us</language>
+    <copyright>Copyright © 2018–2022, jiaoxiaofan and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Mon, 16 Nov 2020 17:44:29 +0800</lastBuildDate><atom:link href="https://jxiaof.com/tags/clickhouse/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ClickHouse</title>
-      <link>https://jxiaof.com/post/clickhouse/</link>
+      <link>https://jxiaof.com/clickhouse/</link>
       <pubDate>Mon, 16 Nov 2020 17:44:29 +0800</pubDate>
       
-      <guid>https://jxiaof.com/post/clickhouse/</guid>
+      <guid>https://jxiaof.com/clickhouse/</guid>
       <description>ClickHouse是“战斗民族”俄罗斯搜索巨头Yandex公司开源的一个极具&amp;quot;战斗力&amp;quot;的实时数据分析数据库，是面向 OLAP 的</description>
     </item>
     
